@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record model="ir.ui.view" id="inherited_product_product_easy_view_form">
+    <field name="name">inherited.product.product.easy.view.form</field>
+    <field name="model">product.product</field>
+    <field name="inherit_id" ref="product.product_variant_easy_edit_view"/>
+    <field name="arch" type="xml">
+
+      <xpath expr="//group[@name='pricing']" position="after">
+        <group name="pricelist" colspan="4">
+          <separator string="Pricelist"/>
+          <field name="is_product_variant" invisible="1"/>
+          <field name="product_pricelist_ids" readonly="1" nolabel="1" mode="tree" >
+            <tree editable="bottom">
+              <field name="product_template_id" invisible="1"/>
+              <field name="product_product_id" readonly="1"/>
+              <field name="pricelist_id"/>
+              <field name="taxes_id" widget="many2many_tags"/>
+              <field name="price"/>
+            </tree>
+          </field>
+        </group>
+      </xpath>
+
+      <xpath expr="//field[@name='lst_price']" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
+
+    </field>
+  </record>
+
+</odoo>

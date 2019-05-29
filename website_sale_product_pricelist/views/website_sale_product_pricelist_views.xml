@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+  <record id="website_sale_product_pricelist_view_form" model="ir.ui.view">
+    <field name="name">website.sale.product.pricelist.view.form</field>
+    <field name="model">website.sale.product.pricelist</field>
+    <field name="arch" type="xml">
+      <form string="Product Pricelist">
+        <sheet>
+          <group>
+            <group name="price">
+              <field name="taxes_id" widget="many2many_tags" options="{'no_create': True}"/>
+              <field name="price"/>
+            </group>
+            <group name="product">
+              <field name="product_template_id" options="{'no_create': True}"/>
+              <field name="product_product_id" options="{'no_create': True}"/>
+              <field name="pricelist_id" options="{'no_create': True}"/>
+            </group>
+            <group name="company">
+              <field name="company_id" options="{'no_create': True}"/>
+            </group>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="website_sale_product_pricelist_view_tree" model="ir.ui.view">
+    <field name="name">website.sale.product.pricelist.view.tree</field>
+    <field name="model">website.sale.product.pricelist</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="product_template_id"/>
+        <field name="product_product_id"/>
+        <field name="pricelist_id"/>
+        <field name="taxes_id" widget="many2many_tags"/>
+        <field name="price"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="website_sale_product_pricelist_view_search" model="ir.ui.view">
+    <field name="name">website.sale.product.pricelist.view.search</field>
+    <field name="model">website.sale.product.pricelist</field>
+    <field name="arch" type="xml">
+      <search string="Search Product">
+        <field name="display_name"/>
+        <field name="product_template_id"/>
+        <field name="product_product_id"/>
+        <field name="pricelist_id"/>
+        <field name="taxes_id"/>
+        <separator/>
+        <group expand="0" string="Group By">
+            <filter string="Template" name="product_template_id" domain="[]" context="{'group_by':'product_template_id'}"/>
+            <filter string="Product" name="product_product_id" domain="[]" context="{'group_by':'product_product_id'}"/>
+            <filter string="Pricelist" name="pricelist_id" domain="[]" context="{'group_by':'pricelist_id'}"/>
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <record id="website_sale_product_pricelist_action" model="ir.actions.act_window">
+    <field name="name">Product Pricelist</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">website.sale.product.pricelist</field>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+  </record>
+
+  <menuitem id="website_sale_product_pricelist.menu_product_pricelist"
+            name="Product Pricelist"
+            parent="sale.product_menu_catalog"
+            action="website_sale_product_pricelist_action"
+            sequence="10"
+            groups="base.group_user"/>
+
+</odoo>

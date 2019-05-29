@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record model="ir.ui.view" id="inherited_product_template_view_kanban">
+      <field name="name">inherited.product.template.view.kanban</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="product.product_template_kanban_view"/>
+      <field name="arch" type="xml">
+        <field name="lst_price" position="after">
+            <field name="type"/>
+        </field>
+        <ul position="inside">
+            <li><field name="principal_variant_id" /></li>
+        </ul>
+      </field>
+  </record>
+
+  <record model="ir.ui.view" id="inherited_product_template_view_form">
+    <field name="name">inherited.product.template.view.form</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="product.product_template_form_view"/>
+    <field name="arch" type="xml">
+
+      <xpath expr="//group[@name='group_general']" position="inside">
+        <field name="principal_variant_id" attrs="{'invisible': [('visible_variant', '=', False)]}"/>
+        <field name="principal_attribute_id" attrs="{'invisible': [('visible_variant', '=', False)]}"/>
+        <field name="visible_variant" invisible="1"/>
+      </xpath>
+
+      <xpath expr="//field[@name='list_price']" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
+      <xpath expr="//field[@name='taxes_id']" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
+      <xpath expr="//field[@name='item_ids']" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
+
+      <xpath expr="//group[@name='sale']" position="before">
+        <field name="is_product_variant" invisible="1"/>
+        <separator string="Pricing"/>
+        <group name="product_template" colspan="4" attrs="{'invisible': [('is_product_variant', '=', True)]}">
+          <field name="product_pricelist_ids" readonly="1" nolabel="1" mode="tree" >
+            <tree editable="bottom">
+              <field name="product_template_id" invisible="1"/>
+              <field name="product_product_id" readonly="1"/>
+              <field name="pricelist_id"/>
+              <field name="taxes_id" widget="many2many_tags"/>
+              <field name="price"/>
+            </tree>
+          </field>
+        </group>
+        <group name="product_product" colspan="4" attrs="{'invisible': [('is_product_variant', '=', False)]}">
+          <field name="product_pricelist_ids" nolabel="1" mode="tree" context="{'default_product_product_id': id}">
+            <tree editable="bottom">
+              <field name="product_template_id" invisible="1"/>
+              <field name="product_product_id" readonly="1"/>
+              <field name="pricelist_id"/>
+              <field name="taxes_id" widget="many2many_tags"/>
+              <field name="price"/>
+            </tree>
+          </field>
+        </group>
+      </xpath>
+
+    </field>
+  </record>
+
+</odoo>

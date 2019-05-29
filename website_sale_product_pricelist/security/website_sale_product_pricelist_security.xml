@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data noupdate="1">
+
+        <record id="product_pricelist_public" model="res.groups">
+            <field name="name">Public Product Pricelist Team</field>
+        </record>
+
+        <record id="product_pricelist_group_manager" model="res.groups">
+            <field name="name">Manager Product Pricelist Team</field>
+            <field name="implied_ids" eval="[(4, ref('website_sale_product_pricelist.product_pricelist_public'))]"/>
+        </record>
+
+        <record id="product_pricelist_company_rule" model="ir.rule">
+            <field name="name">Product Pricelist Multi-Company</field>
+            <field name="model_id" ref="model_website_sale_product_pricelist"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+        </record>
+
+        <record id="product_pricelist_all_access_rule" model="ir.rule">
+            <field name="name">All Access</field>
+            <field ref="model_website_sale_product_pricelist" name="model_id"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4, ref('website_sale_product_pricelist.product_pricelist_public'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+    </data>
+
+</odoo>
