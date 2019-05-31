@@ -38,10 +38,27 @@ class WebsiteSaleProductPricelist(models.Model):
     pricelist_id = fields.Many2one(
         comodel_name='product.pricelist',
         string='Assigned Pricelist')
+    default_pricelist = fields.Boolean(
+        string='Default Pricelist?',
+        related='pricelist_id.default_pricelist',
+        readonly=True,
+        store=True)
     company_id = fields.Many2one(
         comodel_name='res.company',
         string='Company',
         default=_default_company_id)
+    product_template_attribute_value_id = fields.Many2one(
+        comodel_name='product.template.attribute.value',
+        string='Product Attribute Value',
+        compute='_compute_product_template_attribute_value_id')
+    price_extra = fields.Float(
+        string='Extra price',
+        related='product_template_attribute_value_id.price_extra',
+        readonly=True)
+    list_price = fields.Float(
+        string='Base price',
+        related='product_template_id.list_price',
+        readonly=True)
 
     @api.onchange('product_template_id')
     def _onchange_product_template_id(self):
@@ -70,22 +87,33 @@ class WebsiteSaleProductPricelist(models.Model):
                 p.display_name = '[' + p.product_product_id.display_name + \
                     '] [' + p.pricelist_id.name + ']'
 
+    @api.depends('product_product_id')
+    def _compute_product_template_attribute_value_id(self):
+        product = self.product_product_id
+        attributes = self.product_template_id.principal_attribute_id.value_ids
+        for attribute_id in attributes:
+            for p in product.attribute_value_ids:
+                if not (p.id != attribute_id.id):
+                    value_id = p
+                    domain = [('attribute_id', '=', product.principal_attribute_id.id),
+                              ('product_tmpl_id', '=', product.product_tmpl_id.id),
+                              ('product_attribute_value_id', '=', value_id.id)]
+                    vals = self.env['product.template.attribute.value'].search(
+                        domain)
+                    self.product_template_attribute_value_id = vals
+
     # A la hora de crear el registro en website.sale.product.pricelist, vemos,
     # si su tarifa asignadas es la marcada por defecto y su product.product, es
     # a su vez el marcado como variante principal, guardamos el precio que se
     # designa también en la tabla product.template
     @api.model
     def create(self, vals):
+        vals = self._check_product_template_attribute_values(vals)
         vals = self._check_default_pricelist(vals)
         vals = self._check_principal_variant(vals)
-        if vals.get('default_pricelist') and vals.get('principal_variant'):
-            prod_template = self.env['product.template'].browse(
-                vals['product_template_id'])
-            prod_template = prod_template.write({
-                'list_price': vals['price'],
-                'taxes_id': vals['taxes_id']
-            })
-            print(prod_template)
+        vals = self._update_product_template(vals)
+        vals = self._update_product_attribute(vals)
+        print(vals)
         return super(WebsiteSaleProductPricelist, self).create(vals)
 
     @api.multi
@@ -96,6 +124,8 @@ class WebsiteSaleProductPricelist(models.Model):
         values = self._check_principal_variant(values)
         values = self._update_product_template(values)
         values = self._update_product_attributes(values)
+        print(values)
+        values = self._check_update_all_products(values)
         return super(WebsiteSaleProductPricelist, self).write(vals)
 
     def _update_product_template(self, vals):
@@ -119,40 +149,41 @@ class WebsiteSaleProductPricelist(models.Model):
 
     @api.multi
     def _update_product_attributes(self, vals):
-        print(vals)
-        print(vals['product_product_id'])
-        if not vals.get('principal_variant') and vals.get('price'):
-            prod_prod = self.env['product.product'].browse(
-                vals['product_product_id'])
-            print("PRODUCTO:")
-            print("=========")
-            print(prod_prod.id)
-            print("PRECIOS: ")
-            print("=========")
-            print(vals['price'])
-            price_modificator = vals['price'] - prod_prod.list_price
-            print(price_modificator)
-            print("EXTRA PRICE:")
-            print("============")
-            print(prod_prod.price_extra)
-            print("EXTRA VALUES:")
-            print("=============")
-            print(prod_prod.product_tmpl_id)
-            print(prod_prod.attribute_value_ids)
-            prod_prod = prod_prod.write({
-                'price_extra': price_modificator
+        if vals.get('product_template_attribute_value_id') and vals.get('price') and vals.get('default_pricelist') and not vals.get('principal_variant'):
+            attr_value = self.env['product.template.attribute.value'].browse(
+                vals['product_template_attribute_value_id'])
+            price_extra = round(vals.get('price') - vals.get('list_price'), 2)
+            attr_value = attr_value.write({
+                'price_extra': price_extra
             })
-            attr_value_model = self.env['product.template.attribute.value']
-            attr_value_found = attr_value_model.search([
-                ('product_tmpl_id', 'in', prod_prod.product_tmpl_id),
-                ('product_attribute_value_id', 'in', prod_prod.attribute_value_ids),
-            ], limit=1)
+        return vals
 
-            '''values = self.env['product.template.attribute.value'].search([
-                ('product_tmpl_id', 'in', prod_prod.product_tmpl_id),
-                ('product_attribute_value_id', 'in', prod_prod.attribute_value_ids),
-            ])'''
-            print(attr_value_found)
+    @api.multi
+    def _update_product_attribute(self, vals):
+        if vals.get('product_template_attribute_value_id') and vals.get('price') and vals.get('default_pricelist') and not vals.get('principal_variant'):
+            domain = [('id', '=', vals.get('product_template_attribute_value_id').id)]
+            attr_value = self.env['product.template.attribute.value'].search(
+                domain)
+            update = self.env['product.template.attribute.value'].browse(
+                attr_value.id)
+            price_extra = round(vals.get('price') - vals.get('list_price'), 2)
+            update = update.write({
+                'price_extra': price_extra
+            })
+        return vals
+
+    def _check_update_all_products(self, vals):
+        if vals.get('default_pricelist') and vals.get('principal_variant'):
+            domain = [('product_template_id', '=', vals.get('product_template_id')),
+                      ('pricelist_id', '=', vals.get('pricelist_id'))]
+            pricelist = self.env['website.sale.product.pricelist'].search(
+                domain)
+            for p in pricelist:
+                if p.id != self.id:
+                    update = self.env['website.sale.product.pricelist'].browse(p.id)
+                    update = update.write({
+                        'price': p.price
+                    })
         return vals
 
     def _check_update_values(self, vals):
@@ -161,13 +192,17 @@ class WebsiteSaleProductPricelist(models.Model):
             vals.update(pricelist_id=self.pricelist_id.id)
         if not vals.get('product_template_id'):
             vals.update(product_template_id=self.product_template_id.id)
+            vals.update(list_price=self.product_template_id.list_price)
         if not vals.get('product_product_id'):
             vals.update(product_product_id=self.product_product_id.id)
+        if not vals.get('product_template_attribute_value_id'):
+            vals.update(
+                product_template_attribute_value_id=self.product_template_attribute_value_id.id)
         return vals
 
     def _check_default_pricelist(self, vals):
         vals = dict(vals or {})
-        if vals.get('pricelist_id') and vals.get('product_product_id'):
+        if vals.get('pricelist_id') and vals.get('product_product_id') and not vals.get('default_pricelist'):
             pricelist = self.env['product.pricelist'].browse(
                 vals['pricelist_id'])
             if pricelist.default_pricelist:
@@ -181,4 +216,24 @@ class WebsiteSaleProductPricelist(models.Model):
                 vals['product_template_id'])
             if ppal_v.principal_variant_id and ppal_v.principal_variant_id.id == vals.get('product_product_id'):
                 vals.update(principal_variant=True)
+        return vals
+
+    def _check_product_template_attribute_values(self, vals):
+        vals = dict(vals or {})
+        product = self.env['product.product'].browse(
+            vals['product_product_id'])
+        template = self.env['product.template'].browse(
+            vals['product_template_id'])
+        attributes = template.principal_attribute_id.value_ids
+        for attribute_id in attributes:
+            for p in product.attribute_value_ids:
+                if not (p.id != attribute_id.id):
+                    value_id = p
+                    domain = [('attribute_id', '=', product.principal_attribute_id.id),
+                              ('product_tmpl_id', '=', product.product_tmpl_id.id),
+                              ('product_attribute_value_id', '=', value_id.id)]
+                    value = self.env['product.template.attribute.value'].search(
+                        domain)
+                    vals.update(product_template_attribute_value_id=value)
+                    vals.update(list_price=template.list_price)
         return vals

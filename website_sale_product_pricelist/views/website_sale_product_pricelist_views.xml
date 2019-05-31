@@ -11,10 +11,15 @@
             <group name="price">
               <field name="taxes_id" widget="many2many_tags" options="{'no_create': True}"/>
               <field name="price"/>
+              <field name="list_price"/>
+              <field name="default_pricelist" invisible="1"/>
+              <field name="price_extra" attrs="{'invisible': [('default_pricelist', '=', False)]}"/>
+
             </group>
             <group name="product">
               <field name="product_template_id" options="{'no_create': True}"/>
               <field name="product_product_id" options="{'no_create': True}"/>
+              <field name="product_template_attribute_value_id"/>
               <field name="pricelist_id" options="{'no_create': True}"/>
             </group>
             <group name="company">
@@ -49,12 +54,14 @@
         <field name="product_template_id"/>
         <field name="product_product_id"/>
         <field name="pricelist_id"/>
+        <field name="default_pricelist"/>
         <field name="taxes_id"/>
         <separator/>
         <group expand="0" string="Group By">
             <filter string="Template" name="product_template_id" domain="[]" context="{'group_by':'product_template_id'}"/>
             <filter string="Product" name="product_product_id" domain="[]" context="{'group_by':'product_product_id'}"/>
             <filter string="Pricelist" name="pricelist_id" domain="[]" context="{'group_by':'pricelist_id'}"/>
+            <filter string="Default Pricelist" name="default_pricelist" domain="[]" context="{'group_by':'default_pricelist'}"/>
         </group>
       </search>
     </field>
@@ -74,5 +81,12 @@
             action="website_sale_product_pricelist_action"
             sequence="10"
             groups="base.group_user"/>
+
+  <menuitem id="website_sale_product_pricelist.website_menu_product_pricelist"
+            name="Product Pricelist"
+            parent="website_sale.menu_catalog"
+            action="website_sale_product_pricelist_action"
+            sequence="50"
+            groups="product.group_product_variant"/>
 
 </odoo>
