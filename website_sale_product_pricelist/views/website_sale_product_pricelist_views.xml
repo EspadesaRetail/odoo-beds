@@ -9,20 +9,27 @@
         <sheet>
           <group>
             <group name="price">
+              <separator string="Pricing"/>
               <field name="taxes_id" widget="many2many_tags" options="{'no_create': True}"/>
               <field name="price"/>
+              <field name="computed_amount_tax"/>
+            </group>
+            <group name="principal_variant">
+              <separator string="Variant Pricing"/>
               <field name="list_price"/>
               <field name="default_pricelist" invisible="1"/>
               <field name="price_extra" attrs="{'invisible': [('default_pricelist', '=', False)]}"/>
-
+              <field name="price_discount"/>
             </group>
             <group name="product">
+              <separator string="Product Attributes"/>
               <field name="product_template_id" options="{'no_create': True}"/>
               <field name="product_product_id" options="{'no_create': True}"/>
               <field name="product_template_attribute_value_id"/>
               <field name="pricelist_id" options="{'no_create': True}"/>
             </group>
             <group name="company">
+              <separator string="Company"/>
               <field name="company_id" options="{'no_create': True}"/>
             </group>
           </group>

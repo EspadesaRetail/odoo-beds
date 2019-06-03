@@ -10,6 +10,10 @@
       <xpath expr="//field[@name='currency_id']" position="before">
         <field name="default_pricelist"/>
       </xpath>
+      <xpath expr="//field[@name='country_group_ids']" position="after">
+        <field name="country_ids"/>
+        <field name="state_ids"/>
+      </xpath>
 
     </field>
   </record>

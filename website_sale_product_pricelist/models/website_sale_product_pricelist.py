@@ -43,6 +43,10 @@ class WebsiteSaleProductPricelist(models.Model):
         related='pricelist_id.default_pricelist',
         readonly=True,
         store=True)
+    price_discount = fields.Char(
+        string='Price',
+        related='pricelist_id.item_ids.price',
+        context="[('product_id', '=', product_product_id)]")
     company_id = fields.Many2one(
         comodel_name='res.company',
         string='Company',
@@ -52,13 +56,16 @@ class WebsiteSaleProductPricelist(models.Model):
         string='Product Attribute Value',
         compute='_compute_product_template_attribute_value_id')
     price_extra = fields.Float(
-        string='Extra price',
+        string='Extra Price',
         related='product_template_attribute_value_id.price_extra',
         readonly=True)
     list_price = fields.Float(
-        string='Base price',
+        string='Principal Variant Price',
         related='product_template_id.list_price',
         readonly=True)
+    computed_amount_tax = fields.Float(
+        string='Amount Tax',
+        compute='_compute_amount_tax')
 
     @api.onchange('product_template_id')
     def _onchange_product_template_id(self):
@@ -102,10 +109,17 @@ class WebsiteSaleProductPricelist(models.Model):
                         domain)
                     self.product_template_attribute_value_id = vals
 
-    # A la hora de crear el registro en website.sale.product.pricelist, vemos,
-    # si su tarifa asignadas es la marcada por defecto y su product.product, es
-    # a su vez el marcado como variante principal, guardamos el precio que se
-    # designa también en la tabla product.template
+    @api.depends('price', 'taxes_id')
+    def _compute_amount_tax(self):
+        self.computed_amount_tax = self.price + (self.price * (self.taxes_id.amount / 100))
+
+    ''' Al crear/modificar registros en website.sale.product.pricelist si su
+        tarifa asignada es la marcada por defecto y su product.product, es a su
+        vez el marcado como variante principal, guardamos el precio asignado
+        también en la tabla product.template, mientras que si no es la variante
+        por defecto, actualizamos además, el campo price_extra de la tabla que
+        guarda los valores para cada atributo simpre dicho atributo sea el que
+        se ha marcado como principal '''
     @api.model
     def create(self, vals):
         vals = self._check_product_template_attribute_values(vals)
@@ -113,7 +127,6 @@ class WebsiteSaleProductPricelist(models.Model):
         vals = self._check_principal_variant(vals)
         vals = self._update_product_template(vals)
         vals = self._update_product_attribute(vals)
-        print(vals)
         return super(WebsiteSaleProductPricelist, self).create(vals)
 
     @api.multi
@@ -124,7 +137,6 @@ class WebsiteSaleProductPricelist(models.Model):
         values = self._check_principal_variant(values)
         values = self._update_product_template(values)
         values = self._update_product_attributes(values)
-        print(values)
         values = self._check_update_all_products(values)
         return super(WebsiteSaleProductPricelist, self).write(vals)
 
