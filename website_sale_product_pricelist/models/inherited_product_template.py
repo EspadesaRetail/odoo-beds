@@ -1,7 +1,9 @@
 # Copyright 2019 Alberto Calvo Bazco
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import fields, models, api, _
+from odoo.addons import decimal_precision as dp
+
+from odoo import api, fields, models, _
 
 
 class InheritedProductTemplate(models.Model):
@@ -10,7 +12,8 @@ class InheritedProductTemplate(models.Model):
 
     principal_variant_id = fields.Many2one(
         string='Principal Variant',
-        comodel_name='product.product')
+        comodel_name='product.product',
+        domain="[('product_tmpl_id', '=', id)]")
     principal_attribute_id = fields.Many2one(
         string='Principal Attribute',
         comodel_name='product.attribute')

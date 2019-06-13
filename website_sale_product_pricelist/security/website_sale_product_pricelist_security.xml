@@ -22,11 +22,17 @@
             <field name="name">All Access</field>
             <field ref="model_website_sale_product_pricelist" name="model_id"/>
             <field name="domain_force">[(1,'=',1)]</field>
-            <field name="groups" eval="[(4, ref('website_sale_product_pricelist.product_pricelist_public'))]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="product_pricelist_rule_portal" model="ir.rule">
+            <field name="name">Product Pricelist: Portal - Users: Portal</field>
+            <field name="model_id" ref="model_website_sale_product_pricelist"/>
+            <field name="domain_force">['|',('pricelist_id','=',False),('pricelist_id','in',[user.partner_id.property_product_pricelist.id])]</field>
+            <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
         </record>
     </data>
 

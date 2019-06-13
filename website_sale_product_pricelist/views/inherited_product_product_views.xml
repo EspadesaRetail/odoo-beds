@@ -16,6 +16,7 @@
               <field name="product_template_id" invisible="1"/>
               <field name="product_product_id" readonly="1"/>
               <field name="pricelist_id"/>
+              <field name="amount"/>
               <field name="taxes_id" widget="many2many_tags"/>
               <field name="price"/>
             </tree>

@@ -22,8 +22,8 @@
         "security/website_sale_product_pricelist_security.xml",
         "security/ir.model.access.csv",
         "views/inherited_product_pricelist_views.xml",
-        "views/inherited_product_template_views.xml",
         "views/inherited_product_product_views.xml",
+        "views/inherited_product_template_views.xml",
         "views/website_sale_product_pricelist_views.xml",
     ],
 }

@@ -11,26 +11,28 @@
             <group name="price">
               <separator string="Pricing"/>
               <field name="taxes_id" widget="many2many_tags" options="{'no_create': True}"/>
-              <field name="price"/>
-              <field name="computed_amount_tax"/>
+              <field name="amount" required="True"/>
+              <field name="price" readonly="1"/>
+              <field name="text_price"/>
+              <field name="computed_price_discount"/>
             </group>
             <group name="principal_variant">
               <separator string="Variant Pricing"/>
               <field name="list_price"/>
-              <field name="default_pricelist" invisible="1"/>
-              <field name="price_extra" attrs="{'invisible': [('default_pricelist', '=', False)]}"/>
-              <field name="price_discount"/>
+              <field name="price_extra"/>
+              <field name="extra_price"/>
             </group>
             <group name="product">
               <separator string="Product Attributes"/>
-              <field name="product_template_id" options="{'no_create': True}"/>
-              <field name="product_product_id" options="{'no_create': True}"/>
+              <field name="pricelist_id" options="{'no_create': True}" required="True"/>
+              <field name="default_pricelist" invisible="1"/>
+              <field name="product_template_id" options="{'no_create': True}" required="True"/>
+              <field name="product_product_id" options="{'no_create': True}" required="True"/>
               <field name="product_template_attribute_value_id"/>
-              <field name="pricelist_id" options="{'no_create': True}"/>
             </group>
             <group name="company">
               <separator string="Company"/>
-              <field name="company_id" options="{'no_create': True}"/>
+              <field name="company_id" options="{'no_create': True}" required="True"/>
             </group>
           </group>
         </sheet>
@@ -46,6 +48,7 @@
         <field name="product_template_id"/>
         <field name="product_product_id"/>
         <field name="pricelist_id"/>
+        <field name="amount"/>
         <field name="taxes_id" widget="many2many_tags"/>
         <field name="price"/>
       </tree>
