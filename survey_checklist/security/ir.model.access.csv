@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_survey_business_manager,survey.survey business_manager,survey.model_survey_survey,group_survey_business_manager,1,0,0,0
+access_survey_page_business_manager,survey.page business_manager,survey.model_survey_page,group_survey_business_manager,1,0,0,0
+access_survey_question_business_manager,survey.question business_manager,survey.model_survey_question,group_survey_business_manager,1,0,0,0
+access_survey_label_business_manager,survey.label business_manager,survey.model_survey_label,group_survey_business_manager,1,0,0,0
+access_survey_user_input_business_manager,survey.user_input business_manager,survey.model_survey_user_input,group_survey_business_manager,1,1,1,0
+access_survey_user_input_line_business_manager,survey.user_input_line business_manager,survey.model_survey_user_input_line,group_survey_business_manager,1,1,1,0
+access_survey_stage_business_manager,survey.stage business_manager,survey.model_survey_stage,group_survey_business_manager,1,0,0,0

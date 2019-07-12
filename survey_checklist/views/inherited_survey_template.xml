@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <template id="inherited_simple_choice" inherit_id="survey.simple_choice" >
+      <xpath expr="//div">
+        <div t-if='question.image_allowed' class="col-lg-12 mt16">
+            <span>Espacio para introducir una imagen</span>
+        </div>
+      </xpath>
+
+  </template>
+
+  <template id="inherited_multiple_choice" inherit_id="survey.multiple_choice" >
+      <xpath expr="//div">
+        <div t-if='question.image_allowed' class="col-lg-12 mt16">
+            <span>Espacio para introducir una imagen</span>
+        </div>
+      </xpath>
+
+  </template>
+
+  <template id="inherited_matrix" inherit_id="survey.matrix" >
+      <xpath expr="//div">
+        <div t-if='question.image_allowed' class="col-lg-12 mt16">
+            <span>Espacio para introducir una imagen</span>
+        </div>
+      </xpath>
+
+  </template>
+
+</odoo>
