@@ -11,6 +11,21 @@ class SurveyChecklistQuestion(models.Model):
 
     image_allowed = fields.Boolean('Show Image Field')
 
+class SurveyChecklistUserInput(models.Model):
+
+    _name = 'survey.user_input'
+    _inherit = 'survey.user_input'
+    _description = 'Survey Checklist UserInput addons'
+
+    business_manager_id = fields.Many2many(
+        comodel_name='res.partner',
+        string='Business Manager',
+        compute='_compute_business_manager_id')
+
+    @api.depends('partner_id')
+    def _compute_business_manager_id(self):
+        self.business_manager_id = self.partner_id.user_id.partner_id
+
 class SurveyChecklistUserInputLine(models.Model):
 
     _name = 'survey.user_input_line'
