@@ -9,7 +9,7 @@ class SurveyChecklistQuestion(models.Model):
     _inherit = 'survey.question'
     _description = 'Survey Checklist Question addons'
 
-    image_allowed = fields.Boolean('Show Image Field')
+    image_allowed = fields.Boolean('Show Add Image')
 
 class SurveyChecklistUserInput(models.Model):
 
@@ -19,7 +19,8 @@ class SurveyChecklistUserInput(models.Model):
 
     business_manager_id = fields.Many2one(
         string='Business Manager',
-        related='partner_id.user_id')
+        related='partner_id.user_id',
+        store=True)
 
 class SurveyChecklistUserInputLine(models.Model):
 
@@ -37,3 +38,8 @@ class SurveyChecklistUserInputLine(models.Model):
         help="Small-sized logo of the brand. It is automatically "
              "resized as a 64x64px image, with aspect ratio preserved. "
              "Use this field anywhere a small image is required.")
+
+    business_manager_id = fields.Many2one(
+        string='Business Manager',
+        related='user_input_id.partner_id.user_id',
+        store=True)

@@ -7,11 +7,106 @@
     <field name="inherit_id" ref="survey.survey_question_form"/>
     <field name="arch" type="xml">
 
-      <xpath expr="//field[@name='comments_allowed']" position="after">
-        <field name="image_allowed"/>
+      <xpath expr="//field[@name='comment_count_as_answer']" position="after">
+        <group string="Allow Image">
+            <field name='image_allowed' />
+        </group>
       </xpath>
 
     </field>
   </record>
+
+  <record id="survey_user_input_view_pivot_multiple" model="ir.ui.view">
+    <field name="name">Pivot view for survey answers, Multiple answers</field>
+    <field name="model">survey.user_input_line</field>
+    <field name="arch" type="xml">
+      <pivot string="Multiple Answers">
+        <field name="business_manager_id" type="col" />
+        <field name="create_uid" type="col" />
+        <field name="survey_id" type="row" />
+        <field name="question_id" type="row" />
+        <field name="value_suggested_row" type="row" />
+        <field name="value_suggested" type="row" />
+        <field name="value_suggested" type="measure" />
+      </pivot>
+    </field>
+  </record>
+
+  <record id="survey_user_input_view_pivot_text" model="ir.ui.view">
+    <field name="name">Pivot view for survey answers, Text answers</field>
+    <field name="model">survey.user_input_line</field>
+    <field name="arch" type="xml">
+      <pivot string="Text Answers">
+        <field name="business_manager_id" type="col" />
+        <field name="create_uid" type="col" />
+        <field name="survey_id" type="col" />
+        <field name="question_id" type="row" />
+      </pivot>
+    </field>
+  </record>
+
+  <record id="survey_user_input_view_pivot_by_business_manager" model="ir.ui.view">
+    <field name="name">Pivot view for survey answers, by Business Manager</field>
+    <field name="model">survey.user_input_line</field>
+    <field name="arch" type="xml">
+      <pivot string="by Business Manager">
+        <field name="business_manager_id" type="col" />
+        <field name="create_uid" type="col" />
+        <field name="survey_id" type="row" />
+      </pivot>
+    </field>
+  </record>
+
+  <record id="survey_user_input_view_pivot_by_date" model="ir.ui.view">
+    <field name="name">Pivot view for survey answers, by date</field>
+    <field name="model">survey.user_input_line</field>
+    <field name="arch" type="xml">
+      <pivot string="by date">
+        <field name="date_create" type="col" interval="year" />
+        <field name="date_create" type="col" interval="month" />
+        <field name="date_create" type="col" interval="day" />
+        <field name="survey_id" type="row" />
+        <field name="business_manager_id" type="row" />
+        <field name="create_uid" type="row" />
+      </pivot>
+    </field>
+  </record>
+
+  <record model="ir.actions.act_window" id="action_survey_reports_multiple">
+      <field name="name">Multiple Answers</field>
+      <field name="res_model">survey.user_input_line</field>
+      <field name="view_mode">pivot</field>
+      <field name="domain">[('answer_type', '=', 'suggestion'), ('skipped', '!=', True)]</field>
+      <field name="view_id" ref="survey_user_input_view_pivot_multiple"/>
+  </record>
+
+  <record model="ir.actions.act_window" id="action_survey_reports_text">
+      <field name="name">Comments in Multiple Answers</field>
+      <field name="res_model">survey.user_input_line</field>
+      <field name="view_mode">pivot</field>
+      <field name="domain">[('answer_type', '=', 'text'), ('question_id.type', 'in', ('matrix', 'simple_choice', 'multiple_choice')), ('skipped', '!=', True)]</field>
+      <field name="view_id" ref="survey_user_input_view_pivot_text"/>
+  </record>
+
+  <record model="ir.actions.act_window" id="action_survey_reports_by_business_manager">
+      <field name="name">Survey by Business Managers</field>
+      <field name="res_model">survey.user_input</field>
+      <field name="view_mode">pivot</field>
+      <field name="view_id" ref="survey_user_input_view_pivot_by_business_manager"/>
+  </record>
+
+  <record model="ir.actions.act_window" id="action_survey_reports_by_date">
+      <field name="name">Survey by date</field>
+      <field name="res_model">survey.user_input</field>
+      <field name="view_mode">pivot</field>
+      <field name="view_id" ref="survey_user_input_view_pivot_by_date"/>
+  </record>
+
+  <menuitem name="Reports" id="menu_survey_reports" parent="survey.menu_surveys" sequence="10"/>
+
+  <menuitem name="Multiple Answers" id="menu_survey_reports_multiple" action="action_survey_reports_multiple" parent="menu_survey_reports" sequence="1"/>
+  <menuitem name="Comments in Multiple Answers" id="menu_survey_reports_text" action="action_survey_reports_text" parent="menu_survey_reports" sequence="2"/>
+  <menuitem name="By Business Manager" id="menu_survey_reports_by_business_manager" action="action_survey_reports_by_business_manager" parent="menu_survey_reports" sequence="3"/>
+  <menuitem name="By Date" id="menu_survey_reports_by_date" action="action_survey_reports_by_date" parent="menu_survey_reports" sequence="4"/>
 
 </odoo>
