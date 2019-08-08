@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-  <!-- Inherited Form View for res.users -->
+  <!-- Inherited Form and Search View for res.users -->
   <record model="ir.ui.view" id="inherited_view_users_form">
     <field name="name">Inherited Form view for Users Form</field>
     <field name="model">res.users</field>
@@ -18,6 +18,26 @@
       </xpath>
 
     </field>
+  </record>
+
+  <record id="inherited_view_users_search" model="ir.ui.view">
+      <field name="name">Inherited Form view for Users Search</field>
+      <field name="model">res.users</field>
+      <field name="inherit_id" ref="base.view_users_search"/>
+      <field name="arch" type="xml">
+
+          <xpath expr="//filter[@name='Inactive']" position="after">
+              <field name="team_id" string="Team"/>
+              <field name="shop_role_ids" string="Shop Role"/>
+              <filter name="admins" string="Espadesa Administrators" domain="[('team_id','=','Administrators')]"/>
+              <filter name="managers" string="Espadesa Managers" domain="[('team_id','=','Managers')]"/>
+              <filter name="commercials" string="Espadesa Commercial Managers" domain="[('team_id','=','Commercial')]"/>
+              <filter name="franchisees" string="Espadesa Franchisees" domain="[('team_id','=','Franchisees')]"/>
+              <filter name="shops" string="Espadesa Shops" domain="[('team_id','=','Shop')]"/>
+              <filter name="ttpp" string="Role TTPP" domain="[('shop_role_ids','=','TTPP')]"/>
+              <filter name="frq" string="Role FRQ" domain="[('shop_role_ids','=','FRQ')]"/>
+          </xpath>
+      </field>
   </record>
 
   <!-- Views for User Teams -->
