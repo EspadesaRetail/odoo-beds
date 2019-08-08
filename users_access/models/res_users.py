@@ -7,8 +7,7 @@ class ResUsers(models.Model):
 
     team_id = fields.Many2one(
         comodel_name='res.users.team',
-        string='User Team',
-        default='Shop')
+        string='User Team')
     shop_role_ids = fields.Many2many(
         comodel_name='res.users.shop_role',
         string='Shop Role')
