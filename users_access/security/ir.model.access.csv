@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_res_users_team_espadesa_admin,res.users.team,model_res_users_team,group_espadesa_user_admin,1,1,1,1
+access_res_users_shop_role_espadesa_admin,res.users.shop_role,model_res_users_shop_role,group_espadesa_user_admin,1,1,1,1

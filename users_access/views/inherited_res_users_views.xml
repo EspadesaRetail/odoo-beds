@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <!-- Inherited Form View for res.users -->
+  <record model="ir.ui.view" id="inherited_view_users_form">
+    <field name="name">Inherited Form view for Users Form</field>
+    <field name="model">res.users</field>
+    <field name="inherit_id" ref="base.view_users_form"/>
+    <field name="arch" type="xml">
+
+      <xpath expr="//page" position="after">
+        <page string="Espadesa">
+          <group>
+            <field name='team_id'/>
+            <field name='shop_role_ids' widget='many2many_tags'/>
+          </group>
+        </page>
+      </xpath>
+
+    </field>
+  </record>
+
+  <!-- Views for User Teams -->
+  <record id="res_users_team_form_view" model="ir.ui.view">
+    <field name="name">Form view for Espadesa User Teams</field>
+    <field name="model">res.users.team</field>
+    <field name="arch" type="xml">
+      <form string="Espadesa User Teams">
+        <sheet>
+          <div class="oe_title">
+            <h1 class="o_row">
+              Name:
+              <field name="name"/>
+            </h1>
+          </div>
+          <group>
+            <field name="description"/>
+          </group>
+          <group>
+            <field name="user_ids" readonly='1'/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="res_users_team_tree_view" model="ir.ui.view">
+    <field name="name">Tree view for Espadesa User Teams</field>
+    <field name="model">res.users.team</field>
+    <field name="arch" type="xml">
+      <tree string="Espadesa User Teams">
+        <field name="name"/>
+        <field name="description"/>
+      </tree>
+    </field>
+  </record>
+
+  <!-- Views for Shop Roles -->
+  <record id="res_users_shop_role_form_view" model="ir.ui.view">
+    <field name="name">Form view for Espadesa User Shop Roles</field>
+    <field name="model">res.users.shop_role</field>
+    <field name="arch" type="xml">
+      <form string="Espadesa User Shop Roles">
+        <sheet>
+          <div class="oe_title">
+            <h1 class="o_row">
+              Name:
+              <field name="name"/>
+            </h1>
+          </div>
+          <group>
+            <field name="description"/>
+          </group>
+          <group>
+            <field name="user_ids" readonly='1'/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="res_users_shop_role_tree_view" model="ir.ui.view">
+    <field name="name">Tree view for Espadesa User Shop Roles</field>
+    <field name="model">res.users.shop_role</field>
+    <field name="arch" type="xml">
+      <tree string="Espadesa User Shop Roles">
+        <field name="name"/>
+        <field name="description"/>
+      </tree>
+    </field>
+  </record>
+
+  <!-- Actions and Menus -->
+  <record model="ir.actions.act_window" id="action_res_users_team">
+      <field name="name">Espadesa User Teams</field>
+      <field name="res_model">res.users.team</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="res_users_team_tree_view"/>
+  </record>
+
+  <record model="ir.actions.act_window" id="action_res_users_shop_role">
+      <field name="name">Espadesa User Shop Roles</field>
+      <field name="res_model">res.users.shop_role</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="res_users_shop_role_tree_view"/>
+  </record>
+
+  <menuitem name="Espadesa Teams" id="menu_res_users_team" action="action_res_users_team" parent="base.menu_users" sequence="10"/>
+  <menuitem name="Espadesa Shop Roles" id="menu_res_users_shop_role" action="action_res_users_shop_role" parent="base.menu_users" sequence="20"/>
+
+</odoo>
