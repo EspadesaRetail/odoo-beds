@@ -1,40 +1,47 @@
 
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 
 
 class ResUsers(models.Model):
     _inherit = 'res.users'
 
-    team_id = fields.Many2one(
-        comodel_name='res.users.team',
+    team_id = fields.Selection(
+        selection='_list_all_teams',
         string='User Team')
     shop_role_ids = fields.Many2many(
         comodel_name='res.users.shop_role',
         string='Shop Role')
 
+    @api.model
+    def _list_all_teams(self):
+        self._cr.execute("SELECT team, name FROM res_users_team ORDER BY team")
+        return self._cr.fetchall()
+
 
 class ResUsersTeam(models.Model):
     _name = 'res.users.team'
 
-    name = fields.Selection(
-        [('Administrators', 'Administrators'),
-         ('Managers', 'Managers'),
-         ('Commercial', 'Commercial Managers'),
-         ('Franchisees', 'Franchisees'),
-         ('Shop', 'Shop')],
-        'Team Name',
+    name = fields.Char(
+        string=_('Team Name'),
         required=True,
-        help=" * The 'Administrators' option is used to enable special access, only for Administrator Users.\n"
-             " * The 'Managers' option is used to enable view access at selected users below its range.\n"
-             " * The 'Commercial Managers' option is used to enable view access at shop users below its range.\n"
-             " * The 'Franchisees' option is used to design user as the name says.\n"
-             " * The 'Shop' option is used to design user as Shop.")
+        translate=True)
+    team = fields.Char(
+        string=_('Team Sequence'),
+        default=_('New'))
     description = fields.Text(
-        string='Description')
+        string='Description',
+        translate=True)
     user_ids = fields.One2many(
         comodel_name='res.users',
         inverse_name='team_id',
         string='Users')
+
+    @api.model
+    def create(self, vals):
+        if vals.get('team', _('New')) == _('New'):
+            vals['team'] = self.env['ir.sequence'].next_by_code(
+                'res.users.team') or '/'
+        return super(ResUsersTeam, self).create(vals)
 
 
 class ResUsersShopRole(models.Model):

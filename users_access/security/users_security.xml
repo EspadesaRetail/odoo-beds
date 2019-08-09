@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data noupdate="1">
+    <data noupdate="0">
         <!-- Espadesa Admins -->
         <record model="res.groups" id="group_espadesa_user_admin">
             <field name="name">Espadesa Admins</field>

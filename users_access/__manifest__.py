@@ -17,6 +17,7 @@ that assign the user to special classification.
     'summary': 'Addons to Manage users',
     'depends': [],
     'data': [
+        'data/ir_sequence_data.xml',
         'security/users_security.xml',
         'security/ir.model.access.csv',
         'views/inherited_res_users_views.xml',

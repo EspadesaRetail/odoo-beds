@@ -69,6 +69,7 @@
     <field name="model">res.users.team</field>
     <field name="arch" type="xml">
       <tree string="Espadesa User Teams">
+        <field name="team"/>
         <field name="name"/>
         <field name="description"/>
       </tree>
