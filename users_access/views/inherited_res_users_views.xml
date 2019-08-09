@@ -11,8 +11,9 @@
       <xpath expr="//page" position="after">
         <page string="Espadesa">
           <group>
-            <field name='team_id'/>
+            <field name='team'/>
             <field name='shop_role_ids' widget='many2many_tags'/>
+            <field name='team_id' invisible='True'/>
           </group>
         </page>
       </xpath>
@@ -27,11 +28,11 @@
       <field name="arch" type="xml">
 
           <xpath expr="//filter[@name='Inactive']" position="after">
-              <field name="team_id" string="Team"/>
+              <field name="team" string="Team"/>
               <field name="shop_role_ids" string="Shop Role"/>
               <separator/>
               <group expand="0" string="Group By">
-                <filter string="Team" name="team_id" domain="[]" context="{'group_by':'team_id'}" />
+                <filter string="Team" name="team" domain="[]" context="{'group_by':'team_id'}" />
                 <filter string="Role" name="role_name" domain="[]" context="{'group_by':'role_name'}" />
               </group>
           </xpath>

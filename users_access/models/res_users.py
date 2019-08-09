@@ -44,9 +44,12 @@ class ResUsersShopRole(models.Model):
 class ResUsers(models.Model):
     _inherit = 'res.users'
 
-    team_id = fields.Selection(
+    team = fields.Selection(
         selection='_list_all_teams',
         string='User Team')
+    team_id = fields.Many2one(
+        comodel_name='res.users.team',
+        string='Linked to User Team')
     shop_role_ids = fields.Many2many(
         comodel_name='res.users.shop_role',
         string='Shop Role')
@@ -59,3 +62,11 @@ class ResUsers(models.Model):
     def _list_all_teams(self):
         self._cr.execute("SELECT team, name FROM res_users_team ORDER BY team")
         return self._cr.fetchall()
+
+    @api.onchange('team')
+    def _onchange_team(self):
+        if self.team:
+            domain = [('team', '=', self.team)]
+            self.team_id = self.env['res.users.team'].sudo().search(domain)
+        else:
+            self.team_id = None
