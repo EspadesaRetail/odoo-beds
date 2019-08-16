@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <!-- massive updates -->
+  <record id="update_partner_view" model="ir.ui.view">
+      <field name="name">Update Partner</field>
+      <field name="model">update.res.partner.wizard</field>
+      <field name="arch" type="xml">
+          <form string="Massive Updates">
+              <field name="partner_ids"/>
+              <footer>
+                  <button string="Update" name="update_button" type="object" class="btn-primary"/>
+                  <button string="Cancel" class="btn-secondary" special="cancel" />
+              </footer>
+          </form>
+      </field>
+  </record>
+  <record id="update_partner_tree_view" model="ir.ui.view">
+      <field name="name">Update Partners</field>
+      <field name="model">update.res.partner</field>
+      <field name="arch" type="xml">
+          <!-- the partner list is editable, but one cannot add or delete rows -->
+          <tree string="Partner" editable="bottom" create="false" delete="false">
+              <field name="name"/>
+              <field name="parent_id"/>
+              <field name="type"/>
+              <field name="user_id"/>
+          </tree>
+      </field>
+  </record>
+  <act_window id="update_partner_wizard_action"
+      name="Update Partner"
+      src_model="res.partner"
+      res_model="update.res.partner.wizard"
+      view_type="form" view_mode="form"
+      key2="client_action_multi" target="new"
+      groups="base.group_erp_manager"/>
+
+</odoo>
