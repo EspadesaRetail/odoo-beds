@@ -13,7 +13,7 @@
           <group>
             <field name='team'/>
             <field name='shop_role_ids' widget='many2many_tags'/>
-            <field name='team_id' invisible='True'/>
+            <field name='team_user_id' invisible='True'/>
           </group>
         </page>
       </xpath>

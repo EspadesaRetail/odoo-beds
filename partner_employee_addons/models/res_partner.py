@@ -3,7 +3,7 @@ from odoo import models, fields, api, _
 
 
 # ----------------------------------------------------------
-# change password wizard
+# update partner data wizard
 # ----------------------------------------------------------
 
 class UpdateResPartnerWizard(models.TransientModel):

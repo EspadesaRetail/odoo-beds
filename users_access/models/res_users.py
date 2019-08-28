@@ -47,7 +47,7 @@ class ResUsers(models.Model):
     team = fields.Selection(
         selection='_list_all_teams',
         string='User Team')
-    team_id = fields.Many2one(
+    team_user_id = fields.Many2one(
         comodel_name='res.users.team',
         string='Linked to User Team')
     shop_role_ids = fields.Many2many(
@@ -67,6 +67,6 @@ class ResUsers(models.Model):
     def _onchange_team(self):
         if self.team:
             domain = [('team', '=', self.team)]
-            self.team_id = self.env['res.users.team'].sudo().search(domain)
+            self.team_user_id = self.env['res.users.team'].sudo().search(domain)
         else:
-            self.team_id = None
+            self.team_user_id = None
