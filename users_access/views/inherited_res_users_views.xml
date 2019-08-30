@@ -32,7 +32,7 @@
               <field name="shop_role_ids" string="Shop Role"/>
               <separator/>
               <group expand="0" string="Group By">
-                <filter string="Team" name="team" domain="[]" context="{'group_by':'team_id'}" />
+                <filter string="Team" name="team" domain="[]" context="{'group_by':'team_user_id'}" />
                 <filter string="Role" name="role_name" domain="[]" context="{'group_by':'role_name'}" />
               </group>
           </xpath>
