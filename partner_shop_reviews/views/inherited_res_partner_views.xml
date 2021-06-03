@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <!-- Inherited Form and Search View for res.partner -->
+  <record model="ir.ui.view" id="inherited_view_partner_form">
+    <field name="name">Inherited Form view for Partner Form</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form"/>
+    <field name="arch" type="xml">
+
+      <xpath expr="//page" position="after">
+        <page string="Shop">
+          <group>
+            <field name='espadesa_shop'/>
+            <field name='format'/>
+            <field name='format_id' invisible='True'/>
+          </group>
+        </page>
+        <page string="Reviews">
+          <group>
+            <field name='google_location'/>
+            <field name='review_ids'/>
+          </group>
+        </page>
+      </xpath>
+
+    </field>
+  </record>
+
+  <record id="inherited_view_partner_search" model="ir.ui.view">
+      <field name="name">Inherited Form view for Partner Search</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_res_partner_filter"/>
+      <field name="arch" type="xml">
+
+          <xpath expr="//filter[@name='supplier']" position="after">
+              <field name="format" string="Format"/>
+              <separator/>
+              <group expand="0" string="Group By">
+                <filter string="Format" name="format" domain="[]" context="{'group_by':'format_id'}" />
+              </group>
+          </xpath>
+      </field>
+  </record>
+
+  <!-- Views for Partner Format -->
+  <record id="res_partner_format_form_view" model="ir.ui.view">
+    <field name="name">Form view for Espadesa Shop Format</field>
+    <field name="model">res.partner.format</field>
+    <field name="arch" type="xml">
+      <form string="Espadesa Shop Format">
+        <sheet>
+          <div class="oe_title">
+            <h2 class="o_row">
+              <field name="image" widget="image" class="oe_avatar"/>
+              <br/>
+              <field name="name"/>
+            </h2>
+          </div>
+          <group>
+            <field name="description"/>
+            <field name="google_account"/>
+          </group>
+          <group>
+            <field name="partner_ids" readonly='1'/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="res_partner_format_tree_view" model="ir.ui.view">
+    <field name="name">Tree view for Espadesa Shop Format</field>
+    <field name="model">res.partner.format</field>
+    <field name="arch" type="xml">
+      <tree string="Espadesa Shop Format">
+        <field name="name"/>
+        <field name="description"/>
+      </tree>
+    </field>
+  </record>
+
+  <!-- Views for Shop Review -->
+  <record id="res_partner_review_form_view" model="ir.ui.view">
+    <field name="name">Form view for Espadesa Shop Review</field>
+    <field name="model">res.partner.review</field>
+    <field name="arch" type="xml">
+      <form string="Espadesa Shop Review">
+        <sheet>
+          <group>
+            <field name="partner_id" readonly='0'/>
+          </group>
+          <group>
+            <field name="date_review" readonly='0'/>
+            <field name="review_number" readonly='0'/>
+            <field name="review_value" readonly='0'/>
+            <field name="review_increase" readonly='0'/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="res_partner_review_tree_view" model="ir.ui.view">
+    <field name="name">Tree view for Espadesa Shop Review</field>
+    <field name="model">res.partner.review</field>
+    <field name="arch" type="xml">
+      <tree string="Espadesa Shop Review">
+        <field name="espadesa_shop"/>
+        <field name="partner_id"/>
+        <field name="date_review"/>
+        <field name="review_increase"/>
+        <field name="review_value"/>
+      </tree>
+    </field>
+  </record>
+
+  <!-- Actions and Menus -->
+  <record model="ir.actions.act_window" id="action_res_partner_format">
+      <field name="name">Espadesa Shop Format</field>
+      <field name="res_model">res.partner.format</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="res_partner_format_tree_view"/>
+  </record>
+
+  <record model="ir.actions.act_window" id="action_res_partner_review">
+      <field name="name">Espadesa Shop Review</field>
+      <field name="res_model">res.partner.review</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="res_partner_review_tree_view"/>
+  </record>
+
+  <menuitem name="Espadesa Format" id="menu_res_partner_format" action="action_res_partner_format" parent="contacts.menu_contacts" sequence="10"/>
+  <menuitem name="Espadesa Shop Review" id="menu_res_partner_review" action="action_res_partner_review" parent="contacts.menu_contacts" sequence="20"/>
+
+</odoo>

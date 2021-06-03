@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data noupdate="1">
+
+    <!-- Sequences for res.users.team -->
+    <record id="seq_res_partner_format" model="ir.sequence">
+      <field name="name">Res Partner Format</field>
+      <field name="code">res.partner.format</field>
+      <field name="prefix">ER</field>
+      <field name="padding">2</field>
+      <field name="company_id" eval="False"/>
+    </record>
+
+  </data>
+</odoo>
