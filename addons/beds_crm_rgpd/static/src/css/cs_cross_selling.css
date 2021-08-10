@@ -1,0 +1,54 @@
+@media all {
+
+  .cross-selling.js_cross_selling {
+    background-color: #e0ebf7;
+  }
+  .cross-selling.row {
+    margin-left : 0px;
+    margin-right: 0px;
+    padding: 16px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #5a95d1;
+  }
+
+  .cross-selling h2 {
+    margin: 0px;
+    font-size: 300%;
+  }
+
+  .cross-selling h5 {
+    text-align: center;
+  }
+
+  .cross-selling.link-product {
+    display: block;
+    float: right;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    top : -30px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+    background-image: url('/cs_cross_selling/static/src/img/icon_link_product.png');
+    background-repeat: no-repeat;
+  }
+
+  .zzzcross-selling.link-product {
+    text-align: right;
+    display: block;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    top : -30px;
+    left: 130px;
+    width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+    background-image: url('/cs_cross_selling/static/src/img/icon_link_product.png');
+    background-repeat: no-repeat;
+  }

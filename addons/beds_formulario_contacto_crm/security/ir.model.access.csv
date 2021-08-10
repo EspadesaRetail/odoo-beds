@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_beds_formulario_contacto_crm_public,access_beds_formulario_contacto_crm_public,model_beds_formulario_contacto_crm,,1,0,0,0
+access_beds_formulario_contacto_crm_marketing,access_beds_formulario_contacto_crm_marketing,model_beds_formulario_contacto_crm,marketing.group_marketing_manager,1,1,1,1

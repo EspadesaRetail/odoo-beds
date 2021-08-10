@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Setting Style theme -->
+        <template id="beds_franquicias_asset" name="website asset for beds_franquicias" inherit_id="website.assets_frontend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/beds_franquicias/static/src/css/beds_franquicias.css"/>
+            </xpath>
+        </template>
+
+        <!-- formulario de franquicias -->
+        <template id="franquiciasbeds">
+            <t t-call="website.layout">
+                <section>
+                    <div class="container-fluid">
+                        <div class="container mt32 mb16">
+
+                            <!-- Imagen de franquicias y formulario de contacto -->
+                            <span class="contenedor-inicio" id="inicio"> </span>
+                            <div class="container-fluid">
+                              <div class="row" id="franquicias">
+                                <!-- Imagen de franquicias -->
+                                <div class="col-md-8 col-sm-12 col-xs-12 franquicias">
+                                  <img class="img img-responsive" src="/beds_franquicias/static/src/img/Landing_Formulario_Potenciales_FFQQ_img.png"/>
+                                  <div class="contenedor-texto-sobre-img">
+                                    <h3 class="texto-sobre-img">Franquicias rentables especializadas en asesoramiento y comercialización de equipos de descanso de primeras marcas</h3>
+                                  </div>
+                                </div>
+
+                                <!-- Formulario de contacto -->
+                                <div class="col-md-4 col-sm-12 col-xs-12 contenedor-contacto">
+                                    <form t-attf-action="/form/contacto_franquiciasbeds" method="post" class="form-horizontal" enctype="multipart/form-data">
+                                      <div class="row">
+                                        <div class="col-md-12 col-md-offset-0">
+                                          <div class="text-center contenedor-texto-cto">
+                                            <h1 class="color-textos-frq">¿Quieres formar parte de la franquicia líder del descanso?</h1>
+                                          </div>
+                                        </div>
+                                      </div>
+
+
+                                      <div class="contenedor-texto-cto">
+
+                                        <div class="form-group">
+                                          <div class="text-center">
+                                            <button class="btn btn-primary btn-md btn-block boton-frq">Solicita información</button>
+                                          </div>
+                                        </div>
+
+                                        <!-- Nombre y apellidos -->
+                                        <div class="row">
+                                          <div class="col-md-12 col-md-offset-0">
+                                            <div t-attf-class="form-group #{error and 'contact_name' in error and 'has-error' or ''}    ">
+                                              <label class="hidden control-label" for="contact_name">Nombre y apellidos</label>
+                                              <input type="text" class="form-control w100p-left" name="contact_name" required="True" t-attf-value="#{contact_name or ''}" placeholder="Nombre y apellidos*"/>
+                                            </div>
+                                          </div>
+                                        </div>
+
+                                        <!-- Correo y teléfono -->
+                                        <div class="row">
+                                          <div class="col-md-12 col-md-offset-0">
+                                            <div t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
+                                              <label class="hidden control-label" for="email_from">E-mail</label>
+                                              <input type="email" class="form-control w100p-left" name="email_from" required="True" t-attf-value="#{email_from or ''}" placeholder="E-mail*"/>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-12 col-md-offset-0">
+                                            <div t-attf-class="form-group #{error and 'phone' in error and 'has-error' or ''}">
+                                              <label class="hidden control-label" for="phone">Teléfono de contacto</label>
+                                              <input type="text" class="form-control w100p-left" name="phone" t-attf-value="#{phone or ''}" placeholder="Teléfono"/>
+                                            </div>
+                                          </div>
+                                        </div>
+
+                                        <!-- Localidad  -->
+                                        <div class="row">
+                                          <div class="col-md-12 col-md-offset-0">
+                                            <div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''}">
+                                              <label class="hidden control-label" for="name">Localidad</label>
+                                              <input type="text" class="form-control w100p" name="city" required="True" t-attf-value="#{name or ''}" placeholder="Localidad*"/>
+                                            </div>
+                                          </div>
+                                        </div>
+
+                                        <!-- Mensaje de correo -->
+                                        <div class="row">
+                                          <div class="col-md-12 col-md-offset-0">
+                                            <div t-attf-class="form-group #{error and 'description' in error and 'has-error' or ''}">
+                                              <label class="hidden control-label" for="description">Comentarios</label>
+                                              <textarea name="description" class="form-control w100p" rows="3" placeholder="Comentarios"/>
+                                            </div>
+                                          </div>
+                                        </div>
+
+                                        <!-- Política de privacidad -->
+
+                                          <div class="form-group">
+                                            <div class="text-center">
+                                              <button class="btn btn-primary btn-md btn-block boton-frq">Quiero saber más</button>
+
+                                              <div class="row">
+                                                <div class="col-md-1 col-sm-1 col-xs-1"/>
+                                                <div class="col-md-10 col-sm-10 col-xs-10">
+                                                  <h6 style="text-align: left;"><input name="accept_policy" required="True" type="checkbox"/>&amp;nbsp;&amp;nbsp;Acepto la <a href="/page/privacidad">Política de privacidad</a>.</h6>
+                                                </div>
+                                                <div class="col-md-1 col-sm-1 col-xs-1"/>
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                      </div>
+
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <!-- Ventajas -->
+                              <div class="col-md-6 col-sm-12 col-xs-12 contenedor-bajo-izda">
+                                <div class="contenedor-texto">
+                                  <h3 class="color-textos-frq">¿Qué ganarás?</h3>
+                                  <p class="color-textos-frq"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
+                                  <p class="color-textos-frq"> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat.</p>
+                                  <p class="color-textos-frq"> Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                </div>
+                              </div>
+                              <div class="col-md-6 col-sm-12 col-xs-12 contenedor-bajo-dcha">
+                                <div class="contenedor-texto">
+                                  <h3 class="color-textos-frq">¿Por qué elegir bed's?</h3>
+                                  <p class="color-textos-frq"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
+                                  <p class="color-textos-frq"> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat.</p>
+                                  <p class="color-textos-frq"> Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                </section>
+            </t>
+        </template>
+
+
+
+    </data>
+</openerp>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data>
+
+
+        <!-- Cambiar el bootstrap -->
+        <!--
+        <template id="custom_assets_backend" inherit_id="web.assets_backend">
+            <xpath expr="//link[@href='/web/static/lib/bootstrap/css/bootstrap.css']" position="replace">
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+            </xpath>
+            <xpath expr="//script[@src='/web/static/lib/bootstrap/js/bootstrap.js']" position="replace">
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+            </xpath>
+        </template>
+        -->
+
+
+
+
+
+        <!-- Customize header  -->
+        <template id="custom_header" inherit_id="website.layout" name="Custom Header">
+
+
+            <!-- Assign an id  -->
+            <xpath expr="//div[@id='wrapwrap']/header" position="attributes">
+                <attribute name="id">custom_header</attribute>
+            </xpath>
+
+
+            <!-- header info-->
+            <xpath expr="//div[@id='wrapwrap']/header/div" position="before">
+                <t t-call="cs_theme.full_search" />
+                <div id="custom_header_info"/>
+            </xpath>
+
+        </template>
+
+        <!-- Setting Style theme -->
+        <template id="cs_theme_asset" name="website asset theme" inherit_id="website.assets_frontend">
+            <xpath expr="//t[@t-call='website.theme']" position="after">
+                <link rel="stylesheet" href="/cs_theme/static/src/css/cs.css"/>
+            </xpath>
+        </template>
+
+
+        <!-- Include Javascript -->
+        <template id="cs_assets_frontend" inherit_id="website.assets_frontend" name="Custom assets frontend">
+            <xpath expr="." position="inside">
+                <!-- Google maps -->
+                <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDUDzkIn11dsIIFHhCmzWBH_BbWswjPFD0"></script>
+
+                <script type="text/javascript" src="/cs_theme/static/src/js/cs_content.js"></script>
+                <script type="text/javascript" src="/cs_theme/static/src/js/cs_slider.js"></script>
+                <script type="text/javascript" src="/cs_theme/static/src/js/set_current_rating.js"></script>
+
+                <!-- Localización para envíos -->
+                <script type="text/javascript" src="/cs_theme/static/src/js/location.js"></script>
+                <script type="text/javascript" src="/cs_theme/static/src/js/location_cart.js"></script>
+
+            </xpath>
+        </template>
+
+        <template id="assets_frontend" inherit_id="website_sale.assets_frontend" name="Replace website_sale.js and website_sale_payment.js">
+            <xpath expr="//script[@src='/website_sale/static/src/js/website_sale.js']" position="replace">
+                <script type="text/javascript" src="/cs_theme/static/src/js/cs_sale.js"></script>
+            </xpath>
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/cs_theme/static/src/js/website_sale_partial_payment.js"></script>
+            </xpath>
+        </template>
+
+
+        <!-- Full page-->
+        <!-- TODO Borrar esta plantilla -->
+        <template id="full_page" name="Full page">
+                <div/>
+        </template>
+
+        <!-- Full search-->
+        <template id="full_search" name="Full search">
+                <div class="container-fluid" onclick="closeSearch()">
+                    <div id="custom_search" class="custom-search">
+                        <div class="custom-search-content" onclick="closeSearch()">
+                            <t t-if="keep">
+                                <form t-att-action="keep('/shop', search=0)" method="get" t-att-class="search_class">
+                                    <div class="row">
+
+                                        <div class="col-md-6 col-md-offset-3">
+                                            <div class="input-group input-group-lg">
+                                                <input id="custom_search_input" type="text" name="search" class="custom-search-form form-control" t-att-placeholder="lang=='en_US' and 'Find your rest ...' or 'Busca tu descanso ...'"
+                                                       t-att-value="search" onkeyup="cs_keyup(event)" onkeypress="cs_keypress(event)" onmouseover="startEdition()" onmouseout="endEdition()"/>
+                                                <span class="input-group-btn cs-search-start">
+                                                    <a class="btn btn-default a-submit" onClick="cs_search_onClick(event)">
+                                                        <i class="fa fa-search"/>
+                                                    </a>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+        </template>
+
+        <!-- Quitar el pie de odoo -->
+        <template id="layout_footer_copyright" inherit_id="website.layout_footer_copyright" name="Footer Copyright">
+            <xpath expr="//div[@class='container mt16 mb8']" position="replace">
+                <div/>
+            </xpath>
+        </template>
+
+    </data>
+</openerp>

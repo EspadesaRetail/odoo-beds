@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns="http://pkws801.wsbeans.iseries/xsd" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://pkws801.wsbeans.iseries" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://pkws801.wsbeans.iseries">
+    <wsdl:documentation>PKWS801</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://pkws801.wsbeans.iseries/xsd">
+            <xs:element name="wssitu_XML">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="args0" type="ns:WSSITUInput"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="WSSITUInput">
+                <xs:sequence>
+                    <xs:element name="WSUPED" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="wssitu_XMLResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="wssitu">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="args0" type="ns:WSSITUInput"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="wssituResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="ns:WSSITUResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="WSSITUResult">
+                <xs:sequence>
+                    <xs:element name="WESTADO" type="xs:decimal"/>
+                    <xs:element name="WFECH" type="xs:decimal"/>
+                    <xs:element name="WSITU" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="wspedv_XML">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="args0" type="ns:WSPEDVInput"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="WSPEDVInput">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="WLINPED" type="ns:LISWLPV"/>
+                    <xs:element name="WLIS_PEDCLI" type="ns:LISPCLI"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="LISWLPV">
+                <xs:sequence>
+                    <xs:element name="l01CODB" type="xs:decimal"/>
+                    <xs:element name="l02CANT" type="xs:decimal"/>
+                    <xs:element name="l03PRECB" type="xs:decimal"/>
+                    <xs:element name="l04DTO" type="xs:decimal"/>
+                    <xs:element name="l05DTOO" type="xs:decimal"/>
+                    <xs:element name="l06PRECN" type="xs:decimal"/>
+                    <xs:element name="l07IMPN" type="xs:decimal"/>
+                    <xs:element name="l08IMPIVA" type="xs:decimal"/>
+                    <xs:element name="l09IMPTOT" type="xs:decimal"/>
+                    <xs:element name="l10OFER" type="xs:string"/>
+                    <xs:element name="l11IVAP" type="xs:decimal"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="LISPCLI">
+                <xs:sequence>
+                    <xs:element name="LIMPCOB" type="xs:decimal"/>
+                    <xs:element name="LIMPPDTE" type="xs:decimal"/>
+                    <xs:element name="LNAUTO" type="xs:decimal"/>
+                    <xs:element name="l01NOMCLI" type="xs:string"/>
+                    <xs:element name="l02APELLI" type="xs:string"/>
+                    <xs:element name="l03TIPVIAE" type="xs:string"/>
+                    <xs:element name="l04DIRE" type="xs:string"/>
+                    <xs:element name="l05NUME" type="xs:decimal"/>
+                    <xs:element name="l06ESCALE" type="xs:string"/>
+                    <xs:element name="l07PISOE" type="xs:string"/>
+                    <xs:element name="l08PUERTAE" type="xs:string"/>
+                    <xs:element name="l09CODPOSE" type="xs:string"/>
+                    <xs:element name="l10POBLACE" type="xs:string"/>
+                    <xs:element name="l11PAISE" type="xs:string"/>
+                    <xs:element name="l12TIPVIAF" type="xs:string"/>
+                    <xs:element name="l13DIRF" type="xs:string"/>
+                    <xs:element name="l14NUMF" type="xs:decimal"/>
+                    <xs:element name="l15ESCALF" type="xs:string"/>
+                    <xs:element name="l16PISOF" type="xs:string"/>
+                    <xs:element name="l17PUERTAF" type="xs:string"/>
+                    <xs:element name="l18CODPOSF" type="xs:string"/>
+                    <xs:element name="l19POBLACF" type="xs:string"/>
+                    <xs:element name="l20PAISF" type="xs:string"/>
+                    <xs:element name="l21TEL1" type="xs:string"/>
+                    <xs:element name="l22TEL2" type="xs:string"/>
+                    <xs:element name="l23DNI" type="xs:string"/>
+                    <xs:element name="l24EMAIL" type="xs:string"/>
+                    <xs:element name="l25SUPED" type="xs:string"/>
+                    <xs:element name="l26FECSOL" type="xs:decimal"/>
+                    <xs:element name="l27PORTES" type="xs:decimal"/>
+                    <xs:element name="l28NETO" type="xs:decimal"/>
+                    <xs:element name="l29IMPIVA" type="xs:decimal"/>
+                    <xs:element name="l30IMPTOT" type="xs:decimal"/>
+                    <xs:element name="l31RETUSA" type="xs:string"/>
+                    <xs:element name="l32OBSER" type="xs:string"/>
+                    <xs:element name="l33FECC" type="xs:decimal"/>
+                    <xs:element name="l34HORAC" type="xs:decimal"/>
+                    <xs:element name="l35FCOBRO" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="wspedv_XMLResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="wspedv">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="args0" type="ns:WSPEDVInput"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="wspedvResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="ns:WSPEDVResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="WSPEDVResult">
+                <xs:sequence>
+                    <xs:element name="WERROR" type="xs:decimal"/>
+                    <xs:element name="WERRORD" type="xs:string"/>
+                    <xs:element name="WFECHAP" type="xs:decimal"/>
+                    <xs:element name="WPEDVENTA" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="wscodb_XML">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="args0" type="ns:WSCODBInput"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="WSCODBInput">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="WLISCBAR" type="ns:LISWCBAR"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="LISWCBAR">
+                <xs:sequence>
+                    <xs:element name="l01CBAR" type="xs:decimal"/>
+                    <xs:element name="l01TIPO" type="xs:string"/>
+                    <xs:element name="l02PREC" type="xs:decimal"/>
+                    <xs:element name="l03DTO" type="xs:decimal"/>
+                    <xs:element name="l04ERR" type="xs:decimal"/>
+                    <xs:element name="l05PORCIM" type="xs:decimal"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="wscodb_XMLResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="wscodb">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="args0" type="ns:WSCODBInput"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="wscodbResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="ns:WSCODBResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="WSCODBResult">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="WLISCBAR" type="ns:LISWCBAR"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="saluta_XML">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="args0" type="ns:SALUTAInput"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="SALUTAInput">
+                <xs:sequence>
+                    <xs:element name="ISALUDA" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="saluta_XMLResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saluta">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="args0" type="ns:SALUTAInput"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="salutaResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="ns:SALUTAResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="SALUTAResult">
+                <xs:sequence>
+                    <xs:element name="OSALUDA" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="saluta_XMLRequest">
+        <wsdl:part name="parameters" element="ns:saluta_XML"/>
+    </wsdl:message>
+    <wsdl:message name="saluta_XMLResponse">
+        <wsdl:part name="parameters" element="ns:saluta_XMLResponse"/>
+    </wsdl:message>
+    <wsdl:message name="wscodb_XMLRequest">
+        <wsdl:part name="parameters" element="ns:wscodb_XML"/>
+    </wsdl:message>
+    <wsdl:message name="wscodb_XMLResponse">
+        <wsdl:part name="parameters" element="ns:wscodb_XMLResponse"/>
+    </wsdl:message>
+    <wsdl:message name="wssituRequest">
+        <wsdl:part name="parameters" element="ns:wssitu"/>
+    </wsdl:message>
+    <wsdl:message name="wssituResponse">
+        <wsdl:part name="parameters" element="ns:wssituResponse"/>
+    </wsdl:message>
+    <wsdl:message name="wssitu_XMLRequest">
+        <wsdl:part name="parameters" element="ns:wssitu_XML"/>
+    </wsdl:message>
+    <wsdl:message name="wssitu_XMLResponse">
+        <wsdl:part name="parameters" element="ns:wssitu_XMLResponse"/>
+    </wsdl:message>
+    <wsdl:message name="wspedv_XMLRequest">
+        <wsdl:part name="parameters" element="ns:wspedv_XML"/>
+    </wsdl:message>
+    <wsdl:message name="wspedv_XMLResponse">
+        <wsdl:part name="parameters" element="ns:wspedv_XMLResponse"/>
+    </wsdl:message>
+    <wsdl:message name="wscodbRequest">
+        <wsdl:part name="parameters" element="ns:wscodb"/>
+    </wsdl:message>
+    <wsdl:message name="wscodbResponse">
+        <wsdl:part name="parameters" element="ns:wscodbResponse"/>
+    </wsdl:message>
+    <wsdl:message name="salutaRequest">
+        <wsdl:part name="parameters" element="ns:saluta"/>
+    </wsdl:message>
+    <wsdl:message name="salutaResponse">
+        <wsdl:part name="parameters" element="ns:salutaResponse"/>
+    </wsdl:message>
+    <wsdl:message name="wspedvRequest">
+        <wsdl:part name="parameters" element="ns:wspedv"/>
+    </wsdl:message>
+    <wsdl:message name="wspedvResponse">
+        <wsdl:part name="parameters" element="ns:wspedvResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="PKWS801PortType">
+        <wsdl:operation name="saluta_XML">
+            <wsdl:input message="tns:saluta_XMLRequest" wsaw:Action="urn:saluta_XML"/>
+            <wsdl:output message="tns:saluta_XMLResponse" wsaw:Action="urn:saluta_XMLResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="wscodb_XML">
+            <wsdl:input message="tns:wscodb_XMLRequest" wsaw:Action="urn:wscodb_XML"/>
+            <wsdl:output message="tns:wscodb_XMLResponse" wsaw:Action="urn:wscodb_XMLResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="wssitu">
+            <wsdl:input message="tns:wssituRequest" wsaw:Action="urn:wssitu"/>
+            <wsdl:output message="tns:wssituResponse" wsaw:Action="urn:wssituResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="wssitu_XML">
+            <wsdl:input message="tns:wssitu_XMLRequest" wsaw:Action="urn:wssitu_XML"/>
+            <wsdl:output message="tns:wssitu_XMLResponse" wsaw:Action="urn:wssitu_XMLResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="wspedv_XML">
+            <wsdl:input message="tns:wspedv_XMLRequest" wsaw:Action="urn:wspedv_XML"/>
+            <wsdl:output message="tns:wspedv_XMLResponse" wsaw:Action="urn:wspedv_XMLResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="wscodb">
+            <wsdl:input message="tns:wscodbRequest" wsaw:Action="urn:wscodb"/>
+            <wsdl:output message="tns:wscodbResponse" wsaw:Action="urn:wscodbResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="saluta">
+            <wsdl:input message="tns:salutaRequest" wsaw:Action="urn:saluta"/>
+            <wsdl:output message="tns:salutaResponse" wsaw:Action="urn:salutaResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="wspedv">
+            <wsdl:input message="tns:wspedvRequest" wsaw:Action="urn:wspedv"/>
+            <wsdl:output message="tns:wspedvResponse" wsaw:Action="urn:wspedvResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="PKWS801Soap11Binding" type="tns:PKWS801PortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="saluta_XML">
+            <soap:operation soapAction="urn:saluta_XML" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="wscodb_XML">
+            <soap:operation soapAction="urn:wscodb_XML" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="wssitu">
+            <soap:operation soapAction="urn:wssitu" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="wssitu_XML">
+            <soap:operation soapAction="urn:wssitu_XML" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="wspedv_XML">
+            <soap:operation soapAction="urn:wspedv_XML" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="wscodb">
+            <soap:operation soapAction="urn:wscodb" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saluta">
+            <soap:operation soapAction="urn:saluta" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="wspedv">
+            <soap:operation soapAction="urn:wspedv" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="PKWS801">
+        <wsdl:port name="PKWS801HttpSoap11Endpoint" binding="tns:PKWS801Soap11Binding">
+            <soap:address location="http://10.1.11.5:10010/web/services/PKWS801Service/PKWS801.PKWS801HttpSoap11Endpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,2438 @@
+@media all {
+
+  /* Quitar el color del texto en los carousel */
+  .carousel h1 {
+    text-align: right;
+    font-size: 3.8rem;
+    margin-top: 5.5rem;
+    background-color: none;
+  }
+  .carousel h1 > span {
+    background-color: none;
+  }
+
+
+
+  /*Añadir un borde al producto resaltado */
+  /*
+  .cs-product:hover {
+  border-style: solid;
+  border-width: 1px;
+  border-color: orange;
+  border-radius: 10px;
+}
+*/
+
+
+/* Localización del destino */
+#set_location {
+  background-color: #e4edf4;
+  padding-bottom: 8px;
+  margin-left: 0;
+  margin-right: 0;
+  border-radius: 3px;
+}
+
+
+
+
+
+/** Flechas carousel home 1 */
+.fa-chevron-left, .fa-chevron-right {
+  display: none;
+}
+
+
+/* Navidad */
+/*
+#footer_header {
+background-image: url('/beds_theme/static/src/img/tira_navidad.png');
+background-repeat: no-repeat;
+background-size: 100%;
+height: 200px;
+position: absolute;
+width: 100%;
+*/
+
+
+footer section {
+  background-color: white;
+}
+footer h4 {
+  color: #005eb8;
+  font-weight: bold;
+}
+footer div.container-fluid {
+  background-color: #e9f6fb;
+}
+footer img.social-img {
+  width: 75px;
+  height: 75px;
+}
+footer div.legal {
+  color: white;
+  background-color: #005eb8;
+}
+footer div.legal a {
+  color: white;
+}
+
+
+label.css_attribute_color.css_not_available {
+  opacity: 1;
+  background-image: url("/beds_theme/static/src/img/redcross.png");
+  background-size: cover;
+}
+
+
+
+.btn-int-link {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+  text-decoration: none;
+}
+
+.btn-int-link {
+  padding: 5px;
+  color: white;
+  background-color: #428bca;
+  border-radius: 6px;
+}
+.btn-int-link:hover {
+  background-color: #3071a9;
+  color: white;
+}
+
+}
+
+
+#footer_header {
+  height: 0px;
+}
+
+
+/*
+.besmart {
+background-color: #e0001a!important;
+}
+#be_smart .cs-attribute  {
+color:white!important;
+}
+#be_smart .of-product a {
+color:white!important;
+}
+#be_smart .cs-product-lst-price  {
+color:white!important;
+}
+
+#be_smart .oe_price  {
+color:white!important;
+}
+#be_smart .cs-summary, .cs-summary a  {
+color:white!important;
+}
+}
+*/
+
+
+
+
+/* Marca insertada en el producto. */
+.slide {
+  z-index: 10;
+}
+.product-image-brand {
+  z-index: 11;
+  max-height: 50px;
+  position: relative;
+}
+.product-image-brand img {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  max-height:100px;
+}
+
+#custom_header_info .container,
+.navbar .container,
+#home1 .mt16.mb16 .container
+.cs-color-white,
+#home2,
+#home1 .mt16.mb16,
+.cs-color-white,
+.cs-color-white .carousel,
+.cs-color1 .carousel,
+.cs-color1 .row.text-center,
+#home4 .mt16.mb16 .container,
+footer .container,
+.js_sale,
+.oe_structure.oe_empty section,
+.container.oe_website_sale{
+  max-width: 1170px!important;
+  width:100%;
+  margin: 0 auto;
+}
+#tu-tienda-beds-mas-cercana{
+  float: right;
+  width: 350px;
+  margin-top:34px;
+}
+.carousel.slide.mb32{
+  border-bottom: 10px solid #005eb8;
+  margin: 0!important;
+}
+#home1 .img-responsive{
+  width: 100%!important
+}
+.of-product-offer{
+  position: relative;
+}
+.sel-product-discount.cs-product-discount.pr-product-discount {
+  position: absolute;
+  left: 36%;
+  bottom: 19px;
+}
+
+@media all and (max-width: 1199px){
+  .phone{
+    padding-left:0px!important
+  }
+  #header_info li{
+    font-size:14px!important;
+  }
+  #home1 .mb16.cs-bg-gray.mt0 img{
+    width: 10%!important
+  }
+  .nav > li{
+    font-size: 12px!important
+  }
+  .cs-product-lst-price{
+    position: relative;
+    top: 10px;
+  }
+  .cs-discount {
+    font-size: 12px!important;
+    position: relative;
+    top: -2px;
+    left: 1px;
+  }
+  .cs-product-discount{
+    background-size: 100% 20px!important;
+    bottom: 0
+  }
+
+  .oe_price{
+    position: relative;
+    top:6px;
+  }
+
+  .js_product .oe_price{
+    top:0;
+  }
+
+  .of-product-offer {
+    min-height: 50px;
+  }
+  .cs-product {
+    margin-bottom: 14px;
+  }
+  .cs-product-price b span.oe_currency_value{
+    position: relative;
+    font-size:22px;
+    top:
+  }
+  .cs-lst-price-antes{
+    position: relative;
+    top:-5px;
+  }
+
+  .sel-product-discount.cs-product-discount.pr-product-discount{
+    padding: 0;
+  }
+
+  div.siete-cosas{
+    vertical-align: top;
+    width: 13%!important;
+    min-width:auto!important;
+  }
+  img.externo{
+    width:19%!important;
+    height:auto!important
+  }
+  .custom-footer p{
+    white-space: nowrap;
+  }
+
+  img.info{
+    margin-right:34px!important;
+  }
+  .pie-social {
+    white-space: normal!important;
+  }
+  ul.franquicias li{
+    width: 24%;
+    min-width: auto!important;
+  }
+  .cs-product-price{
+    display: block;
+    margin: 0 auto;
+    top: 5px;
+    position: relative;
+  }
+  .row {
+    margin-right: 0!important;
+    margin-left: 0!important;
+  }
+}
+
+@media all and (max-width: 1024px){
+  .sel-product-discount.cs-product-discount.pr-product-discount {
+    bottom: 0;
+  }
+}
+
+@media all and ( max-width: 992px ){
+  .js_product .sel-product-discount.cs-product-discount.pr-product-discount{
+    float: none!important;
+    display: block;
+    margin: 0 auto!important;
+    background-position: 50%;
+    padding-top: 5px;
+    left: 44%;
+  }
+  .js_product .oe_website_spinner {
+    width: 100%;
+  }
+  .js_product .pr-lst-price {
+    display: block;
+    text-align: center;
+  }
+  #add_to_cart{
+    width: 100%;
+  }
+  .js_product .pr-block-discount{
+    width: 100%;
+    margin-bottom: 14px;
+  }
+  .cs-product-price{
+    float: right;
+  }
+  .cs-product-discount {
+    margin-left: 33%!important;
+    background-size: 100% 20px!important;
+    width: 34px;
+    margin-top: 19px;
+  }
+  .container {
+    width: 100%!important;
+    padding:0!important;
+  }
+  #header_info li {
+    font-size: 12px!important;
+  }
+  .nav > li {
+    font-size:11.6px!important;
+  }
+  .nav > li > a{
+    padding: 10px 7px;
+  }
+
+  .icon_info {
+    height: 28px!important;
+  }
+  .lang-icon {
+    height: 28px!important;
+  }
+
+  #home2{
+    width: 90%;
+    margin:0 auto;
+  }
+  .col-md-12.mb16.mt16 p,
+  #myCarousel_1475074023306 .row.content{
+    padding:0 2%;
+  }
+  div.siete-cosas{
+    background-size:100%!important;
+  }
+  span.siete-cosas-text {
+    color: #005eb8;
+    font-weight: bold;
+    position: relative;
+    top: 140px;
+    font-size: 12px;
+  }
+  .custom-footer section{
+    width:90%;
+    margin:0 auto;
+  }
+  .custom-footer .col-md-3 {
+    display: inline-block;
+    vertical-align: top;
+    width: 23%;
+    padding: 1%;
+  }
+  .pie-social img {
+    width: 35px!important;
+    height: auto!important;
+  }
+  img.info {
+    margin-right: -10px!important;
+  }
+  .pie-hor{
+    display: block;
+  }
+  #products_grid_before{
+    float: left;
+    width:29%;
+  }
+  #brand_grid,
+  #brands_grid,
+  #categories_grid{
+    float: right;
+    width: 70%;
+  }
+  input,
+  .img-responsive{
+    width: 100%!important
+  }
+  form{
+    padding:0 7%;
+  }
+
+  .col-md-4.text-center.mb32,
+  .col-md-4.text-center.mb16 {
+    float: left;
+    width: 33%;
+  }
+  .accept_policy input{
+    width: 30px !important;
+    position: relative;
+    top: 3px;
+  }
+  #brand_grid img,
+  #brands_grid img {
+    width: auto!important;
+    height: 137px;
+    display: block;
+    margin: 0 auto;
+  }
+  main #wrap{
+    padding:0 1%;
+  }
+  .oe_cart{
+    width:100%!important
+  }
+}
+
+
+/*
+@media (min-width: 768px){
+  .carousel .container {
+    width: 100%!important;
+  }
+}
+*/
+
+@media all and ( max-width: 736px ){
+  .carousel-control.left,
+  .carousel-control.right{
+    display:none!important
+  }
+  #super_offers{
+
+  }
+  .navbar-collapse.navbar-top-collapse.collapse.in{
+    margin-left: 15px!important;
+  }
+  #home1 .mb16.cs-bg-gray.mt0 img {
+    width: 20%!important;
+  }
+  div.siete-cosas {
+    vertical-align: top;
+    width: 25%!important;
+    min-width: auto!important;
+  }
+  .custom-footer .col-md-3{
+    width:100%
+  }
+  #super_offers,
+  #valued_products{
+    width: 90%!important;
+    margin:0 auto;
+  }
+}
+
+@media all and ( max-width: 668px ){
+  #brand_grid, #brands_grid, #categories_grid{
+    width:100%!important
+  }
+  .col-md-4.text-center.mb32, .col-md-4.text-center.mb16{
+    width: 100%!important
+  }
+  ul.franquicias{
+    padding:0!important
+  }
+  ul.franquicias li {
+    width: 100%;
+  }
+  div.siete-cosas{
+    width:45%!important
+  }
+  h1 span{
+    display: block;
+  }
+}
+@media all and ( max-width: 450px ){
+  .cs-product-discount {
+    margin-left: 20%!important;
+    background-size: 100% 20px!important;
+    width: 34px;
+    margin-top: 19px;
+  }
+  .sel-product-discount.cs-product-discount.pr-product-discount {
+    left: 34%!important;
+  }
+}
+@media all and ( max-width: 320px ){
+  .sel-product-discount.cs-product-discount.pr-product-discount {
+    left: 31%!important;
+    background-size: 48px 23px !important;
+  }
+}
+
+
+.item.cs-border-bottom-blue.oe_img_bg.active,
+.item.oe_img_bg.active{
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.carousel-content.col-sm-12.text-center.mt0.col-md-11.mb128{
+  width: 100%!important
+}
+
+.colores {
+  /* Color toolbar */
+  color: #393f47;
+
+  /* Azul Beds */
+  color: #005eb8;
+
+  /* Rojo */
+  color: #d5002e;
+
+  /*Gris fondo footer */
+  color: #dcd9d8;
+
+  /*Gris fondo cajas */
+  color: #ececec;
+
+
+  /* Gris los mas valorados */
+  color: #e4edf4;
+}
+
+
+/* Chat online */
+.oe_im_chatview .oe_im_chatview_header_name{
+  height: 15px;
+  line-height:normal;
+}
+
+
+/* Hace que los fondos de banners sean responsive */
+
+.carousel-inner .item {
+  min-height: 150px;
+  background-size: 100%;
+}
+
+.carousel-img {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.oe_img_bg {
+
+  background-repeat:no-repeat;
+  /*background-size:contain;*/
+  background-size: 100%;
+  background-position:top;
+
+}
+
+
+
+.collapse.navbar-collapse.navbar-top-collapse {
+  float:left;
+}
+
+.nav-stacked ul {
+  text-align: left;
+}
+
+
+
+
+/* Banner */
+
+.container-fluid {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.cs-banner {
+  text-align: center;
+  min-height: 100px;
+}
+
+.cs-banner img {
+  display: block;
+  margin: 0 auto;
+}
+
+
+.cs-img-zoom {
+  cursor: zoom-in;
+}
+
+.cs-auto-zoom-view {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background-color: rgba(0,94,184, 0.9);
+  overflow-y: hidden;
+}
+.cs-img-auto-zoom {
+  position: fixed;
+}
+
+
+/* Left and right icon for zoom. */
+.cs-zoom-left {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  color: #f1f1f1;
+  font-size: 95px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.cs-zoom-right {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  color: #f1f1f1;
+  font-size: 95px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.cs-zoom-left :hover,
+.cs-zoom-left :focus,
+.cs-zoom-right :hover,
+.cs-zoom-right :focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+/* The Close Button */
+.cs-button-close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 95px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.cs-button-close:hover,
+.cs-button-close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+.cs-img-inline {
+  display: inline;
+}
+
+
+
+
+
+.beds-color-azul {
+  color: #005eb8;
+}
+
+
+.fondo-azul {
+  background-color: #005eb8;
+  color: white;
+}
+
+.fondo-gris {
+  background-color: #e4edf4;
+}
+
+
+.w90p {
+  width: 90%;
+}
+
+.w90p-left {
+  float: left;
+  width: 90%;
+}
+
+.w90p-right {
+  float: right;
+  width: 90%;
+}
+
+.w100p {
+  width: 100%;
+}
+
+
+
+/* Líneas punteadas.   border-bottom-style: dashed; */
+
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:950,300,300italic,500,700,500italic,950italic,700italic);
+@font-face {
+  font-family: ITCAvantGardeProBold;
+  font-weight: bold;
+  src: url("/beds_theme/static/src/fonts/ITCAvantGardePro-Bold.otf") format("opentype");
+}
+
+/* Custom shop colors */
+.cs-color1 {
+  background-color: #e4edf4;
+  color: white;
+}
+.cs-color1 .text-muted {
+  color: #dddddd;
+}
+
+.cs-color-white {
+  color: white;
+}
+
+
+
+html {
+  font-family: Ubuntu;
+}
+
+
+html {
+  background: #ffffff;
+}
+
+body {
+  font-family: Ubuntu;
+  font-size: 15px;
+  text-align: justify;
+}
+
+
+
+
+
+/* Logo */
+header a.navbar-brand img {
+  max-height: 130px;
+}
+.navbar.navbar-static-top {
+  height: 130px;
+  margin-bottom: 0;
+}
+.navbar-brand {
+  height: 100%;
+}
+
+.navbar-default {
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+
+.navbar-default .navbar-nav > li > a {
+  font-weight: bold;
+  color: #005eb8;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #005eb8;
+  background-color: #ffffff;
+}
+
+h1 {
+  margin-top: 15px;
+  color: #005eb8;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+}
+h2 {
+  color: #005eb8;
+  font-size: 20px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+}
+h3 {
+  color: #005eb8;
+  font-size: 16px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+}
+h4 {
+  font-size: 16px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+}
+p {
+  font-size: 14px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+}
+blockquote {
+  font-size: 21px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 30px;
+}
+pre {
+  font-size: 13px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 18.5714px;
+}
+
+/* header info */
+div.header_info {
+  background-color: #025ba0;
+  vertical-align: middle;
+  padding: 0px;
+  border: 0px;
+
+}
+
+.row.header_info{
+  background-repeat: no-repeat;
+  background-image: url("/beds_theme/static/src/img/hb.png");
+  font-size: 15px;
+  color: white;
+}
+
+.row.header_info a{
+  font-size: 15px;
+  color: white;
+  text-decoration:none;
+}
+
+.row.header_info a:hover{
+  color: black;
+}
+
+
+ul#header_info {
+  padding: 0px;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  border: 0px;
+  margin: 0;
+  list-style-type: none;
+  vertical-align: middle;
+
+}
+
+ul#header_info li{
+  display:inline;
+  margin-left:1px;
+  margin-right:1px;
+
+}
+
+.phone {
+  padding-left: 25px;
+  font-size: 1.5em;
+}
+
+
+
+.icon_info {
+  height: 37px;
+  padding-left: 5px;
+  padding-right: 1px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.lang-icon {
+  height: 37px;
+  padding-left: 5px;
+  padding-right: 1px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+
+.cs-border-bottom-blue {
+  border-style: solid;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 10px;
+  border-bottom-color: #005eb8;
+
+}
+
+.cs-border-bottom-gray {
+  border-style: solid;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 10px;
+  border-bottom-color: #dddddd;
+
+}
+
+
+/* Offers */
+
+.csof-product-name {
+  text-align: center;
+}
+
+
+
+/* Tiendas Beds */
+
+#map {
+  height: 100%;
+}
+
+
+.maps_search {
+  /*
+  border-top-style: solid;
+  border-top-color: #9e9e9e;
+  border-top-width: 10px;
+  */
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.maps_search span {
+  padding-top: 10px;
+  color: #005eb8;
+  font-size: 25px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  line-height: 15.4px;
+
+}
+.container_map {
+  min-height:500px;
+}
+
+.map {
+  min-height:500px;
+}
+.custom_map {
+  background: rgba(200, 200, 200, 0.14);
+}
+.autocomplete_controls {
+  border: 1px solid;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 32px;
+  outline: none;
+  box-shadow: none;
+}
+.controls {
+  margin-top: 10px;
+  border: 1px solid transparent;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 32px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#pac-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 300px;
+}
+
+#pac-input:focus {
+  border-color: #4d90fe;
+}
+
+.pac-container {
+  font-family: Roboto;
+}
+
+#type-selector {
+  color: #fff;
+  background-color: #4d90fe;
+  padding: 5px 11px 0px 11px;
+}
+
+#type-selector label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+#target {
+  width: 345px;
+}
+
+
+
+
+div.infowindow-ovalo {
+
+  width: 350px;
+  height: 210px;
+  background-color: #ffffff;
+}
+
+div.infowindow-info {
+  text-align: left;
+  width: 280px;
+  float: left;
+  margin-top: 15px;
+  margin-left: 30px;
+  font-size: 12px;
+
+}
+
+div.infowindow-info p {
+  font-size: 12px;
+}
+
+img.infowindow-foto {
+  float: right;
+  margin-top: 20px;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 0px;
+  width: 100px;
+
+}
+
+
+
+.copyright-none {
+  display: none;
+}
+
+
+
+/* Footer */
+.custom-footer {
+  background: rgba(200, 200, 200, 0.14);
+
+  border-bottom-style: solid;
+  border-bottom-color: rgba(217, 214, 214, 1);
+  border-bottom-width: 2px;
+}
+
+.custom-footer-brand {
+  background: #ffffff;
+}
+.custom-footer-brand-logo {
+  max-height: 100px;
+}
+
+/* end footer */
+
+
+
+
+
+
+/* Iconos de las características de producto. */
+
+img.snippet-icon {
+  padding-right: 5px;
+  width: 24px;
+  height: 24px;
+}
+
+
+.property {
+  padding-left: 30px;
+  padding-bottom: 16px;
+  float: left;
+
+
+}
+
+.datasheet {
+  min-height: 100px;
+}
+
+.datasheet.row{
+  margin-left: 10px;
+  margin-right: 15px;
+}
+
+.datasheet-text {
+}
+
+.datasheet-icon {
+  width: 100px;
+  height: 100px;
+  background-color: #ffffff;
+  margin-right: 20px;
+  background-size: 100px 100px;
+  background-repeat: no-repeat;
+  padding-right: 125px;
+}
+
+
+.property ul {
+  list-style-position: initial;
+  list-style-image:  url(/beds_theme/static/src/img/bullet.png);
+
+
+}
+
+.property ul li {
+  text-align: justify;
+
+}
+
+
+
+.mattress-composition {
+  background-image: url(/beds_theme/static/src/img/property/mattress_composition.png);
+}
+
+
+
+.default-property {
+  background-image: url(/beds_theme/static/src/img/property/default.png);
+}
+
+.tech-airgel {
+  background-image: url(/beds_theme/static/src/img/property/tech_airgel.png);
+}
+
+.tech-barreratotal {
+  background-image: url(/beds_theme/static/src/img/property/tech_barreratotal.png);
+}
+
+.tech-bultex-nanotech {
+  background-image: url(/beds_theme/static/src/img/property/tech_bultex_nanotech.png);
+}
+
+.tech-confortcel {
+  background-image: url(/beds_theme/static/src/img/property/tech_confortcel.png);
+}
+
+.tech-memoryairgel {
+  background-image: url(/beds_theme/static/src/img/property/tech_memoryairgel.png);
+}
+
+.tech-memoryclean {
+  background-image: url(/beds_theme/static/src/img/property/tech_memoryclean.png);
+}
+
+.tech-memorygel {
+  background-image: url(/beds_theme/static/src/img/property/tech_memorygel.png);
+}
+
+.tech-normasensesupport {
+  background-image: url(/beds_theme/static/src/img/property/tech_normasensesupport.png);
+}
+
+.tech-normazone {
+  background-image: url(/beds_theme/static/src/img/property/tech_normazone.png);
+}
+
+.tech-progressionfiber {
+  background-image: url(/beds_theme/static/src/img/property/tech_progressionfiber.png);
+}
+
+.tech-viscofoam {
+  background-image: url(/beds_theme/static/src/img/property/tech_viscofoam.png);
+}
+
+.tech-base-air-system {
+  background-image: url(/beds_theme/static/src/img/property/tech_base_air_system.png);
+}
+
+.tech-double-support {
+  background-image: url(/beds_theme/static/src/img/property/tech_double_support.png);
+}
+
+.tech-super-soft {
+  background-image: url(/beds_theme/static/src/img/property/tech_super_soft.png);
+}
+
+.tech-double-jersey {
+  background-image: url(/beds_theme/static/src/img/property/tech_double_jersey.png);
+}
+
+.tech-triple-barrera {
+  background-image: url(/beds_theme/static/src/img/property/tech_triple_barrera.png);
+}
+
+.tech-hybrid-system {
+  background-image: url(/beds_theme/static/src/img/property/tech_hybrid_system.png);
+}
+
+.tech-foam-support {
+  background-image: url(/beds_theme/static/src/img/property/tech_foam_support.png);
+}
+
+.tech-advanced-comfort-fiber {
+  background-image: url(/beds_theme/static/src/img/property/tech_advanced_comfort_fiber.png);
+}
+
+.tech-systemx {
+  background-image: url(/beds_theme/static/src/img/property/tech_systemx.png);
+}
+
+.tech-progression-foam {
+  background-image: url(/beds_theme/static/src/img/property/tech_progression_foam.png);
+}
+
+.tech-action-gel-memory-foam {
+  background-image: url(/beds_theme/static/src/img/property/action_gel_memory_foam.png);
+}
+
+.tech-cool-action-gel-memory-foam {
+  background-image: url(/beds_theme/static/src/img/property/cool_action_gel_memory_foam.png);
+}
+
+.tech-desyfresh {
+  background-image: url(/beds_theme/static/src/img/property/desyfresh.png);
+}
+
+.tech-evercool-plus-memory-foam {
+  background-image: url(/beds_theme/static/src/img/property/evercool_plus_memory_foam.png);
+}
+
+.tech-gel-memory-foam {
+  background-image: url(/beds_theme/static/src/img/property/gel_memory_foam.png);
+}
+
+.tech-material-tempur {
+  background-image: url(/beds_theme/static/src/img/property/material_tempur.png);
+}
+
+.tech-memory-coil-system {
+  background-image: url(/beds_theme/static/src/img/property/memory_coil_system.png);
+}
+
+.tech-smart-pik {
+  background-image: url(/beds_theme/static/src/img/property/smart_pik.png);
+}
+
+.tech-smart-pik-new {
+  background-image: url(/beds_theme/static/src/img/property/smart_pik_new.png);
+}
+
+.tech-gel-balance {
+  background-image: url(/beds_theme/static/src/img/property/gel_balance.png);
+}
+
+.tech-dynamic-progress {
+  background-image: url(/beds_theme/static/src/img/property/dynamic_progress.png);
+}
+
+.tech-viscofresh {
+  background-image: url(/beds_theme/static/src/img/property/Viscofresh.png);
+}
+
+.tech-seaqual {
+  background-image: url(/beds_theme/static/src/img/property/SEAQUAL.png);
+}
+
+.tech-sanitypik {
+  background-image: url(/beds_theme/static/src/img/property/SanityPik.png);
+}
+
+.tech-normablock {
+  background-image: url(/beds_theme/static/src/img/property/NormaBlock.png);
+}
+
+.tech-ingravityvisco {
+  background-image: url(/beds_theme/static/src/img/property/IngravityVisco.png);
+}
+
+.tech-fibercel {
+  background-image: url(/beds_theme/static/src/img/property/FiberCel.png);
+}
+
+.tech-ecofiber {
+  background-image: url(/beds_theme/static/src/img/property/EcoFiber.png);
+}
+
+.tech-coolfresh {
+  background-image: url(/beds_theme/static/src/img/property/Coolfresh.png);
+}
+
+.tech-biovisco {
+  background-image: url(/beds_theme/static/src/img/property/BioVisco.png);
+}
+
+.tech-sanityfoam {
+  background-image: url(/beds_theme/static/src/img/property/SanityFoam.png);
+}
+
+.tech-sanitycover {
+  background-image: url(/beds_theme/static/src/img/property/SanityCover.png);
+}
+
+.tech-viscosense {
+  background-image: url(/beds_theme/static/src/img/property/viscosense.png);
+}
+
+.tech-dry-cool {
+  background-image: url(/beds_theme/static/src/img/property/dry_cool.png);
+}
+
+.tech-total-airfeel {
+  background-image: url(/beds_theme/static/src/img/property/total_airfeel.png);
+}
+
+.tech-air-flow {
+  background-image: url(/beds_theme/static/src/img/property/air_flow.png);
+}
+
+.tech-comfort-system {
+  background-image: url(/beds_theme/static/src/img/property/comfort_system.png);
+}
+
+.tech-multi-air {
+  background-image: url(/beds_theme/static/src/img/property/multi_air.png);
+}
+
+.tech-latex100 {
+  background-image: url(/beds_theme/static/src/img/property/latex100.png);
+}
+
+.tech-adaptech_foam_soft {
+  background-image: url(/beds_theme/static/src/img/property/adaptech_foam_soft.png);
+}
+.tech-adapt_tech {
+  background-image: url(/beds_theme/static/src/img/property/adapt_tech.png);
+}
+.tech-adapt_tech_zone_support {
+  background-image: url(/beds_theme/static/src/img/property/adapt_tech_zone_support.png);
+}
+.tech-advanced_weave {
+  background-image: url(/beds_theme/static/src/img/property/advanced_weave.png);
+}
+.tech-bultex {
+  background-image: url(/beds_theme/static/src/img/property/bultex.png);
+}
+.tech-bultex_inside {
+  background-image: url(/beds_theme/static/src/img/property/bultex_inside.png);
+}
+.tech-climasense_air {
+  background-image: url(/beds_theme/static/src/img/property/climasense_air.png);
+}
+.tech-confortcel_5zone {
+  background-image: url(/beds_theme/static/src/img/property/confortcel_5zone.png);
+}
+.tech-dual_balance {
+  background-image: url(/beds_theme/static/src/img/property/dual_balance.png);
+}
+.tech-fibra_microclima {
+  background-image: url(/beds_theme/static/src/img/property/fibra_microclima.png);
+}
+.tech-hipoalergenico {
+  background-image: url(/beds_theme/static/src/img/property/hipoalergenico.png);
+}
+.tech-hypoallergenic {
+  background-image: url(/beds_theme/static/src/img/property/hypoallergenic.png);
+}
+.tech-memory_foam {
+  background-image: url(/beds_theme/static/src/img/property/memory_foam.png);
+}
+.tech-progression_visco {
+  background-image: url(/beds_theme/static/src/img/property/progression_visco.png);
+}
+.tech-sanifoam {
+  background-image: url(/beds_theme/static/src/img/property/sanifoam.png);
+}
+.tech-sanitized {
+  background-image: url(/beds_theme/static/src/img/property/sanitized.png);
+}
+.tech-soft_cell {
+  background-image: url(/beds_theme/static/src/img/property/soft_cell.png);
+}
+.tech-tejido_everclean {
+  background-image: url(/beds_theme/static/src/img/property/tejido_everclean.png);
+}
+.tech-ultimate_edge_foam_support_core,.colchon-ultimate_edge_foam_support_core {
+  background-image: url(/beds_theme/static/src/img/property/ultimate_edge_foam_support_core.png);
+}
+.tech-5zone_tech {
+  background-image: url(/beds_theme/static/src/img/property/5zone_tech.png);
+}
+.tech-normazone_firm_support {
+  background-image: url(/beds_theme/static/src/img/property/normazone_firm_support.png);
+}
+.tech-foam_confort {
+  background-image: url(/beds_theme/static/src/img/property/foam_confort.png);
+}
+
+
+
+/* Tecnologías almohadas */
+.tech-almohada-cervical {
+  background-image: url(/beds_theme/static/src/img/property/tech_almohada_cervical.png);
+}
+
+.tech-almohada-latex {
+  background-image: url(/beds_theme/static/src/img/property/tech_almohada_latex.png);
+}
+
+.tech-almohada-microfibra {
+  background-image: url(/beds_theme/static/src/img/property/tech_almohada_microfibra.png);
+}
+
+.tech-almohada-tencel {
+  background-image: url(/beds_theme/static/src/img/property/tech_almohada_tencel.png);
+}
+
+.tech-almohada-ultra-fresh {
+  background-image: url(/beds_theme/static/src/img/property/tech_almohada_ultra_fresh.png);
+}
+
+.tech-down-proof {
+  background-image: url(/beds_theme/static/src/img/property/down_proof.png);
+}
+
+/* Características de los colchones */
+.colchon-lechos {
+  background-image: url(/beds_theme/static/src/img/property/colchon_lechos.png);
+}
+
+.colchon-adaptabilidad {
+  background-image: url(/beds_theme/static/src/img/property/colchon_adaptabilidad.png);
+}
+
+.colchon-firmeza1 {
+  background-image: url(/beds_theme/static/src/img/property/colchon_firmeza1.png);
+}
+
+.colchon-firmeza2 {
+  background-image: url(/beds_theme/static/src/img/property/colchon_firmeza2.png);
+}
+
+.colchon-firmeza3 {
+  background-image: url(/beds_theme/static/src/img/property/colchon_firmeza3.png);
+}
+
+.colchon-funda {
+  background-image: url(/beds_theme/static/src/img/property/colchon_funda.png);
+}
+
+.colchon-nucleo {
+  background-image: url(/beds_theme/static/src/img/property/colchon_nucleo.png);
+}
+
+.colchon-reversible {
+  background-image: url(/beds_theme/static/src/img/property/colchon_reversible.png);
+}
+
+.colchon-ventilacion {
+  background-image: url(/beds_theme/static/src/img/property/colchon_ventilacion.png);
+}
+
+.colchon-estabilidad {
+  background-image: url(/beds_theme/static/src/img/property/colchon_estabilidad.png);
+}
+
+.colchon-cama-nido {
+  background-image: url(/beds_theme/static/src/img/property/colchon_cama_nido.png);
+}
+
+.colchon-unidades {
+  background-image: url(/beds_theme/static/src/img/property/colchon_unidades.png);
+}
+
+.colchon-transpirabilidad {
+  background-image: url(/beds_theme/static/src/img/property/transpirabilidad.png);
+}
+
+.colchon-medidas {
+  background-image: url(/beds_theme/static/src/img/property/medidas.png);
+}
+
+.colchon-tratamiento {
+  background-image: url(/beds_theme/static/src/img/property/tratamiento_colchon.png);
+}
+
+/* Características de los Somieres */
+.somier-adaptabilidad {
+  background-image: url(/beds_theme/static/src/img/property/somier_adaptabilidad.png);
+}
+
+.somier-ventilacion {
+  background-image: url(/beds_theme/static/src/img/property/somier_ventilacion.png);
+}
+
+.somier-descanso-silencioso {
+  background-image: url(/beds_theme/static/src/img/property/somier_descanso_silencioso.png);
+}
+
+.somier-resistencia {
+  background-image: url(/beds_theme/static/src/img/property/somier_resistencia.png);
+}
+
+.somier-zona-lumbar {
+  background-image: url(/beds_theme/static/src/img/property/somier_zona_lumbar.png);
+}
+
+.somier-gran-comodidad {
+  background-image: url(/beds_theme/static/src/img/property/somier_gran_comodidad.png);
+}
+
+.somier-diseno-especial {
+  background-image: url(/beds_theme/static/src/img/property/somier_diseno_especial.png);
+}
+
+.somier-sistema-articulacion {
+  background-image: url(/beds_theme/static/src/img/property/somier_sistema_articulacion.png);
+}
+
+.somier-flexibilidad {
+  background-image: url(/beds_theme/static/src/img/property/somier_flexibilidad.png);
+}
+
+/* Característidas almohadas */
+.almohada-tratamiento {
+  background-image: url(/beds_theme/static/src/img/property/almohada_tratamiento.png);
+}
+
+.almohada-adaptabilidad {
+  background-image: url(/beds_theme/static/src/img/property/almohada_adaptabilidad.png);
+}
+
+.almohada-confort {
+  background-image: url(/beds_theme/static/src/img/property/almohada_confort.png);
+}
+
+.almohada-transpirable {
+  background-image: url(/beds_theme/static/src/img/property/almohada_transpirable.png);
+}
+
+.almohada-ventilacion-absorcion {
+  background-image: url(/beds_theme/static/src/img/property/almohada_ventilacion_absorcion.png);
+}
+
+.almohada-recuperacion {
+  background-image: url(/beds_theme/static/src/img/property/almohada_recuperacion.png);
+}
+
+.almohada-lavable {
+  background-image: url(/beds_theme/static/src/img/property/lavable.png);
+}
+.almohada-firmeza1 {
+  background-image: url(/beds_theme/static/src/img/property/almohada_firmeza1.png);
+}
+
+.almohada-firmeza2 {
+  background-image: url(/beds_theme/static/src/img/property/almohada_firmeza2.png);
+}
+
+.almohada-firmeza3 {
+  background-image: url(/beds_theme/static/src/img/property/almohada_firmeza3.png);
+}
+
+.almohada-funda-exterior {
+  background-image: url(/beds_theme/static/src/img/property/almohada_funda_exterior.png);
+}
+
+.almohada-funda-interior {
+  background-image: url(/beds_theme/static/src/img/property/almohada_funda_interior.png);
+}
+
+.almohada-nucleo {
+  background-image: url(/beds_theme/static/src/img/property/almohada_nucleo.png);
+}
+
+.almohada-medidas {
+  background-image: url(/beds_theme/static/src/img/property/almohada_medidas.png);
+}
+
+.almohada-posiciones-dormir_arriba {
+  background-image: url(/beds_theme/static/src/img/property/posiciones_dormir_almohada.png);
+}
+
+.almohada-posiciones-dormir_abajo {
+  background-image: url(/beds_theme/static/src/img/property/posiciones_dormir_almohada2.png);
+}
+
+.almohada-posiciones-dormir_lado {
+  background-image: url(/beds_theme/static/src/img/property/posiciones_dormir_almohada1.png);
+}
+
+.almohada-posiciones-dormir_variable {
+  background-image: url(/beds_theme/static/src/img/property/posiciones_dormir_almohada3.png);
+}
+
+.almohada-apto-ninos {
+  background-image: url(/beds_theme/static/src/img/property/descanso_infantil.png);
+}
+
+.almohada-ergonomia {
+  background-image: url(/beds_theme/static/src/img/property/ergonomia.png);
+}
+
+
+/* Característidas abatibles */
+.abatible-estructura {
+  background-image: url(/beds_theme/static/src/img/property/abatible_estructura.png);
+}
+
+.abatible-estabilidad {
+  background-image: url(/beds_theme/static/src/img/property/abatible_estabilidad.png);
+}
+
+.abatible-capacidad {
+  background-image: url(/beds_theme/static/src/img/property/abatible_capacidad.png);
+}
+
+.abatible-apertura {
+  background-image: url(/beds_theme/static/src/img/property/abatible_apertura.png);
+}
+
+.abatible-sustentacion {
+  background-image: url(/beds_theme/static/src/img/property/abatible_sustentacion.png);
+}
+.abatible-arcon {
+  background-image: url(/beds_theme/static/src/img/property/abatible_arcon.png);
+}
+
+.abatible-base-tapizada {
+  background-image: url(/beds_theme/static/src/img/property/abatible_base_tapizada.png);
+}
+
+.abatible-medidas {
+  background-image: url(/beds_theme/static/src/img/property/abatible_medidas.png);
+}
+
+.abatible-colores {
+  background-image: url(/beds_theme/static/src/img/property/abatible_colores.png);
+}
+
+.abatible-canape {
+  background-image: url(/beds_theme/static/src/img/property/abatible_canape.png);
+}
+.abatible-patas{
+  background-image: url(/beds_theme/static/src/img/property/abatible_patas.png);
+}
+
+.abatible-gero{
+  background-image: url(/beds_theme/static/src/img/property/abatible_gero.png);
+}
+
+.abatible-tapa {
+  background-image: url(/beds_theme/static/src/img/property/tapa.png);
+}
+
+
+
+/* Característidas textil */
+.textil-lavado-general {
+  background-image: url(/beds_theme/static/src/img/property/textil-lavado-general.png);
+}
+.textil-lavado-lavar-a-mano {
+  background-image: url(/beds_theme/static/src/img/property/textil-lavado-lavar-a-mano.png);
+}
+.textil-lavado-lavar-max-40 {
+  background-image: url(/beds_theme/static/src/img/property/textil-lavado-lavar-max-40.png);
+}
+.textil-lavado-lavar-max-40-delicada {
+  background-image: url(/beds_theme/static/src/img/property/textil-lavado-lavar-max-40-delicada.png);
+}
+.textil-lavado-lavar-max-60 {
+  background-image: url(/beds_theme/static/src/img/property/textil-lavado-lavar-max-60.png);
+}
+.textil-lavado-lavar-max-60-delicada {
+  background-image: url(/beds_theme/static/src/img/property/textil-lavado-lavar-max-60-delicada.png);
+}
+.textil-lavado-lavar-max-95 {
+  background-image: url(/beds_theme/static/src/img/property/textil-lavado-lavar-max-95.png);
+}
+.textil-lavado-lavar-max-95-delicada {
+  background-image: url(/beds_theme/static/src/img/property/textil-lavado-lavar-max-95-delicada.png);
+}
+
+.textil-lavado-lejia {
+  background-image: url(/beds_theme/static/src/img/property/textil-lavado-lejia.png);
+}
+
+.textil-lavado-no-lavar-con-agua {
+  background-image: url(/beds_theme/static/src/img/property/textil-lavado-no-lavar-con-agua.png);
+}
+
+.textil-lavado-no-secadora {
+  background-image: url(/beds_theme/static/src/img/property/textil-lavado-no-secadora.png);
+}
+
+.textil-lavado-no-usar-lejia {
+  background-image: url(/beds_theme/static/src/img/property/textil-lavado-no-usar-lejia.png);
+}
+
+.textil-secadora-general {
+  background-image: url(/beds_theme/static/src/img/property/textil-secadora-general.png);
+}
+.textil-lavado-secadora-suave {
+  background-image: url(/beds_theme/static/src/img/property/textil-lavado-secadora-suave.png);
+}
+
+.textil-lavado-seco-general {
+  background-image: url(/beds_theme/static/src/img/property/textil-lavado-seco-general.png);
+}
+
+.textil-lavado-seco-percloroetileno {
+  background-image: url(/beds_theme/static/src/img/property/textil-lavado-seco-percloroetileno.png);
+}
+
+.textil-lavado-seco-percloroetileno-restricciones {
+  background-image: url(/beds_theme/static/src/img/property/textil-lavado-seco-percloroetileno-restricciones.png);
+}
+
+.textil-no-lavar-seco {
+  background-image: url(/beds_theme/static/src/img/property/textil-no-lavar-seco.png);
+}
+
+.textil-no-planchar {
+  background-image: url(/beds_theme/static/src/img/property/textil-no-planchar.png);
+}
+
+.textil-planchado-general {
+  background-image: url(/beds_theme/static/src/img/property/textil-planchado-general.png);
+}
+
+.textil-planchado-temperatura-alta {
+  background-image: url(/beds_theme/static/src/img/property/textil-planchado-temperatura-alta.png);
+}
+
+.textil-planchado-temperatura-baja {
+  background-image: url(/beds_theme/static/src/img/property/textil-planchado-temperatura-baja.png);
+}
+
+.textil-planchado-temperatura-media {
+  background-image: url(/beds_theme/static/src/img/property/textil-planchado-temperatura-media.png);
+}
+
+.textil-temperatura {
+  background-image: url(/beds_theme/static/src/img/property/textil-temperatura.png);
+}
+
+.textil-composicion {
+  background-image: url(/beds_theme/static/src/img/property/textil-composicion.png);
+}
+
+.textil-plumas {
+  background-image: url(/beds_theme/static/src/img/property/textil_plumas.png);
+}
+
+.textil-bambu {
+  background-image: url(/beds_theme/static/src/img/property/textil_bambu.png);
+}
+
+.textil-fibra {
+  background-image: url(/beds_theme/static/src/img/property/textil_fibra.png);
+}
+
+.textil-tratamiento_nordico {
+  background-image: url(/beds_theme/static/src/img/property/tratamiento_nordico.png);
+}
+
+.textil-health-guard {
+  background-image: url(/beds_theme/static/src/img/property/textil-health-guard.png);
+}
+
+/* Característidas Sillones Relax */
+.relax-tipo-pie {
+  background-image: url(/beds_theme/static/src/img/property/relax-tipo-pie.png);
+}
+
+.relax-tipo-tela {
+  background-image: url(/beds_theme/static/src/img/property/relax-tipo-tela.png);
+}
+
+.relax-medida-ancho {
+  background-image: url(/beds_theme/static/src/img/property/relax-medida-ancho.png);
+}
+
+
+
+
+/* Características técnicas de los lechos */
+.base-lecho {
+  background-image: url(/beds_theme/static/src/img/property/base_lecho.png);
+}
+
+.base-bastidor {
+  background-image: url(/beds_theme/static/src/img/property/base_bastidor.png);
+}
+
+.base-medidas {
+  background-image: url(/beds_theme/static/src/img/property/base_medidas.png);
+}
+
+.base-air-plus {
+  background-image: url(/beds_theme/static/src/img/property/base_air_plus.png);
+}
+
+
+
+.sello-garantizado {
+  background-image: url(/beds_theme/static/src/img/property/sello_garantizado.png);
+}
+
+.sello-sanitized {
+  background-image: url(/beds_theme/static/src/img/property/sello_sanitized.png);
+}
+
+.sello-hipoalergenico {
+  background-image: url(/beds_theme/static/src/img/property/sello_hipoalergenico.png);
+}
+
+.stamp-hypoallergenic {
+  background-image: url(/beds_theme/static/src/img/property/stamp_hypoallergenic.png);
+}
+
+.sello-tienda-especializada {
+  background-image: url(/beds_theme/static/src/img/property/sello_tienda_especializada.png);
+}
+
+.stamp-expert {
+  background-image: url(/beds_theme/static/src/img/property/stamp_expert.png);
+}
+
+.sello-todas-medidas {
+  background-image: url(/beds_theme/static/src/img/property/sello_todas_medidas.png);
+}
+
+.sello-mejor-precio {
+  background-image: url(/beds_theme/static/src/img/property/sello_mejor_precio.png);
+}
+
+/* end Iconos características de productos */
+
+#product-carousel {
+  margin-left: 0 px;
+}
+
+
+/* product - tabs. */
+.product-tabs ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.product-tabs ul > li {
+  border: 0px;
+  display: inline-block;
+}
+
+
+
+.product-tabs ul > li {
+  background-color: #ffffff;
+}
+
+.product-tabs ul > li > a{
+  background-color: #87c6f5;
+  margin-right: 0px;
+  padding-right: 20px;
+
+  margin-left: -20px;
+  padding-left: 30px;
+
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+
+  -webkit-border-top-right-radius: 20px;
+  -moz-border-radius-topright: 20px;
+  border-top-right-radius: 20px;
+  z-index: 1;
+}
+
+
+.product-tabs ul > li.active > a{
+  color: white;
+  font-weight: bold;
+  background-color: #005eb8;
+  z-index: 2;
+}
+
+.product-tab-content {
+  padding: 0px;
+  border-color: #005eb8;
+  border-style: solid;
+  border-width: 1.2px;
+}
+
+.tab-pane {
+  padding: 10px;
+
+}
+
+
+/* navar-header */
+.navbar-header {
+  display:inline;
+  float: none;
+}
+
+
+
+
+/* Menús */
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  color: #ffffff;
+  background-color: #005eb8;
+}
+
+
+/* caret */
+.navbar-default .navbar-nav > .dropdown > a .caret {
+  border-top-color: #777;
+  border-bottom-color: #777;
+}
+.navbar-default .navbar-nav > .dropdown > a:hover .caret,
+.navbar-default .navbar-nav > .dropdown > a:focus .caret {
+  border-top-color: #333;
+  border-bottom-color: #333;
+}
+.navbar-default .navbar-nav > .open > a .caret,
+.navbar-default .navbar-nav > .open > a:hover .caret,
+.navbar-default .navbar-nav > .open > a:focus .caret {
+  border-top-color: #555;
+  border-bottom-color: #555;
+}
+
+
+.breadcrumb {
+  background-color: #ffffff;
+}
+.breadcrumb > li + li:before {
+  color: #ccc;
+  content: " > ";
+  padding: 0 5px;
+}
+
+
+
+
+/* Tienda beds más cercana */
+div.tbc {
+  padding-left:35px;
+}
+div.tbc-text {
+  padding-left: 15px;
+  text-align: left;
+  width: auto;
+}
+div.tbc-icon {
+  text-align: left;
+  float:left;
+  width: auto;
+  padding:0;
+}
+span.tbc {
+  color: #005eb8;
+  font-weight: bold;
+  font-size: 12px;
+}
+div.address_store {
+  color: #005eb8;
+  font-style: italic;
+  line-height: 95%;
+}
+.product_price1 {
+  padding-top: 15px;
+  margin-bottom: 15px;
+  text-align: center;
+  background-color: #c6c6c6;
+  height: 95px;
+  width: 100%;
+  border-radius: 10px;
+
+}
+
+.add_to_cart_box {
+  width: 100%;
+
+}
+
+span.oe_currency_value {
+  font-weight: normal;
+  font-size: 35px;
+
+}
+
+
+/* Botón para obtener el zip */
+button.cs-zip-code {
+  color: #005eb8;
+}
+a.cs-zip-code {
+  color: #005eb8;
+}
+
+
+
+/* Siete cosas que bed's hace por tí */
+div.siete-cosas {
+  text-align: center;
+  display:inline-block;
+  height: 125px;
+  width: auto;
+  min-width: 150px;
+  min-height: 195px;
+  border: 0px;
+  background-position: center;
+  background-size: 150px 125px;
+  background-repeat: no-repeat;
+}
+
+span.siete-cosas-text {
+  color: #005eb8;
+  font-weight: bold;
+  position: relative;
+  top: 150px;
+
+}
+
+div.meses12 {
+  background-image: url('/beds_theme/static/src/img/12_meses_sin_intereses.png')
+}
+div.meses12:hover {
+  background-image: url('/beds_theme/static/src/img/12_meses_sin_intereses_1.png')
+}
+
+div.experiencia {
+  background-image: url('/beds_theme/static/src/img/experiencia.png')
+}
+div.experiencia:hover {
+  background-image: url('/beds_theme/static/src/img/experiencia_1.png')
+}
+
+div.entrega {
+  background-image: url('/beds_theme/static/src/img/entrega.png')
+}
+div.entrega:hover {
+  background-image: url('/beds_theme/static/src/img/entrega_1.png')
+}
+
+div.montaje {
+  background-image: url('/beds_theme/static/src/img/montaje.png')
+}
+div.montaje:hover {
+  background-image: url('/beds_theme/static/src/img/montaje_1.png')
+}
+
+div.primeras-marcas {
+  background-image: url('/beds_theme/static/src/img/primeras_marcas.png')
+}
+div.primeras-marcas:hover {
+  background-image: url('/beds_theme/static/src/img/primeras_marcas_1.png')
+}
+
+div.reciclaje {
+  background-image: url('/beds_theme/static/src/img/reciclaje.png')
+}
+div.reciclaje:hover {
+  background-image: url('/beds_theme/static/src/img/reciclaje_1.png')
+}
+
+div.noches-prueba {
+  background-image: url('/beds_theme/static/src/img/noches_prueba.png')
+}
+div.noches-prueba:hover {
+  background-image: url('/beds_theme/static/src/img/noches_prueba_1.png')
+}
+
+
+
+
+div.externo {
+  display: inline-block;
+}
+
+img.externo {
+  border: 0px;
+  padding: 0px;
+  margin: 0px;
+  margin-left: -2px;
+  width: 234px;
+  height: 147px;
+
+}
+
+img#confianza_online {
+  width: 200px
+}
+img#primera_cadena {
+  float: right;
+}
+
+
+img.info {
+  float: right;
+  width: 49px;
+  height: 49px;
+  margin-top: 50px;
+  margin-right: 95px;
+  z-index: 100;
+}
+
+.pie {
+  color: #005eb8;
+}
+
+.pie-chat {
+  text-align: right;
+  margin-top: 32px;
+}
+
+.pie-chat img {
+  width: 30px;
+  height: 30px;
+}
+
+.pie-social {
+  text-align: right;
+  margin-top: 32px;
+}
+
+.pie-social img {
+  width: 50px;
+  height: 43px;
+}
+
+.pie-contact {
+  text-align: right;
+  margin-top: 32px;
+}
+
+.pie-tel {
+  font-size: 150%;
+}
+
+.pie-hor {
+  white-space: nowrap;
+}
+
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+#bb {
+  margin: 0px;
+  width: 350px;
+  height: 220px;
+  z-index: 100;
+  position: absolute;
+  z-index: 1000;
+
+}
+
+.beds-bubble-container {
+  text-align: center;
+}
+.beds-bubble {
+  background-image: url('/beds_theme/static/src/img/bocadillo-7cosas.png');
+  background-repeat: no-repeat;
+  background-size: 350px 220px;
+  height : 220px;
+  width : 350px;
+  display: none;
+  z-index: 1000;
+  text-align: center;
+}
+.beds-bubble-text {
+  color: #005eb8;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 45px;
+  margin-right: 45px;
+  padding: 0px;
+}
+
+.beds-bubble-cofidis {
+  font-size: 9px;
+  line-height: 1;
+}
+
+
+.accept_policy {
+}
+
+
+
+.cs-attributes {
+  padding-left: 0;
+  padding-right: 16px;
+  background-color: #ececec;
+}
+
+
+
+
+ul.franquicias {
+  list-style-type: none;
+  overflow: hidden;
+  padding:0;
+}
+
+ul.franquicias li {
+  min-width: 250px;
+  display: inline-block;
+}
+
+ul.franquicias li a {
+  text-align: center;
+}
+
+ul.franquicias li a h3 {
+  max-width: 130px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ul.franquicias li a div {
+  display: inline-block;
+  padding: 0px;
+  margin: 0px;
+  width: 100px;
+  height: 100px;
+  background-size: 100px 100px;
+  background-position: center;
+
+  -webkit-transition: all 1.5s ease;
+  -moz-transition: all 1.5s ease;
+  -ms-transition: all 1.5s ease;
+  -o-transition: all 1.5s ease;
+  transition: all 1.5s ease;
+}
+
+ul.franquicias li a div:hover {
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+  -ms-transition: all 0.1s ease;
+  -o-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+}
+
+ul.franquicias li a div.adn {
+  background: url(/beds_theme/static/src/img/franquicias_adn_off.png) no-repeat;
+}
+ul.franquicias li a div.adn:hover {
+  background: url(/beds_theme/static/src/img/franquicias_adn_on.png) no-repeat;
+}
+
+ul.franquicias li a div.razones {
+  background: url(/beds_theme/static/src/img/franquicias_razones_off.png) no-repeat;
+}
+ul.franquicias li a div.razones:hover {
+  background: url(/beds_theme/static/src/img/franquicias_razones_on.png) no-repeat;
+}
+
+ul.franquicias li a div.preguntas {
+  background: url(/beds_theme/static/src/img/franquicias_preguntas_off.png) no-repeat;
+}
+ul.franquicias li a div.preguntas:hover {
+  background: url(/beds_theme/static/src/img/franquicias_preguntas_on.png) no-repeat;
+}
+
+ul.franquicias li a div.equipo {
+  background: url(/beds_theme/static/src/img/franquicias_equipo_off.png) no-repeat;
+}
+ul.franquicias li a div.equipo:hover {
+  background: url(/beds_theme/static/src/img/franquicias_equipo_on.png) no-repeat;
+}
+
+/* Sólo disponible en tiendas beds */
+.beds-only-physical-store h2{
+}
+
+.beds-only-physical-store {
+  color: #005eb8;
+  text-align: justify;
+}
+
+.beds-tel-rojo {
+  color: #d5002e;
+  font-weight: bold;
+}
+
+
+
+
+/* Portes en los pedidos */
+#order_delivery {
+  color: #005eb8;
+}
+
+#order_delivery td span.oe_currency_value {
+  margin-left: 8px;
+  font-size: 20px;
+  white-space: nowrap;
+}
+
+
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up)
+@media (min-width: @screen-sm-min) { ... }
+*/
+
+/* Medium devices (desktops, 992px and up)
+@media (min-width: @screen-md-min) { ... }
+*/
+/* Large devices (large desktops, 1200px and up)
+@media (min-width: @screen-lg-min) { ... }
+*/
+
+
+@media (min-width: 1200px) {
+  span.beds {
+    font-size: 50px;
+  }
+
+
+
+  .col-lg-offset-1 {
+    margin-left: 3%;
+    width: 36%;
+
+  }
+
+  @media (max-width: 400px) {
+    div [class*="col-xs-"] {
+      padding-left: 0px !important;
+    }
+  }
+  /* -xs- */
+  @media (min-width: 1px) and (max-width: 768px) {
+    body {
+      line-height: 145%;
+      font-size: 1;
+    }
+
+    .w90p {
+      width: 100%;
+    }
+
+    .w90p-left {
+      float: left;
+      width: 100%;
+    }
+
+    .w90p-right {
+      float: right;
+      width: 100%;
+    }
+
+    .w100p {
+      width: 100%;
+    }
+
+  }
+
+  /* -sm- */
+  @media (min-width: 768px) and (max-width: 991px) {
+    body {
+      line-height: 145%;
+      font-size: 1;
+    }
+
+    .w90p {
+      width: 100%;
+    }
+
+    .w90p-left {
+      float: left;
+      width: 100%;
+    }
+
+    .w90p-right {
+      float: right;
+      width: 100%;
+    }
+
+    .w100p {
+      width: 100%;
+    }
+  }
+
+  /* -md- */
+  @media (min-width: 992px) and (max-width: 1199px) {
+    body {
+      line-height: 150%;
+      font-size: 1.1;
+    }
+  }
+
+  /* -lg- */
+  @media (min-width: 1200px) {
+    body {
+      line-height: 195%;
+      font-size:15px;
+    }
+  }
+}

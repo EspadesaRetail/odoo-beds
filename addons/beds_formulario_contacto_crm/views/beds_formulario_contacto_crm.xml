@@ -1,0 +1,81 @@
+<openerp>
+  <data>
+
+    <menuitem id="menu_marketing_beds_formulario_contacto_crm" parent="base.marketing_menu"
+              name="API SLABS" groups="marketing.group_marketing_user" sequence="30" />
+
+    <record id="action_beds_formulario_contacto_crm_tree" model="ir.actions.act_window">
+      <field name="name">Datos de acceso API SLABS</field>
+      <field name="res_model">beds.formulario.contacto.crm</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Añade un nuevos datos
+        </p>
+        <p>
+          ...
+        </p>
+      </field>
+    </record>
+
+    <menuitem id="beds_formulario_contacto_crm_menu" name="Datos de acceso" parent="menu_marketing_beds_formulario_contacto_crm" sequence="1" action="action_beds_formulario_contacto_crm_tree"/>
+
+    <!-- Vista en forma de listado "TREE" con el cual mostrar los campos que se han obtenido -->
+    <record model="ir.ui.view" id="view_beds_formulario_contacto_crm_tree">
+      <field name="name">Datos de acceso API SLABS</field>
+      <field name="model">beds.formulario.contacto.crm</field>
+      <field name="arch" type="xml">
+        <tree string="Datos de acceso">
+          <field name="name"/>
+          <field name="url_environment"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Añadimos un filtro de búsquedas -->
+    <record id="view_beds_formulario_contacto_crm_search" model="ir.ui.view">
+      <field name="name">Datos de acceso API SLABS - Filtro de búsqueda</field>
+      <field name="model">beds.formulario.contacto.crm</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+        </search>
+      </field>
+    </record>
+
+    <!-- Vista para formatear un nuevo formulario para las marcas -->
+    <record model="ir.ui.view" id="view_beds_formulario_contacto_crm_form">
+      <field name="name">Datos de acceso API SLABS - Formulario</field>
+      <field name="model">beds.formulario.contacto.crm</field>
+      <field name="arch" type="xml">
+        <form string="Formulario">
+          <sheet>
+            <group colspan="2" cols="2">
+              <separator string="Sesión" colspan="2"/>
+              <field name="name"/>
+              <field name="description"/>
+              <separator string="URL" colspan="2"/>
+              <field name="url_environment"/>
+              <field name="api_version_form"/>
+              <field name="api_version_credentials"/>
+              <separator string="Credenciales" colspan="2"/>
+              <field name="type"/>
+              <field name="client_id"/>
+              <field name="client_secret"/>
+              <field name="username"/>
+              <field name="password"/>
+              <field name="accountId"/>
+              <separator string="Versión Terminos y Privacidad RGPD" colspan="2"/>
+              <field name="rgpd_policy_version"/>
+              <field name="rgpd_policy_url"/>
+              <field name="rgpd_terms_version"/>
+              <field name="rgpd_terms_url"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+  </data>
+</openerp>

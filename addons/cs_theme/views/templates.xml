@@ -1,0 +1,1846 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <!-- Getting location  -->
+    <!-- Obtener la ubicación del cliente, lo más precisa posible.
+    Mediane la solicitud de un código postal, o mediante gps location api de google.
+  -->
+
+  <template id="modal_zip_code" name="Zip code Modal form">
+    <div id="modal_optional_products" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <h4 class="modal-title">Localizar la dirección de entrega</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row mt8 cs-color-blue">
+              <div class="col-xs-12">
+                <p>Para mejorar tu experiencia en nuestra web, por favor indica el destino de tu compra</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 text-center">
+                <div class="form-inline">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input id="input_zip_code" type="text" class="form-control" t-att-value="zip_code"
+                        maxlength="5" size="5" pattern="[0-9]*"
+                        placeholder="Código postal" aria-describedby="basic-addon2">
+                      </input>
+                      <!--<span alt="Búsqueda automática" id="search_zip_code" data-action="search_zip_code" class="input-group-addon"><i class="fa fa-compass"></i></span>-->
+                    </div>
+                    <span id="zip_code_state" t-esc="' %s' % zip_code and zip_code_state or ''"/>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a class="btn btn-default a-cancel"><i class="fa fa-shopping-cart fa-fw"></i> Volver</a>
+            <a class="btn btn-primary pull-right a-submit"><i class="fa fa-check"></i> Aceptar</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </template>
+
+
+  <template id="location">
+    <input id="zip_code" type="text" class="hidden" t-att-value="zip_code"/>
+    <div class="form-inline">
+      <div class="form-group">
+        <div class="input-group">
+          <input id="input_zip_code" type="text" class="form-control" t-att-value="zip_code"
+            maxlength="5" size="5" pattern="[0-9]*"
+            placeholder="Código postal" aria-describedby="basic-addon2">
+          </input>
+          <span alt="Introduce el código postal por favor" id="get_zip_code" data-action="get_zip_code" class="input-group-addon"><i class="fa fa-check"></i></span>
+          <span alt="Búsqueda automática" id="search_zip_code" data-action="search_zip_code" class="input-group-addon"><i class="fa fa-compass"></i></span>
+        </div>
+        <span id="zip_code_state" t-esc="' %s' % zip_code and zip_code_state or ''"/>
+      </div>
+    </div>
+  </template>
+
+  <template id="header_getting_location" inherit_id="cs_theme.custom_header" name="Getting location">
+    <xpath expr="//div[@id='custom_header_info']" position="before">
+      <!-- Solicitud de localización -->
+      <t t-if="not zip_code" t-set="zip_code" t-value="zip_code or (request.session and 'zip_code' in request.session and request.session['zip_code'])"/>
+      <t t-if="not zip_code_state" t-set="zip_code_state" t-value="zip_code_state or (request.session and 'zip_code_state' in request.session and request.session['zip_code_state'])"/>
+
+      <div t-if="(not zip_code) and (not product)" id= "set_location" class="container-fluid">
+        <div class="container">
+          <div class="row mt8 cs-color-blue">
+            <div class="col-xs-12 col-sm-7">
+              <p>Para mejorar tu experiencia en nuestra web, por favor indica el destino de tu compra</p>
+            </div>
+            <div class="col-xs-12 col-sm-5">
+              <t t-call="cs_theme.location"/>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mostrar la localización -->
+      <div t-if="not zip_code_lock and zip_code_state" id= "show_location" class="container-fluid">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 text-center">
+              <a id="location_reset"><i class="fa fa-map-marker"/> Su localización es <span t-esc="zip_code_state"/></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </xpath>
+  </template>
+
+
+  <template id="carousel_content_left">
+    <div class="carousel-img col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <img t-att-alt="slide.name" class="img-responsive pull-right" t-att-src="lang=='en_US' and slide.url_en_image_left or slide.url_image_left" style="animation-play-state: paused; transition: none"></img>
+    </div>
+  </template>
+
+  <template id="carousel_content_right">
+    <div class="carousel-img col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <img t-att-alt="slide.name" class="img-responsive pull-left" t-att-src="lang=='en_US' and slide.url_en_image_right or slide.url_image_right" style="animation-play-state: paused; transition: none"></img>
+    </div>
+  </template>
+
+
+  <template id="carousel_content_video">
+    <div class="carousel-video container-fluid"
+      t-att-style="slide.background and 'background-position: center center; background-size: cover; background-repeat: no-repeat; background-image: url(%s);' % website.image_url(slide, 'background', None) or ''">
+      <div class="container text-center">
+        <iframe t-if="lang=='es_ES'" width="100%" height="500" t-att-src="'%s' % slide.video"
+          frameborder="0" controls="0" autoplay="0" allow="autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="1"/>
+          <iframe t-if="lang=='en_US'" width="100%" height="500" t-att-src="'%s' % slide.en_video or slide.video"
+            frameborder="0" controls="0" autoplay="0" allow="autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="1"/>
+
+
+          </div>
+        </div>
+      </template>
+
+
+
+      <!-- Plantilla general de carousel -->
+      <template id="carousel">
+        <t t-if="carousel">
+          <div t-att-id="'carousel_%s'%str(carousel.id)" class="carousel slide mb32">
+            <ol class="carousel-indicators">
+              <t t-set="i" t-value="0"/>
+              <t t-foreach="carousel.slide_ids" t-as="slide">
+                <li t-if="i==0" data-slide-to="0" t-att-data-target="'#carousel_%s'%str(carousel.id)" class="active"></li>
+                <li t-if="i!=0" t-att-data-slide-to="i" t-att-data-target="'#carousel_%s'%str(carousel.id)"></li>
+                <t t-set="i" t-value="i+1"/>
+              </t>
+            </ol>
+
+            <div class="carousel-inner">
+              <t t-set="i" t-value="0"/>
+              <t t-foreach="carousel.slide_ids" t-as="slide">
+
+                <div t-if="i==0" class="item active">
+                  <div class="container-fluid">
+                    <div class="row content">
+                      <a t-att-href="slide.link_url or '#'">
+                        <t t-if="not slide.video">
+                          <t t-call="cs_theme.carousel_content_left"/>
+                          <t t-call="cs_theme.carousel_content_right"/>
+                        </t>
+                        <t t-if="slide.video">
+                          <t t-call="cs_theme.carousel_content_video"/>
+                        </t>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div t-if="i!=0" class="item">
+                  <div class="container-fluid">
+                    <div class="row content">
+                      <a t-att-href="slide.link_url or '#'">
+                        <t t-if="not slide.video">
+                          <t t-call="cs_theme.carousel_content_left"/>
+                          <t t-call="cs_theme.carousel_content_right"/>
+                        </t>
+                        <t t-if="slide.video">
+                          <t t-call="cs_theme.carousel_content_video"/>
+                        </t>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+
+                <t t-set="i" t-value="i+1"/>
+              </t>
+
+            </div>
+
+            <div class="carousel-control left" data-slide="prev" t-att-data-target="'#carousel_%s'%str(carousel.id)" t-att-href="'#carousel_%s'%str(carousel.id)" style="width: 10%">
+              <i class="fa fa-chevron-left"></i>
+            </div>
+            <div class="carousel-control right" data-slide="next" t-att-data-target="'#carousel_%s'%str(carousel.id)" t-att-href="'#carousel_%s'%str(carousel.id)" style="width: 10%">
+              <i class="fa fa-chevron-right" style=""></i>
+            </div>
+
+
+          </div>
+        </t>
+
+      </template>
+
+
+
+
+
+      <!-- Mostrar el text de las ofertas vigentes -->
+      <template id="product_offer_description" inherit_id="website_sale.product">
+        <xpath expr="//p[@class='text-muted']" position="before">
+
+          <t t-foreach="product.active_product_offer_ids" t-as="of">
+            <div t-if="of.website_description_product" id="product_offer_description" class="well">
+              <div t-if="of.image" class="of-label-well" t-att-style="'background-image: url('+of.label_url+');'"/>
+              <div class="of-text-well" t-field="of.website_description_product"/>
+            </div>
+          </t>
+
+        </xpath>
+      </template>
+
+
+
+
+      <!-- Añadir mensaje de venta en tienda física -->
+      <template id="content_context" inherit_id="website_sale.product">
+        <xpath expr="//form" position="attributes">
+          <attribute name="t-if">not product.only_physical_store and product.website_sale_ok and show_cart</attribute>
+        </xpath>
+
+        <xpath expr="//form" position="after">
+          <t t-if="product.only_physical_store or not show_cart">
+            <t t-call="cs_theme.only_physical_store" />
+          </t>
+          <div t-if="not product.only_physical_store and product.website_sale_ok" id="set_location" class="row mt8 mt8">
+            <div class="col-xs-12 mt8">
+              <span class="cs-color-blue">Modificar la dirección de entrega:</span>
+              <t t-call="cs_theme.location"/>
+            </div>
+          </div>
+
+        </xpath>
+      </template>
+
+
+      <template id="carousel_rating_plus" name="Rating plus product">
+        <t t-call="cs_theme.carousel_offer" />
+      </template>
+
+
+      <template id="carousel_offer" name="Super ofertas.">
+        <div class="carousel slide carousel-height" t-att="['id',carousel_name]" data-ride="carousel">
+          <div class="carousel-inner" role="listbox">
+            <t t-set="num_slide" t-value="0"/>
+            <t t-foreach="offers" t-as="offer_group">
+
+              <t t-if="num_slide == 0">
+                <![CDATA[
+                <div class="item active">
+                  ]]>
+                </t>
+
+                <t t-if="num_slide != 0">
+                  <![CDATA[
+                  <div class="item">
+                    ]]>
+                  </t>
+
+                  <div class="container">
+                    <t t-call="cs_theme.offer_group"/>
+                  </div>
+                  <![CDATA[</div>]]>
+                  <t t-set="num_slide" t-value="num_slide + 1"/>
+                </t>
+
+              </div>
+              <div class="carousel-control left" data-slide="prev" t-att="{'data-target':'#'+carousel_name,'href':'#'+carousel_name}">
+                <i class="fa fa-chevron-left"></i>
+              </div>
+              <div class="carousel-control right" data-slide="next" t-att="{'data-target':'#'+carousel_name,'href':'#'+carousel_name}">
+                <i class="fa fa-chevron-right"></i>
+              </div>
+
+            </div>
+
+          </template>
+
+          <template id="row_offer" name="Lista de ofertas">
+            <div class="container">
+              <t t-set="num_slide" t-value="0"/>
+              <t t-foreach="offers" t-as="offer_group">
+
+                <div class="row">
+                  <t t-call="cs_theme.offer_group"/>
+                </div>
+              </t>
+            </div>
+          </template>
+
+
+          <!-- Muestra un grupo de ofertas -->
+          <template id="offer_group" name="Offer group">
+            <div class="row">
+              <t t-foreach="offer_group" t-as="product">
+                <div class="col-md-4">
+                  <t t-call="cs_theme.offer_item"/>
+                </div>
+              </t>
+            </div>
+          </template>
+
+
+          <template id="offer_item" name="Offer item">
+            <form action="/shop/cart/update" method="post">
+
+
+              <div t-if="product" class="of-product" itemscope="itemscope" itemtype="http://schema.org/Product">
+
+
+
+                <h5>
+                  <a t-att-href="keep('/shop/product/%s' % slug(product),page=None)" itemprop="name" t-field="product.name"/>
+                </h5>
+                <!-- Buscar las ofertas activas de Plan Renove -->
+                <t t-set="active_offers" t-value="product.get_active_offers()" />
+
+                <!-- Añadir la marca del producto -->
+                <div t-if="product.brand_id.transparent_image" class="product-image-brand">
+                  <img t-att-src="website.image_url(product.brand_id, 'transparent_image', None)" t-att-alt="product.brand_id.name"/>
+                </div>
+
+
+                <div class="cs-product-image">
+
+                  <a itemprop="url">
+                    <center>
+                      <a t-att-href="keep('/shop/product/%s' % slug(product),page=None)">
+                        <img itemprop="image" class="img img-responsive cs-product-image" t-att-src="website.image_url(product, 'image', '272x189')" t-att-alt="product.name">
+                          <t t-foreach="product.active_product_offer_ids" t-as="of">
+                            <t t-if="of.image">
+                              <div class="of-label" t-att-style="'background-image: url('+of.label_url+');'"/>
+                            </t>
+                          </t>
+                        </img>
+                      </a>
+                    </center>
+                  </a>
+                  <t t-if="product.ratingplus > 0">
+                    <div id="stars_no_edit" t-attf-data-rating="#{product.ratingplus if product.ratingplus else '0'}" class="stars-no-edit o_rating_star_card cs-product-stars">
+                      <div class="stars">
+                        <span class="fa fa-star-o no-edit"></span>
+                        <span class="fa fa-star-o no-edit"></span>
+                        <span class="fa fa-star-o no-edit"></span>
+                        <span class="fa fa-star-o no-edit"></span>
+                        <span class="fa fa-star-o no-edit"></span>
+                      </div>
+                    </div>
+                  </t>
+                </div>
+
+                <div itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer"
+                  class="of-product-offer"  t-if="product.product_variant_ids and not product.only_physical_store">
+
+                  <t t-set="attribute_value_ids" t-value="get_attribute_value_ids(product)"/>
+                  <form t-att-action="keep('/shop/cart/update')" class="js_add_cart_variants" t-att-data-attribute_value_ids="product.product_variant_ids.ids" method="POST">
+
+                    <div class="js_product">
+                      <t t-placeholder="select">
+                        <input type="hidden" class="product_id" name="product_id" t-att-value="int(product.product_variant_ids[0]) if len(product.product_variant_ids) == 1 else '0'"/>
+                        <t t-call="website_sale.variants">
+                          <t t-set="ul_class" t-value="'nav-stacked'"/>
+                        </t>
+                      </t>
+
+                      <!-- Buscar las ofertas activas de Plan Renove -->
+                      <t t-set="active_offers" t-value="product.get_active_offers()" />
+                      <t t-set="detail" t-value="product"/>
+                      <t t-call="cs_theme.home_product_item_price"/>
+
+                    </div>
+
+                  </form>
+
+                  <!-- Especifica las propiedades en los metadatos. -->
+                  <span itemprop="price" style="display:none;" t-esc="product.price"/>
+                  <span itemprop="priceCurrency" style="display:none;" t-esc="user_id.partner_id.property_product_pricelist.currency_id.name"/>
+
+                </div>
+
+                <div class="cs-summary">
+                  <t t-raw="product.website_summary"/>
+                  <t t-if="len(product.website_summary)>0">
+                    <br/>
+                    <a class="btn btn-int-link" t-att-href="keep('/shop/product/%s' % slug(product),page=None)">
+                      <span>Ver</span>&amp;nbsp;<t t-esc="product.website_short_name"/>
+                    </a>
+                  </t>
+                </div>
+
+
+
+
+
+              </div>
+            </form>
+
+          </template>
+
+          <!-- Poner en negro el nombre del attributo -->
+          <template id="variants_attrib_name" inherit_id="website_sale.variants" name="Custom variants attrib name">
+            <xpath expr="//strong[@t-field='variant_id.attribute_id.name']" position="replace">
+              <strong class="cs-attribute pull-left" t-field="variant_id.attribute_id.name"/>
+            </xpath>
+
+            <!-- Mostrar aunque sólo haya una variante -->
+            <xpath expr="//li[@t-if='len(variant_id.value_ids) > 1']" position="attributes">
+              <attribute name="t-if">True</attribute>
+            </xpath>
+
+          </template>
+
+          <template id="variants" inherit_id="website_sale.variants" name="Custom variants">
+            <xpath expr="//select[@class='form-control js_variant_change']" position="replace">
+              <select class="form-control js_variant_change" t-att-name="'attribute-%s-%s' % (product.id, variant_id.attribute_id.id)">
+                <t t-if="attrib_set">
+                  <t t-foreach="variant_id.value_ids" t-as="value_id">
+                    <option t-att-value="value_id.id" t-att-selected="'selected' if value_id and value_id.id in attrib_set else ''">
+                      <span t-field="value_id.name"/>
+                      <span t-if="value_id.price_extra">
+                        <t t-esc="value_id.price_extra > 0 and '+' or ''"/>
+                        <span t-field="value_id.price_extra" style="white-space: nowrap;" t-field-options='{
+                          "widget": "monetary",
+                          "from_currency": "product.company_id.currency_id",
+                          "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                          }'/>
+                        </span>
+                      </option>
+                    </t>
+                  </t>
+                </select>
+              </xpath>
+
+              <!--
+              <xpath expr="//label[@t-attf-style='background-color:#{value_id.color or value_id.name}']" position="replace">
+              <label t-att-alt="value_id.name" t-att-style="'background-image: url(%s); width: 50px; height:50px' % website.image_url(value_id, 'image')"
+              t-attf-class="css_attribute_color #{'active' if not inc else ''}">
+              <input type="radio" class="js_variant_change"
+              t-att-checked="'checked' if not inc else ''"
+              t-att-name="'attribute-%s-%s' % (product.id, variant_id.attribute_id.id)"
+              t-att-value="value_id.id"
+              t-att-title="value_id.name"/>
+            </label>
+          </xpath>
+        -->
+
+
+      </template>
+
+
+
+
+
+
+      <template id="categories_recursive" name="Custom Category list">
+        <li t-att-class="'active' if c.id == int(category or 0) else ''">
+
+          <!--<t t-if="c.active">-->
+          <a t-att-href="keep(None,c)" t-field="c.name"></a>
+          <ul t-if="c.child_id" class="nav nav-pills nav-stacked nav-hierarchy">
+
+            <t t-if="c and category">
+              <t t-if="c.id == category.id or c.id == category.parent_id.id">
+                <t t-foreach="c.child_id" t-as="c">
+                  <t t-call="cs_theme.categories_recursive"/>
+                </t>
+              </t>
+            </t>
+          </ul>
+
+        </li>
+      </template>
+
+
+      <!-- Filters -->
+      <template id="filters">
+        <ul class="nav mt16">
+          <li t-if="filters and filters['price']">
+            <h4>Escoge tu rango de precio</h4>
+            <div class="slider">
+              <div class="small">Desde 0 hasta <span class="slider-value" t-esc="filters['price']['value'] or filters['price']['max']"/> €</div>
+              <input id="filter_price" class="slider-input" type="range" t-att-min="filters['price']['min']" t-att-max="filters['price']['max']" t-att-value="filters['price']['value'] or filters['price']['max']" t-att-step="filters['price'].get('step',100)"/>
+            </div>
+          </li>
+        </ul>
+      </template>
+
+
+
+
+      <!-- List categories -->
+      <template id="list_categories">
+        <div id="products_grid_before" class="col-md-3 hidden-xs">
+          <ul class="nav nav-pills nav-stacked mt16">
+            <t t-foreach="categories" t-as="c">
+              <t t-call="cs_theme.categories_recursive"/>
+            </t>
+          </ul>
+
+          <t t-call="cs_theme.filters"/>
+        </div>
+      </template>
+
+      <!-- Categories -->
+      <template id="categories" name="Categories">
+        <t t-call="website.layout">
+          <t t-set="website_meta_description" t-value="category.website_summary"/>
+
+          <div id="wrap" class="js_sale">
+            <div class="container oe_website_sale">
+              <div class="row">
+                <div class="col-sm-6">
+                  <ol class="breadcrumb">
+                    <li>
+                      <a t-att-href="'/'">Inicio</a>
+                    </li>
+                    <li t-if="brand" class="active">
+                      <a t-att-href="'/shop/brands'">Marcas</a>
+                    </li>
+
+                    <li  t-if="brand" class="active">
+                      <a t-att-href="keep(None,brand=brand)" t-esc="brand.name"/>
+                    </li>
+                    <li t-if="category" class="active">
+                      <span t-field="category.name"/>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+              <div class='row'>
+                <t t-call="cs_theme.list_categories"/>
+                <div id="categories_grid" class="col-md-9">
+                  <h1 t-esc="content.name"/>
+                  <img itemprop="image" class="img img-responsive" t-att-src="website.image_url(content, 'image', None if product_image_big else '847x600')" t-att-alt="content.name"/>
+                  <div itemprop="description" t-field="content.website_description" class="oe_structure oe_empty"/>
+
+                  <div class="row">
+                    <div class="clearfix"/>
+                    <t t-set="i" t-value="1"/>
+                    <t t-foreach="detail_content" t-as="c">
+                      <div class="col-md-4 text-center ">
+                        <a t-att-href="keep(None,c,brand)">
+                          <h3 t-esc="c.name"/>
+                        </a>
+                        <a t-att-href="keep(None,c,brand)">
+                          <img itemprop="image" class="img img-responsive"
+                            t-att-src="website.image_url(c, 'image')" t-att-alt="c.name"/>
+                          </a>
+                          <br/>
+                          <p class="cs-summary">
+                            <t t-raw="c.website_summary"/>
+                            <t t-if="len(c.website_summary)>0">
+                              <br/>
+                              <a class="btn btn-int-link" t-att-href="keep(None,c,brand)">
+                                <span>Ver</span>&amp;nbsp;<t t-esc="c.name"/>
+                              </a>
+
+                            </t>
+                          </p>
+
+                        </div>
+
+                        <t t-if="(i%3)==0">
+                          <![CDATA[
+
+                        </div>
+                        <div class="row mt8">
+                          <div class="clearfix"/>
+                          ]]>
+
+                        </t>
+
+                        <t t-set="i" t-value="i+1"/>
+                      </t>
+                    </div>
+
+                    <!-- Para implementar pies en las categorias -->
+                    <div id="custom_category_footer" class="hidden"/>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </t>
+        </template>
+
+
+
+        <!-- Se utiliza para mostrar los precios en los productos en la home -->
+        <template id="home_product_item_price">
+          <div class="cs-product-lst-price">
+            <span class="cs-lst-price-antes">Antes:</span>
+            <span class="oe_default_price cs-lst-price" t-field="detail.lst_price"
+              t-field-options='{"widget": "monetary",
+              "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"}'
+              />
+            </div>
+
+            <t t-if="not active_offers">
+              <span class="sel-product-discount cs-product-discount">
+                <span class="cs-discount" t-esc="'{:10.0f}%'.format(detail.lst_discount)"/>
+              </span>
+            </t>
+
+            <t t-if="'PR' in active_offers">
+              <span class="cs-product-plan-renove">
+                <span class="cs-plan-renove" t-esc="'{}+{}%'.format(str(active_offers['PR'][1][0]).split('.')[0], str(active_offers['PR'][1][1]).split('.')[0])"/>
+              </span>
+            </t>
+
+
+
+
+            <span class="cs-product-price">
+              <b class="oe_price" style="white-space: nowrap;"
+                t-field="detail.price"
+                t-field-options='{"widget": "monetary",
+                "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"}'
+                />
+              </span>
+            </template>
+
+            <!-- Se utiliza para mostrar los precios en los productos en las subfamilias. -->
+            <template id="category_product_item_price">
+              <div class="cs-product-lst-price" t-if="detail.lst_discount">
+                <span class="cs-lst-price-antes">Antes:</span>
+                <span class="cs-lst-price" t-field="detail.lst_price"
+                  t-field-options='{"widget": "monetary",
+                  "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                  }'
+                  />
+                </div>
+
+                <t t-if="not active_offers">
+                  <span class="sel-product-discount cs-product-discount" t-if="detail.lst_discount">
+                    <span class="cs-discount" t-esc="'{:10.0f}%'.format(detail.lst_discount)"/>
+                  </span>
+                </t>
+
+                <t t-if="'PR' in active_offers">
+                  <span class="cs-product-plan-renove">
+                    <span class="cs-plan-renove" t-esc="'{}+{}%'.format(str(active_offers['PR'][1][0]).split('.')[0], str(active_offers['PR'][1][1]).split('.')[0])"/>
+                  </span>
+                </t>
+
+                <t t-if="'RG' in active_offers">
+                  <span class="cs-product-plan-renove">
+                    <span class="cs-regalo" t-esc="'{}+{}%'.format(str(active_offers['RG'][1][0]).split('.')[0], str(active_offers['RG'][1][1]).split('.')[0])"/>
+                  </span>
+                </t>
+
+
+                <span class="cs-product-price">
+                  <b class="oe_price" style="white-space: nowrap;"
+                    t-field="detail.price"
+                    t-field-options='{"widget": "monetary",
+                    "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"}'
+                    />
+                  </span>
+                </template>
+
+
+                <!-- Detalle de los productos en las subfamilias.-->
+                <template id="products_item" name="Product item">
+                  <form action="/shop/cart/update" method="post">
+                    <div t-if="product" class=" of-product" itemscope="itemscope" itemtype="http://schema.org/Product">
+                      <h5>
+                        <a t-att-href="keep('/shop/product/%s' % slug(product),page=None)" itemprop="name" t-field="product.name"/>
+                      </h5>
+
+                      <!-- Buscar las ofertas activas de Plan Renove -->
+                      <t t-set="active_offers" t-value="product.get_active_offers()" />
+
+
+                      <!-- Añadir la marca del producto -->
+                      <div t-if="product.brand_id.transparent_image" class="product-image-brand">
+                        <img t-att-src="website.image_url(product.brand_id, 'transparent_image', None)" t-att-alt="product.brand_id.name"/>
+                      </div>
+
+                      <div class="cs-product-image">
+                        <a itemprop="url">
+                          <center>
+                            <a t-att-href="keep('/shop/product/%s' % slug(product),page=None)">
+                              <img itemprop="image" class="img img-responsive cs-product-image" t-att-src="website.image_url(product, 'image', '272x189')" t-att-alt="product.name">
+                                <t t-foreach="product.active_product_offer_ids" t-as="of">
+                                  <t t-if="of.image">
+                                    <div class="of-label" t-att-style="'background-image: url('+of.label_url+');'"/>
+                                  </t>
+                                </t>
+                              </img>
+                            </a>
+                          </center>
+                        </a>
+                        <t t-if="product.ratingplus > 0">
+                          <div id="stars_no_edit" t-attf-data-rating="#{product.ratingplus if product.ratingplus else '0'}" class="stars-no-edit o_rating_star_card cs-product-stars">
+                            <div class="stars">
+                              <span class="fa fa-star-o no-edit"></span>
+                              <span class="fa fa-star-o no-edit"></span>
+                              <span class="fa fa-star-o no-edit"></span>
+                              <span class="fa fa-star-o no-edit"></span>
+                              <span class="fa fa-star-o no-edit"></span>
+                            </div>
+                          </div>
+
+                        </t>
+                      </div>
+
+
+
+                      <div itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer"
+                        class="of-product-offer">
+                        <t t-if="product.product_variant_ids and not product.only_physical_store">
+                          <t t-foreach="product.product_variant_ids" t-as="detail">
+                            <t t-if="attrib_set and attrib_set == set(detail.attribute_value_ids.ids)">
+                              <t t-call="cs_theme.category_product_item_price"/>
+                              <span itemprop="price" style="display:none;" t-esc="detail.price"/>
+                              <span itemprop="priceCurrency" style="display:none;" t-esc="user_id.partner_id.property_product_pricelist.currency_id.name"/>
+                            </t>
+                          </t>
+                        </t>
+                      </div>
+                      <div class="cs-summary">
+                        <t t-raw="product.website_summary"/>
+                        <t t-if="len(product.website_summary)>0">
+                          <br/>
+                          <a class="btn btn-int-link" t-att-href="keep('/shop/product/%s' % slug(product),page=None)">
+                            <span>Ver</span>&amp;nbsp;<t t-esc="product.website_short_name"/>
+                          </a>
+                        </t>
+                      </div>
+
+
+
+                    </div>
+                  </form>
+                </template>
+
+                <!-- Detalle de los productos en las subfamilias en lista.-->
+                <template id="products_item_list" name="Product item list">
+                  <form action="/shop/cart/update" method="post">
+                    <div t-if="product" class="of-product col-md-4" itemscope="itemscope" itemtype="http://schema.org/Product">
+                      <h5>
+                        <a t-att-href="keep('/shop/product/%s' % slug(product),page=None)" itemprop="name" t-field="product.name"/>
+                      </h5>
+
+
+                      <!-- Buscar las ofertas activas -->
+                      <t t-set="active_offers" t-value="product.get_active_offers()" />
+
+                      <!-- Añadir la marca del producto -->
+                      <div t-if="product.brand_id.transparent_image" class="product-image-brand">
+                        <img t-att-src="website.image_url(product.brand_id, 'transparent_image', None)" t-att-alt="product.brand_id.name"/>
+                      </div>
+
+                      <div class="cs-product-image">
+                        <a itemprop="url">
+                          <center>
+                            <a t-att-href="keep('/shop/product/%s' % slug(product),page=None)">
+                              <img itemprop="image" class="img img-responsive cs-product-image" t-att-src="website.image_url(product, 'image', '272x189')" t-att-alt="product.name">
+                                <t t-foreach="product.active_product_offer_ids" t-as="of">
+                                  <t t-if="of.image">
+                                    <div class="of-label" t-att-style="'top:35px; background-image: url('+of.label_url+');'"/>
+                                  </t>
+                                </t>
+
+                              </img>
+                            </a>
+                          </center>
+                        </a>
+                        <t t-if="product.ratingplus > 0">
+                          <div id="stars_no_edit" t-attf-data-rating="#{product.ratingplus if product.ratingplus else '0'}" class="stars-no-edit o_rating_star_card cs-product-stars">
+                            <div class="stars">
+                              <span class="fa fa-star-o no-edit"></span>
+                              <span class="fa fa-star-o no-edit"></span>
+                              <span class="fa fa-star-o no-edit"></span>
+                              <span class="fa fa-star-o no-edit"></span>
+                              <span class="fa fa-star-o no-edit"></span>
+                            </div>
+                          </div>
+
+                        </t>
+                      </div>
+                    </div>
+
+                    <div  class="of-product col-md-8">
+                      <div class="cs-summary mt16">
+                        <t t-raw="product.website_summary"/>
+                        <t t-if="len(product.website_summary)>0">
+                          <br/>
+                          <a class="btn btn-int-link" t-att-href="keep('/shop/product/%s' % slug(product),page=None)">
+                            <span>Ver</span>&amp;nbsp;<t t-esc="product.website_short_name"/>
+                          </a>
+
+                        </t>
+                      </div>
+
+
+                      <div itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer"
+                        class="of-product-offer mt32"  t-if="product.product_variant_ids and not product.only_physical_store">
+                        <t t-foreach="product.product_variant_ids" t-as="detail">
+                          <t t-if="attrib_set and attrib_set == set(detail.attribute_value_ids.ids)">
+                            <t t-call="cs_theme.category_product_item_price"/>
+                            <span itemprop="price" style="display:none;" t-esc="detail.price"/>
+                            <span itemprop="priceCurrency" style="display:none;" t-esc="user_id.partner_id.property_product_pricelist.currency_id.name"/>
+                          </t>
+                        </t>
+                      </div>
+
+                    </div>
+
+                  </form>
+                </template>
+
+
+                <!-- Subcategorias -->
+                <template id="subcategories" name="Subcategorias.">
+                  <t t-call="website.layout">
+
+                    <!-- GTM -->
+                    <t t-call="google_tag_manager.product_impressions"/>
+
+                    <!-- meta description -->
+                    <t t-set="website_meta_description" t-value="category.website_summary"/>
+
+                    <div id="wrap" class="js_sale">
+                      <section>
+                        <div class="container oe_website_sale">
+                          <div class="row">
+                            <div class="col-sm-6">
+                              <ol class="breadcrumb">
+                                <li>
+                                  <a t-att-href="'/'">Inicio</a>
+                                </li>
+
+                                <li t-if="brand" class="active">
+                                  <a t-att-href="'/shop/brands'">Marcas</a>
+                                </li>
+
+                                <li  t-if="brand" class="active">
+                                  <a t-att-href="keep(None,brand=brand)" t-esc="brand.name"/>
+                                </li>
+                                <li t-if="category.parent_id">
+                                  <a t-att-href="keep(None,category.parent_id,brand)" t-field="category.parent_id.name"/>
+                                </li>
+
+                                <li t-if="category" class="active">
+                                  <span t-field="category.name"/>
+                                </li>
+                              </ol>
+                            </div>
+                          </div>
+
+                          <div class='row'>
+                            <t t-call="cs_theme.list_categories"/>
+
+                            <div id="categories_grid" class="col-md-9">
+                              <div class="row">
+                                <h1 t-esc="content.name"/>
+                                <div class="col-md-4 cs-nopadding">
+                                  <img itemprop="image" class="img img-responsive cs-img-subcategory" t-att-src="website.image_url(content, 'image', None if product_image_big else '847x600')" t-att-alt="content.name"/>
+                                </div>
+                                <div itemprop="description" t-field="content.website_description" class="oe_structure oe_empty col-md-8 text-justified"/>
+
+                              </div>
+
+                              <div class="row mb16">
+                                <div id="cs_subcategories_attributes" class="col-md-12 cs-attributes">
+                                </div>
+                              </div>
+
+                              <!-- Filas -->
+                              <t t-if="not bins">
+                                <div class="row mb32" t-foreach="products" t-as="product">
+                                  <div t-attf-class="cs-product">
+                                    <div class="cs-product-cart" t-att-data-publish="product.website_published and 'on' or 'off'">
+                                      <t t-call="cs_theme.products_item_list"/>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </t>
+
+
+                              <!-- Cuadricula -->
+                              <t t-if="bins">
+                                <div class="row" t-foreach="bins" t-as="tr_product">
+                                  <t t-foreach="tr_product" t-as="td_product">
+                                    <t t-if="td_product">
+                                      <t t-set="product" t-value="td_product['product']"/>
+                                      <div t-attf-class="cs-product cs-grid col-md-4">
+
+                                        <div class="cs-product-cart" t-att-data-publish="product.website_published and 'on' or 'off'">
+                                          <t t-call="cs_theme.products_item"/>
+                                        </div>
+
+                                      </div>
+                                    </t>
+
+                                  </t>
+                                </div>
+                              </t>
+
+
+                              <div class="products_pager">
+                                <t t-call="website.pager"/>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                      <div class="mb32"/>
+                    </div>
+
+                  </t>
+                </template>
+
+                <!-- Mostrar la cabecera previa a los productos -->
+                <template id="subcategories_products_attributes" inherit_id="cs_theme.subcategories" name="Custom Subcategories Product Attribute's Filters">
+                  <xpath expr="//div[@id='cs_subcategories_attributes']" position="inside">
+                    <form class="js_attributes" method="get">
+                      <ul class="nav nav-pills cs-attributes">
+                        <t t-foreach="attributes" t-as="a">
+                          <t t-if="a.type != 'hidden'">
+                            <li t-if="a.value_ids and len(a.value_ids) > 1" class="cs-mr8 mb8">
+                              <div class="cs-attribute" t-field="a.name"/>
+                              <t t-if="a.type == 'select'">
+                                <select class="form-control js_variant_change" name="attrib">
+                                  <option value="" disabled="" selected="">Seleccione</option>
+                                  <t t-foreach="attributes_values[a.id]" t-as="v">
+                                    <option t-att-value="'%s-%s' % (a.id,v.id)" t-esc="v.name" t-att-selected="'selected' if v.id in attrib_set else ''"/>
+                                  </t>
+                                </select>
+                              </t>
+                            </li>
+                          </t>
+                        </t>
+
+                        <li class="cs-mr8 mb8 pull-right">
+                          <div class="cs-attribute">&amp;nbsp;</div>
+                          <i class="js_session fa fa-th cs-icon" aria-hidden="true"></i>
+                        </li>
+                        <li class="cs-mr8 mb8 pull-right">
+                          <div class="cs-attribute">&amp;nbsp;</div>
+                          <i class="js_session fa fa-th-list cs-icon" aria-hidden="true"></i>
+                        </li>
+
+                      </ul>
+
+
+                    </form>
+                  </xpath>
+
+                </template>
+
+                <!-- Brands-->
+                <!-- Página de marcas-->
+                <template id="brands" name="Brands of products" groups="base.group_public" >
+                  <t t-call="website.layout">
+
+                    <t t-set="title">Con la garantía de las primeras marcas en descanso.</t>
+                    <t t-set="website_meta_description">
+                      bed's pone a tu alcance las mejores marcas relacionadas con tu descanso. Los fabricantes líderes en colchones, almohadas, todo tipo de textil para el hogar y a los mejores precios.
+                    </t>
+
+
+
+                    <div id="wrap" class="js_sale">
+                      <section>
+                        <div class="container oe_website_sale">
+                          <div class="row">
+                            <div class="col-sm-6">
+                              <ol class="breadcrumb">
+                                <li>
+                                  <a t-att-href="'/'">Inicio</a>
+                                </li>
+                                <li class="active">
+                                  <span>Marcas</span>
+                                </li>
+                              </ol>
+                            </div>
+                          </div>
+
+                          <div class='row'>
+
+                            <t t-call="cs_theme.list_categories"/>
+
+                            <div id="brands_grid" class="col-md-9">
+                              <h1 id="brand_product_h1">Marcas disponibles</h1>
+
+                              <t t-foreach="brands" t-as="brand">
+                                <div class="row mt16">
+                                  <div class="col-md-4">
+                                    <a t-att-href="keep(None,brand=brand)">
+                                      <img itemprop="image" class="img img-responsive cs-nopadding"
+                                        t-att-src="website.image_url(brand, 'image')" t-att-alt="brand.name"/>
+                                      </a>
+                                    </div>
+                                    <div class="col-md-8 mb16">
+                                      <a t-att-href="keep(None,brand=brand)">
+                                        <h3 t-field="brand.name"/>
+                                      </a>
+                                      <div class="cs-summary">
+                                        <span t-field="brand.website_short_description"/>
+                                        <br/>
+                                        <a class="btn btn-int-link" t-att-href="keep(None,c,brand)">
+                                          <span>Ver</span>&amp;nbsp;<t t-esc="brand.name"/>
+                                        </a>
+                                      </div>
+
+                                    </div>
+                                  </div>
+                                  <hr/>
+
+                                </t>
+
+                              </div>
+                            </div>
+                          </div>
+                        </section>
+                        <div class="mb32"/>
+                      </div>
+
+                    </t>
+                  </template>
+
+
+                  <!-- Detail brand-->
+                  <!-- Detalle de las marca -->
+                  <template id="detail_brand" name="Brands" groups="base.group_public">
+                    <t t-call="website.layout">
+
+                      <div id="wrap" class="js_sale">
+                        <div class="container oe_website_sale">
+                          <div class="row">
+                            <div class="col-sm-6">
+                              <ol class="breadcrumb">
+                                <li>
+                                  <a t-att-href="'/'">Inicio</a>
+                                </li>
+                                <li class="active">
+                                  <a t-att-href="'/shop/brands'">Marcas</a>
+                                </li>
+                                <li t-if="brand" class="active">
+                                  <span t-field="brand.name"/>
+                                </li>
+                              </ol>
+                            </div>
+                          </div>
+
+                          <div class='row'>
+                            <t t-call="cs_theme.list_categories"/>
+                            <div id="brand_grid" class="col-md-9">
+                              <div class="row">
+                                <h1 t-esc="brand.name"/>
+                                <div class="col-md-4 cs-nopadding">
+                                  <img itemprop="image" class="img img-responsive" t-att-src="website.image_url(brand, 'image')" t-att-alt="brand.name"/>
+                                </div>
+                                <div itemprop="description" t-field="brand.website_description" class="oe_structure oe_empty col-md-8 text-justified"/>
+                              </div>
+
+                              <div class="row">
+                                <div class="clearfix"/>
+                                <t t-set="i" t-value="1"/>
+                                <t t-foreach="detail_content" t-as="c">
+                                  <div class="col-md-4 text-center">
+                                    <a t-att-href="keep(None, c,brand)">
+                                      <h3 t-esc="c.name"/>
+                                    </a>
+                                    <a t-att-href="keep(None, c,brand)">
+                                      <img itemprop="image" class="img img-responsive"
+                                        t-att-src="brand.image_url(c, 'image')" t-att-alt="c.name"/>
+                                      </a>
+
+                                      <div class="cs-summary">
+                                        <t t-raw="c.website_summary"/>
+                                        <t t-if="len(c.website_summary)>0">
+                                          <br/>
+                                          <a class="btn btn-int-link" t-att-href="keep(None,c,brand)">
+                                            <span>Ver</span>&amp;nbsp;<t t-esc="brand.name"/>
+                                          </a>
+                                        </t>
+                                      </div>
+                                    </div>
+
+                                    <t t-if="(i%3)==0">
+                                      <![CDATA[
+                                    </div>
+                                    <div class="row mt8">
+                                      <div class="clearfix"/>
+                                      ]]>
+                                    </t>
+
+                                    <t t-set="i" t-value="i+1"/>
+                                  </t>
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </t>
+                    </template>
+
+
+
+                    <!-- Resultados de la búsqueda -->
+                    <template id="search" name="search.">
+                      <t t-call="website.layout">
+
+                        <div id="wrap" class="js_sale">
+                          <section>
+                            <div class="container oe_website_sale">
+                              <div class="row">
+                                <div class="col-sm-6">
+                                  <ol class="breadcrumb">
+                                    <li>
+                                      <a t-att-href="'/'">Inicio</a>
+                                    </li>
+                                    <li class="active">
+                                      <span>Resultado</span>
+                                    </li>
+                                  </ol>
+                                </div>
+                              </div>
+
+                              <div class='row'>
+                                <t t-call="cs_theme.list_categories"/>
+
+                                <div id="categories_grid" class="col-md-9">
+                                  <div class="row" t-foreach="bins" t-as="tr_product">
+                                    <t t-foreach="tr_product" t-as="td_product">
+                                      <t t-if="td_product">
+                                        <t t-set="product" t-value="td_product['product']"/>
+                                        <div t-attf-class="cs-product cs-grid col-md-4">
+
+                                          <div class="cs-product-cart" t-att-data-publish="product.website_published and 'on' or 'off'">
+
+                                            <t t-set="product_image_big" t-value="td_product['x']+td_product['y'] > 2"/>
+                                            <t t-call="cs_theme.products_item"/>
+                                          </div>
+
+                                        </div>
+                                      </t>
+
+                                    </t>
+                                  </div>
+
+                                  <div class="products_pager">
+                                    <t t-call="website.pager"/>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </section>
+                          <div class="mb32"/>
+                        </div>
+
+                      </t>
+                    </template>
+
+
+
+
+
+
+                    <!-- Product template -->
+                    <template id="product" inherit_id="website_sale.product" name="Custom product">
+
+                      <!-- Botón para controlar el zip_code -->
+                      <xpath expr="//a[@id='add_to_cart']" position="after">
+                        <a id="setting_zip_code" class="hidden btn btn-primary btn-lg mt8" href="#">
+                          <span>Comprar</span></a>
+                        </xpath>
+
+                        <!-- Añadir meta description -->
+                        <xpath expr="//t[@t-set='additional_title']" position="after">
+                          <t t-if="product.website_summary" t-set="website_meta_description" t-value="product.website_summary"/>
+                        </xpath>
+
+                        <!-- GTM -->
+                        <xpath expr="//section[@id='product_detail']" position="inside">
+                          <t t-call="google_tag_manager.product_detail"/>
+                        </xpath>
+
+                        <!-- breadcrumb. -->
+                        <xpath expr="//ol[@class='breadcrumb']" position="replace">
+
+                          <!-- Obtener la oferta activa -->
+                          <t t-set="active_offers" t-value="product.get_active_offers()" />
+
+                          <ol class="breadcrumb">
+                            <li>
+                              <a t-att-href="'/'">Inicio</a>
+                            </li>
+
+                            <t t-if="len(product.public_categ_ids)>0">
+                              <li t-if="product.public_categ_ids[0].parent_id">
+                                <t t-set="c" t-value="product.public_categ_ids[0].parent_id"/>
+                                <a t-att-href="keep('/shop/category/%s' % slug(c))" t-field="c.name"/>
+                              </li>
+                              <li>
+                                <t t-set="c" t-value="product.public_categ_ids[0]"/>
+                                <a t-att-href="keep('/shop/category/%s' % slug(c))" t-field="c.name"/>
+                              </li>
+
+                            </t>
+                            <li class="active">
+                              <span t-field="product.name"/>
+                            </li>
+                          </ol>
+                        </xpath>
+
+
+
+
+                        <!-- Delete standard product. -->
+                        <xpath expr="//h1" position="replace">
+                        </xpath>
+
+
+                        <!-- Cambiar el tamaño del div para "breadcrumb" -->
+                        <xpath expr="//section[@id='product_detail']/div/div" position="attributes">
+                          <attribute name="class">col-sm-4 col-md-8</attribute>
+                        </xpath>
+
+
+                        <!-- Añadir el nombre del producto. -->
+                        <xpath expr="//section[@id='product_detail']/div[1]" position="after">
+                          <div class="row">
+                            <div class="col-sm-7 col-md-7 col-lg-7">
+                              <h1 itemprop="name" t-field="product.name">Product Name</h1>
+                            </div>
+
+                            <!-- Add brand microdata -->
+                            <meta itemprop="brand" t-att-content="product.brand_id and product.brand_id.name" />
+
+                            <div class="sharethis-inline-share-buttons col-sm-5 col-md-5 col-lg-4 col-lg-offset-1 mb16"/>
+
+                          </div>
+                        </xpath>
+
+                        <!-- Imagen. -->
+                        <xpath expr="//section[@id='product_detail']/div[3]/div[1]" position="replace">
+                          <div class="col-sm-7 col-md-7 col-lg-7">
+                            <div class="container">
+                              <div id="slider">
+                                <!-- Añadir la marca del producto -->
+                                <div t-if="product.brand_id.transparent_image" class="product-image-brand">
+                                  <img t-att-src="website.image_url(product.brand_id, 'transparent_image', None)" t-att-alt="product.brand_id.name"/>
+                                </div>
+
+                                <div class="carousel slide cs-auto-zoom" id="product-carousel">
+                                  <div class="carousel-inner">
+                                    <t t-foreach="product.image_url" t-as="slide">
+                                      <t t-set="i" t-value="slide['slide']"/>
+                                      <t t-set="img" t-value="slide['url'] + '/800x600'"/>
+                                      <div t-if="i==0" class="active item" data-slide-number="0">
+                                        <img itemprop="image" class="img img-responsive cs-img-zoom" t-att-src="img" t-att-alt="product.name">
+                                          <t t-foreach="product.active_product_offer_ids" t-as="of">
+                                            <t t-if="of.image">
+                                              <div class="of-label" t-att-style="'top:0px;left:10px;background-image: url('+of.label_url+');'"/>
+                                            </t>
+                                          </t>
+                                        </img>
+                                      </div>
+                                      <div t-if="i>=1" class="item" t-att-data-slide-number="i">
+                                        <img itemprop="image" class="img img-responsive cs-img-zoom" t-att-src="img" t-att-alt="product.name">
+                                          <t t-foreach="product.active_product_offer_ids" t-as="of">
+                                            <t t-if="of.image">
+                                              <div class="of-label" t-att-style="'top:0px;left:10px;background-image: url('+of.label_url+');'"/>
+                                            </t>
+                                          </t>
+                                        </img>
+                                      </div>
+                                    </t>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="container row hidden-xs" id="slider-thumbs">
+                              <ul class="hide-bullets">
+                                <t t-foreach="product.image_url" t-as="slide">
+                                  <t t-set="i" t-value="slide['slide']"/>
+                                  <t t-set="img" t-value="slide['url'] + '/800x600'"/>
+                                  <li class="col-sm-2">
+                                    <a class="thumbnail" t-att-id="'carousel-selector-%s' % (i)" t-att-attribute-value="'value' in slide and slide['value'] or ''" >
+                                      <img t-att-src="img" t-att-alt="product.name"/>
+                                    </a>
+                                  </li>
+                                </t>
+                              </ul>
+                            </div>
+
+                          </div>
+                        </xpath>
+
+                        <xpath expr="//*[@id='product_detail']/div[3]/div[2]/p" position="replace">
+                          <span/>
+                        </xpath>
+
+                        <xpath expr="//*[@id='product_detail']/div[3]/div[2]/hr" position="replace">
+                          <span/>
+                        </xpath>
+
+                        <xpath expr="//*[@id='product_detail']/div[3]/div[2]/hr" position="replace">
+                          <span/>
+                        </xpath>
+
+
+                        <xpath expr="//section[@id='product_detail']" position="after">
+                          <section id="product_packs"/>
+                          <section id="product_cross_selling"/>
+                        </xpath>
+
+                      </template>
+
+
+
+                      <!-- Se utiliza en la ficha de producto -->
+                      <template id="product_price" inherit_id="website_sale.product_price">
+                        <xpath expr="//div[@itemprop='offers']" position="replace">
+
+
+                          <div itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer" class="product_price mt16">
+                            <h4 class="oe_price_h4 pr-product-price css_editable_mode_hidden">
+                              <b class="oe_price" style="white-space: nowrap;"
+                                t-field="product.price"
+                                t-field-options='{"widget": "monetary",
+                                "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                                }'/>
+                                <span itemprop="price" style="display:none;" t-esc="product.getLowPrice()"/>
+                                <span itemprop="priceCurrency" style="display:none;" t-esc="user_id.partner_id.property_product_pricelist.currency_id.name"/>
+
+                              </h4>
+
+                              <div class="pr-block-discount text-muted">
+
+
+                                <span class="sel-product-discount pr-product-discount"></span>
+
+                                <span class="pr-lst-price">(<span>Antes</span>
+                                <span class="oe_default_price css_editable_mode_hidden" t-field="product.lst_price"
+                                  t-field-options='{
+                                  "widget": "monetary",
+                                  "from_currency": "product.company_id.currency_id",
+                                  "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                                  }'/>
+                                  )
+                                </span>
+                              </div>
+                            </div>
+
+
+                          </xpath>
+
+                        </template>
+
+
+
+                        <!-- Unidades y Descuento. -->
+                        <template id="product_quantity" inherit_id="website_sale.product_quantity" name="Custom Select Quantity">
+                          <xpath expr="//div[@class='css_quantity input-group oe_website_spinner']" position="replace">
+                            <div class="css_quantity input-group oe_website_spinner">
+                              <span class="input-group-addon">
+                                <a t-attf-href="#" class="mb8 js_add_cart_json">
+                                  <i class="fa fa-minus"></i>
+                                </a>
+                              </span>
+                              <input type="text" class="js_quantity form-control" data-min="1" name="add_qty" value="1"/>
+                              <span class="input-group-addon">
+                                <a t-attf-href="#" class="mb8 float_left js_add_cart_json">
+                                  <i class="fa fa-plus"></i>
+                                </a>
+                              </span>
+
+                            </div>
+
+                          </xpath>
+                        </template>
+
+
+                        <template id="shop_messages" inherit_id="website_sale.product" name="Shop messages">
+                          <xpath expr="//a[@id='add_to_cart']" position="before">
+                            <div class="pr-messages mt16">
+                              <p>Precio IVA incluido. <a href="/page/condiciones-de-compra">Condiciones de compra.</a></p>
+                              <p>
+                                <span class="pr-envio-estandar">Envío estándar: </span><span t-esc="product.brand_id.delivery_message"/></p>
+
+
+                                <!-- De momento no se muestra, a la expera de como se gestiona este envío -->
+                                <!--
+                                <p>
+                                <span class="pr-envio-express">Envío express: </span>24/48 h. en península.</p>
+                              -->
+
+
+                            </div>
+
+                          </xpath>
+                        </template>
+
+
+
+                        <!-- Carrito de la compra -->
+                        <template id="checkout" inherit_id="website_sale.checkout" name="Custom checkout">
+
+
+                          <!-- GTM -->
+                          <xpath expr="//div[@id='wrap']" position="inside">
+                            <t t-set="ec_products" t-value="[]"/>
+                            <t t-call="google_tag_manager.checkout"/>
+                          </xpath>
+
+
+                          <!-- Totalel del producto-->
+                          <xpath expr="//div[@class='col-lg-offset-1 col-lg-3 col-md-3 text-muted']" position= "replace">
+                            <div class="col-lg-offset-1 col-lg-3 col-md-3 text-muted">
+                            </div>
+
+                          </xpath>
+
+
+                          <xpath expr="//h1" position= "replace">
+                            <h1>Datos de facturación</h1>
+                          </xpath>
+
+
+                          <xpath expr="//h3" position= "replace">
+                            <h3 class="page-header mt16">Introduce los datos para realizar la factura
+                              <small groups="base.group_public"> or
+                                <a class='btn btn-primary' t-if="not partner" t-attf-href="/web?redirect=#{ request.httprequest.url }">Sign in</a>
+                              </small>
+                            </h3>
+                          </xpath>
+
+
+                          <xpath expr="//form[@action='/shop/confirm_order']/div/div[1]/div[@class='row']" position= "replace">
+                            <div class="row">
+                              <div t-attf-class="form-group #{error.get('name1') and 'has-error' or ''} col-lg-6">
+                                <label class="control-label" for="name1">Nombre</label>
+                                <input type="text" name="name1" maxlength="30" class="form-control" t-att-value="checkout.get('name1')"/>
+                              </div>
+                              <div t-attf-class="form-group #{error.get('name2') and 'has-error' or ''} col-lg-6">
+                                <label class="control-label" for="name2">Apellidos</label>
+                                <input type="text" name="name2" maxlength="30" class="form-control" t-att-value="checkout.get('name2')"/>
+                              </div>
+                              <div class="clearfix"/>
+
+                              <div t-if="has_check_vat" t-attf-class="form-group #{error.get('vat') and 'has-error' or ''} col-lg-6">
+                                <label class="control-label" for="vat">VAT Number</label>
+                                <input type="text" name="vat" class="form-control" t-att-value="checkout.get('vat')"/>
+                              </div>
+                              <div class="clearfix"/>
+
+                              <div t-attf-class="form-group #{error.get('email') and 'has-error' or ''} col-lg-6">
+                                <label class="control-label" for="contact_name">Email</label>
+                                <input type="email" name="email" maxlength="30" class="form-control" t-att-value="checkout.get('email')"/>
+                              </div>
+                              <div t-attf-class="form-group #{error.get('phone') and 'has-error' or ''} col-lg-6">
+                                <label class="control-label" for="phone">Phone</label>
+                                <input type="tel" name="phone" maxlength="15" class="form-control" t-att-value="checkout.get('phone')"/>
+                              </div>
+                              <div class="clearfix"/>
+
+                              <div class="col-lg-6">
+                                <div class="row">
+
+                                  <div t-attf-class="form-group #{error.get('street_type') and 'has-error' or ''} col-lg-4">
+                                    <label class="control-label" for="street_type">Tipo</label>
+                                    <select name="street_type" class="form-control">
+                                      <option value="">Vía</option>
+                                      <t t-foreach="street_types or []" t-as="type">
+                                        <option t-att-value="type.id" t-att-selected="checkout.get('street_type_id') == type.id">
+                                          <t t-esc="type.name"/>
+                                        </option>
+                                      </t>
+                                    </select>
+                                  </div>
+                                  <div t-attf-class="form-group #{error.get('street_name') and 'has-error' or ''}col-lg-8">
+                                    <label class="control-label" for="street_name">Street</label>
+                                    <input type="text" name="street_name" maxlength="80" class="form-control" t-att-value="checkout.get('street_name')"/>
+                                  </div>
+
+                                </div>
+                              </div>
+                              <div class="col-lg-6">
+                                <div class="row">
+                                  <div t-attf-class="form-group #{error.get('street_number') and 'has-error' or ''} col-lg-3">
+                                    <label class="control-label" for="street_number">Nº</label>
+                                    <input type="text" name="street_number" maxlength="3" class="form-control" t-att-value="checkout.get('street_number')"/>
+                                  </div>
+                                  <div t-attf-class="form-group #{error.get('street_esc') and 'has-error' or ''} col-lg-3">
+                                    <label class="control-label" for="street_esc">Escalera</label>
+                                    <input type="text" name="street_esc" maxlength="2" class="form-control" t-att-value="checkout.get('street_esc')"/>
+                                  </div>
+                                  <div t-attf-class="form-group #{error.get('street_piso') and 'has-error' or ''} col-lg-3">
+                                    <label class="control-label" for="street_piso">Piso</label>
+                                    <input type="text" name="street_piso" maxlength="2" class="form-control" t-att-value="checkout.get('street_piso')"/>
+                                  </div>
+                                  <div t-attf-class="form-group #{error.get('street_puerta') and 'has-error' or ''} col-lg-3">
+                                    <label class="control-label" for="street_puerta">Puerta</label>
+                                    <input type="text" name="street_puerta" maxlength="2" class="form-control" t-att-value="checkout.get('street_puerta')"/>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="clearfix"/>
+
+                              <div t-attf-class="form-group #{error.get('city') and 'has-error' or ''} col-lg-6">
+                                <label class="control-label" for="city">City</label>
+                                <input type="text" name="city" maxlength="40" class="form-control" t-att-value="checkout.get('city')"/>
+                              </div>
+
+                              <div t-attf-class="form-group #{error.get('zip') and 'has-error' or ''} col-lg-6">
+                                <label class="control-label" for="zip" >Zip / Postal Code</label>
+                                <input type="text" name="zip" maxlength="10" class="form-control" t-att-value="checkout.get('zip')"/>
+                              </div>
+                              <div t-attf-class="form-group #{error.get('country_id') and 'has-error' or ''} col-lg-6">
+                                <label class="control-label" for="country_id">Country</label>
+                                <select name="country_id" class="form-control">
+                                  <option value="">Country...</option>
+                                  <t t-foreach="countries or []" t-as="country">
+                                    <option t-att-value="country.id" t-att-selected="country.id == checkout.get('country_id')">
+                                      <t t-esc="country.name"/>
+                                    </option>
+                                  </t>
+                                </select>
+                              </div>
+                              <div t-attf-class="form-group #{error.get('state_id') and 'has-error' or ''} col-lg-6">
+                                <label class="control-label" for="state_id">Provincia</label>
+                                <select name="state_id" class="form-control">
+                                  <option value="">select...</option>
+                                  <t t-foreach="states or []" t-as="state">
+                                    <option t-att-value="state.id" style="display:none;" t-att-data-country_id="state.country_id.id" t-att-selected="state.id == checkout.get('state_id')">
+                                      <t t-esc="state.name"/>
+                                    </option>
+                                  </t>
+                                </select>
+                              </div>
+
+                              <div class="clearfix"/>
+
+                              <div class="form-group col-lg-12">
+                                <h3 class="oe_shipping col-lg-12 mt16">Shipping Information</h3>
+                                <select name="shipping_id" class="form-control">
+                                  <option value="0">Ship to the same address</option>
+                                  <t t-foreach="shippings" t-as="shipping">
+                                    <option t-att-value="shipping.id" t-att-selected="shipping.id == shipping_id"
+                                      t-att-data-shipping_street_type="shipping.street_type"
+                                      t-att-data-shipping_street_name="shipping.street_name"
+                                      t-att-data-shipping_street_number="shipping.street_number"
+                                      t-att-data-shipping_street_esc="shipping.street_esc"
+                                      t-att-data-shipping_street_piso="shipping.street_piso"
+                                      t-att-data-shipping_street_puerta="shipping.street_puerta"
+                                      t-att-data-shipping_city="shipping.city"
+                                      t-att-data-shipping_zip="shipping.zip"
+                                      t-att-data-shipping_state_id="shipping.state_id and shipping.state_id.id"
+                                      t-att-data-shipping_country_id="shipping.country_id and shipping.country_id.id"
+                                      >
+                                      <t t-esc="', '.join('\n'.join(shipping.name_get()[0][1].split(',')).split('\n')[1:])"/>
+                                    </option>
+                                  </t>
+                                  <option value="-1" t-att-selected="error and len(error) > 0 and shipping_id == -1">-- Create a new address --</option>
+                                </select>
+                              </div>
+
+                            </div>
+                          </xpath>
+
+
+                          <xpath expr="//form[@action='/shop/confirm_order']/div/div[1]/div[2]" position= "replace">
+                            <div class="js_shipping row mb16" t-att-style="not shipping_id and 'display:none' or ''">
+
+                              <div class="col-lg-6">
+                                <div class="row">
+                                  <div t-attf-class="form-group #{error.get('shipping_street_type') and 'has-error' or ''} col-lg-4">
+                                    <label class="control-label" for="shipping_street_type">Tipo</label>
+                                    <select name="shipping_street_type" class="form-control" t-att-disabled="  'disabled' if shipping_id &gt;= 0 else ''">
+                                      <option value="">Vía</option>
+                                      <t t-foreach="street_types or []" t-as="type">
+                                        <option t-att-value="type.id" t-att-selected="type.id == checkout.get('shipping_street_type_id')">
+                                          <t t-esc="type.name"/>
+                                        </option>
+                                      </t>
+                                    </select>
+
+                                  </div>
+                                  <div t-attf-class="form-group #{error.get('shipping_street_name') and 'has-error' or ''}col-lg-8">
+                                    <label class="control-label" for="shipping_street_name">Street</label>
+                                    <input type="text" name="shipping_street_name" maxlength="80" class="form-control" t-att-value="checkout.get('shipping_street_name')" t-att-readonly=" 'readonly' if shipping_id &gt;= 0 else ''"/>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-lg-6">
+                                <div class="row">
+                                  <div t-attf-class="form-group #{error.get('shipping_street_number') and 'has-error' or ''} col-lg-3">
+                                    <label class="control-label" for="shipping_street_number">Nº</label>
+                                    <input type="text" name="shipping_street_number" maxlength="3" class="form-control" t-att-value="checkout.get('shipping_street_number')" t-att-readonly=" 'readonly' if shipping_id &gt;= 0 else ''"/>
+                                  </div>
+                                  <div t-attf-class="form-group #{error.get('shipping_street_esc') and 'has-error' or ''} col-lg-3">
+                                    <label class="control-label" for="shipping_street_esc">Escalera</label>
+                                    <input type="text" name="shipping_street_esc" maxlength="2" class="form-control" t-att-value="checkout.get('shipping_street_esc')" t-att-readonly=" 'readonly' if shipping_id &gt;= 0 else ''"/>
+                                  </div>
+                                  <div t-attf-class="form-group #{error.get('shipping_street_piso') and 'has-error' or ''} col-lg-3">
+                                    <label class="control-label" for="shipping_street_piso">Piso</label>
+                                    <input type="text" name="shipping_street_piso" maxlength="2" class="form-control" t-att-value="checkout.get('shipping_street_piso')" t-att-readonly=" 'readonly' if shipping_id &gt;= 0 else ''"/>
+                                  </div>
+                                  <div t-attf-class="form-group #{error.get('shipping_street_puerta') and 'has-error' or ''} col-lg-3">
+                                    <label class="control-label" for="shipping_street_puerta">Puerta</label>
+                                    <input type="text" name="shipping_street_puerta" maxlength="2" class="form-control" t-att-value="checkout.get('shipping_street_puerta')" t-att-readonly=" 'readonly' if shipping_id &gt;= 0 else ''"/>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="clearfix"/>
+
+                              <div t-attf-class="form-group #{error.get('shipping_city') and 'has-error' or ''} col-lg-6">
+                                <label class="control-label" for="shipping_city">City</label>
+                                <input type="text" name="shipping_city" maxlength="40" class="form-control" t-att-value="checkout.get('shipping_city')" t-att-readonly=" 'readonly' if shipping_id &gt;= 0 else ''"/>
+                              </div>
+
+                              <div t-attf-class="form-group #{error.get('shipping_zip') and 'has-error' or ''} col-lg-6">
+                                <label class="control-label" for="shipping_zip" >Zip / Postal Code</label>
+                                <input type="text" name="shipping_zip" maxlength="10" class="form-control" t-att-value="checkout.get('shipping_zip')" t-att-readonly=" 'readonly' if shipping_id &gt;= 0 else ''"/>
+                              </div>
+                              <div t-attf-class="form-group #{error.get('shipping_country_id') and 'has-error' or ''} col-lg-6">
+                                <label class="control-label" for="shipping_country_id">Country</label>
+                                <select name="shipping_country_id" class="form-control" t-att-disabled="  'disabled' if shipping_id &gt;= 0 else ''">
+                                  <option value="">Country...</option>
+                                  <t t-foreach="countries or []" t-as="country">
+                                    <option t-att-value="country.id" t-att-selected="country.id == checkout.get('shipping_country_id')">
+                                      <t t-esc="country.name"/>
+                                    </option>
+                                  </t>
+                                </select>
+                              </div>
+                              <div t-attf-class="form-group #{error.get('shipping_state_id') and 'has-error' or ''} col-lg-6">
+                                <label class="control-label" for="shipping_state_id">Provincia</label>
+                                <select name="shipping_state_id" class="form-control" t-att-disabled="  'disabled' if shipping_id &gt;= 0 else ''">
+                                  <option value="">select...</option>
+                                  <t t-foreach="states or []" t-as="state">
+                                    <option t-att-value="state.id" style="display:none;" t-att-data-country_id="state.country_id.id" t-att-selected="state.id == checkout.get('shipping_state_id')">
+                                      <t t-esc="state.name"/>
+                                    </option>
+                                  </t>
+                                </select>
+                              </div>
+                              <div class="clearfix"/>
+                            </div>
+
+                          </xpath>
+
+                          <xpath expr="//form[@action='/shop/confirm_order']/div/div[1]/div[2]" position= "after">
+                            <div class="row">
+                              <div class="form-group col-lg-12">
+                                <label class="control-label" for="note">¿Algún comentario sobre la entrega?</label>
+                                <textarea name="note" rows="5" class="form-control" maxlength="160" t-att-value="checkout.get('note')"/>
+                                <h6>Completando el formulario usted consiente que el responsable trate sus datos personales para gestionar sus pedidos y es informado de que puede comunicarse comercialmente con usted por medios electrónicos. Puede acceder a más información, conocer sus derechos y ver el listado de empresas del Grupo en nuestra <a href="/page/privacidad">Política de privacidad</a>.</h6>
+                              </div>
+                            </div>
+                          </xpath>
+
+
+
+                        </template>
+
+
+                        <!-- Mostrar totales del carrito -->
+                        <template id="total" inherit_id="website_sale.total" name="Custom total">
+                          <!-- Quitar los impuestos del carrito.-->
+                          <xpath expr="//tr[@id='order_total_taxes']" position= "attributes">
+                            <attribute name="class">hidden</attribute>
+                          </xpath>
+
+                          <!-- Quitar los impuestos del carrito.-->
+                          <xpath expr="//span[@t-field='website_sale_order.amount_total']" position= "replace">
+                            <span class="cs-cart-total" t-field="website_sale_order.amount_total" t-field-options='{
+                              "widget": "monetary",
+                              "from_currency": "website_sale_order.pricelist_id.currency_id",
+                              "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                              }'/>
+                            </xpath>
+                          </template>
+
+                          <!-- Mostrar sólo el precio de un producto en las líneas de pedidos. -->
+                          <template id="cart" inherit_id="website_sale.cart"  name="Custom Shopping Cart">
+                            <xpath expr="//td[@name='price']" position= "replace">
+                              <td class="text-center" name="price">
+                                <span class= "cs-cart" t-field="line.discounted_price" style="white-space: nowrap;" t-field-options='{
+                                  "widget": "monetary",
+                                  "from_currency": "website_sale_order.pricelist_id.currency_id",
+                                  "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                                  }'/>
+
+                                </td>
+                              </xpath>
+
+                              <!-- En las líneas de promoción no se muestra el espinner
+                              Si es un pack, también se muestra para poder borrar la línea.
+                            -->
+                            <xpath expr="//td[last()]/div" position= "replace">
+                              <div class="input-group oe_website_spinner">
+                                <span class="input-group-addon">
+                                  <a t-if="not line.offer_id or line.pack_id" t-attf-href="#" class="mb8 js_add_cart_json" data-no-instant="">
+                                    <i class="fa fa-minus"></i>
+                                  </a>
+                                  <t t-if="line.offer_id and not line.pack_id" class="mb8">
+                                    <i class="fa fa-minus" style="opacity: 0;"></i>
+                                  </t>
+                                </span>
+                                <input type="text" class="js_quantity form-control" t-att-readonly="int(line.offer_id)"
+                                  t-att-data-line-id="line.id"
+                                  t-att-data-product-id="line.product_id.id"
+                                  t-att-value="int(line.product_uom_qty)"/>
+                                  <span class="input-group-addon">
+                                    <a t-if="not line.offer_id" t-attf-href="#" class="mb8 float_left js_add_cart_json" data-no-instant="">
+                                      <i class="fa fa-plus"></i>
+                                    </a>
+                                    <t t-if="line.offer_id" class="mb8 float_left">
+                                      <i class="fa fa-plus" style="opacity: 0;"></i>
+                                    </t>
+                                  </span>
+                                </div>
+
+                              </xpath>
+
+                              <!-- Cuando está la línea de retirada de productos usados, no hay que mostrar el spinner -->
+                              <!--
+                              <xpath expr="//td[last()]/div" position= "replace">
+                              <div class="input-group oe_website_spinner">
+                              <span class="input-group-addon">
+                              <a t-attf-href="#" class="mb8 js_add_cart_json" data-no-instant="">
+                              <i class="fa fa-minus"></i>
+                            </a>
+                          </span>
+                          <input type="text" class="js_quantity form-control" t-att-readonly="int(line.is_remove_old_products_line)"
+                          t-att-data-line-id="line.id"
+                          t-att-data-product-id="line.product_id.id"
+                          t-att-value="int(line.product_uom_qty)"/>
+                          <span class="input-group-addon">
+                          <a t-if="not line.is_remove_old_products_line" t-attf-href="#" class="mb8 float_left js_add_cart_json" data-no-instant="">
+                          <i class="fa fa-plus"></i>
+                        </a>
+                        <t t-if="line.is_remove_old_products_line" t-attf-href="#" class="mb8 float_left">
+                        <i class="fa fa-plus" style="opacity: 0;"></i>
+                      </t>
+                    </span>
+                  </div>
+
+                </xpath>
+              -->
+
+
+
+              <!-- Politicas de venta, mensaje en el carrito de la compra. -->
+
+              <xpath expr="//div[@id='right_column']/*" position= "replace">
+              </xpath>
+
+              <!-- GTM -->
+              <xpath expr="//div[@id='wrap']" position="inside">
+                <t t-set="ec_products" t-value="[]"/>
+                <t t-call="google_tag_manager.cart"/>
+              </xpath>
+
+
+
+            </template>
+
+
+
+
+            <!-- Añadir el tema del pago parcial. -->
+            <template id="payment" inherit_id="website_sale.payment" name="Custom payment">
+
+              <!-- GTM -->
+              <xpath expr="//div[@id='wrap']" position="inside">
+                <t t-set="ec_products" t-value="[]"/>
+                <t t-call="google_tag_manager.payment"/>
+              </xpath>
+
+              <xpath expr="//div[@id='right_column']" position="attributes">
+                <attribute name="class">col-lg-4 col-sm-4</attribute>
+              </xpath>
+
+
+              <xpath expr="//div[@id='payment_method']" position= "replace">
+                <div class="js_payment mb64 row" t-if="acquirers and website_sale_order.amount_total" id="payment_method">
+                  <div class="col-lg-5 col-sm-6">
+                    <h4>Payment Method:</h4>
+                    <ul class="list-unstyled">
+                      <li t-foreach="acquirers or []" t-as="acquirer">
+                        <label t-if="acquirer.button">
+                          <input t-att-value="acquirer.id" type="radio" name="acquirer" t-att-checked="acquirers[0] == acquirer"/>
+                          <img class="media-object" style="width: 60px; display: inline-block;"
+                            t-att-title="acquirer.name"
+                            t-att-alt="acquirer.name"
+                            t-att-src="'/payment_%s/static/src/img/%s_icon.png' % (acquirer.provider, acquirer.provider)"/>
+                            <span t-field="acquirer.name"/>
+
+                          </label>
+                          <t t-if="acquirer.provider.upper() == 'CONEXFLOW' and website_sale_order.allow_partial_payment">
+                            <label class="checkbox-inline" style="margin-left:100px; margin-top:-20px;">
+                              <input type="checkbox" name="check_partial_pay" value="" style="margin-right:25px;"/>
+                              ¿Deseas pagar el 40% ahora y el resto al recibir tu pedido?
+                            </label>
+                          </t>
+
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col-lg-3 col-sm-3">
+                      <t t-foreach="acquirers or []" t-as="acquirer">
+                        <div t-att-data-id="acquirer.id" class="oe_sale_acquirer_button hidden pull-right">
+                          <div t-raw="acquirer.button"/>
+                          <div t-field="acquirer.pre_msg"/>
+                        </div>
+                      </t>
+                    </div>
+                  </div>
+                </xpath>
+
+
+                <!-- Mostrar el precio con el descuento en cada linea de producto -->
+                <xpath expr="//span[@t-field='line.price_unit']" position= "replace">
+                  <span class= "cs-cart" t-field="line.discounted_price" style="white-space: nowrap;" t-field-options='{
+                    "widget": "monetary",
+                    "from_currency": "website_sale_order.pricelist_id.currency_id",
+                    "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                    }'/>
+                  </xpath>
+
+                </template>
+
+
+                <!-- Disponible sólo en tiendas físicas-->
+                <template id="only_physical_store">
+                  <div id="only_physical_store">Disponible sólo en tiendas físicas</div>
+                </template>
+              </data>
+            </openerp>

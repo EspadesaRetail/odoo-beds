@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+
+    <menuitem id="menu_marketing_carousel" parent="base.marketing_menu"
+      name="Carrurel" groups="marketing.group_marketing_user" sequence="10" />
+
+      <!-- Carousel -->
+      <record id="carousel_form_view" model="ir.ui.view" >
+        <field name="name">carousel.form.view</field>
+        <field name="model">cs.carousel</field>
+        <field name="arch" type="xml">
+          <form string="Carrusel">
+            <sheet string="Gemerañ">
+              <div class="oe_title">
+                <label for="name" class="oe_edit_only"/>
+                <h1><field name="name" class="oe_inline"/></h1>
+                <field name="code"/>
+              </div>
+              <group>
+                <group>
+                  <field name="datetime_start"/>
+                  <field name="datetime_end"/>
+                </group>
+                <group>
+                  <field name="all_area"/>
+                  <field name="included_area"/>
+                  <field name="excluded_area"/>
+                </group>
+              </group>
+              <separator string="Slides"/>
+              <field name="slide_ids" context="{'default_carousel_id': active_id}">
+                <tree string="Sales Order Lines" editable="bottom">
+                  <field name="sequence" widget="handle" />
+                  <field name="name"/>
+                </tree>
+              </field>
+            </sheet>
+          </form>
+        </field>
+      </record>
+
+      <record id="carousel_tree_view" model="ir.ui.view">
+        <field name="name">carousel.tree.form</field>
+        <field name="model">cs.carousel</field>
+        <field name="arch" type="xml">
+          <tree string="Carrusel">
+            <field name="code"/>
+            <field name="name"/>
+            <field name="datetime_start"/>
+            <field name="datetime_end"/>
+
+          </tree>
+        </field>
+      </record>
+
+      <record id="carousel_tree_action" model="ir.actions.act_window" >
+        <field name="name">Carrusel</field>
+        <field name="res_model">cs.carousel</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p>
+            Permite definir los carruseles utilizados en la web que aparecen en la Home
+          </p>
+        </field>
+      </record>
+
+
+
+      <menuitem
+        id="menu_marketing_carousel_tree" action="carousel_tree_action"
+        parent="menu_marketing_carousel" name="Carrusel" sequence="5"/>
+
+
+        <!-- Slides -->
+        <record id="carousel_slide_form_view" model="ir.ui.view" >
+          <field name="name">carousel.slide.form.view</field>
+          <field name="model">cs.carousel.slide</field>
+          <field name="arch" type="xml">
+            <form string="Slide">
+              <sheet string="Slide">
+                <div class="oe_title">
+                  <label for="name" class="oe_edit_only"/>
+                  <h1><field name="name" class="oe_inline"/></h1>
+                </div>
+                <group>
+                  <group>
+                    <field name="link_url" widget='url' />
+                  </group>
+                </group>
+                <group>
+                  <group>
+                    <field name="image_left_id" widget='image' class="oe_avatar" />
+                    <field name="en_image_left_id" widget='image' class="oe_avatar" />
+                  </group>
+                  <group>
+                    <field name="image_right_id" widget='image' class="oe_avatar"/>
+                    <field name="en_image_right_id" widget='image' class="oe_avatar"/>
+                  </group>
+                </group>
+                <group>
+                  <group>
+                    <field name="background" widget='image' class="oe_avatar"/>
+                    <field name="video"/>
+                    <field name="en_video"/>
+                  </group>
+                </group>
+              </sheet>
+            </form>
+          </field>
+        </record>
+
+        <record id="carousel_slide_tree_view" model="ir.ui.view">
+          <field name="name">carousel.slide.tree.form</field>
+          <field name="model">cs.carousel.slide</field>
+          <field name="arch" type="xml">
+            <tree string="Carrusel">
+              <field name="sequence" widget="handle" />
+              <field name="name"/>
+              <field name="image_left_id" widget='image' class="oe_avatar"/>
+              <field name="image_right_id" widget='image' class="oe_avatar"/>
+            </tree>
+          </field>
+        </record>
+
+        <record id="carousel_slide_tree_action" model="ir.actions.act_window" >
+          <field name="name">Slides</field>
+          <field name="res_model">cs.carousel.slide</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree,form</field>
+          <field name="help" type="html">
+            <p>
+              Permite definir las diapositivas de un carousel.
+            </p>
+          </field>
+        </record>
+
+        <menuitem
+          id="menu_marketing_carousel_slide_tree" action="carousel_slide_tree_action"
+          parent="menu_marketing_carousel" name="Slides" sequence="10"/>
+
+
+
+
+        </data>
+
+      </openerp>

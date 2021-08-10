@@ -1,0 +1,8 @@
+@media all {
+
+  #menu_ofertas img.header {
+      border: 1px;
+    border-style: solid;
+    border-color: #fff;
+  }
+}

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_corner_brand_public,access_corner_brand_public,model_corner_brand,,1,0,0,0
+access_corner_brand_marketing,access_corner_brand_marketing,model_corner_brand,marketing.group_marketing_manager,1,1,1,1
+access_corner_brand_products_public,access_corner_brand_products_public,model_corner_brand_products,,1,0,0,0
+access_corner_brand_products_marketing,access_corner_brand_products_marketing,model_corner_brand_products,marketing.group_marketing_manager,1,1,1,1

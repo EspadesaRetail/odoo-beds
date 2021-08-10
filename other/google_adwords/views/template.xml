@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="website_config_settings_google_adwords" model="ir.ui.view">
+            <field name="name">Website settings</field>
+            <field name="model">website.config.settings</field>
+            <field name="inherit_id" ref="website.view_website_config_settings"/>    
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='google_analytics_key']" position="after">
+                    <label for="google_adwords_conversion_id"/>
+                    <div>
+                        <div name="google_adwords_conversion_id" class="oe_inline">
+                            <field name="google_adwords_conversion_id"/>
+                        </div>
+                    </div>
+                    <label for="google_adwords_conversion_label"/>
+                    <div>
+                        <div name="google_adwords_conversion_label" class="oe_inline">
+                            <field name="google_adwords_conversion_label"/>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+        
+        <!-- Google Adwords Conversion Label -->
+        <template id="conversion_label">
+            
+            <t t-if="website and website.google_adwords_conversion_id">
+                <script type="text/javascript">
+                    <t t-raw="'var google_conversion_id = {0};'.format(website.google_adwords_conversion_id)"/>
+                    <t t-raw="'var google_conversion_language = &quot;en&quot;;'"/>
+                    <t t-raw="'var google_conversion_format = &quot;3&quot;;'"/>
+                    <t t-raw="'var google_conversion_color = &quot;ffffff&quot;;'"/>
+                    <t t-raw="'var google_conversion_label = &quot;{0}&quot;;'.format(website.google_adwords_conversion_label)"/>
+                    <t t-raw="'var google_conversion_currency = &quot;EUR&quot;;'"/>
+                    <t t-raw="'var google_remarketing_only = false;'"/>
+                    <t t-raw="'var google_conversion_value = {0};'.format(order.amount_total)"/>
+                </script>
+                <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+                </script>
+                <noscript>
+                </noscript>
+            
+            </t>
+            
+        </template>
+                    
+        
+
+    </data>
+</openerp>

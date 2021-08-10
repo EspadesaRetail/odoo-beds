@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="product_pricelist_item_tree_view" model="ir.ui.view">
+            <field name="name">product.pricelist.item.tree</field>
+            <field name="model">product.pricelist.item</field>
+            <field name="domain">[('product_id.product_tmpl_id.active', '=', True)]</field>
+            <field name="arch" type="xml">
+                <tree string="Precios" editable="top">
+                    <field name="product_id"/>
+                    <field name="product_price"/>
+                    <field name="product_discount"/>
+                    <field name="product_tax_percentage"/>
+                    <field name="price_version_id"/>
+                    <field name="date_last_update"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="product_pricelist_item_search">
+            <field name="name">product.pricelist.item.search</field>
+            <field name="model">product.pricelist.item</field>
+            <field name="arch" type="xml">
+                <search string="Products Price List Item Search">
+
+                    <field string="Producto" name="product_tmpl_id" filter_domain="['|',('product_id.default_code','ilike',self),'|',('product_id.product_tmpl_id.default_code','ilike',self),('product_id.product_tmpl_id.name','ilike',self)]"/>
+                    <field string="Medidas" name="product_id" filter_domain="[('product_id.attribute_value_ids.name','ilike',self)]"/>
+                    <field string="Código de barras" name="product_id" filter_domain="[('product_id.ean13','ilike',self)]"/>
+                    <field string="Versión de tarifa" name="price_version_id"/>
+                    <field string="Precio" name="product_price" />
+
+
+                </search>
+            </field>
+        </record>
+
+
+
+        <record id="product_pricelist_item_action" model="ir.actions.act_window">
+            <field name="name">Precios por producto</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.pricelist.item</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="product_pricelist_item_tree_view"/>
+        </record>
+
+
+
+        <menuitem action="product_pricelist_item_action"
+            id="menu_product_pricelist_item_action"
+            parent="product.menu_product_pricelist_main" sequence="85" groups="base.group_sale_manager" />
+
+
+
+
+
+        <!--
+        <record id="product_pricelist_item_fixedprice_tree" model="ir.ui.view">
+            <field name="name">product.pricelist.item.fixedprice.tree</field>
+            <field name="model">product.pricelist.item</field>
+            <field name="inherit_id" ref="product.product_pricelist_item_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="base" position="replace">
+                    <field name="product_price" />
+                </field>
+            </field>
+        </record>
+
+        <record id="product_pricelist_item_fixedprice_form" model="ir.ui.view">
+            <field name="name">product.pricelist.item.fixedprice</field>
+            <field name="model">product.pricelist.item</field>
+            <field name="inherit_id" ref="product.product_pricelist_item_form_view"/>
+            <field name="arch" type="xml">
+                <field name="product_id" position="attributes">
+                    <attribute name="attrs"
+                    >{'required':[('base','=',-4)]}</attribute>
+                </field>
+                <field name="base" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </field>
+                <field name="base_pricelist_id" position="before">
+                    <field name="product_price"/>
+                </field>
+            </field>
+        </record>
+
+        -->
+    </data>
+</openerp>

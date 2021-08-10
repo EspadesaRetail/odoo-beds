@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Marcar provincias con tienda bed's -->
+        <record id="set_country_state_beds" model="ir.ui.view">
+            <field name="name">Actualizar provincias</field>
+            <field name="model">update.data.country.state</field>
+            <field name="arch" type="xml">
+                <form string="Actualizar lista de provincias con tienda">
+                    <p class="oe_grey">
+                        Proceso para marcar las provincias que tienen tienda bed's de forma automática
+
+                    </p>
+
+                    <footer>
+                        <button name="set_country_state_beds" string="Actualizar" type="object" class="beds-ws"/>
+                        or
+                        <button string="Close" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_set_country_state_beds" model="ir.actions.act_window">
+            <field name="name">Actualizar provincias</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">update.data.country.state</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_set_country_state_beds" parent="menu_shop" action="action_set_country_state_beds" sequence="99"/>
+
+    </data>
+</openerp>

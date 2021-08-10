@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Añadir estilos y scripts de ofertas -->
+        <template id="offer_assets_frontend" inherit_id="website.assets_frontend" name="Offer assets">
+            <xpath expr="." position="inside">
+                <link rel='stylesheet' href='/cs_offer/static/src/css/cs_offer.css'/>
+            </xpath>
+        </template>
+
+
+        <!-- Página de ofertas -->
+        <template id="offers" name="Ofertas y promociones" page="True">
+            <t t-call="website.layout">
+                <div id="wrap" class="js_sale mb16">
+                    <div id="menu_ofertas" class="container">
+                        <div class="row">
+                            <div t-if="offer" class="col-xs-12">
+                                <img t-if="lang=='es_ES'" itemprop="image" class="header img img-responsive" t-att-src="website.image_url(offer, 'image_header_id', None)"
+                                    alt="Ofertas bed's. Todas las ofertas en tiendas beds."/>
+                                <img t-if="lang=='en_US'" itemprop="image" class="header img img-responsive" t-att-src="website.image_url(offer, 'en_image_header_id', None)"
+                                    alt="bed's offers. All offers for bed0s shops."/>
+                                </div>
+                            </div>
+
+                            <div class="oe_website_sale row">
+                                    <div class="col-xs-12">
+                                        <t t-call="cs_offer.offer_all_products"/>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </template>
+
+            <!-- Mostrar todas las ofertas vigentes -->
+            <template id="offer_all_products" name="Ofertas y productos en promoción">
+                <ul>
+                    <t t-foreach="categories" t-as="category">
+                        <a t-att-href="'#%s' % category.name">
+                            <li t-att-style="'background-color: %s;' % (offer and offer.color_background) or 'black'">
+                                <span>OFERTAS DE</span><span>&amp;nbsp;</span><span t-esc="category.name" t-att-style="'color: %s;' % (offer and offer.color_text) or 'white'"/>
+                            </li>
+                        </a>
+                    </t>
+                </ul>
+
+                <!-- Lista de productos. -->
+                <t t-foreach="bins.keys()" t-as="key">
+                    <t t-set="bins_category" t-value="bins[key]" />
+                    <t t-if="bins_category['category'] and bins_category['products']">
+                        <div t-att-id="bins_category['category'].name" class="category"/>
+                        <h2>
+                            <t t-esc="bins_category['category'].name"/>
+                            <a href="/ofertas#menu_ofertas">
+                                <i class="fa fa-angle-up"></i>
+                            </a>
+                        </h2>
+                        <hr/>
+                        <t t-set="products" t-value="bins_category['products']"/>
+                        <t t-set="i" t-value="0"/>
+                        <![CDATA[
+                        <div class="row">
+                            ]]>
+                            <t t-foreach="products" t-as="product">
+                                <div t-attf-class="cs-product cs-grid col-md-4">
+                                    <div class="cs-product-cart" t-att-data-publish="product.website_published and 'on' or 'off'">
+                                        <t t-call="cs_theme.offer_item"/>
+                                    </div>
+                                </div>
+
+                                <t t-set="i" t-value="i+1"/>
+                                <t t-if="i==3">
+                                    <![CDATA[
+                                </div>
+                                <div class="row oe_clear">
+                                    ]]>
+                                </t>
+                                <t t-set="i" t-value="i%3"/>
+                            </t>
+                            <![CDATA[
+                        </div>
+                        ]]>
+                    </t>
+                </t>
+
+            </template>
+
+
+            <template id="offer_call_to_action" inherit_id="website_sale.product" name="Add to cart">
+                <xpath expr="//a[@id='add_to_cart']" position="replace">
+                    <a id="add_to_cart" class="btn btn-primary btn-lg mt8 js_check_product a-submit" href="#"
+                        t-esc="product.active_product_offer_ids and product.active_product_offer_ids[0].website_call_to_action or 'Comprar'">
+                    </a>
+                </xpath>
+            </template>
+
+
+
+
+
+
+        </data>
+    </openerp>

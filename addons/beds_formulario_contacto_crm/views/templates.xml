@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Setting Style theme -->
+        <template id="beds_formulario_contacto_crm_asset" name="website asset for beds_formulario_contacto_crm" inherit_id="website.assets_frontend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/beds_formulario_contacto_crm/static/src/css/beds_formulario_contacto_crm.css"/>
+            </xpath>
+        </template>
+
+        <!-- formulario de tipo newsletter -->
+        <template id="newsletter">
+            <t t-call="website.layout">
+
+              <div class="oe_structure oe_empty">
+                <div class="carousel slide mb0 mt0" id="myCarousel_14750926124" style="height: 384px; overflow: hidden;">
+                  <ol class="carousel-indicators hidden">
+                    <li class="active" data-slide-to="0" data-target="#myCarousel_14750926124"/>
+                  </ol>
+                  <div class="carousel-inner height: 100%">
+                    <div class="item oe_img_bg cs-border-bottom-blue active" style="background-image: url(/beds_formulario_contacto_crm/static/src/img/Landing_Formulario_Newsletter_img.png);">
+                      <div class="container">
+                        <div class="row content">
+                          <div class="carousel-img col-md-6 hidden-sm hidden-xs mb0 mt0"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <section>
+
+                  <div class="container">
+
+                    <!-- Formulario de contacto -->
+                    <form t-attf-action="/form/contacto_newsletter" method="post" class="form-horizontal" enctype="multipart/form-data">
+                      <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                          <div class="text-center">
+                            <h1>¿Quieres recibir consejos de descanso y promociones bed's?</h1>
+                          </div>
+                          <p style="text-align: left;">Envíanos tu información y recibe los mejores consejos de descanso y cuidado de tu equipo, promociones de bed's y de nuestras primeras marcas de descanso directamente en tu e-mail.</p>
+                        </div>
+                      </div>
+
+
+                      <!-- Nombre y apellidos -->
+                      <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                          <div t-attf-class="form-group #{error and 'contact_name' in error and 'has-error' or ''}    ">
+                            <label class="hidden control-label" for="contact_name">Nombre y apellidos</label>
+                            <input type="text" class="form-control w100p-left" name="contact_name" required="True" t-attf-value="#{contact_name or ''}" placeholder="Nombre y apellidos*"/>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Correo y teléfono -->
+                      <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                          <div t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
+                            <label class="hidden control-label" for="email_from">E-mail</label>
+                            <input type="email" class="form-control w100p-left" name="email_from" required="True" t-attf-value="#{email_from or ''}" placeholder="E-mail*"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-1 col-md-offset-3">
+                          <div t-attf-class="form-group #{error and 'prefix' in error and 'has-error' or ''}">
+                            <label class="hidden control-label" for="prefix">Prefijo</label>
+                            <input type="text" class="form-control w100p-right" name="prefix" t-attf-value="#{prefix or ''}" placeholder="Prefijo"/>
+                          </div>
+                        </div>
+                        <div class="col-md-5 col-md-offset-0">
+                          <div t-attf-class="form-group #{error and 'phone' in error and 'has-error' or ''}">
+                            <label class="hidden control-label" for="phone">Teléfono de contacto</label>
+                            <input type="text" class="form-control w100p-right" name="phone" t-attf-value="#{phone or ''}" placeholder="Teléfono"/>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Política de privacidad -->
+                      <div class="form-group">
+                        <div class="text-center">
+                          <button class="btn btn-primary btn-md">Enviar</button>
+                          <div class="row">
+                            <div class="col-md-6 col-md-offset-3">
+                              <h6 style="text-align: left;"><input name="accept_policy" required="True" type="checkbox"/>&amp;nbsp;&amp;nbsp;Acepto la <a href="/page/privacidad">Política de privacidad</a>.</h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </form>
+                  </div>
+
+              </section>
+            </t>
+        </template>
+
+        <!-- formulario de bajas newsletter -->
+        <template id="bajas">
+            <t t-call="website.layout">
+
+              <div class="oe_structure oe_empty">
+                <div class="carousel slide mb0 mt0" id="myCarousel_14750926124" style="height: 384px; overflow: hidden;">
+                  <ol class="carousel-indicators hidden">
+                    <li class="active" data-slide-to="0" data-target="#myCarousel_14750926124"/>
+                  </ol>
+                  <div class="carousel-inner height: 100%">
+                    <div class="item oe_img_bg cs-border-bottom-blue active" style="background-image: url(/beds_formulario_contacto_crm/static/src/img/Landing_Formulario_Newsletter_img.png);">
+                      <div class="container">
+                        <div class="row content">
+                          <div class="carousel-img col-md-6 hidden-sm hidden-xs mb0 mt0"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <section>
+
+                  <div class="container">
+
+                    <!-- Formulario de contacto -->
+                    <form t-attf-action="/form/contacto_bajas" method="post" class="form-horizontal" enctype="multipart/form-data">
+                      <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                          <div class="text-center">
+                            <h1>Cancelar suscripción</h1>
+                          </div>
+                          <p style="text-align: center;">Te echaremos de menos entre nuestros contactos, introduce tu nombre y email para darte de baja.</p>
+                        </div>
+                      </div>
+
+
+                      <!-- Nombre y apellidos -->
+                      <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                          <div t-attf-class="form-group #{error and 'contact_name' in error and 'has-error' or ''}    ">
+                            <label class="hidden control-label" for="contact_name">Nombre y apellidos</label>
+                            <input type="text" class="form-control w100p-left" name="contact_name" required="True" t-attf-value="#{contact_name or ''}" placeholder="Nombre y apellidos*"/>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Correo y teléfono -->
+                      <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                          <div t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
+                            <label class="hidden control-label" for="email_from">E-mail</label>
+                            <input type="email" class="form-control w100p-left" name="email_from" required="True" t-attf-value="#{email_from or ''}" placeholder="E-mail*"/>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Política de privacidad -->
+                      <div class="form-group">
+                        <div class="text-center">
+                          <button class="btn btn-primary btn-md">Enviar</button>
+                        </div>
+                      </div>
+
+                    </form>
+                  </div>
+
+              </section>
+            </t>
+        </template>
+
+        <!-- Personalización de la página de gracias para las bajas.-->
+        <template id="bajas_thanks" name="Bajas">
+          <t t-call="website.layout">
+            <div id="wrap">
+              <div class="container">
+                <h1>Baja de correo</h1>
+                <div class="row">
+                  <div class="col-md-8">
+                    <div class="alert alert-success">
+                      Su baja ha sido procesada correctamente.
+                      <button type="button" class="close" data-dismiss="alert">&amp;times;</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </t>
+        </template>
+
+    </data>
+</openerp>

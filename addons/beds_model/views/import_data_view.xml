@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+
+        <!-- Importar img -->
+        <record id="import_product_image_view" model="ir.ui.view">
+            <field name="name">Importación de imágenes de productos</field>
+            <field name="model">external.product.image.import</field>
+            <field name="arch" type="xml">
+                <form string="Importación de imágnes">
+                    <p>Utiliza esta función para importar las imágenes de productos subidos al ftp.</p>
+                    <p>
+                        <strong>Subir las imágenes al servidor FTP</strong> con el siguiente formato:</p>
+                    <p>
+                        <strong>RRRRR-N.jpg</strong>
+                    </p> Donde RRRRR es la referencia de producto y N puede tener valores entre 0 y 4.
+
+                    <separator/>
+
+                    <footer>
+                        <button name="import_data" string="Confirm" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" name="import_data_cancel" type="object"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_product_image_import" model="ir.actions.act_window">
+            <field name="name">Importar imágenes de productos</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">external.product.image.import</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+
+        <menuitem id="menu_marketing_import" name="Importación"  parent="base.marketing_menu"
+          groups="marketing.group_marketing_user"
+          sequence="90"/>
+
+        <menuitem
+            id="menu_product_image_import" name="Importar imágenes de productos "
+            action="action_product_image_import" parent="menu_marketing_import"
+            groups="marketing.group_marketing_user"
+            sequence="40"/>
+
+
+
+        <!-- Importar productos -->
+        <record id="view_external_product_import" model="ir.ui.view">
+            <field name="name">Importación de productos externos</field>
+            <field name="model">external.product.import</field>
+            <field name="arch" type="xml">
+                <form string="Importación de productos">
+                    <p>Esta opción actualiza todos los datos pendientes</p>
+                    <p>
+                        <strong>¡Esta opció actualiza los datos de forma permanente!</strong>
+                    </p>
+                    <p>Si no quieres importar los datos, pulsa la opción cancelar.</p>
+                    <separator/>
+
+                    <footer>
+                        <button name="import_data" string="Confirm" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" name="import_data_cancel" type="object"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_view_external_product_import" model="ir.actions.act_window">
+            <field name="name">Importar los datos</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">external.product.import</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem
+            name="Importar datos "
+            action="action_view_external_product_import"
+            id="menu_view_export_product_import"
+            parent="cs_model.external_data"
+            sequence="50"/>
+
+
+
+
+    </data>
+</openerp>

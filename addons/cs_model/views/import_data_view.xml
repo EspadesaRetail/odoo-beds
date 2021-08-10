@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <menuitem id="external_data" name="Importación de datos" parent="base.marketing_menu" sequence="100"/>
+
+
+        <record id="external_product_tree_view" model="ir.ui.view">
+            <field name="name">external.product.tree</field>
+            <field name="model">external.product</field>
+            <field name="arch" type="xml">
+                <tree string="Product">
+                    <field name="referencia"/>
+                    <field name="codigo_barras"/>
+                    <field name="nombre"/>
+                    <field name="ancho"/>
+                    <field name="largo"/>
+                    <field name="color"/>
+                    <field name="talla"/>
+                    <field name="medidas"/>
+
+                    <field name="marca"/>
+                    <field name="precio1"/>
+                    <field name="precio2"/>
+                    <field name="dto1"/>
+                    <field name="dto2"/>
+                    <field name="niveles"/>
+                    <field name="for_delete"/>
+
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="external_product_search_view" model="ir.ui.view">
+            <field name="name">external.product.search</field>
+            <field name="model">external.product</field>
+            <field name="arch" type="xml">
+                <search string="External product">
+                    <field name="nombre" string="Product" filter_domain="['|',('nombre','ilike',self),('referencia','ilike',self)]"/>
+                </search>
+            </field>
+        </record>
+
+
+        <record id="external_data_product_action" model="ir.actions.act_window">
+            <field name="name">Productos</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">external.product</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <menuitem action="external_data_product_action"
+                  id="menu_external_data_product" parent="external_data" sequence="9" />
+
+
+
+    </data>
+</openerp>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!--
+        <delete model="website.menu" search="[('id','=',ref('website.website_homepage'))]"/>
+        -->
+
+        <record id="menu_homepage" model="website.menu">
+            <field name="name">bed's</field>
+            <field name="url">/</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">1</field>
+        </record>
+
+        <record id="menu_franquiciarse" model="website.menu">
+            <field name="name">FRANQUÍCIATE</field>
+            <field name="url">/form/franquicias</field>
+            <field name="parent_id" ref="beds_theme.menu_homepage"/>
+            <field name="sequence" type="int">5</field>
+        </record>
+
+        <record id="menu_sobre_beds" model="website.menu">
+            <field name="name">SOBRE bed's</field>
+            <field name="url">/page/beds</field>
+            <field name="parent_id" ref="beds_theme.menu_homepage"/>
+            <field name="sequence" type="int">10</field>
+        </record>
+
+        <record id="menu_blog" model="website.menu">
+            <field name="name">BLOG bed's</field>
+            <field name="url">/blog</field>
+            <field name="new_window">1</field>
+            <field name="parent_id" ref="beds_theme.menu_homepage"/>
+            <field name="sequence" type="int">30</field>
+        </record>
+
+        <record id="menu_marcas" model="website.menu">
+            <field name="name">MARCAS</field>
+            <field name="url">/shop/brands</field>
+            <field name="parent_id" ref="beds_theme.menu_homepage"/>
+            <field name="sequence" type="int">40</field>
+        </record>
+
+
+    </data>
+</openerp>

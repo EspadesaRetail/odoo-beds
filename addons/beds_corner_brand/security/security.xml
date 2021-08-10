@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="0">
+
+  <record model="ir.rule" id="corner_brand_public_rule">
+      <field name="name">Acceso publico a Corner Brand</field>
+      <field name="model_id" ref="beds_corner_brand.model_corner_brand"/>
+      <field name="domain_force">[(1, '=', 1)]</field>
+      <field name="groups" eval="[(4, ref('base.group_public'))]"/>
+  </record>
+
+  <record id="corner_brand_marketing_user" model="ir.rule">
+      <field name="name">Acceso a usuarios de Marketing</field>
+      <field name="model_id" ref="beds_corner_brand.model_corner_brand"/>
+      <field name="domain_force">[(1, '=', 1)]</field>
+      <field name="groups" eval="[(4, ref('marketing.group_marketing_user'))]"/>
+  </record>
+
+  <record model="ir.rule" id="corner_brand_products_public_rule">
+      <field name="name">Acceso publico a los productos del Corner Brand</field>
+      <field name="model_id" ref="beds_corner_brand.model_corner_brand_products"/>
+      <field name="domain_force">[(1, '=', 1)]</field>
+      <field name="groups" eval="[(4, ref('base.group_public'))]"/>
+  </record>
+
+  <record id="corner_brand_products_marketing_user" model="ir.rule">
+      <field name="name">Acceso a productos de Corner Brand usuarios de Marketing</field>
+      <field name="model_id" ref="beds_corner_brand.model_corner_brand_products"/>
+      <field name="domain_force">[(1, '=', 1)]</field>
+      <field name="groups" eval="[(4, ref('marketing.group_marketing_user'))]"/>
+  </record>
+
+</data>
+
+</openerp>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <!-- Custom shopping snippets -->
+        <template id="custom_snippets_options" inherit_id="website.snippet_options" name="Custom snippets options">
+
+            <!--Añadir los colores básicos.-->
+            <xpath expr="//div[@data-snippet-option-id='background']/li/ul/li/ul/li" position="before">
+                <li data-value='cs-bg-blue'>
+                    <a>Azul</a>
+                </li>
+                <li data-value='cs-bg-white'>
+                    <a>Blanco</a>
+                </li>
+                <li data-value='cs-bg-gray'>
+                    <a>Gris</a>
+                </li>
+                <hr/>
+            </xpath>
+
+
+            <!--Permitir cambiar el borde de una sección.-->
+            <xpath expr="//div[@data-snippet-option-id='background']" position="after">
+                <div data-snippet-option-id='border_bottom'
+                     data-selector="section, .carousel, .parallax">
+                    <li class="dropdown-submenu" data-required="true">
+                        <a tabindex="-1" href="#">Borde inferior</a>
+                        <ul class="dropdown-menu">
+                            <li data-value='cs-border-bottom-blue'>
+                                <a>Azul</a>
+                            </li>
+                            <li data-value='cs-border-bottom-gray'>
+                                <a>Gris</a>
+                            </li>
+                            <li data-value=''>
+                                <a>Sin borde</a>
+                            </li>
+                        </ul>
+                    </li>
+                </div>
+            </xpath>
+
+            <!--Poder restringir por localización.-->
+            <xpath expr="//div[@data-snippet-option-id='background']" position="after">
+                <div data-snippet-option-id='restricted_area'
+                     data-selector="section, .carousel, .parallax">
+                    <li class="dropdown-submenu" data-required="true">
+                        <a tabindex="-1" href="#">Restringir por área</a>
+                        <ul class="dropdown-menu">
+                            <li data-value='restricted-area-all restricted-no-display css_editable_mode_display'>
+                                <a>Sin restricción</a>
+                            </li>
+                            <li data-value='restricted-area-peninsula restricted-no-display css_editable_mode_display'>
+                                <a>Sólo visible en peninsula</a>
+                            </li>
+                            <li data-value='restricted-area-baleares restricted-no-display css_editable_mode_display'>
+                                <a>Sólo visible en baleares</a>
+                            </li>
+                        </ul>
+                    </li>
+                </div>
+            </xpath>
+
+
+            <!-- Estilo de las imagenes, de forma que sean compatibles con el Apple-->
+            <xpath expr="//div[@data-snippet-option-id='transform']" position="after">
+                <div data-snippet-option-id='images'
+                    data-selector="img:not(.cke_iframe):not([data-oe-id]), .media_iframe_video, span.fa, i.fa">
+                    <li class="dropdown-submenu">
+                        <a tabindex="-1" href="#">Alineación flotante</a>
+                        <ul class="dropdown-menu" name="parallax-scroll">
+                            <li data-value="cs-float-right"><a>Derecha</a></li>
+                            <li data-value="cs-float-left"><a>Izquierda</a></li>
+                        </ul>
+                    </li>
+                </div>
+
+            </xpath>
+
+        </template>
+
+
+
+    </data>
+</openerp>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+
+    <data>
+
+      <!-- Retirada de productos usados-->
+
+      <record id="remove_old_products" model="product.template">
+          <field name="name">RETIRAR LOS PRODUCTOS DE DESCANSO USADOS</field>
+          <field name="default_code">RETUSADOS</field>
+          <field name="ean13">1000010009818</field>
+      </record>
+
+
+
+
+        <!-- pricelist for iberia-->
+        <!--
+        <record id="list0" model="product.pricelist">
+            <field name="name">Public Pricelist</field>
+            <field name="type">sale</field>
+        </record>
+        <record id="ver0" model="product.pricelist.version">
+            <field name="pricelist_id" ref="list0"/>
+            <field name="name">Default Public Pricelist Version</field>
+        </record>
+        -->
+
+        <!-- pricelist for Canarias-->
+        <record id="product.list1" model="product.pricelist">
+            <field name="name">Canarias</field>
+            <field name="type">sale</field>
+        </record>
+        <record id="product.ver1" model="product.pricelist.version">
+            <field name="pricelist_id" ref="product.list1"/>
+            <field name="name">Tarifa Canarias</field>
+        </record>
+
+        <!-- pricelist for Baleares-->
+        <record id="product.list2" model="product.pricelist">
+            <field name="name">Baleares</field>
+            <field name="type">sale</field>
+        </record>
+        <record id="product.ver2" model="product.pricelist.version">
+            <field name="pricelist_id" ref="product.list2"/>
+            <field name="name">Tarifa Baleares</field>
+        </record>
+
+
+
+        <!-- Product public category-->
+
+        <record id="categ_colchones" model="product.public.category">
+            <field name="name">COLCHONES</field>
+            <field name="sequence">100</field>
+        </record>
+
+        <record id="categ_bases" model="product.public.category">
+            <field name="name">BASES</field>
+            <field name="sequence">200</field>
+        </record>
+
+        <record id="categ_almohadas" model="product.public.category">
+            <field name="name">ALMOHADAS</field>
+            <field name="sequence">300</field>
+        </record>
+
+        <record id="categ_textil" model="product.public.category">
+            <field name="name">TEXTIL HOGAR</field>
+            <field name="sequence">400</field>
+        </record>
+
+        <record id="categ_banyo" model="product.public.category">
+            <field name="name">TEXTIL BAÑO</field>
+            <field name="sequence">500</field>
+        </record>
+
+        <record id="categ_sillones" model="product.public.category">
+            <field name="name">SILLONES RELAX</field>
+            <field name="sequence">600</field>
+        </record>
+
+        <!--
+        <record id="categ_complementos" model="product.public.category">
+            <field name="name">COMPLEMENTOS</field>
+            <field name="sequence">700</field>
+        </record>
+        -->
+
+        <!-- Borrar los paises y sus provincias no utilizados -->
+        <delete model="res.country.state" search="[('country_id.code','not in',['ES'])]"/>
+        <delete model="res.country" search="[('code','not in',['ES'])]"/>
+
+        <!-- Borrar la categoria pública Otros. -->
+        <delete model="product.public.category" search="[('name','=','Others')]"/>
+
+        <!-- Borrar el menú de tienda. -->
+        <delete model="website.menu" search="[('name','=','Shop'),('url','=','/shop')]"/>
+
+
+
+
+    </data>
+</openerp>

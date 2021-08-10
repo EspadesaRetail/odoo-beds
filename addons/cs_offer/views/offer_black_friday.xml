@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <!-- Black friday -->
+    <template id="black_friday_all_products" name="Productos promoción Black Friday">
+      <div id="menu_black_friday" class="row">
+        <center>
+          <ul>
+            <li t-foreach="categories" t-as="category">
+              <a t-att-href="'#%s' % category.name">
+                OFERTAS DE <span t-esc="category.name"/>
+              </a>
+            </li>
+          </ul>
+
+        </center>
+      </div>
+
+      <!-- Lista de productos. -->
+      <t t-foreach="bins.keys()" t-as="key">
+        <t t-set="bins_category" t-value="bins[key]" />
+        <t t-if="bins_category['category']">
+          <h2 t-att-id="bins_category['category'].name" t-esc="bins_category['category'].name"/>
+          <hr/>
+        </t>
+        <t t-set="products" t-value="bins_category['products']"/>
+        <t t-set="i" t-value="0"/>
+        <![CDATA[
+        <div class="row">
+        ]]>
+        <t t-foreach="products" t-as="product">
+          <t t-set="i" t-value="i+1"/>
+
+          <t t-if="i>3">
+            <![CDATA[
+            </div>
+            <div class="row">
+              ]]>
+            </t>
+
+            <div t-attf-class="cs-product cs-grid col-md-4">
+              <div class="cs-product-cart" t-att-data-publish="product.website_published and 'on' or 'off'">
+                <t t-call="cs_theme.offer_item"/>
+              </div>
+            </div>
+
+            <t t-set="i" t-value="i%3"/>
+          </t>
+          <![CDATA[
+          </div>
+          ]]>
+        </t>
+
+        <!-- Cuadricula -->
+        <!--
+        <t t-if="bins">
+        <div class="row" t-foreach="bins" t-as="tr_product">
+        <t t-foreach="tr_product" t-as="td_product">
+        <t t-if="td_product">
+        <t t-set="product" t-value="td_product['product']"/>
+        <div t-attf-class="cs-product cs-grid col-md-4">
+
+        <div class="cs-product-cart" t-att-data-publish="product.website_published and 'on' or 'off'">
+        <t t-call="cs_theme.offer_item"/>
+      </div>
+
+    </div>
+  </t>
+
+</t>
+</div>
+</t>
+-->
+
+</template>
+
+<template id="offer_black_friday" name="Black Friday" page="True">
+  <t t-call="website.layout">
+    <div id="wrap" class="js_sale mb16">
+      <div class="container">
+        <t t-call="cs_model.content_black_friday"/>
+      </div>
+
+      <div class="container oe_website_sale">
+        <t t-call="cs_offer.black_friday_all_products"/>
+
+      </div>
+    </div>
+  </t>
+</template>
+
+</data>
+</openerp>

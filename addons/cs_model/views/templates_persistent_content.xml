@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+    <!-- ofertas -->
+    <!-- se hace directamente desde la primera oferta activa -->
+    <!-- borrar
+    <template id="content_offers">
+      <div id="offers" class="oe_structure oe_empty"/>
+    </template>
+  -->
+
+  <template id="content_packs_descanso">
+    <div class="oe_structure oe_empty"/>
+  </template>
+
+    <!-- ofertas -->
+    <template id="content_black_friday">
+      <div id="black_friday" class="oe_structure oe_empty"/>
+    </template>
+
+  </data>
+</openerp>

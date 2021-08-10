@@ -1,0 +1,124 @@
+@media all {
+  border: 1px;
+      border-style: solid;
+      border-color: #fff;
+
+
+  .pack.js_pack {
+    background-color: #e0ebf7;
+  }
+  .pack.row {
+    margin-left : 0px;
+    margin-right: 0px;
+    padding: 16px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #5a95d1;
+    background-color: #deecf6;
+    margin-bottom: 30px;
+  }
+
+  .pack h2 {
+    margin: 0px;
+    font-size: 300%;
+  }
+
+  .pack h3 {
+    margin: 0px;
+    font-size: 35px;
+    color: black;
+  }
+
+  .pack.btn-lg {
+    width: 100%;
+    padding: 0px;
+    padding-top: 2px;
+    padding-bottom: 0px;
+  }
+
+  .pack.link-product {
+    display: block;
+    float: right;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    top : -30px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+    background-image: url('/cs_cross_selling/static/src/img/icon_link_product.png');
+    background-repeat: no-repeat;
+  }
+
+  .pack td {
+    background-color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 10px;
+    padding-bottom: 2px;
+    border-style: solid;
+    border-width: 0px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-color: #ececec;
+  }
+
+  .pack .pack-attribute {
+    margin-left: 20px;
+    vertical-align: middle;
+    height: 35px;
+  }
+
+  .pack ul {
+    margin-top: 5px;
+    margin-bottom: 0px;
+  }
+
+  .pack ul > li {
+    display: inline-block;
+  }
+  .pack li {
+    margin-left: 1px;
+    margin-right: 1px;
+  }
+
+  select.js_pack_variant_change {
+    min-width: 100px;
+  }
+
+  .pack.css_attribute_color {
+    margin-top:0px;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid #005eb8 !important;
+  }
+  .pack.css_attribute_color.active {
+    width: 22px;
+    height: 22px;
+
+    border: 2px solid #005eb8 !important;
+    border-bottom: 2px solid #005eb8 !important;
+  }
+
+  .pack .pack-list-price {
+    margin-top: 0px;
+    margin-right: 5px;
+    font-size: 12px;
+  }
+  .pack h4 {
+    margin-bottom: 0px;
+  }
+
+
+  #only_physical_store > div > span{
+    color: #005eb8;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    white-space: nowrap;
+  }
+}

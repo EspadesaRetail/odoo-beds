@@ -1,0 +1,51 @@
+@media all {
+
+  .link-other-page {
+    border-radius: 25px;
+    background: #005eb8;
+    color: white;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .link-other-page:hover {
+    background-color: #e4edf4;
+    color: #005eb8;
+    text-decoration: none
+}
+
+  .shop > p {
+    line-height: normal;
+  }
+
+  .shop > p.shop-address {
+    color:#333000;
+  }
+  .shop > p.shop-phone {
+    color:#005eb8;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .shop img.img-thumbnail {
+    float: left;
+    width: 150px;
+    height: 150px;
+    margin-right: 10px;
+  }
+
+  .shop-detail .img   {
+    float: left;
+    width: 350px;
+    height: 350px;
+    border-radius: 5px;
+  }
+  .shop-detail p.shop-detail-address {
+    color:#333000;
+    font-weight: bold;
+  }
+  .shop-detail p.shop-detail-schedule {
+  }
+
+}

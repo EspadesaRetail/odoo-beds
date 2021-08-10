@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?><definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://pkws801.wsbeans.iseries" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://pkws801.wsbeans.iseries/xsd" xmlns="http://schemas.xmlsoap.org/wsdl/" name="PKWS801" targetNamespace="http://pkws801.wsbeans.iseries">
+  <types>
+<xs:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://pkws801.wsbeans.iseries/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://pkws801.wsbeans.iseries/xsd" xmlns="http://schemas.xmlsoap.org/wsdl/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://pkws801.wsbeans.iseries/xsd" version="1.0">
+
+      <xs:element name="saluta" type="tns:saluta"></xs:element>
+
+      <xs:element name="salutaResponse" type="tns:salutaResponse"></xs:element>
+
+      <xs:element name="wscodb" type="tns:wscodb"></xs:element>
+
+      <xs:element name="wscodbResponse" type="tns:wscodbResponse"></xs:element>
+
+      <xs:element name="wspedv" type="tns:wspedv"></xs:element>
+
+      <xs:element name="wspedvResponse" type="tns:wspedvResponse"></xs:element>
+
+      <xs:element name="wssitu" type="tns:wssitu"></xs:element>
+
+      <xs:element name="wssituResponse" type="tns:wssituResponse"></xs:element>
+
+      <xs:complexType name="wspedv">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="args0" nillable="true" type="tns:wspedvInput"></xs:element>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="wspedvInput">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="WLINPED" nillable="true" type="tns:liswlpv"></xs:element>
+          <xs:element minOccurs="0" name="WLIS_PEDCLI" nillable="true" type="tns:lispcli"></xs:element>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="liswlpv">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="l01CODB" nillable="true" type="xs:decimal"></xs:element>
+          <xs:element minOccurs="0" name="l02CANT" nillable="true" type="xs:decimal"></xs:element>
+          <xs:element minOccurs="0" name="l03PRECB" nillable="true" type="xs:decimal"></xs:element>
+          <xs:element minOccurs="0" name="l04DTO" nillable="true" type="xs:decimal"></xs:element>
+          <xs:element minOccurs="0" name="l05DTOO" nillable="true" type="xs:decimal"></xs:element>
+          <xs:element minOccurs="0" name="l06PRECN" nillable="true" type="xs:decimal"></xs:element>
+          <xs:element minOccurs="0" name="l07IMPN" nillable="true" type="xs:decimal"></xs:element>
+          <xs:element minOccurs="0" name="l08IMPIVA" nillable="true" type="xs:decimal"></xs:element>
+          <xs:element minOccurs="0" name="l09IMPTOT" nillable="true" type="xs:decimal"></xs:element>
+          <xs:element minOccurs="0" name="l10OFER" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l11IVAP" nillable="true" type="xs:decimal"></xs:element>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="lispcli">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="l01NOMCLI" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l02APELLI" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l03TIPVIAE" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l04DIRE" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l05NUME" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l06ESCALE" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l07PISOE" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l08PUERTAE" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l09CODPOSE" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l10POBLACE" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l11PAISE" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l12TIPVIAF" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l13DIRF" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l14NUMF" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l15ESCALF" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l16PISOF" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l17PUERTAF" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l18CODPOSF" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l19POBLACF" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l20PAISF" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l21TEL1" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l22TEL2" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l23DNI" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l24EMAIL" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l25SUPED" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l26FECSOL" nillable="true" type="xs:decimal"></xs:element>
+          <xs:element minOccurs="0" name="l27PORTES" nillable="true" type="xs:decimal"></xs:element>
+          <xs:element minOccurs="0" name="l28NETO" nillable="true" type="xs:decimal"></xs:element>
+          <xs:element minOccurs="0" name="l29IMPIVA" nillable="true" type="xs:decimal"></xs:element>
+          <xs:element minOccurs="0" name="l30IMPTOT" nillable="true" type="xs:decimal"></xs:element>
+          <xs:element minOccurs="0" name="l31RETUSA" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l32OBSER" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l33FECC" nillable="true" type="xs:decimal"></xs:element>
+          <xs:element minOccurs="0" name="l34HORAC" nillable="true" type="xs:decimal"></xs:element>
+          <xs:element minOccurs="0" name="l35FCOBRO" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="LIMPCOB" nillable="true" type="xs:decimal"></xs:element>
+          <xs:element minOccurs="0" name="LIMPPDTE" nillable="true" type="xs:decimal"></xs:element>
+          <xs:element minOccurs="0" name="LNAUTO" nillable="true" type="xs:string"></xs:element>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="wspedvResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" nillable="true" type="tns:wspedvResult"></xs:element>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="wspedvResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="WERROR" nillable="true" type="xs:decimal"></xs:element>
+          <xs:element minOccurs="0" name="WERRORD" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="WFECHAP" nillable="true" type="xs:decimal"></xs:element>
+          <xs:element minOccurs="0" name="WPEDVENTA" nillable="true" type="xs:string"></xs:element>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="saluta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="args0" nillable="true" type="tns:salutaInput"></xs:element>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="salutaInput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ISALUDA" nillable="true" type="xs:string"></xs:element>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="salutaResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" nillable="true" type="tns:salutaResult"></xs:element>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="salutaResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OSALUDA" nillable="true" type="xs:string"></xs:element>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="wscodb">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="args0" nillable="true" type="tns:wscodbInput"></xs:element>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="wscodbInput">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="WLISCBAR" nillable="true" type="tns:liswcbar"></xs:element>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="liswcbar">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="l01CBAR" nillable="true" type="xs:decimal"></xs:element>
+          <xs:element minOccurs="0" name="l01TIPO" nillable="true" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="l02PREC" nillable="true" type="xs:decimal"></xs:element>
+          <xs:element minOccurs="0" name="l03DTO" nillable="true" type="xs:decimal"></xs:element>
+          <xs:element minOccurs="0" name="l04ERR" nillable="true" type="xs:decimal"></xs:element>
+          <xs:element minOccurs="0" name="l05PORCIM" nillable="true" type="xs:decimal"></xs:element>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="wscodbResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" nillable="true" type="tns:wscodbResult"></xs:element>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="wscodbResult">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="WLISCBAR" nillable="true" type="tns:liswcbar"></xs:element>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="wssitu">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="args0" nillable="true" type="tns:wssituInput"></xs:element>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="wssituInput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="WSUPED" nillable="true" type="xs:string"></xs:element>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="wssituResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" nillable="true" type="tns:wssituResult"></xs:element>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="wssituResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="WESTADO" nillable="true" type="xs:decimal"></xs:element>
+          <xs:element minOccurs="0" name="WFECH" nillable="true" type="xs:decimal"></xs:element>
+          <xs:element minOccurs="0" name="WSITU" nillable="true" type="xs:string"></xs:element>
+        </xs:sequence>
+      </xs:complexType>
+</xs:schema>  </types>
+  <message name="wssitu">
+    <part element="ns1:wssitu" name="parameters">
+    </part>
+  </message>
+  <message name="wscodb">
+    <part element="ns1:wscodb" name="parameters">
+    </part>
+  </message>
+  <message name="salutaResponse">
+    <part element="ns1:salutaResponse" name="parameters">
+    </part>
+  </message>
+  <message name="wssituResponse">
+    <part element="ns1:wssituResponse" name="parameters">
+    </part>
+  </message>
+  <message name="wspedv">
+    <part element="ns1:wspedv" name="parameters">
+    </part>
+  </message>
+  <message name="wspedvResponse">
+    <part element="ns1:wspedvResponse" name="parameters">
+    </part>
+  </message>
+  <message name="saluta">
+    <part element="ns1:saluta" name="parameters">
+    </part>
+  </message>
+  <message name="wscodbResponse">
+    <part element="ns1:wscodbResponse" name="parameters">
+    </part>
+  </message>
+  <portType name="PKWS801Services">
+    <operation name="wspedv">
+      <input message="tns:wspedv" wsam:Action="urn:wspedv">
+    </input>
+      <output message="tns:wspedvResponse" wsam:Action="http://pkws801.wsbeans.iseries/PKWS801Services/wspedvResponse">
+    </output>
+    </operation>
+    <operation name="wscodb">
+      <input message="tns:wscodb" wsam:Action="urn:wscodb">
+    </input>
+      <output message="tns:wscodbResponse" wsam:Action="http://pkws801.wsbeans.iseries/PKWS801Services/wscodbResponse">
+    </output>
+    </operation>
+    <operation name="wssitu">
+      <input message="tns:wssitu" wsam:Action="urn:wssitu">
+    </input>
+      <output message="tns:wssituResponse" wsam:Action="http://pkws801.wsbeans.iseries/PKWS801Services/wssituResponse">
+    </output>
+    </operation>
+    <operation name="saluta">
+      <input message="tns:saluta" wsam:Action="urn:saluta">
+    </input>
+      <output message="tns:salutaResponse" wsam:Action="http://pkws801.wsbeans.iseries/PKWS801Services/salutaResponse">
+    </output>
+    </operation>
+  </portType>
+  <binding name="PKWS801ServicesPortBinding" type="tns:PKWS801Services">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+    <operation name="wspedv">
+      <soap:operation soapAction="urn:wspedv"></soap:operation>
+      <input>
+        <soap:body use="literal"></soap:body>
+      </input>
+      <output>
+        <soap:body use="literal"></soap:body>
+      </output>
+    </operation>
+    <operation name="wscodb">
+      <soap:operation soapAction="urn:wscodb"></soap:operation>
+      <input>
+        <soap:body use="literal"></soap:body>
+      </input>
+      <output>
+        <soap:body use="literal"></soap:body>
+      </output>
+    </operation>
+    <operation name="wssitu">
+      <soap:operation soapAction="urn:wssitu"></soap:operation>
+      <input>
+        <soap:body use="literal"></soap:body>
+      </input>
+      <output>
+        <soap:body use="literal"></soap:body>
+      </output>
+    </operation>
+    <operation name="saluta">
+      <soap:operation soapAction="urn:saluta"></soap:operation>
+      <input>
+        <soap:body use="literal"></soap:body>
+      </input>
+      <output>
+        <soap:body use="literal"></soap:body>
+      </output>
+    </operation>
+  </binding>
+  <service name="PKWS801">
+    <port binding="tns:PKWS801ServicesPortBinding" name="PKWS801ServicesPort">
+      <soap:address location="http://195.57.48.106:10010/web/services/PKWS801Service/PKWS801"></soap:address>
+    </port>
+  </service>
+</definitions>

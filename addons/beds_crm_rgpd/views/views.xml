@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <!-- Lista de contactos no subscritos -->
+    <record id="view_unsubscribe_contact_tree" model="ir.ui.view" >
+        <field name="name">Lista de no subscritos</field>
+        <field name="model">mail.mass_mailing.contact</field>
+        <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_contact_tree"/>
+        <field name="arch" type="xml">
+          <xpath expr="//field[@name='email']" position="before">
+                <field name="phone"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="action_unsuscribed_contact_view" model="ir.actions.act_window">
+        <field name="name">Bajas de contacto</field>
+        <field name="res_model">mail.mass_mailing.contact</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[('opt_out','=',1)]</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Contactos que se han dado de baja.
+          </p>
+        </field>
+    </record>
+    <menuitem name="Bajas de contacto" id="menu_unsuscribed_contacts"
+        parent="mass_mailing.mass_mailing_list" sequence="55"
+        action="action_unsuscribed_contact_view"/>
+
+
+  </data>
+</openerp>

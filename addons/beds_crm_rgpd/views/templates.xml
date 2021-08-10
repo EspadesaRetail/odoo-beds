@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <!-- Reclamaciones -->
+    <template id="unsubscribe" name="Formulario de baja" page="True">
+
+      <t t-call="website.layout">
+
+        <t t-set="title">Tiendas beds. Comunicar baja en lista de marketing</t>
+
+        <div id="wrap">
+          <t t-call="beds_model.unsubscribe"/>
+
+          <section>
+            <div class="container text-center">
+
+              <h2>¿Quieres dejar de recibir nuestros SMS?</h2>
+              <p>Introduce aquí el número de teléfono en el que has recibido el mensaje y lo daremos de baja de nuestros sistemas para que no te lleguen nuevos SMS</p>
+              <br/>
+
+              <form action="/form/baja" method="post" class="form-horizontal" enctype="multipart/form-data">
+
+                <input type="text" class="hidden" name="view_from" t-attf-value="beds_crm_rgpd.unsubscribe"/>
+                <input type="text" class="hidden" name="name" t-attf-value="Darse de baja"/>
+
+                <div class="row">
+                  <div class="col-md-offset-4 col-md-4">
+                    <div t-attf-class="form-group #{error and 'phone' in error and 'has-error' or ''}">
+                      <div class="col-md-4">
+                        <label class="hidden control-label" for="selector">País del Teléfono a dar de baja</label>
+                        <select class="form-control w100p" id="selector" name="selector" required="True" t-attf-value="#{selector or ''}" placeholder="Seleccione país*">
+                          <option value="ES">España</option>
+                          <option value="PT">Portugal</option>
+                          <option value="OTHERS">Otros</option>
+                        </select>
+                      </div>
+                      <div class="col-md-8">
+                        <label class="hidden control-label" for="phone">Teléfono a dar de baja</label>
+                        <input type="text" class="form-control w100p" id="phone" name="phone" required="True" t-attf-value="#{phone or ''}" placeholder="Teléfono*"/>
+                      </div>
+                      <br/>
+                    </div>
+                  </div>
+                </div>
+
+                <t t-foreach="kwargs" t-as="kwarg">
+                  <input type="hidden" t-att-name="kwarg[0]" t-att-value="kwarg[1]"/>
+                </t>
+
+                <div class="row">
+                  <div class="form-group">
+                    <div class="text-center">
+                      <button class="btn btn-primary btn-md">Dar de baja</button>
+                    </div>
+                  </div>
+
+                </div>
+                <br/>
+              </form>
+            </div>
+          </section>
+        </div>
+      </t>
+    </template>
+
+    <!-- Personalización de la página de gracias.-->
+    <template id="unsubscribe_thanks" name="unsubscribe Thanks">
+      <t t-call="website.layout">
+        <div id="wrap">
+          <div class="container">
+            <h1>Recibida su solicitud</h1>
+            <div class="row">
+              <div class="col-md-8">
+                <div class="alert alert-success">
+                  Recibida su solicitud de baja de los datos personales de contacto, le informamos se ha procedido a su baja por las causas legalmente establecidas.
+                  <button type="button" class="close" data-dismiss="alert">&amp;times;</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </t>
+    </template>
+
+
+  </data>
+</openerp>

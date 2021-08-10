@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="custom_configuration_view" model="ir.ui.view">
+            <field name="name">Custom shoping Settings</field>
+            <field name="model">custom.config.settings</field>
+            <field name="arch" type="xml">
+                <form string="Custom Settings" class="oe_form_configuration">
+                    <header>
+                        <button string="Apply" type="object" name="execute" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" type="object" name="cancel" class="oe_link"/>
+                    </header>
+                    <separator string="General Settings"/>
+                    <group>
+                        <label for="id" string="Pagos a través de Conexflow"/>
+                        <div>
+                            <div>
+                                <field name="allow_partial_payment" class="oe_inline"/>
+                                <label for="allow_partial_payment"/>
+                            </div>
+                            <div>
+                                <field name="percentage_partial_payment" class="oe_inline"/>
+                                <label for="percentage_partial_payment"/>
+                            </div>
+                        </div>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_custom_configuration" model="ir.actions.act_window">
+            <field name="name">Custom shop Settings</field>
+            <field name="res_model">custom.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+        </record>
+        <menuitem id="menu_custom_configuration" parent="base.menu_config"
+                  sequence="200" action="action_custom_configuration"/>
+
+
+
+
+
+    </data>
+</openerp>

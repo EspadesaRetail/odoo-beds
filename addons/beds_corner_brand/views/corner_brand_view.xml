@@ -1,0 +1,96 @@
+<openerp>
+  <data>
+
+    <menuitem id="menu_marketing_corner_brand" parent="base.marketing_menu"
+              name="Corner Brand" groups="marketing.group_marketing_user" sequence="20" />
+
+    <record id="action_corner_brand_tree" model="ir.actions.act_window">
+      <field name="name">Corner Brand</field>
+      <field name="res_model">corner.brand</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Añade un nuevas marcas
+        </p>
+        <p>
+          ...
+        </p>
+      </field>
+    </record>
+
+    <menuitem id="corner_brand_menu" name="Marcas" parent="menu_marketing_corner_brand" sequence="1" action="action_corner_brand_tree"/>
+
+    <!-- Vista en forma de listado "TREE" con el cual mostrar los campos que se han obtenido -->
+    <record model="ir.ui.view" id="view_corner_brand_tree">
+      <field name="name">Corner Brand - Listado de marcas</field>
+      <field name="model">corner.brand</field>
+      <field name="arch" type="xml">
+        <tree string="Listado de marcas">
+          <field name="name"/>
+          <field name="title"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Añadimos un filtro de búsquedas -->
+    <record id="view_corner_brand_search" model="ir.ui.view">
+      <field name="name">Corner Brand - Filtro de búsqueda</field>
+      <field name="model">corner.brand</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+        </search>
+      </field>
+    </record>
+
+    <!-- Vista para formatear un nuevo formulario para las marcas -->
+    <record model="ir.ui.view" id="view_corner_brand_form">
+      <field name="name">Corner Brand - Formulario</field>
+      <field name="model">corner.brand</field>
+      <field name="arch" type="xml">
+        <form string="Formulario">
+          <sheet>
+            <group colspan="2" cols="2">
+              <separator string="Marca" colspan="2"/>
+              <field name="name"/>
+              <field name="title"/>
+              <field name="subtitle"/>
+              <field name="image" widget="image" class="oe_image_medium oe_right"/>
+              <separator string="Productos" colspan="2"/>
+              <field name="corner_brand_products_ids" widget="one2many_list"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Vista para formatear un nuevo formulario para las marcas -->
+    <record model="ir.ui.view" id="view_corner_brand_products_form">
+      <field name="name">Corner Brand - Productos</field>
+      <field name="model">corner.brand.products</field>
+      <field name="arch" type="xml">
+        <form string="Producto">
+          <sheet>
+            <group colspan="2" cols="2">
+              <separator string="Producto" colspan="2"/>
+              <field name="name"/>
+              <field name="title"/>
+              <field name="product_id"/>
+              <separator string="Media" colspan="2"/>
+              <field name="image" widget="image" class="oe_image_medium oe_right"/>
+              <field name="youtube_link_large"/>
+              <field name="youtube_link_small"/>
+              <separator string="Textos" colspan="2"/>
+              <field name="free_text_small_title"/>
+              <field name="free_text_small" widget="text"/>
+              <field name="free_text_large_title"/>
+              <field name="free_text_large" widget="text"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+  </data>
+</openerp>

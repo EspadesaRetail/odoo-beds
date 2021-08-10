@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+
+        <record id="website_config_settings_gtm" model="ir.ui.view">
+            <field name="name">Website settings</field>
+            <field name="model">website.config.settings</field>
+            <field name="inherit_id" ref="website.view_website_config_settings"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='google_analytics_key']" position="after">
+                    <label for="google_tag_manager_key"/>
+                    <div name="google_tag_manager_key">
+                        <div>
+                            <div name="google_tag_manager_key" class="oe_inline">
+                                <field name="google_tag_manager_key" placeholder="GTM-XXXXXX"/>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+
+        <!-- TODO Creo que no se emplea para nada.
+       <record id="gtm_view_website_form" model="ir.ui.view">
+           <field name="name">website.form</field>
+           <field name="model">website</field>
+           <field name="inherit_id" ref="website.view_website_form"/>
+           <field name="arch" type="xml">
+               <xpath expr="//field[@name='google_analytics_key']" position="after">
+                   <field name="google_tag_manager_key" placeholder="GTM-XXXXXX"/>
+               </xpath>
+           </field>
+       </record>
+        -->
+
+        <!-- Google Tag Manager -->
+        <template id="google_tag_manager" inherit_id="website.layout">
+            <xpath expr="//head[1]" position="before">
+                <script id="dataLayer" t-if="website and website.google_tag_manager_key">
+                    dataLayer = [{'comment': 'Default dataLayer'}];
+                </script>
+
+                <!-- Google Tag Manager -->
+                <script t-if="website and website.google_tag_manager_key">
+                    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                    })(window,document,'script','dataLayer','<t t-esc="website.google_tag_manager_key"/>');
+                </script>
+                <!-- End Google Tag Manager -->
+            </xpath>
+
+            <xpath expr="//div[@id='wrapwrap']" position="before">
+                <noscript t-if="website and website.google_tag_manager_key">
+                    <iframe t-att-src="'//www.googletagmanager.com/ns.html?id=' + website.google_tag_manager_key"
+                            height="0" width="0" style="display:none;visibility:hidden"/>
+                </noscript>
+            </xpath>
+
+        </template>
+        <!-- End Google Tag Manager -->
+
+
+
+        <!-- Push product impressions for Google Tag Manager -->
+        <template id="product_impressions">
+            <script t-if="website and website.google_tag_manager_key">
+                dataLayer.push({
+                'ecommerce': {
+                'impressions': [
+                <t t-foreach="products" t-as="p">
+                    {
+                    'name': '<t t-esc="p.name"/>',
+                    'id': '<t t-esc="p.default_code"/>',
+                    'brand': '<t t-esc="p.brand_id.name"/>',
+                    'category': '<t t-esc="p and p.first_public_category or ''"/>'
+                    },
+                </t>
+                ]
+                }
+                });
+            </script>
+        </template>
+
+        <!-- Push product detail for Google Tag Manager -->
+        <template id="product_detail">
+            <script t-if="website and website.google_tag_manager_key">
+                dataLayer.push({
+                'ecommerce': {
+                'detail': [
+                {
+                'name': '<t t-esc="product.name"/>',
+                'id': '<t t-esc="product.default_code"/>',
+                'brand': '<t t-esc="product.brand_id.name"/>',
+                'category': '<t t-esc="product and product.first_public_category or ''"/>'
+                },
+                ]
+                }
+                });
+            </script>
+        </template>
+
+        <!-- Push Cart data for Google Tag Manager -->
+        <!-- /shop/cart -->
+
+        <!--
+        'variant': '<t t-esc="pp and pp.attribute_value_ids and pp.attribute_value_ids.name or ''"/>',
+        -->
+
+        <template id="cart">
+            <script t-if="website and website.google_tag_manager_key and website_sale_order">
+                dataLayer.push({
+                'event': 'checkout',
+                'ecommerce': {
+                'checkout': {
+                    'actionField': {'step': 1},
+
+                'products': [
+                <t t-foreach="website_sale_order.website_order_line" t-as="line">
+                    <t t-set="pp" t-value="line.product_id"/>
+                    <t t-set="pt" t-value="line.product_id.product_tmpl_id"/>
+                    {
+                    'name': '<t t-esc="pt.name"/>',
+                    'id': '<t t-esc="pt.default_code"/>',
+                    'brand': '<t t-esc="pt.brand_id.name"/>',
+                    'category': '<t t-esc="pt and pt.first_public_category or ''"/>',
+                    'price': '<t t-esc="line.discounted_price"/>',
+                    'quantity': '<t t-esc="line.product_uom_qty"/>'
+                    },
+                </t>
+                ]
+
+                }
+                }
+                });
+
+            </script>
+        </template>
+
+        <!-- Push Checkout data for Google Tag Manager -->
+        <!-- /shop/checkout -->
+        <template id="checkout">
+            <script t-if="website and website.google_tag_manager_key">
+                dataLayer.push({
+                'event': 'checkout',
+                'ecommerce': {
+                'checkout': {
+                    'actionField': {'step': 2}
+                }
+                }
+                });
+
+            </script>
+
+        </template>
+
+        <!-- Push Payment data for Google Tag Manager -->
+        <!-- /shop/checkout -->
+        <template id="payment">
+            <script t-if="website and website.google_tag_manager_key">
+                dataLayer.push({
+                'event': 'checkout',
+                'ecommerce': {
+                'checkout': {
+                    'actionField': {'step': 3}
+                }
+                }
+                });
+
+            </script>
+
+        </template>
+
+
+        <!-- Push Purchase data for Google Tag Manager -->
+        <!-- /payment/PAYMENT_ADQUIRER/result/conexflow_result_ok -->
+        <template id="purchase">
+            <script t-if="website and website.google_tag_manager_key">
+                dataLayer.push({
+                'ecommerce': {
+                'purchase': {
+                    'actionField': {
+                        'id': '<t t-esc="order.name"/>',
+                        'revenue': '<t t-esc="order.amount_total"/>'
+                    },
+
+                'products': [
+                <t t-foreach="order.website_order_line" t-as="line">
+                    <t t-set="pp" t-value="line.product_id"/>
+                    <t t-set="pt" t-value="line.product_id.product_tmpl_id"/>
+                    {
+                    'name': '<t t-esc="pt.name"/>',
+                    'id': '<t t-esc="pt.default_code"/>',
+                    'brand': '<t t-esc="pt.brand_id.name"/>',
+                    'category': '<t t-esc="pt and pt.first_public_category or ''"/>',
+                    'price': '<t t-esc="line.discounted_price"/>',
+                    'quantity': '<t t-esc="line.product_uom_qty"/>'
+                    },
+                </t>
+                ]
+
+                }
+                }
+                });
+
+            </script>
+
+        </template>
+
+
+
+    </data>
+</openerp>

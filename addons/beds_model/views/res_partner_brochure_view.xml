@@ -1,0 +1,72 @@
+<openerp>
+  <data>
+
+    <menuitem id="menu_marketing_res_partner_brochure" parent="base.marketing_menu"
+              name="Folletos de tiendas" groups="marketing.group_marketing_user" sequence="20" />
+
+    <record id="action_res_partner_brochure_tree" model="ir.actions.act_window">
+      <field name="name">Partner Brochure</field>
+      <field name="res_model">res.partner_brochure</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Añade un nuevos folletos
+        </p>
+        <p>
+          ...
+        </p>
+      </field>
+    </record>
+
+    <menuitem id="res_partner_brochure_menu" name="Folletos" parent="menu_marketing_res_partner_brochure" sequence="1" action="action_res_partner_brochure_tree"/>
+
+    <!-- Vista en forma de listado "TREE" con el cual mostrar los campos que se han obtenido -->
+    <record model="ir.ui.view" id="view_res_partner_brochure_tree">
+      <field name="name">Partner Brochure - Listado de folletos</field>
+      <field name="model">res.partner_brochure</field>
+      <field name="arch" type="xml">
+        <tree string="Listado de folletos">
+          <field name="name"/>
+          <field name="title"/>
+          <field name="current_brochure"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Añadimos un filtro de búsquedas -->
+    <record id="view_res_partner_brochure_search" model="ir.ui.view">
+      <field name="name">Partner Brochure - Filtro de búsqueda</field>
+      <field name="model">res.partner_brochure</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <field name="title"/>
+          <field name="current_brochure"/>
+        </search>
+      </field>
+    </record>
+
+    <!-- Vista para formatear un nuevo formulario para los folletos -->
+    <record model="ir.ui.view" id="view_res_partner_brochure_form">
+      <field name="name">Partner Brochure - Formulario</field>
+      <field name="model">res.partner_brochure</field>
+      <field name="arch" type="xml">
+        <form string="Formulario">
+          <sheet>
+            <group colspan="2" cols="2">
+              <separator string="Folleto" colspan="2"/>
+              <field name="name"/>
+              <field name="title"/>
+              <field name="brochure_url" widget="text"/>
+              <field name="current_brochure"/>
+              <separator string="Tiendas" colspan="2"/>
+              <field name="partner_ids" widget="one2many_list"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+  </data>
+</openerp>

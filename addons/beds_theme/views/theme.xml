@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+  <data>
+    <!--Beds-->
+    <!-- Setting theme favicon -->
+    <template id="layout" inherit_id="website.layout"
+      name="Setting favicon" priority="20">
+      <xpath expr="//head" position="inside">
+        <link rel="shortcut icon"
+          href="/beds_theme/static/src/img/favicon.ico"
+          type="image/x-icon"/>
+        </xpath>
+
+        <xpath expr="//header/div/div[@class='container'][1]" position="before">
+          <div id="footer_header" class="container-fluid"/>
+        </xpath>
+
+
+      </template>
+
+
+      <!-- Setting Style theme -->
+      <template id="beds_theme_asset" name="website asset for Beds theme" inherit_id="website.assets_frontend">
+        <xpath expr="." position="inside">
+          <!--
+          <link rel="stylesheet/less" type="text/css" href="/beds_theme/static/src/css/beds1.less"/>
+        -->
+        <link rel="stylesheet" href="/beds_theme/static/src/css/beds.css"/>
+        <link rel="stylesheet" href="/beds_theme/static/src/css/promos.css"/>
+
+      </xpath>
+    </template>
+
+    <!-- Incluir javascript -->
+    <template id="beds_theme_assets_frontend" inherit_id="website.assets_frontend" name="Beds assets frontend">
+      <xpath expr="." position="inside">
+        <script type="text/javascript" src="/beds_theme/static/src/js/beds_theme.js"></script>
+
+        <!-- Localización de tiendas -->
+        <script type="text/javascript" src="/beds_theme/static/src/js/beds_location.js"></script>
+
+
+      </xpath>
+    </template>
+
+    <template id="beds_theme_snowstorm" inherit_id="website.layout" name="Mostrar nieve (Navidad)" active="False" customize_show="True">
+      <xpath expr="//head" position="inside">
+        <!-- required snowstorm JS, default behaviour -->
+        <script type="text/javascript" src="/beds_theme/static/src/js/snowstorm.js"></script>
+        <script>
+          snowStorm.snowColor = '#d2ebff';   // blue-ish snow!?
+          //snowStorm.snowColor = 'red';   // blue-ish snow!?
+          snowStorm.flakesMaxActive = 96;    // show more snow on screen at once
+          snowStorm.useTwinkleEffect = true; // let the snow flicker in and out of view
+          snowStorm.excludeMobile = true;
+          snowStorm.followMouse = false ;
+          snowStorm.animationInterval = 70;
+          snowStorm.zIndex = 1000;
+          snowStorm.flakeWidth = 16;
+          snowStorm.flakeHeight = 16;
+        </script>
+      </xpath>
+    </template>
+
+
+
+
+
+
+    <!-- HOME -->
+
+    <!-- Customize header  -->
+    <template id="custom_header_template" inherit_id="cs_theme.custom_header" name="Custom Header Template">
+
+      <!-- Info header. -->
+      <xpath expr="//div[@id='custom_header_info']" position="inside">
+        <div class="container-fluid  header_info">
+          <div class="container">
+            <div class="row header_info" contentEditable="false">
+              <div class="col-md-12">
+                <ul id="header_info">
+
+                  <li class="text-left phone"><a href="/form/contactar/">900 101 415</a></li>
+                  <li class="hidden-xs">
+                    <img t-att-src="'/beds_theme/static/src/img/icon/horario_%s.png' % lang" alt="Horario de atención al cliente en beds.es" class="icon_info"/>
+                  </li>
+
+                  <li>
+                    <a href="/tiendas-beds">
+                      <img src="/beds_theme/static/src/img/icon/tiendas_beds.png" alt="Localiza tu tienda bed's más cercana" class="icon_info"/>
+                      <span class="hidden-xs">Localízanos</span>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="/form/franquicias">
+                      <img src="/beds_theme/static/src/img/icon/franquicias.png" alt="Franquicias bed's" class="icon_info"/>
+                      <span  class="hidden-xs">Franquíciate</span>
+                    </a>
+                  </li>
+
+
+                  <!--
+                  <li class="hidden-xs">
+                  <img src="/beds_theme/static/src/img/icon/transporte.png" alt="bed's El descanso y tu. beds.es" class="icon_info"/>
+                  Transporte y montaje
+                </li>
+              -->
+              <!--
+              <li class="hidden-xs">
+              <img src="/beds_theme/static/src/img/icon/garantia.png" alt="bed's El descanso y tu. beds.es" class="icon_info"/>
+            </li>
+          -->
+
+          <li class="custom-chat">
+            <img src="/beds_theme/static/src/img/icon/chat.png" alt="Consulta con nuestro equipo de expertos en descanso. beds.es" class="icon_info"/>
+            <a href="#">Chat online</a>
+          </li>
+          <li id="login">
+            <a href="/web/login">
+              <img src="/beds_theme/static/src/img/icon/user.png" alt="Pulsa para acceder al portal de clientes." class="icon_info"/>
+              Mi cuenta
+            </a>
+          </li>
+
+          <li id="cart">
+            <a href="/shop/cart">
+              <img src="/beds_theme/static/src/img/icon/cart.png" alt="Pulsa para ver el carrito de compra." class="icon_info"/>
+            </a>
+          </li>
+          <li id="search">
+            <img onclick="openSearch()" src="/beds_theme/static/src/img/icon/search.png" alt="Busca el colchón o almohada que necesitas para tu descanso." class="icon_info"/>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</xpath>
+</template>
+
+<template id="customize_languaje_selector" inherit_id="beds_theme.custom_header_template" customize_show="True" name="Add lang selector">
+  <xpath expr="//li[@id='login']" position="after">
+    <li id="lang" t-if="(request.website_multilang and len(languages) &gt; 1)" class="list-inline js_language_selector">
+      <a t-att-href="url_for(request.httprequest.path + '?' + keep_query(), lang='en_US')" data-lang="en_US" class="js_change_lang">
+        <img t-if="lang=='es_ES'" src="/beds_theme/static/src/img/icon/lang_en.png" alt="Check the website in the language you prefer. beds.es" class="icon_info"/>
+      </a>
+      <a t-att-href="url_for(request.httprequest.path + '?' + keep_query(), lang='es_ES')" data-default-lang="true" data-lang="es_ES" class="js_change_lang">
+        <img t-if="lang=='en_US'" src="/beds_theme/static/src/img/icon/lang_es.png" alt="Consulta la web en el idoma que prefieras. beds.es" class="icon_info"/>
+      </a>
+
+      <!--
+      <img t-if="lang=='es_ES'" src="/beds_theme/static/src/img/icon/lang_en.png" alt="Check the website in the language you prefer. beds.es" class="icon_info"/>
+      <img t-if="lang=='en_US'" src="/beds_theme/static/src/img/icon/lang_es.png" alt="Consulta la web en el idoma que prefieras. beds.es" class="icon_info"/>
+        <a t-if="lang!=lg[0] or editable"
+          t-att-href="url_for(request.httprequest.path + '?' + keep_query(), lang=lg[0])"
+          t-att-data-default-lang="editable and 'true' if lg[0] == website.default_lang_code else None"
+          t-att-data-lang="lg[0]"
+          class="js_change_lang"
+          >
+          <t t-esc="lg[1].split('/').pop()"/>
+        </a>
+
+        <a t-if="lang!=lg[0] or editable"
+          t-att-href="url_for(request.httprequest.path + '?' + keep_query(), lang=lg[0])"
+          t-att-data-default-lang="editable and 'true' if lg[0] == website.default_lang_code else None"
+          t-att-data-lang="lg[0]"
+          class="js_change_lang"
+          >
+          <t t-esc="lg[1].split('/').pop()"/>
+        </a>
+      -->
+
+    </li>
+  </xpath>
+</template>
+
+
+<template id="custom_navbar" inherit_id="website.layout" name="Custom Navbar">
+  <xpath expr="//ul[@id='top_menu']" position="attributes">
+    <attribute name="class">nav navbar-nav navbar-left</attribute>
+  </xpath>
+</template>
+
+
+</data>
+</openerp>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <template id="pack_assets_frontend" inherit_id="website.assets_frontend" name="Comprar packs">
+      <xpath expr="." position="inside">
+        <link rel='stylesheet' href='/cs_pack/static/src/css/cs_pack.css'/>
+        <script type="text/javascript" src="/cs_pack/static/src/js/cs_pack.js"></script>
+      </xpath>
+    </template>
+
+    <!-- Genera la lista desplegable de variantes para poder seleccionarlas-->
+    <template id="pack_variants">
+      <t t-set="attribute_value_ids" t-value="get_pack_attribute_value_ids(pack, product_tmpl_id)"/>
+
+      <ul t-attf-class="list-unstyled js_pack_change_product #{ul_class}" t-att-data-attribute_value_ids="attribute_value_ids">
+        <t t-foreach="product_tmpl_id.attribute_line_ids.sorted(key=lambda r: r.attribute_id.sequence)" t-as="variant_id">
+          <li t-if="len(variant_id.value_ids) >= 1" class="pack-attribute">
+
+            <!--<strong t-field="variant_id.attribute_id.name"/>-->
+
+            <t t-if="variant_id.attribute_id.type in ['select', 'hidden']">
+              <select class="js_pack_variant_change" t-att-name="'attribute-%s-%s' % (product_tmpl_id.id, variant_id.attribute_id.id)">
+                <t t-foreach="variant_id.value_ids" t-as="value_id">
+                  <option t-att-value="value_id.id">
+                    <span t-field="value_id.name"/>
+                  </option>
+                </t>
+              </select>
+            </t>
+
+            <t t-if="variant_id.attribute_id.type == 'color'">
+              <ul class="list-inline">
+                <t t-set="inc" t-value="0"/>
+                <li t-foreach="variant_id.value_ids" t-as="value_id">
+                  <label t-attf-style="background-color:#{value_id.color or value_id.name}"
+                    t-attf-class="pack css_attribute_color #{'active' if not inc else ''}">
+                    <input type="radio" class="js_pack_variant_change"
+                      t-att-checked="'checked' if not inc else ''"
+                      t-att-name="'attribute-%s-%s' % (product_tmpl_id.id, variant_id.attribute_id.id)"
+                      t-att-value="value_id.id"
+                      t-att-title="value_id.name"/>
+                    </label>
+                    <t t-set="inc" t-value="inc+1"/>
+                  </li>
+                </ul>
+              </t>
+
+            </li>
+          </t>
+        </ul>
+      </template>
+
+      <!-- Muestra el detalle de un pack -->
+      <template id="product_pack" name="Detalle del pack">
+        <div t-if="pack" t-att-data-pack-id="pack.id"
+          class="js_pack pack row mt16">
+
+          <!-- Comprobar si el pack está asignado a una oferta -->
+          <div t-if="pack.offer_id"
+            t-att-data-offer-id="pack.offer_id.id"
+            t-att-data-offer-type="pack.offer_id.offer_type"
+            t-att-data-offer-dto="pack.offer_id.additional_dto"
+            class="js_offer offer col-sm-12 col-md-12">
+          </div>
+
+          <div class="col-sm-6 col-md-6">
+            <div class="row">
+              <t t-foreach="pack.product_tmpl_ids" t-as="product_tmpl_id">
+                <div class="col-sm-4 col-md-4">
+                  <a t-att-href="keep('/shop/product/%s' % slug(product_tmpl_id),page=None)">
+                    <img class="img img-responsive" t-att-src="website.image_url(product_tmpl_id, 'image', '272x189')" t-att-alt="product_tmpl_id.name"/>
+                    <div class="pack link-product"/>
+                  </a>
+                </div>
+              </t>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12 col-md-12">
+                <t t-raw="pack.website_description"/>
+              </div>
+            </div>
+
+            <!-- Atributos -->
+            <div class="row">
+              <div class="col-sm-12 col-md-12">
+                <table>
+                  <t t-foreach="pack.line_ids" t-as="line_id">
+                    <t t-set="product_tmpl_id" t-value="line_id.product_tmpl_id"/>
+                    <tr class="js_pack_product">
+                      <input type="hidden" class="pack-product-id" t-att-data-line-id="int(line_id.id)" t-att-data-qty="int(line_id.qty)" t-att-data-product-id="int(product_tmpl_id.product_variant_ids[0]) if len(product_tmpl_id.product_variant_ids) >= 1 else '0'"/>
+                      <td width="10%" class="text-center">
+                        <t t-esc="'%d' % line_id.qty"/>
+                      </td>
+
+                      <td>
+                        <t t-esc="product_tmpl_id.name"/>
+                      </td>
+                      <td>
+                        <t t-call="cs_pack.pack_variants"/>
+                      </td>
+                    </tr>
+                  </t>
+                </table>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-sm-6 col-md-6">
+            <div class="row text-center mb16">
+              <div class="col-sm-12 col-md-12">
+                <h2 t-esc="pack.name"/>
+                <h3 t-esc="pack.subtitle"/>
+              </div>
+            </div>
+
+            <!-- Disponibles online -->
+            <div t-if="not pack.only_physical_store" class="row">
+              <div class="col-sm-offset-4 col-sm-8 col-md-offset-4 col-md-8">
+                <h4 class="oe_price_h4 pr-product-price">
+                  <b class="pack-price oe_price" style="white-space: nowrap;"
+                    t-field="pack.price"
+                    t-field-options='{"widget": "monetary",
+                    "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                    }'/>
+                  </h4>
+                  <div class="pack pack-list-price text-right">
+                    Ahorras <span/> €
+                  </div>
+
+                </div>
+
+                <div class="col-sm-offset-4 col-sm-8 col-md-offset-4 col-md-8">
+                  <a t-att-data-pack-id="pack.id" class="js_add_pack_to_cart pack btn btn-primary btn-lg pull-right" href="#">Comprar pack del descanso <img src="/beds_theme/static/src/img/icon/cart.png" alt="Comprar pack del descanso" class="icon_info"/></a>
+                </div>
+              </div>
+
+              <!-- Disponibles sólo en tienda física -->
+              <div t-if="pack.only_physical_store" id="only_physical_store" class="row">
+                <div class="col-sm-12 col-md-12 mt32 mb32 text-center">
+                  <img src="/beds_theme/static/src/img/only_physical_store_transparent.png" style="margin-bottom:15px" width="190" height="111" alt="Disponible sólo en tiendas bed's"/>
+                  <span class="only_physical_store text-center">A LA VENTA EN TIENDA FÍSICA</span>
+                </div>
+
+                <div class="col-sm-offset-4 col-sm-8 col-md-offset-4 col-md-8 mt32">
+                  <a class="pack btn btn-primary btn-lg pull-right" href="/tiendas-beds">Encontrar mi tienda bed's <img src="/beds_theme/static/src/img/icon/tiendas_beds.png" alt="Localiza tu tienda bed's más cercana" class="icon_info"/></a>
+                </div>
+              </div>
+
+
+
+
+            </div>
+          </div>
+
+
+        </template>
+
+        <!-- Añadir todos los packs en los que está incluido un producto -->
+        <template id="product_packs" inherit_id="cs_theme.product" name="Añadir packs a la ficha de producto">
+          <xpath expr="//section[@id='product_packs']" position="replace">
+            <section id="product_packs" t-if="packs" class="container mt16 mb16 css_editable_mode_hidden">
+              <h4 class="h4">Configura tu pack y completa tu equipo de descanso</h4>
+              <hr/>
+              <t t-foreach="packs" t-as="pack">
+                <t t-call="cs_pack.product_pack"/>
+
+              </t>
+            </section>
+          </xpath>
+        </template>
+
+
+
+        <!-- Página de packs-descanso -->
+        <template id="packs_descanso" name="Packs de descanso" page="True">
+          <t t-call="website.layout">
+            <t t-set="title">Pack's de descanso</t>
+
+
+            <div id="wrap" class="js_sale mb16">
+              <div t-if="config" id="packs_descanso" class="oe_website_sale container">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <img t-if="lang=='es_ES'" itemprop="image" class="header img img-responsive" t-att-src="website.image_url(config, 'image_header_id', None)"
+                      alt="Packs de descanso."/>
+                      <img t-if="lang=='en_US'" itemprop="image" class="header img img-responsive" t-att-src="website.image_url(config, 'en_image_header_id', None)"
+                        alt="Rest packs."/>
+
+                    </div>
+                  </div>
+
+                  <t t-call="cs_model.content_packs_descanso"/>
+
+
+                  <section id="product_packs" t-if="packs" class="container mt16 mb16 css_editable_mode_hidden">
+                    <t t-foreach="packs" t-as="pack">
+                      <t t-call="cs_pack.product_pack"/>
+                    </t>
+                  </section>
+                </div>
+              </div>
+            </t>
+          </template>
+
+
+        </data>
+      </openerp>

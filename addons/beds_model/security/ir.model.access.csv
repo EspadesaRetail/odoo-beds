@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_marketing_image_product_import_default,external.product.image.import,model_external_product_image_import,,1,1,1,1
+access_webservices_config_settings_sale_manager,webservices.config.settings,model_webservices_config_settings,base.group_sale_manager,1,1,1,1
+
+access_external_product_import,access_external_product_import,model_external_product_import,,1,0,0,0
+access_external_product_import_marketing,access_external_product_import,model_external_product_import,marketing.group_marketing_manager,1,1,1,1
+
+access_res_partner_brochure_public,access_res_partner_brochure_public,model_res_partner_brochure,base.group_public,1,0,0,0

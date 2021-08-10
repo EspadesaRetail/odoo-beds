@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <!-- Reclamaciones -->
+    <template id="reclamacion" name="Formulario de reclamaciones" page="True">
+      <t t-call="website.layout">
+
+        <t t-set="title">Tiendas beds. Comunicar una reclamación</t>
+
+        <div id="wrap">
+          <t t-call="beds_model.reclamacion"/>
+
+          <section>
+            <div class="container text-center">
+
+              <h2>¿Has tenido alguna incidencia con uno de nuestros productos o necesitas hacernos llegar una reclamación?</h2>
+              <p>Por favor, completa y envíanos los siguientes datos para resolver la incidencia a la mayor brevedad</p>
+              <br/>
+
+              <form action="/form/reclamacion" method="post" class="form-horizontal" enctype="multipart/form-data">
+
+                <input type="text" class="hidden" name="view_from" t-attf-value="beds_crm_claim.reclamacion"/>
+                <input type="text" class="hidden" name="name" t-attf-value="Reclamación"/>
+
+                <div class="row">
+                  <div class="col-md-4">
+                    <div t-attf-class="form-group #{error and 'contact_name' in error and 'has-error' or ''}    ">
+                      <label class="hidden control-label" for="contact_name">Nombre y apellidos</label>
+                      <input type="text" class="form-control w100p-left" name="contact_name" required="True" t-attf-value="#{contact_name or ''}" placeholder="Nombre*"/>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
+                      <label class="hidden control-label" for="email_from">Correo electrónico</label>
+                      <input type="email" class="form-control w90p-right" name="email_from" required="True" t-attf-value="#{email_from or ''}" placeholder="Correo electrónico*"/>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div t-attf-class="form-group #{error and 'shop' in error and 'has-error' or ''}">
+                      <label class="hidden control-label" for="shop">Tienda bed's</label>
+                      <input type="text" class="form-control w90p-right" name="shop" t-attf-value="#{shop or ''}" placeholder="Tienda donde realizaste tu compra"/>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Provincia, teléfono y código postal -->
+                <div class="row">
+                  <div class="col-md-4">
+                    <div t-attf-class="form-group #{error and 'phone' in error and 'has-error' or ''}">
+                      <label class="hidden control-label" for="phone">Teléfono de contacto</label>
+                      <input type="text" class="form-control w100p" name="phone" t-attf-value="#{phone or ''}" placeholder="Teléfono"/>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div t-attf-class="form-group #{error and 'city' in error and 'has-error' or ''}">
+                      <label class="hidden control-label" for="city">Ciudad</label>
+                      <input type="text" class="form-control w90p-right" name="city" t-attf-value="#{city or ''}" placeholder="Ciudad"/>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div t-attf-class="form-group #{error and 'zip' in error and 'has-error' or ''}">
+                      <label class="hidden control-label" for="zip">Código postal</label>
+                      <input type="text" class="form-control w90p-right" name="zip" t-attf-value="#{zip() or ''}" placeholder="Código postal"/>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Referencia y factura -->
+                <div class="row">
+                  <div class="col-md-4">
+                    <div t-attf-class="form-group #{error and 'external_ref' in error and 'has-error' or ''}">
+                      <label class="hidden control-label" for="shop">Referencia</label>
+                      <input type="text" class="form-control w100p" name="external_ref" t-attf-value="#{external_ref or ''}" placeholder="Referencia de pedido o factura"/>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div t-attf-class="form-group #{error and 'phone' in error and 'has-error' or ''}">
+                      <label class="hidden control-label" for="cv">Factura</label>
+                      <input type="file" class="form-control w90p-right" name="invoice" t-attf-value="#{invoice or ''}"  placeholder="Adjunta la factura"/>
+                      <div class ="text-right beds-color-azul">
+                        <small>
+                          <b>Adjunta la factura de tu compra</b>
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <div t-attf-class="form-group #{error and 'description' in error and 'has-error' or ''}">
+                      <label class="hidden control-label" for="description">Escribe tu reclamación</label>
+                      <textarea name="description" t-attf-value="#{''}" class="form-control w100p" rows="5" placeholder="Por favor, describe tu reclamación con detalle"/>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <div t-attf-class="form-group #{error and 'solucion' in error and 'has-error' or ''}">
+                      <label class="hidden control-label" for="solucion">Solución esperada</label>
+                      <textarea name="solucion" t-attf-value="#{''}" class="form-control w100p" rows="2" placeholder="Indícanos qué solicitas para poder solucionar tu reclamación"/>
+                    </div>
+                  </div>
+                </div>
+
+
+                <t t-foreach="kwargs" t-as="kwarg">
+                  <input type="hidden" t-att-name="kwarg[0]" t-att-value="kwarg[1]"/>
+                </t>
+
+                <div class="row">
+                  <div class="form-group">
+                    <div class="text-center">
+                      <button class="btn btn-primary btn-md">Enviar</button>
+                      <span class="accept_policy">
+                        &amp;nbsp;&amp;nbsp;&amp;nbsp;
+                        <input type="checkbox" name="accept_policy" required="True"/>
+                        He leído la información referida a la <a href="/page/privacidad" target="_blank">protección de datos</a>
+                      </span>
+                    </div>
+
+
+                  </div>
+
+                </div>
+                <br/>
+              </form>
+            </div>
+          </section>
+        </div>
+      </t>
+    </template>
+
+  </data>
+</openerp>

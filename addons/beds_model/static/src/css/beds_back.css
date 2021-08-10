@@ -1,0 +1,11 @@
+
+
+.oe_button.oe_form_button.beds-ws {
+    background-image: url("/beds_model/static/src/img/beds_ws.png");
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-color: #005eb8;
+    color: white;
+    padding-left: 35px;
+    
+}

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <!-- product.attribute -->
+        <record id="product_attribute_measures" model="product.attribute">
+            <field name="name">medidas</field>
+            <field name="display_name">Medidas</field>
+            <field name="type">select</field>
+        </record>
+
+        <record id="product_attribute_skin" model="product.attribute">
+            <field name="name">piel</field>
+            <field name="display_name">Piel</field>
+            <field name="type">select</field>
+        </record>
+
+        <record id="product_attribute_color" model="product.attribute">
+            <field name="name">color</field>
+            <field name="display_name">Color</field>
+            <field name="type">select</field>
+        </record>
+
+    </data>
+
+    <data>
+
+        <!-- product.category -->
+        <record id="product_internal_category" model="product.category">
+            <field name="parent_id" ref="product.product_category_all"/>
+            <field name="name">Niveles</field>
+        </record>
+
+
+
+        <!-- Tipos de vía-->
+        <record id="street_type_al" model="res.partner.street_type">
+            <field name="name">Alameda</field>
+            <field name="code">AL</field>
+        </record>
+        <record id="street_type_ap" model="res.partner.street_type">
+            <field name="name">Apartamento</field>
+            <field name="code">AP</field>
+        </record>
+        <record id="street_type_av" model="res.partner.street_type">
+            <field name="name">Avda.</field>
+            <field name="code">AV</field>
+        </record>
+        <record id="street_type_bl" model="res.partner.street_type">
+            <field name="name">Bloque</field>
+            <field name="code">BL</field>
+        </record>
+        <record id="street_type_bo" model="res.partner.street_type">
+            <field name="name">Barrio</field>
+            <field name="code">BO</field>
+        </record>
+        <record id="street_type_ch" model="res.partner.street_type">
+            <field name="name">Chalet</field>
+            <field name="code">CH</field>
+        </record>
+        <record id="street_type_cl" model="res.partner.street_type">
+            <field name="name">Calle</field>
+            <field name="code">CL</field>
+        </record>
+        <record id="street_type_cm" model="res.partner.street_type">
+            <field name="name">Camino</field>
+            <field name="code">CM</field>
+        </record>
+        <record id="street_type_co" model="res.partner.street_type">
+            <field name="name">Colonia</field>
+            <field name="code">CO</field>
+        </record>
+        <record id="street_type_cr" model="res.partner.street_type">
+            <field name="name">Ctra.</field>
+            <field name="code">CR</field>
+        </record>
+        <record id="street_type_cs" model="res.partner.street_type">
+            <field name="name">Caserío</field>
+            <field name="code">CS</field>
+        </record>
+        <record id="street_type_ct" model="res.partner.street_type">
+            <field name="name">Cuesta</field>
+            <field name="code">CT</field>
+        </record>
+        <record id="street_type_ed" model="res.partner.street_type">
+            <field name="name">Edificio</field>
+            <field name="code">ED</field>
+        </record>
+        <record id="street_type_gl" model="res.partner.street_type">
+            <field name="name">Glorieta</field>
+            <field name="code">GL</field>
+        </record>
+        <record id="street_type_gr" model="res.partner.street_type">
+            <field name="name">Grupo</field>
+            <field name="code">GR</field>
+        </record>
+        <record id="street_type_lg" model="res.partner.street_type">
+            <field name="name">Lugar</field>
+            <field name="code">LG</field>
+        </record>
+        <record id="street_type_mc" model="res.partner.street_type">
+            <field name="name">Mercado</field>
+            <field name="code">MC</field>
+        </record>
+        <record id="street_type_mn" model="res.partner.street_type">
+            <field name="name">Municipio</field>
+            <field name="code">MN</field>
+        </record>
+        <record id="street_type_mz" model="res.partner.street_type">
+            <field name="name">Manzana</field>
+            <field name="code">MZ</field>
+        </record>
+        <record id="street_type_pa" model="res.partner.street_type">
+            <field name="name">Plaza</field>
+            <field name="code">PA</field>
+        </record>
+        <record id="street_type_pb" model="res.partner.street_type">
+            <field name="name">Poblado</field>
+            <field name="code">PB</field>
+        </record>
+        <record id="street_type_pg" model="res.partner.street_type">
+            <field name="name">Polígono</field>
+            <field name="code">PG</field>
+        </record>
+        <record id="street_type_pj" model="res.partner.street_type">
+            <field name="name">Pasaje</field>
+            <field name="code">PJ</field>
+        </record>
+        <record id="street_type_pq" model="res.partner.street_type">
+            <field name="name">Parque</field>
+            <field name="code">PQ</field>
+        </record>
+        <record id="street_type_pr" model="res.partner.street_type">
+            <field name="name">Prolongación</field>
+            <field name="code">PR</field>
+        </record>
+        <record id="street_type_ps" model="res.partner.street_type">
+            <field name="name">Paseo</field>
+            <field name="code">PS</field>
+        </record>
+        <record id="street_type_rb" model="res.partner.street_type">
+            <field name="name">Rambla</field>
+            <field name="code">RB</field>
+        </record>
+        <record id="street_type_rd" model="res.partner.street_type">
+            <field name="name">Ronda</field>
+            <field name="code">RD</field>
+        </record>
+        <record id="street_type_TR" model="res.partner.street_type">
+            <field name="name">Travesía</field>
+            <field name="code">TR</field>
+        </record>
+        <record id="street_type_ur" model="res.partner.street_type">
+            <field name="name">Urbanización</field>
+            <field name="code">UR</field>
+        </record>
+        <record id="street_type_vi" model="res.partner.street_type">
+            <field name="name">Vía</field>
+            <field name="code">VI</field>
+        </record>
+
+
+
+
+        <!--
+        BO	BARRIO
+        CH	CHALET
+        CL	CALLE
+        CM	CAMINO
+        CO	COLONIA
+        CR	CARRETERA
+        CS	CASERIO
+        CT	CUESTA
+        ED	EDIFICIO
+        GL	GLORIETA
+        GR	GRUPO
+        LG	LUGAR
+        MC	MERCADO
+        MN	MUNICIPIO
+        MZ	MANZANA
+        PA	PLAZA
+        PB	POBLADO
+        PG	POLIGONO
+        PJ	PASAJE
+        PQ	PARQUE
+        PR	PROLONGACION
+        PS	PASEO
+        RB	RAMBLA
+        RD	RONDA
+        TR	TRAVESIA
+        UR	URBANIZACION
+        VI	VIA
+    -->
+
+
+
+</data>
+</openerp>

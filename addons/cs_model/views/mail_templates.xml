@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<openerp>
+    <data>
+      <record id="cron_update_pricelist" model="email.template">
+          <field name="name">cron_update_pricelist</field>
+          <field name="email_from">${user.company_id.email|safe}</field>
+          <field name="subject">Error en la actualización de precios</field>
+          <field name="email_to">${user.company_id.email|safe}</field>
+          <field name="lang">${user.lang}</field>
+          <field name="model_id" ref="product.model_product_template"/>
+          <field name="auto_delete" eval="True"/>
+          <field name="body_html"><![CDATA[
+Actualización del producto: ${object.default_code} ${object.name}
+<br/>
+Se ha producido un error.
+<p>
+beds.es,
+</p>
+]]>     </field>
+      </record>
+    </data>
+</openerp>

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+
+    <!-- Product offer -->
+    <record id="view_product_offer_form" model="ir.ui.view">
+      <field name="name">product.offer.form</field>
+      <field name="model">product.offer</field>
+      <field name="arch" type="xml">
+        <form string="Product offer">
+          <sheet>
+            <field name="en_image" widget='image' class="oe_avatar oe_right"/>
+            <field name="image_medium" widget='image' class="oe_avatar oe_right"/>
+
+            <div class="oe_left">
+              <div class="oe_title" style="width: 390px;">
+                <h1>
+                  <field name="name"/>
+                </h1>
+              </div>
+
+              <div class="oe_left">
+                <group  colspan="4">
+                  <group  colspan="4">
+                    <field name="offer_type"/>
+                    <field name="code"/>
+                    <field name="active"/>
+                    <field name="datetime_start"/>
+                    <field name="datetime_end"/>
+                  </group>
+                </group>
+              </div>
+            </div>
+            <notebook>
+              <page string="Productos" groups="base.group_user" attrs="{'invisible': [('offer_type','in',[])]}">
+                <group>
+                  <group id="offer">
+                    <field name="additional_dto" attrs="{'invisible': [('offer_type','not in',['dto','pack-dto'])]}"/>
+                  </group>
+                </group>
+                <group colspan="4">
+                  <group id="products" attrs="{'invisible': [('offer_type','in',['pack','pack-dto'])]}">
+                    <field name="product_offer_group_id"/>
+                    <field name="all_products"/>
+                    <field name="exceptions_product_offer_group_id"/>
+                  </group>
+                </group>
+                <group colspan="4">
+                  <group id="packs" attrs="{'invisible': [('offer_type','not in',['pack','pack-dto'])]}">
+                  </group>
+                </group>
+              </page>
+              <page string="Textos e imágenes" groups="base.group_user">
+                <group colspan="4">
+                  <group>
+                    <field name="website_description_product"/>
+                    <field name="website_call_to_action"/>
+                    <field name="color_text"/>
+                    <field name="color_background"/>
+                  </group>
+                </group>
+                <group colspan="4">
+                  <group>
+                    <field name="image_header_id" widget='image' class="oe_left oe_image_medium"/>
+                    <field name="en_image_header_id" widget='image' class="oe_left oe_image_medium"/>
+                  </group>
+                </group>
+              </page>
+
+              <page string="Ofertas por grupo" invisible="1">
+                <field name="product_offer_line_ids">
+                  <form string="Ofertas">
+                    <group>
+                      <field name="product_offer_group_id" groups="base.group_user"
+                        on_change="product_offer_group_id_change(product_offer_group_id, context)"/>
+                        <field name="discount1"/>
+                        <field name="discount2"/>
+                      </group>
+                    </form>
+                    <tree string="Ofertas" editable="bottom">
+                      <field name="sequence" widget="handle"/>
+                      <field name="product_offer_group_id"/>
+                      <field name="discount1"/>
+                      <field name="discount2"/>
+                    </tree>
+                  </field>
+                </page>
+
+              </notebook>
+            </sheet>
+          </form>
+        </field>
+      </record>
+
+      <record model="ir.ui.view" id="view_inactive_offer_filter">
+        <field name="name">inactive.product.offer</field>
+        <field name="model">product.offer</field>
+        <field name="arch" type="xml">
+          <search string="Ofertas y promociones">
+            <field name="name" />
+            <filter string="Archivadas" domain="[('active', '=', False)]" />
+          </search>
+        </field>
+      </record>
+
+
+      <record id="product_offer_tree_view" model="ir.ui.view">
+        <field name="name">product.offer.tree</field>
+        <field name="model">product.offer</field>
+        <field name="field_parent" eval="False"/>
+        <field name="arch" type="xml">
+          <tree string="Ofertas" colors="grey:not active_now;green:active_now">
+            <field name="sequence" widget="handle"/>
+            <field name="name"/>
+            <field name="datetime_start"/>
+            <field name="datetime_end"/>
+            <field name="active_now"/>
+          </tree>
+        </field>
+      </record>
+      <record id="product_offer_action" model="ir.actions.act_window">
+        <field name="name">Products offer</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.offer</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">['|',('active','=',True),('active','=',False)]</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Pulsar para hacer una nueva promoción u oferta.
+          </p>
+
+        </field>
+      </record>
+      <menuitem action="product_offer_action" id="menu_product_offer" parent="product.menu_product_pricelist_main"
+        groups="base.group_sale_manager" sequence="75" />
+
+
+
+        <!-- Product offer groups -->
+        <record id="product_offer_group_form_view" model="ir.ui.view">
+          <field name="name">product.offer.group.form</field>
+          <field name="model">product.offer.group</field>
+          <field name="arch" type="xml">
+            <form string="Product Group">
+              <sheet>
+                <field name="image_medium" widget='image' class="oe_avatar oe_right"/>
+                <div class="oe_left">
+                  <div class="oe_title" style="width: 390px;">
+                    <h1>
+                      <field name="name"/>
+                    </h1>
+                    <field name="active"/>
+                  </div>
+                  <div class="oe_left">
+
+                    <group>
+                      <field name="parent_id"/>
+                      <field name="sequence"/>
+                    </group>
+
+
+                  </div>
+                </div>
+                <notebook>
+                  <page string="Productos">
+                    <group>
+                      <group colspan="4">
+                        <field name="product_tmpl_ids" nolabel="1">
+                          <tree>
+                            <field name="name"/>
+                          </tree>
+                        </field>
+                      </group>
+                    </group>
+                  </page>
+                </notebook>
+
+              </sheet>
+            </form>
+          </field>
+        </record>
+        <record id="product_offer_group_tree_view" model="ir.ui.view">
+          <field name="name">product.offer.group.tree</field>
+          <field name="model">product.offer.group</field>
+          <field name="field_parent" eval="False"/>
+          <field name="arch" type="xml">
+            <tree string="Product Product Categories">
+              <field name="sequence" invisible="1"/>
+              <field name="complete_name"/>
+            </tree>
+          </field>
+        </record>
+        <record id="product_offer_group_action" model="ir.actions.act_window">
+          <field name="name">Products group</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">product.offer.group</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree,form</field>
+          <field name="view_id" eval="False"/>
+          <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+              Click to define a new group
+            </p>
+            <p>
+              Categories are used to browse your products through the
+              touchscreen interface.
+            </p>
+            <p>
+              If you put a photo on the groups, the layout of the
+              touchscreen interface will automatically. We suggest not to put
+              a photo on categories for small (1024x768) screens.
+            </p>
+          </field>
+        </record>
+        <menuitem action="product_offer_group_action" id="menu_product_offer_group" parent="product.menu_product_pricelist_main"
+          groups="base.group_sale_manager" sequence="80" />
+
+
+
+
+
+        </data>
+
+      </openerp>

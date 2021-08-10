@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="ir_cron_view" model="ir.ui.view">
+           <field name="name">Add Manual trigger to job</field>
+           <field name="model">ir.cron</field>
+           <field name="inherit_id" ref="base.ir_cron_view"/>
+           <field name="arch" type="xml">
+               <xpath expr="sheet" position="before">
+                 <header>
+                      <button name="method_direct_trigger" type="object" string="Run Manually" class="oe_highlight"/>
+                  </header>
+
+               </xpath>
+           </field>
+        </record>
+
+
+
+    </data>
+
+</openerp>

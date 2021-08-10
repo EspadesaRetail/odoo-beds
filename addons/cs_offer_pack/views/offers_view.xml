@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+    <!-- Descuento en el PACK-->
+    <record id="product_offer_pack_form_view" model="ir.ui.view">
+      <field name="name">product.offer.form</field>
+      <field name="model">product.offer</field>
+      <field name="inherit_id" ref="cs_offer.view_product_offer_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//group[@id='packs']" position="inside">
+          <field name="pack_ids" widget="many2many_tags"
+            attrs="{'required': [('active', '=', True),('offer_type', 'in', ['pack','pack-dto'])], 'invisible': [('offer_type','not in',['pack','pack-dto'])]}"
+            options="{'no_create_edit': True}" />
+          </xpath>
+        </field>
+      </record>
+
+      <!-- Datos de la oferta en el pack-->
+      <record id="view_pack_offer_form" model="ir.ui.view">
+        <field name="name">pack.offer.form</field>
+        <field name="model">product.pack</field>
+        <field name="inherit_id" ref="cs_pack.product_pack_form_view"/>
+        <field name="arch" type="xml">
+          <xpath expr="//group[@id='active']" position="after">
+            <group id="offer">
+              <group>
+                <field name="offer_id" readonly="1"/>
+              </group>
+            </group>
+          </xpath>
+        </field>
+      </record>
+
+      <record id="view_product_pack_tree" model="ir.ui.view">
+        <field name="name">product.pack.tree</field>
+        <field name="model">product.pack</field>
+        <field name="inherit_id" ref="cs_pack.view_product_pack_tree"/>
+        <field name="arch" type="xml">
+          <xpath expr="//field[@name='name']" position="after">
+                <field name="offer_id"/>
+          </xpath>
+        </field>
+      </record>
+
+
+    </data>
+  </openerp>

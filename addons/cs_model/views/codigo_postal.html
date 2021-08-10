@@ -1,0 +1,36 @@
+<!-- TODO Esto se emplea para algo -->
+
+<div class="ui-dialog ui-widget ui-widget-content ui-corner-all  ui-draggable" tabindex="-1"
+     role="dialog" aria-labelledby="ui-dialog-title-dialogo-cp" style="display: block; position: absolute; overflow: hidden; z-index: 1002; outline: 0px; height: auto; width: 500px; top: 333px; left: 679px;">
+    <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix" unselectable="on">
+        <span class="ui-dialog-title" id="ui-dialog-title-dialogo-cp" unselectable="on">Introduzca su código postal.</span>
+        <a href="#" class="ui-dialog-titlebar-close ui-corner-all" role="button" unselectable="on">
+            <span class="ui-icon ui-icon-closethick" unselectable="on">close</span>
+        </a>
+    </div>
+    <div id="dialogo-cp" style="height: auto; min-height: 56px; width: auto;" class="ui-dialog-content ui-widget-content">
+        <div class="cms">
+            <p>
+                <img width="183px" height="150px" src="/resources/images/codigo_postal/mapa.png" class="hide-xs" style="float: left; margin-right:20px;" alt="Zonas de entrega HOME">
+                Para mostrar el plazo de entrega de los productos, es necesario indicar el código postal de su localidad y pulsar sobre el botón Guardar.
+                Si no especifica el código postal, será imposible determinar los productos disponibles
+            </p>
+            <p>
+                Código postal
+                <input style="margin-left:10px; text-align:center; font-size:13px; color:#336699;width:90px;" type="number" pattern="[0-9]*" id="cp" name="cp" size="6" maxlength="5" class="campo" valid="true" placeholder="">
+            </p>
+            <div id="link_correos">
+                <p>Si no conoce su Código Postal, visite la página de Correos
+                    <a class="rojo" target="_blank" href="http://www.correos.es">AQUÍ</a>.
+                </p>
+            </div>
+            <div class="MsgError" style="display: none">
+                <p>El código postal que ha introducido no es correcto. Compruebe que este código se corresponde con el del lugar de entrega y,si no lo conoce, consulte la página de Correos.</p>
+            </div>
+        </div>
+    </div>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+        <button type="button" class="ui-state-default ui-corner-all">Guardar</button>
+        <button type="button" class="ui-state-default ui-corner-all">Cancelar</button>
+    </div>
+</div>

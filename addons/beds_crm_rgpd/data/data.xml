@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+
+    <data>
+
+      <!-- Retirada de productos usados-->
+      <record id="unsubscribe_list" model="mail.mass_mailing.list">
+          <field name="name">Contactos no subscritos</field>
+      </record>
+    </data>
+</openerp>

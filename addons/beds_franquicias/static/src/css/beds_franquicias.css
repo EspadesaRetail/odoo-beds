@@ -1,0 +1,104 @@
+@media all {
+
+  .link-other-page {
+    border-radius: 25px;
+    background: #005eb8;
+    color: white;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .link-other-page:hover {
+    background-color: #e4edf4;
+    color: #005eb8;
+    text-decoration: none
+  }
+
+  .franquicias {
+    position: relative;
+  }
+
+  .texto-sobre-img {
+    position: absolute;
+    text-align: left;
+    background-color: #f7d21e;
+    color: #006ab4;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    bottom: 0%;
+    left: 3%;
+    right: 3%;
+  }
+
+  .contenedor-contacto {
+    border-style: solid;
+    border-color: lightgrey;
+    border-width: thin;
+    border-radius: 10px;
+    margin-left: 2px;
+    margin-right: -10px;
+    color: #006ab4;
+  }
+
+  .contenedor-bajo-izda {
+    border-style: solid;
+    border-color: lightgrey;
+    border-width: thin;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-right: 2px;
+    color: #006ab4;
+  }
+
+  .contenedor-bajo-dcha {
+    border-style: solid;
+    border-color: lightgrey;
+    border-width: thin;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-left: 1px;
+    margin-right: -10px;
+    color: #006ab4;
+  }
+
+  .contenedor-texto {
+    padding: 5px;
+    padding-left: 22px;
+    color: #006ab4;
+    line-height: 15px;
+    font-family: Ubuntu;
+    text-indent: -9px;
+  }
+
+  .contenedor-texto-cto {
+    padding: 5px;
+    color: #006ab4;
+    line-height: 15px;
+    font-family: Ubuntu;
+  }
+
+  .contenedor-inicio {
+    margin: 5%;
+  }
+
+  .boton-frq {
+    background-color: #f7d21e;
+    border-color: #e8c61d;
+    color: #006ab4;
+  }
+  .boton-frq:hover {
+    background-color: #e8c61d;
+    border-color: #e8c61d;
+    color: #006ab4;
+  }
+
+  .color-textos-frq {
+    color: #006ab4;
+    font-family: Ubuntu;
+  }
+
+}

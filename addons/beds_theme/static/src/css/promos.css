@@ -1,0 +1,119 @@
+@media all {
+
+    section#promo {
+        background-color: #e6418d;
+    }
+    #promo .left  {
+        padding-right: 0px;
+    }
+    #promo .right  {
+        padding-left: 0px;
+    }
+
+    #promo .hr {
+        height: 2px;
+        min-height: 0px;
+        padding: 0;
+        border: 0;
+        width: 100%;
+        border: 0;
+        background-color: white;
+    }
+
+    /* Menu pagina ofertas */
+    #menu_ofertas .category {
+        height: 16px;
+        width: 100%;
+    }
+    #menu_ofertas h2 i {
+        text-align: center;
+        font-weight: bold;
+        float: right;
+        background-color: #005eb8;
+        color: white;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+    }
+
+
+    #menu_ofertas ul {
+        padding-left: 0px;
+        padding-right: 0px;
+
+        list-style-type: none;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+    }
+    #menu_ofertas ul > a {
+        text-decoration: none;
+        color:white;
+        width: 100%;
+    }
+
+    #menu_ofertas ul > a > li {
+        padding: 10px;
+        display: inline-block;
+        float: none;
+        border-style: solid;
+        border-width: 1px;
+        border-color: white;
+        width: 100%;
+    }
+
+    /* Selector de medidas todo lo ancho. */
+    div.js_product > ul > li {
+        width: 100%;
+    }
+
+
+    /* Menu pagina black-friday */
+    #menu_black_friday ul {
+        list-style-type: none;
+        width: 100%;
+        display: table;
+        text-align: center;
+    }
+    #menu_black_friday ul > li {
+        background-color: #1a171b;
+        padding: 10px;
+        display: inline-block;
+        float: none;
+        border-style: solid;
+        border-width: 1px;
+        border-color: white;
+    }
+
+    #menu_black_friday ul > li > a {
+        text-decoration: none;
+        color:white;
+    }
+
+    #menu_black_friday ul > li > a > span{
+        color:#e10018;
+    }
+
+
+
+
+}
+
+@media (max-width: 768px) {
+  #menu_ofertas ul {
+      display: block;
+      list-style-type: none;
+      width: 100%;
+      justify-content: space-between;
+      text-align: center;
+
+  }
+
+  #promo .left  {
+        padding-right: 0px;
+  }
+  #promo .right  {
+        padding-left: 0px;
+  }
+}

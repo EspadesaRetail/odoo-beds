@@ -1,0 +1,1603 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* cs_model
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-10-17 10:09+0000\n"
+"PO-Revision-Date: 2016-10-17 10:09+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: cs_model
+#: model:ir.actions.act_window,help:cs_model.product_brand_action
+msgid "<p class=\"oe_view_nocontent_create\">\n"
+"                    Click to define a new brand.\n"
+"                </p>\n"
+"                <p>\n"
+"                    Brands are used to browse your products through the\n"
+"                    touchscreen interface.\n"
+"                </p>\n"
+"            "
+msgstr "<p class=\"oe_view_nocontent_create\">\n"
+"                    Click to define a new brand.\n"
+"                </p>\n"
+"                <p>\n"
+"                    Brands are used to browse your products through the\n"
+"                    touchscreen interface.\n"
+"                </p>\n"
+"            "
+
+#. module: cs_model
+#: model:ir.actions.act_window,help:cs_model.product_offer_group_action
+msgid "<p class=\"oe_view_nocontent_create\">\n"
+"                    Click to define a new group\n"
+"                </p>\n"
+"                <p>\n"
+"                    Categories are used to browse your products through the\n"
+"                    touchscreen interface.\n"
+"                </p>\n"
+"                <p>\n"
+"                    If you put a photo on the groups, the layout of the\n"
+"                    touchscreen interface will automatically. We suggest not to put\n"
+"                    a photo on categories for small (1024x768) screens.\n"
+"                </p>\n"
+"            "
+msgstr "<p class=\"oe_view_nocontent_create\">\n"
+"                    Click to define a new group\n"
+"                </p>\n"
+"                <p>\n"
+"                    Categories are used to browse your products through the\n"
+"                    touchscreen interface.\n"
+"                </p>\n"
+"                <p>\n"
+"                    If you put a photo on the groups, the layout of the\n"
+"                    touchscreen interface will automatically. We suggest not to put\n"
+"                    a photo on categories for small (1024x768) screens.\n"
+"                </p>\n"
+"            "
+
+#. module: cs_model
+#: model:ir.actions.act_window,help:cs_model.product_offer_action
+msgid "<p class=\"oe_view_nocontent_create\">\n"
+"                    Click to define a new offer\n"
+"                </p>\n"
+"                <p>\n"
+"                    Categories are used to browse your products through the\n"
+"                    touchscreen interface.\n"
+"                </p>\n"
+"                <p>\n"
+"                    If you put a photo on the offer, the layout of the\n"
+"                    touchscreen interface will automatically. We suggest not to put\n"
+"                    a photo on categories for small (1024x768) screens.\n"
+"                </p>\n"
+"            "
+msgstr "<p class=\"oe_view_nocontent_create\">\n"
+"                    Click to define a new offer\n"
+"                </p>\n"
+"                <p>\n"
+"                    Categories are used to browse your products through the\n"
+"                    touchscreen interface.\n"
+"                </p>\n"
+"                <p>\n"
+"                    If you put a photo on the offer, the layout of the\n"
+"                    touchscreen interface will automatically. We suggest not to put\n"
+"                    a photo on categories for small (1024x768) screens.\n"
+"                </p>\n"
+"            "
+
+#. module: cs_model
+#: model:ir.actions.act_window,help:cs_model.product_public_category_brand_action
+msgid "<p class=\"oe_view_nocontent_create\">\n"
+"                    Click to define a new public categry by brand relation.\n"
+"                </p>\n"
+"            "
+msgstr "<p class=\"oe_view_nocontent_create\">\n"
+"                    Click to define a new public categry by brand relation.\n"
+"                </p>\n"
+"            "
+
+#. module: cs_model
+#: model:product.product,website_summary:0
+msgid "<p>Describe las características y beneficios de este modelo. Recuerda el uso de palabras que lo identifican y lo hacen diferente ...</p>"
+msgstr "<p>Describe las características y beneficios de este modelo. Recuerda el uso de palabras que lo identifican y lo hacen diferente ...</p>"
+
+#. module: cs_model
+#: model:product.product,website_summary:0
+msgid "<p>La base tapizada Divanlin 3D Transpirable de Pikolin ha sido diseñada para ofrecer la firmeza necesaria para un correcto descanso. Se trata de la base más transpirable del mercado, realizada con el si ...</p>"
+msgstr "<p>La base tapizada Divanlin 3D Transpirable de Pikolin ha sido diseñada para ofrecer la firmeza necesaria para un correcto descanso. Se trata de la base más transpirable del mercado, realizada con el si ...</p>"
+
+#. module: cs_model
+#: model:product.product,website_summary:0
+msgid "<p>Una buena forma de captar la atención de su lector es contarle una historia. Todo lo que considere escribir puede ser considerado una historia ...</p>"
+msgstr "<p>Una buena forma de captar la atención de su lector es contarle una historia. Todo lo que considere escribir puede ser considerado una historia ...</p>"
+
+#. module: cs_model
+#: model:product.product,website_benefits:0
+msgid "<section class=\"container\">\n"
+"<div class=\"row datasheet\">\n"
+"<div class=\"col-md-12 text-left mb16 mt16\">\n"
+"<p>Describe las características y beneficios de este modelo. Recuerda el uso de palabras que lo identifican y lo hacen diferente. Puedes usar <b>negrita</b> para resaltar algo importante.</p>\n"
+"\n"
+"<p><b>Intenta no repetir el mismo contenido en modelos parecidos, </b> es importante diferenciar un modelo de otro.</p>\n"
+"\n"
+"<p>Describe las características que hacen irresitible este modelo, intenta profundicar en los conceptos clave que diferencian este modelo</p>\n"
+"</div>\n"
+"\n"
+"<div class=\"property col-md-6\">\n"
+"<div class=\"row\">\n"
+"<h3>Características</h3>\n"
+"\n"
+"<div class=\"datasheet-icon pull-left default-property\"></div>\n"
+"\n"
+"<p>Descripción de la característica</p>\n"
+"</div>\n"
+"</div>\n"
+"\n"
+"<div class=\"property col-md-6\">\n"
+"<div class=\"row\">\n"
+"<h3>Apertura</h3>\n"
+"\n"
+"<div class=\"datasheet-icon abatible-apertura pull-left\"></div>\n"
+"\n"
+"<p>Sistema hidráulico de gas para que abras el arcón casi sin esfuerzo.</p>\n"
+"</div>\n"
+"</div>\n"
+"</div>\n"
+"</section>\n"
+""
+msgstr "<section class=\"container\">\n"
+"<div class=\"row datasheet\">\n"
+"<div class=\"col-md-12 text-left mb16 mt16\">\n"
+"<p>Describe las características y beneficios de este modelo. Recuerda el uso de palabras que lo identifican y lo hacen diferente. Puedes usar <b>negrita</b> para resaltar algo importante.</p>\n"
+"\n"
+"<p><b>Intenta no repetir el mismo contenido en modelos parecidos, </b> es importante diferenciar un modelo de otro.</p>\n"
+"\n"
+"<p>Describe las características que hacen irresitible este modelo, intenta profundicar en los conceptos clave que diferencian este modelo</p>\n"
+"</div>\n"
+"\n"
+"<div class=\"property col-md-6\">\n"
+"<div class=\"row\">\n"
+"<h3>Características</h3>\n"
+"\n"
+"<div class=\"datasheet-icon pull-left default-property\"></div>\n"
+"\n"
+"<p>Descripción de la característica</p>\n"
+"</div>\n"
+"</div>\n"
+"\n"
+"<div class=\"property col-md-6\">\n"
+"<div class=\"row\">\n"
+"<h3>Apertura</h3>\n"
+"\n"
+"<div class=\"datasheet-icon abatible-apertura pull-left\"></div>\n"
+"\n"
+"<p>Sistema hidráulico de gas para que abras el arcón casi sin esfuerzo.</p>\n"
+"</div>\n"
+"</div>\n"
+"</div>\n"
+"</section>\n"
+""
+
+#. module: cs_model
+#: model:product.product,website_benefits:0
+msgid "<section class=\"container\">\n"
+"<div class=\"row datasheet\">\n"
+"<div class=\"col-md-12 text-left mb16 mt16\">\n"
+"<p>Describe las características y beneficios de este modelo. Recuerda el uso de palabras que lo identifican y lo hacen diferente. Puedes usar <b>negrita</b> para resaltar algo importante.</p>\n"
+"\n"
+"<p><b>Intenta no repetir el mismo contenido en modelos parecidos, </b> es importante diferenciar un modelo de otro.</p>\n"
+"\n"
+"<p>Describe las características que hacen irresitible este modelo, intenta profundicar en los conceptos clave que diferencian este modelo</p>\n"
+"</div>\n"
+"\n"
+"<div class=\"property col-md-6\">\n"
+"<div class=\"row\">\n"
+"<h3>Características</h3>\n"
+"\n"
+"<div class=\"datasheet-icon pull-left default-property\"></div>\n"
+"\n"
+"<p>Descripción de la característica</p>\n"
+"</div>\n"
+"</div>\n"
+"</div>\n"
+"</section>\n"
+"\n"
+"\n"
+"<section class=\"container\">\n"
+"<div class=\"row datasheet\">\n"
+"<div class=\"property col-md-6\">\n"
+"<div class=\"row\">\n"
+"<h3>Garantía</h3>\n"
+"\n"
+"<div class=\"datasheet-icon sello-garantizado pull-left\"></div>\n"
+"\n"
+"<p>Con la garantía de las primeras marcas en <b>descanso</b></p>\n"
+"</div>\n"
+"</div>\n"
+"\n"
+"<div class=\"property col-md-6\">\n"
+"<div class=\"row\">\n"
+"<h3>Sanitized</h3>\n"
+"\n"
+"<div class=\"datasheet-icon sello-sanitized pull-left\"></div>\n"
+"\n"
+"<p>Respira con facilidad y relajate por completo con Sanitized®</p>\n"
+"</div>\n"
+"</div>\n"
+"\n"
+"<div class=\"property col-md-6\">\n"
+"<div class=\"row\">\n"
+"<h3>Hipoalergénico</h3>\n"
+"\n"
+"<div class=\"datasheet-icon sello-hipoalergenico pull-left\"></div>\n"
+"\n"
+"<p>Consigue una mejor calidad de vida y previene las molestias causadas por las alergias</p>\n"
+"</div>\n"
+"</div>\n"
+"\n"
+"<div class=\"property col-md-6\">\n"
+"<div class=\"row\">\n"
+"<h3>Tienda especializada</h3>\n"
+"\n"
+"<div class=\"datasheet-icon sello-tienda-especializada pull-left\"></div>\n"
+"\n"
+"<p>Le recomendamos que compre siempre en una tienda especilizada todo lo relacionado con su descanso</p>\n"
+"</div>\n"
+"</div>\n"
+"\n"
+"<div class=\"property col-md-6\">\n"
+"<div class=\"row\">\n"
+"<h3>Medidas</h3>\n"
+"\n"
+"<div class=\"datasheet-icon sello-todas-medidas pull-left\"></div>\n"
+"\n"
+"<p>Disponemos todas las medidas de este producto</p>\n"
+"</div>\n"
+"</div>\n"
+"\n"
+"<div class=\"property col-md-6\">\n"
+"<div class=\"row\">\n"
+"<h3>Mejor precio</h3>\n"
+"\n"
+"<div class=\"datasheet-icon sello-mejor-precio pull-left\"></div>\n"
+"\n"
+"<p>Mejor precio garantizado</p>\n"
+"</div>\n"
+"</div>\n"
+"</div>\n"
+"</section>\n"
+""
+msgstr "<section class=\"container\">\n"
+"<div class=\"row datasheet\">\n"
+"<div class=\"col-md-12 text-left mb16 mt16\">\n"
+"<p>Describe las características y beneficios de este modelo. Recuerda el uso de palabras que lo identifican y lo hacen diferente. Puedes usar <b>negrita</b> para resaltar algo importante.</p>\n"
+"\n"
+"<p><b>Intenta no repetir el mismo contenido en modelos parecidos, </b> es importante diferenciar un modelo de otro.</p>\n"
+"\n"
+"<p>Describe las características que hacen irresitible este modelo, intenta profundicar en los conceptos clave que diferencian este modelo</p>\n"
+"</div>\n"
+"\n"
+"<div class=\"property col-md-6\">\n"
+"<div class=\"row\">\n"
+"<h3>Características</h3>\n"
+"\n"
+"<div class=\"datasheet-icon pull-left default-property\"></div>\n"
+"\n"
+"<p>Descripción de la característica</p>\n"
+"</div>\n"
+"</div>\n"
+"</div>\n"
+"</section>\n"
+"\n"
+"\n"
+"<section class=\"container\">\n"
+"<div class=\"row datasheet\">\n"
+"<div class=\"property col-md-6\">\n"
+"<div class=\"row\">\n"
+"<h3>Garantía</h3>\n"
+"\n"
+"<div class=\"datasheet-icon sello-garantizado pull-left\"></div>\n"
+"\n"
+"<p>Con la garantía de las primeras marcas en <b>descanso</b></p>\n"
+"</div>\n"
+"</div>\n"
+"\n"
+"<div class=\"property col-md-6\">\n"
+"<div class=\"row\">\n"
+"<h3>Sanitized</h3>\n"
+"\n"
+"<div class=\"datasheet-icon sello-sanitized pull-left\"></div>\n"
+"\n"
+"<p>Respira con facilidad y relajate por completo con Sanitized®</p>\n"
+"</div>\n"
+"</div>\n"
+"\n"
+"<div class=\"property col-md-6\">\n"
+"<div class=\"row\">\n"
+"<h3>Hipoalergénico</h3>\n"
+"\n"
+"<div class=\"datasheet-icon sello-hipoalergenico pull-left\"></div>\n"
+"\n"
+"<p>Consigue una mejor calidad de vida y previene las molestias causadas por las alergias</p>\n"
+"</div>\n"
+"</div>\n"
+"\n"
+"<div class=\"property col-md-6\">\n"
+"<div class=\"row\">\n"
+"<h3>Tienda especializada</h3>\n"
+"\n"
+"<div class=\"datasheet-icon sello-tienda-especializada pull-left\"></div>\n"
+"\n"
+"<p>Le recomendamos que compre siempre en una tienda especilizada todo lo relacionado con su descanso</p>\n"
+"</div>\n"
+"</div>\n"
+"\n"
+"<div class=\"property col-md-6\">\n"
+"<div class=\"row\">\n"
+"<h3>Medidas</h3>\n"
+"\n"
+"<div class=\"datasheet-icon sello-todas-medidas pull-left\"></div>\n"
+"\n"
+"<p>Disponemos todas las medidas de este producto</p>\n"
+"</div>\n"
+"</div>\n"
+"\n"
+"<div class=\"property col-md-6\">\n"
+"<div class=\"row\">\n"
+"<h3>Mejor precio</h3>\n"
+"\n"
+"<div class=\"datasheet-icon sello-mejor-precio pull-left\"></div>\n"
+"\n"
+"<p>Mejor precio garantizado</p>\n"
+"</div>\n"
+"</div>\n"
+"</div>\n"
+"</section>\n"
+""
+
+#. module: cs_model
+#: model:product.product,website_benefits:0
+msgid "<section class=\"container\">\n"
+"<div class=\"row datasheet\">\n"
+"<div class=\"col-md-12 text-left mb16 mt16\">\n"
+"<p>La base tapizada Divanlin 3D Transpirable de Pikolin ha sido diseñada para ofrecer la firmeza necesaria para un correcto descanso. Se trata de la base más transpirable del mercado, realizada con el sistema Base Air System (B.A.S.) de Pikolin, es decir, todos sus componentes han sido fabricados para facilitar una ventilación y aireación óptima del equipo de descanso. Por tanto, se puede combinar con todo tipo de colchones, incluídos los de látex.</p>\n"
+"</div>\n"
+"\n"
+"<div class=\"property col-md-6\">\n"
+"<div class=\"row\">\n"
+"<h3>Características</h3>\n"
+"\n"
+"<div class=\"datasheet-icon pull-left default-property\"></div>\n"
+"\n"
+"<p>Descripción de la característica</p>\n"
+"</div>\n"
+"</div>\n"
+"</div>\n"
+"</section>\n"
+""
+msgstr "<section class=\"container\">\n"
+"<div class=\"row datasheet\">\n"
+"<div class=\"col-md-12 text-left mb16 mt16\">\n"
+"<p>La base tapizada Divanlin 3D Transpirable de Pikolin ha sido diseñada para ofrecer la firmeza necesaria para un correcto descanso. Se trata de la base más transpirable del mercado, realizada con el sistema Base Air System (B.A.S.) de Pikolin, es decir, todos sus componentes han sido fabricados para facilitar una ventilación y aireación óptima del equipo de descanso. Por tanto, se puede combinar con todo tipo de colchones, incluídos los de látex.</p>\n"
+"</div>\n"
+"\n"
+"<div class=\"property col-md-6\">\n"
+"<div class=\"row\">\n"
+"<h3>Características</h3>\n"
+"\n"
+"<div class=\"datasheet-icon pull-left default-property\"></div>\n"
+"\n"
+"<p>Descripción de la característica</p>\n"
+"</div>\n"
+"</div>\n"
+"</div>\n"
+"</section>\n"
+""
+
+#. module: cs_model
+#: model:product.product,website_benefits:0
+msgid "<section class=\"mt16 mb16\">\n"
+"<div class=\"container\">\n"
+"<div class=\"row\">\n"
+"<div class=\"col-md-12 mb16 mt16\">\n"
+"<p>Una buena forma de captar la atención de su lector es contarle una historia. Todo lo que considere escribir puede ser considerado una historia.</p>\n"
+"\n"
+"<p><b>Las grandes historias tienen personalidad.</b> Considere contar una gran historia que tenga personalidad. Escribir una historia con personalidad para clientes potenciales ayudará crear una conexión. Esto se muestra en los pequeños detalles como la elección de las palabras o las frases. Escriba desde su punto de vista, no desde la experiencia de otro.</p>\n"
+"\n"
+"<p><b>Las grandes historias son para todos incluso cuando se han escrito sólo para una persona.</b> Si intenta escribir una historia con una audiencia amplia en mente, su historia sonará sosa y falsa. Nadie resultará interesado. Escriba para una persona. Si es genuino para uno, es genuino para el resto.</p>\n"
+"</div>\n"
+"</div>\n"
+"</div>\n"
+"</section>\n"
+""
+msgstr "<section class=\"mt16 mb16\">\n"
+"<div class=\"container\">\n"
+"<div class=\"row\">\n"
+"<div class=\"col-md-12 mb16 mt16\">\n"
+"<p>Una buena forma de captar la atención de su lector es contarle una historia. Todo lo que considere escribir puede ser considerado una historia.</p>\n"
+"\n"
+"<p><b>Las grandes historias tienen personalidad.</b> Considere contar una gran historia que tenga personalidad. Escribir una historia con personalidad para clientes potenciales ayudará crear una conexión. Esto se muestra en los pequeños detalles como la elección de las palabras o las frases. Escriba desde su punto de vista, no desde la experiencia de otro.</p>\n"
+"\n"
+"<p><b>Las grandes historias son para todos incluso cuando se han escrito sólo para una persona.</b> Si intenta escribir una historia con una audiencia amplia en mente, su historia sonará sosa y falsa. Nadie resultará interesado. Escriba para una persona. Si es genuino para uno, es genuino para el resto.</p>\n"
+"</div>\n"
+"</div>\n"
+"</div>\n"
+"</section>\n"
+""
+
+#. module: cs_model
+#: model:product.product,website_benefits:0
+msgid "<section>\n"
+"<div class=\"container\">\n"
+"<div class=\"datasheet row\">\n"
+"<div class=\"col-md-12 text-left mb16 mt16 datasheet-text\">\n"
+"<p>Describe las características y beneficios de este modelo. Recuerda el uso de palabras que lo identifican y lo hacen diferente. Puedes usar <b>negrita</b> para resaltar algo importante.</p>\n"
+"\n"
+"<p><b>Intenta no repetir el mismo contenido en modelos parecidos, </b> es importante diferenciar un modelo de otro.</p>\n"
+"\n"
+"<p>Describe las características que hacen irresitible este modelo, intenta profundicar en los conceptos clave que diferencian este modelo</p>\n"
+"</div>\n"
+"\n"
+"<div class=\"property col-md-6\">\n"
+"<div class=\"col-md-12 text-left\">\n"
+"<h3>Confortcel</h3>\n"
+"</div>\n"
+"\n"
+"<div class=\"col-md-12 mt8\">\n"
+"<div class=\"datasheet-icon tech-confortcel pull-left\"></div>\n"
+"\n"
+"<p>Describe la tecnología.</p>\n"
+"</div>\n"
+"</div>\n"
+"</div>\n"
+"</div>\n"
+"</section>\n"
+""
+msgstr "<section>\n"
+"<div class=\"container\">\n"
+"<div class=\"datasheet row\">\n"
+"<div class=\"col-md-12 text-left mb16 mt16 datasheet-text\">\n"
+"<p>Describe las características y beneficios de este modelo. Recuerda el uso de palabras que lo identifican y lo hacen diferente. Puedes usar <b>negrita</b> para resaltar algo importante.</p>\n"
+"\n"
+"<p><b>Intenta no repetir el mismo contenido en modelos parecidos, </b> es importante diferenciar un modelo de otro.</p>\n"
+"\n"
+"<p>Describe las características que hacen irresitible este modelo, intenta profundicar en los conceptos clave que diferencian este modelo</p>\n"
+"</div>\n"
+"\n"
+"<div class=\"property col-md-6\">\n"
+"<div class=\"col-md-12 text-left\">\n"
+"<h3>Confortcel</h3>\n"
+"</div>\n"
+"\n"
+"<div class=\"col-md-12 mt8\">\n"
+"<div class=\"datasheet-icon tech-confortcel pull-left\"></div>\n"
+"\n"
+"<p>Describe la tecnología.</p>\n"
+"</div>\n"
+"</div>\n"
+"</div>\n"
+"</div>\n"
+"</section>\n"
+""
+
+#. module: cs_model
+#: field:product.offer,active:0
+msgid "Active"
+msgstr "Active"
+
+#. module: cs_model
+#: field:external.product,ancho:0
+msgid "Ancho"
+msgstr "Ancho"
+
+#. module: cs_model
+#: field:res.partner,name2:0
+msgid "Apellidos"
+msgstr "Apellidos"
+
+#. module: cs_model
+#: field:product.public.category,attribute_default_value:0
+msgid "Attribute default value"
+msgstr "Attribute default value"
+
+#. module: cs_model
+#: field:product.public.category,attribute_ids:0
+msgid "Attributes"
+msgstr "Attributes"
+
+#. module: cs_model
+#: field:product.product,website_benefits:0
+#: field:product.template,website_benefits:0
+msgid "Benefits"
+msgstr "Benefits"
+
+#. module: cs_model
+#: field:product.public.category.brand,brand:0
+msgid "Brand"
+msgstr "Brand"
+
+#. module: cs_model
+#: model:ir.model,name:cs_model.model_product_brand
+#: help:product.product,brand_id:0
+#: help:product.template,brand_id:0
+msgid "Brand of product"
+msgstr "Brand of product"
+
+#. module: cs_model
+#: view:product.brand:cs_model.product_brand_tree_view
+msgid "Brand"
+msgstr "Marca"
+
+#. module: cs_model
+#: model:ir.actions.act_window,name:cs_model.product_brand_action
+#: model:ir.ui.menu,name:cs_model.menu_product_brand
+#: view:product.brand:cs_model.product_brand_form_view
+msgid "Brands of products"
+msgstr "Brands of products"
+
+#. module: cs_model
+#: help:product.offer,active:0
+msgid "By unchecking the active field you can disable a offer without deleting it."
+msgstr "By unchecking the active field you can disable a offer without deleting it."
+
+#. module: cs_model
+#: field:product.offer.group,child_id:0
+msgid "Children groups"
+msgstr "Children groups"
+
+#. module: cs_model
+#: field:external.product,codigo_barras:0
+msgid "Cod barras"
+msgstr "Cod barras"
+
+#. module: cs_model
+#: field:product.offer,code:0
+msgid "Code"
+msgstr "Code"
+
+#. module: cs_model
+#: view:product.pricelist.item:cs_model.product_pricelist_item_search
+msgid "Codebar"
+msgstr "Codebar"
+
+#. module: cs_model
+#: field:external.product,color:0
+msgid "Color"
+msgstr "Color"
+
+#. module: cs_model
+#: field:external.product,create_uid:0
+#: field:external.product.import,create_uid:0
+#: field:product.brand,create_uid:0
+#: field:product.offer,create_uid:0
+#: field:product.offer.group,create_uid:0
+#: field:product.public.category.brand,create_uid:0
+msgid "Created by"
+msgstr "Created by"
+
+#. module: cs_model
+#: field:external.product,create_date:0
+#: field:external.product.import,create_date:0
+#: field:product.brand,create_date:0
+#: field:product.offer,create_date:0
+#: field:product.offer.group,create_date:0
+#: field:product.public.category.brand,create_date:0
+msgid "Created on"
+msgstr "Created on"
+
+#. module: cs_model
+#: view:product.product:cs_model.product_search_form_view_ean13
+msgid "Código de barras"
+msgstr "Código de barras"
+
+#. module: cs_model
+#: field:product.public.category,website_description:0
+#: field:product.public.category.brand,website_description:0
+msgid "Description for the website"
+msgstr "Description for the website"
+
+#. module: cs_model
+#: help:product.brand,sequence:0
+#: help:product.public.category.brand,sequence:0
+msgid "Determine the display order"
+msgstr "Determine the display order"
+
+#. module: cs_model
+#: field:external.product,display_name:0
+#: field:external.product.import,display_name:0
+#: field:product.brand,display_name:0
+#: field:product.offer,display_name:0
+#: field:product.offer.group,display_name:0
+#: field:product.public.category.brand,display_name:0
+msgid "Display Name"
+msgstr "Display Name"
+
+#. module: cs_model
+#: field:external.product,dto1:0
+msgid "Dto ven 1"
+msgstr "Dto ven 1"
+
+#. module: cs_model
+#: field:external.product,dto2:0
+msgid "Dto ven 2"
+msgstr "Dto ven 2"
+
+#. module: cs_model
+#: constraint:product.offer.group:0
+msgid "Error ! You cannot create recursive groups."
+msgstr "Error ! You cannot create recursive groups."
+
+#. module: cs_model
+#: field:res.partner,street_esc:0
+msgid "Escalera"
+msgstr "Escalera"
+
+#. module: cs_model
+#: view:external.product:cs_model.external_product_search_view
+#: model:ir.model,name:cs_model.model_external_product
+#: model:ir.model,name:cs_model.model_external_product_import
+msgid "External product"
+msgstr "External product"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "FUTURLAM"
+msgstr "FUTURLAM"
+
+#. module: cs_model
+#: field:external.product,familia:0
+msgid "Familia"
+msgstr "Familia"
+
+#. module: cs_model
+#: view:product.brand:cs_model.product_brand_form_view
+#: view:product.public.category:cs_model.product_public_category_form_view
+#: view:product.public.category.brand:cs_model.product_public_category_brand_form_view
+msgid "General"
+msgstr "General"
+
+#. module: cs_model
+#: help:product.offer,sequence:0
+msgid "Gives the sequence order when displaying a list of offers."
+msgstr "Gives the sequence order when displaying a list of offers."
+
+#. module: cs_model
+#: help:product.offer.group,sequence:0
+msgid "Gives the sequence order when displaying a list of product groups."
+msgstr "Gives the sequence order when displaying a list of product groups."
+
+#. module: cs_model
+#: model:ir.model,name:cs_model.model_product_offer_group
+msgid "Grupos de productos en oferta"
+msgstr "Grupos de productos en oferta"
+
+#. module: cs_model
+#: field:external.product,id:0
+#: field:external.product.import,id:0
+#: field:product.brand,id:0
+#: field:product.offer,id:0
+#: field:product.offer.group,id:0
+#: field:product.public.category.brand,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: cs_model
+#: field:product.brand,image:0
+#: field:product.offer,image:0
+#: field:product.offer.group,image:0
+#: field:product.public.category.brand,image:0
+msgid "Image"
+msgstr "Image"
+
+#. module: cs_model
+#: field:product.product,image_is_set:0
+#: field:product.template,image_is_set:0
+msgid "Imagen establecida"
+msgstr "Imagen establecida"
+
+#. module: cs_model
+#: field:product.product,image_url:0
+#: help:product.product,image_url:0
+#: field:product.template,image_url:0
+#: help:product.template,image_url:0
+msgid "Images"
+msgstr "Images"
+
+#. module: cs_model
+#: model:ir.ui.menu,name:cs_model.external_data
+msgid "Importación de datos"
+msgstr "Importación de datos"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "JUEGO PISTONES 1400 NW"
+msgstr "JUEGO PISTONES 1400 NW"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "KIT"
+msgstr "KIT"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "KIT NIVELADORES DECOBOX"
+msgstr "KIT NIVELADORES DECOBOX"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "KIT UNION 2 ABAT. MADERA"
+msgstr "KIT UNION 2 ABAT. MADERA"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "KT09880"
+msgstr "KT09880"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "KT09881"
+msgstr "KT09881"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "KT47013"
+msgstr "KT47013"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "KT47023"
+msgstr "KT47023"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "KT47050"
+msgstr "KT47050"
+
+#. module: cs_model
+#: field:external.product,largo:0
+msgid "Largo"
+msgstr "Largo"
+
+#. module: cs_model
+#: field:external.product,__last_update:0
+#: field:external.product.import,__last_update:0
+#: field:product.brand,__last_update:0
+#: field:product.offer,__last_update:0
+#: field:product.offer.group,__last_update:0
+#: field:product.public.category.brand,__last_update:0
+msgid "Last Modified on"
+msgstr "Last Modified on"
+
+#. module: cs_model
+#: field:external.product,write_uid:0
+#: field:external.product.import,write_uid:0
+#: field:product.brand,write_uid:0
+#: field:product.offer,write_uid:0
+#: field:product.offer.group,write_uid:0
+#: field:product.public.category.brand,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: cs_model
+#: field:external.product,write_date:0
+#: field:external.product.import,write_date:0
+#: field:product.brand,write_date:0
+#: field:product.offer,write_date:0
+#: field:product.offer.group,write_date:0
+#: field:product.public.category.brand,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: cs_model
+#: field:external.product,marca:0
+msgid "Marca"
+msgstr "Marca"
+
+#. module: cs_model
+#: field:external.product,medidas:0
+msgid "Medidas textil"
+msgstr "Medidas textil"
+
+#. module: cs_model
+#: field:product.brand,image_medium:0
+#: field:product.offer,image_medium:0
+#: field:product.offer.group,image_medium:0
+#: field:product.public.category.brand,image_medium:0
+msgid "Medium-sized image"
+msgstr "Medium-sized image"
+
+#. module: cs_model
+#: help:product.brand,image_medium:0
+#: help:product.public.category.brand,image_medium:0
+msgid "Medium-sized image of the category. It is automatically resized as a 128x128px image, with aspect ratio preserved. Use this field in form views or some kanban views."
+msgstr "Medium-sized image of the category. It is automatically resized as a 128x128px image, with aspect ratio preserved. Use this field in form views or some kanban views."
+
+#. module: cs_model
+#: help:product.offer.group,image_medium:0
+msgid "Medium-sized image of the group. It is automatically resized as a 128x128px image, with aspect ratio preserved. Use this field in form views or some kanban views."
+msgstr "Medium-sized image of the group. It is automatically resized as a 128x128px image, with aspect ratio preserved. Use this field in form views or some kanban views."
+
+#. module: cs_model
+#: help:product.offer,image_medium:0
+msgid "Medium-sized image of the offer. It is automatically resized as a 128x128px image, with aspect ratio preserved. Use this field in form views or some kanban views."
+msgstr "Medium-sized image of the offer. It is automatically resized as a 128x128px image, with aspect ratio preserved. Use this field in form views or some kanban views."
+
+#. module: cs_model
+#: field:product.brand,name:0
+#: field:product.offer,name:0
+#: field:product.offer.group,complete_name:0
+#: field:product.offer.group,name:0
+#: field:product.public.category.brand,name:0
+msgid "Name"
+msgstr "Name"
+
+#. module: cs_model
+#: field:external.product,nivel1:0
+msgid "Nivel 1"
+msgstr "Nivel 1"
+
+#. module: cs_model
+#: field:external.product,nivel2:0
+msgid "Nivel 2"
+msgstr "Nivel 2"
+
+#. module: cs_model
+#: field:external.product,nivel3:0
+msgid "Nivel 3"
+msgstr "Nivel 3"
+
+#. module: cs_model
+#: field:external.product,niveles:0
+#: model:product.category,name:cs_model.product_internal_category
+#: field:product.public.category,niveles:0
+msgid "Niveles"
+msgstr "Niveles"
+
+#. module: cs_model
+#: field:external.product,nombre:0
+#: field:res.partner,name1:0
+#: field:res.partner,street_name:0
+msgid "Nombre"
+msgstr "Nombre"
+
+#. module: cs_model
+#: field:res.partner,street_number:0
+msgid "Nº"
+msgstr "Nº"
+
+#. module: cs_model
+#: model:ir.model,name:cs_model.model_product_offer
+msgid "Oferta"
+msgstr "Oferta"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "PLETINA"
+msgstr "PLETINA"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "PLETINA ERGOBOX"
+msgstr "PLETINA ERGOBOX"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "PLETINA UNION"
+msgstr "PLETINA UNION"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "PLETINA UNION DIVANLINES "
+msgstr "PLETINA UNION DIVANLINES "
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "PLETINA UNION LT 10"
+msgstr "PLETINA UNION LT 10"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "PZ97516"
+msgstr "PZ97516"
+
+#. module: cs_model
+#: field:external.product,for_delete:0
+msgid "Para borrar"
+msgstr "Para borrar"
+
+#. module: cs_model
+#: field:product.offer.group,parent_id:0
+msgid "Parent Group"
+msgstr "Parent Group"
+
+#. module: cs_model
+#: model:ir.model,name:cs_model.model_res_partner
+msgid "Partner"
+msgstr "Socio"
+
+#. module: cs_model
+#: field:res.partner,street_piso:0
+msgid "Piso"
+msgstr "Piso"
+
+#. module: cs_model
+#: field:external.product,precio1:0
+msgid "Precio venta"
+msgstr "Precio venta"
+
+#. module: cs_model
+#: field:external.product,precio2:0
+msgid "Precio venta 2"
+msgstr "Precio venta 2"
+
+#. module: cs_model
+#: view:product.pricelist.item:cs_model.product_pricelist_item_tree_view
+msgid "Precios"
+msgstr "Precios"
+
+#. module: cs_model
+#: model:ir.actions.act_window,name:cs_model.product_pricelist_item_action
+#: model:ir.ui.menu,name:cs_model.menu_product_pricelist_item_action
+msgid "Precios por producto"
+msgstr "Precios por producto"
+
+#. module: cs_model
+#: view:product.pricelist.item:cs_model.product_pricelist_item_search
+msgid "Price"
+msgstr "Price"
+
+#. module: cs_model
+#: model:ir.model,name:cs_model.model_product_pricelist_item
+msgid "Pricelist item"
+msgstr "Elemento de tarifa"
+
+#. module: cs_model
+#: view:product.offer.group:cs_model.product_offer_group_form_view
+msgid "Procurements"
+msgstr "Procurements"
+
+#. module: cs_model
+#: view:external.product:cs_model.external_product_search_view
+#: view:external.product:cs_model.external_product_tree_view
+#: model:ir.model,name:cs_model.model_product_product
+#: field:product.offer.group,product_tmpl_ids:0
+#: view:product.pricelist.item:cs_model.product_pricelist_item_search
+msgid "Product"
+msgstr "Producto"
+
+#. module: cs_model
+#: field:product.product,brand_id:0
+#: field:product.template,brand_id:0
+msgid "Product Brand"
+msgstr "Product Brand"
+
+#. module: cs_model
+#: view:product.offer.group:cs_model.product_offer_group_form_view
+msgid "Product Group"
+msgstr "Product Group"
+
+#. module: cs_model
+#: view:product.offer:cs_model.product_offer_tree_view
+#: view:product.offer.group:cs_model.product_offer_group_tree_view
+msgid "Product Product Categories"
+msgstr "Product Product Categories"
+
+#. module: cs_model
+#: model:ir.model,name:cs_model.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: cs_model
+#: view:product.template:cs_model.product_search_form_view
+msgid "Product brand"
+msgstr "Product brand"
+
+#. module: cs_model
+#: view:product.offer:cs_model.product_offer_form_view
+msgid "Product offer"
+msgstr "Product offer"
+
+#. module: cs_model
+#: field:product.offer,product_offer_group_id:0
+msgid "Product offer group"
+msgstr "Product offer group"
+
+#. module: cs_model
+#: model:ir.model,name:cs_model.model_product_property
+msgid "Product properties"
+msgstr "Product properties"
+
+#. module: cs_model
+#: model:ir.model,name:cs_model.model_product_property_line
+msgid "Product property line"
+msgstr "Product property line"
+
+#. module: cs_model
+#: model:ir.actions.act_window,name:cs_model.external_data_product_action
+#: model:ir.ui.menu,name:cs_model.menu_external_data_product
+#: view:product.offer:cs_model.product_offer_form_view
+msgid "Productos"
+msgstr "Productos"
+
+#. module: cs_model
+#: view:product.pricelist.item:cs_model.product_pricelist_item_search
+msgid "Products Price List Item Search"
+msgstr "Products Price List Item Search"
+
+#. module: cs_model
+#: model:ir.actions.act_window,name:cs_model.product_offer_group_action
+#: model:ir.ui.menu,name:cs_model.menu_product_offer_group
+msgid "Products group"
+msgstr "Products group"
+
+#. module: cs_model
+#: model:ir.model,name:cs_model.model_product_offer_group_line
+msgid "Products of group"
+msgstr "Products of group"
+
+#. module: cs_model
+#: model:ir.actions.act_window,name:cs_model.product_offer_action
+#: model:ir.ui.menu,name:cs_model.menu_product_offer
+msgid "Products offer"
+msgstr "Products offer"
+
+#. module: cs_model
+#: field:product.pricelist.item,product_discount:0
+msgid "Produt discount (%)"
+msgstr "Produt discount (%)"
+
+#. module: cs_model
+#: field:product.pricelist.item,product_price:0
+msgid "Produt price"
+msgstr "Produt price"
+
+#. module: cs_model
+#: field:external.product,proveedor:0
+msgid "Proveedor"
+msgstr "Proveedor"
+
+#. module: cs_model
+#: model:ir.model,name:cs_model.model_product_public_category
+#: field:product.public.category.brand,public_category:0
+msgid "Public Category"
+msgstr "Categoría pública"
+
+#. module: cs_model
+#: model:ir.model,name:cs_model.model_product_public_category_brand
+msgid "Public Category by Brand of product"
+msgstr "Public Category by Brand of product"
+
+#. module: cs_model
+#: view:product.public.category.brand:cs_model.product_public_category_brand_form_view
+#: view:product.public.category.brand:cs_model.product_public_category_brand_tree_view
+msgid "Public category by brand"
+msgstr "Public category by brand"
+
+#. module: cs_model
+#: model:ir.actions.act_window,name:cs_model.product_public_category_brand_action
+#: model:ir.ui.menu,name:cs_model.menu_product_public_category_brand
+msgid "Public category by brands"
+msgstr "Public category by brands"
+
+#. module: cs_model
+#: field:product.product,lst_discount:0
+#: field:product.template,lst_discount:0
+msgid "Public discount"
+msgstr "Public discount"
+
+#. module: cs_model
+#: field:product.product,list_discount:0
+#: help:product.product,list_discount:0
+#: field:product.template,list_discount:0
+#: help:product.template,list_discount:0
+msgid "Public product discount"
+msgstr "Public product discount"
+
+#. module: cs_model
+#: field:res.partner,street_puerta:0
+msgid "Puerta"
+msgstr "Puerta"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "R. NORDICO AQUA"
+msgstr "R. NORDICO AQUA"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "R. NORDICO EIDERDOWN"
+msgstr "R. NORDICO EIDERDOWN"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "R. NORDICO GOLDEN"
+msgstr "R. NORDICO GOLDEN"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "R. NORDICO KALUGA"
+msgstr "R. NORDICO KALUGA"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "R. NORDICO MARFIL"
+msgstr "R. NORDICO MARFIL"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "R. NORDICO MARFIL OTOÑO"
+msgstr "R. NORDICO MARFIL OTOÑO"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "R. NORDICO N.ELITE"
+msgstr "R. NORDICO N.ELITE"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "R. NORDICO NIDO"
+msgstr "R. NORDICO NIDO"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "R. NORDICO NIDO OTOÑO"
+msgstr "R. NORDICO NIDO OTOÑO"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "R. NORDICO NUBE CLASIC"
+msgstr "R. NORDICO NUBE CLASIC"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "R. NORDICO NUBE PREMIUM (GALA)"
+msgstr "R. NORDICO NUBE PREMIUM (GALA)"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "R. NORDICO UNIV. PREM. 100"
+msgstr "R. NORDICO UNIV. PREM. 100"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "R. NORDICO UNIV. PREM. 140"
+msgstr "R. NORDICO UNIV. PREM. 140"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "RNAQUA"
+msgstr "RNAQUA"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "RNEIDERDOWN"
+msgstr "RNEIDERDOWN"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "RNELITE"
+msgstr "RNELITE"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "RNGOLDEN"
+msgstr "RNGOLDEN"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "RNKALUGA"
+msgstr "RNKALUGA"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "RNMARFIL"
+msgstr "RNMARFIL"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "RNMAROTO"
+msgstr "RNMAROTO"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "RNNIDO"
+msgstr "RNNIDO"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "RNNIDOTO"
+msgstr "RNNIDOTO"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "RNNUBE"
+msgstr "RNNUBE"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "RNNUBECLAS"
+msgstr "RNNUBECLAS"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "RNUPRE100"
+msgstr "RNUPRE100"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "RNUPRE140"
+msgstr "RNUPRE140"
+
+#. module: cs_model
+#: field:product.product,ratingplus:0
+#: help:product.product,ratingplus:0
+#: field:product.template,ratingplus:0
+#: help:product.template,ratingplus:0
+msgid "Rating plus"
+msgstr "Rating plus"
+
+#. module: cs_model
+#: field:external.product,referencia:0
+#: view:product.pricelist.item:cs_model.product_pricelist_item_search
+msgid "Referencia"
+msgstr "Referencia"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "SINCRONIZADOR LT10"
+msgstr "SINCRONIZADOR LT10"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "SOM. LT10 ART. 2 MOT. 5 PL. CON PATAS"
+msgstr "SOM. LT10 ART. 2 MOT. 5 PL. CON PATAS"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "SOM. LT10 FIJO CON PATAS"
+msgstr "SOM. LT10 FIJO CON PATAS"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "SOMIER FIJO SG 20"
+msgstr "SOMIER FIJO SG 20"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "SOMIER FUTURLAM ELECTRICO"
+msgstr "SOMIER FUTURLAM ELECTRICO"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "SOMIER LAM. MADERA BRICOLAJE "
+msgstr "SOMIER LAM. MADERA BRICOLAJE "
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "SOMIER SG 16"
+msgstr "SOMIER SG 16"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "SOMIER SG 16F"
+msgstr "SOMIER SG 16F"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "SOMIER SG 20"
+msgstr "SOMIER SG 20"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "SOMIER SG 20R"
+msgstr "SOMIER SG 20R"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "SOMIER SG 26R"
+msgstr "SOMIER SG 26R"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "SOMIER SM70"
+msgstr "SOMIER SM70"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "SR02066"
+msgstr "SR02066"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "SR02562"
+msgstr "SR02562"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "SR02581"
+msgstr "SR02581"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "SR07860"
+msgstr "SR07860"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "SR07865"
+msgstr "SR07865"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "SR40003"
+msgstr "SR40003"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "SR40014"
+msgstr "SR40014"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "SR40019"
+msgstr "SR40019"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "SR40020"
+msgstr "SR40020"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "SR40027"
+msgstr "SR40027"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "SR40028"
+msgstr "SR40028"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "SR40049"
+msgstr "SR40049"
+
+#. module: cs_model
+#: model:ir.model,name:cs_model.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea pedido de venta"
+
+#. module: cs_model
+#: field:product.brand,sequence:0
+#: field:product.offer,sequence:0
+#: field:product.offer.group,sequence:0
+#: field:product.public.category.brand,sequence:0
+msgid "Sequence"
+msgstr "Sequence"
+
+#. module: cs_model
+#: field:product.brand,image_small:0
+#: field:product.offer,image_small:0
+#: field:product.offer.group,image_small:0
+#: field:product.public.category.brand,image_small:0
+msgid "Smal-sized image"
+msgstr "Smal-sized image"
+
+#. module: cs_model
+#: help:product.brand,image_small:0
+#: help:product.public.category.brand,image_small:0
+msgid "Small-sized image of the category. It is automatically resized as a 64x64px image, with aspect ratio preserved. Use this field anywhere a small image is required."
+msgstr "Small-sized image of the category. It is automatically resized as a 64x64px image, with aspect ratio preserved. Use this field anywhere a small image is required."
+
+#. module: cs_model
+#: help:product.offer.group,image_small:0
+msgid "Small-sized image of the group. It is automatically resized as a 64x64px image, with aspect ratio preserved. Use this field anywhere a small image is required."
+msgstr "Small-sized image of the group. It is automatically resized as a 64x64px image, with aspect ratio preserved. Use this field anywhere a small image is required."
+
+#. module: cs_model
+#: help:product.offer,image_small:0
+msgid "Small-sized image of the offer. It is automatically resized as a 64x64px image, with aspect ratio preserved. Use this field anywhere a small image is required."
+msgstr "Small-sized image of the offer. It is automatically resized as a 64x64px image, with aspect ratio preserved. Use this field anywhere a small image is required."
+
+#. module: cs_model
+#: help:product.pricelist.item,product_discount:0
+msgid "Specify the fixed product discount"
+msgstr "Specify the fixed product discount"
+
+#. module: cs_model
+#: help:product.pricelist.item,product_price:0
+msgid "Specify the fixed product price"
+msgstr "Specify the fixed product price"
+
+#. module: cs_model
+#: field:product.brand,website_summary:0
+#: field:product.product,website_summary:0
+#: field:product.public.category,website_summary:0
+#: field:product.public.category.brand,website_summary:0
+#: field:product.template,website_summary:0
+msgid "Summary"
+msgstr "Summary"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "TACO WINX"
+msgstr "TACO WINX"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "TACO WINX 250 FIRME"
+msgstr "TACO WINX 250 FIRME"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "TACO WINX 250 SUAVE"
+msgstr "TACO WINX 250 SUAVE"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "TACO X2 FIRME"
+msgstr "TACO X2 FIRME"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "TOPDUVET"
+msgstr "TOPDUVET"
+
+#. module: cs_model
+#: model:external.product,nombre:0
+msgid "TOPPER TOP DUVET"
+msgstr "TOPPER TOP DUVET"
+
+#. module: cs_model
+#: field:external.product,talla:0
+msgid "Talla"
+msgstr "Talla"
+
+#. module: cs_model
+#: help:product.brand,image:0
+#: help:product.public.category.brand,image:0
+msgid "This field holds the image used as image for the category, limited to 1024x1024px."
+msgstr "This field holds the image used as image for the category, limited to 1024x1024px."
+
+#. module: cs_model
+#: help:product.offer.group,image:0
+msgid "This field holds the image used as image for the group, limited to 1024x1024px."
+msgstr "This field holds the image used as image for the group, limited to 1024x1024px."
+
+#. module: cs_model
+#: help:product.offer,image:0
+msgid "This field holds the image used as image for the offer, limited to 1024x1024px."
+msgstr "This field holds the image used as image for the offer, limited to 1024x1024px."
+
+#. module: cs_model
+#: field:res.partner,street_type:0
+msgid "Tipo"
+msgstr "Tipo"
+
+#. module: cs_model
+#: field:external.product,piel:0
+msgid "Tipo de piel"
+msgstr "Tipo de piel"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "VR07860"
+msgstr "VR07860"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "VR07869"
+msgstr "VR07869"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "VR07990"
+msgstr "VR07990"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "VR07999006"
+msgstr "VR07999006"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "VR09899"
+msgstr "VR09899"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "VR09914"
+msgstr "VR09914"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "VR09969"
+msgstr "VR09969"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "VR09973"
+msgstr "VR09973"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "VR09978"
+msgstr "VR09978"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "VR09982"
+msgstr "VR09982"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "VR09996"
+msgstr "VR09996"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "VR79157"
+msgstr "VR79157"
+
+#. module: cs_model
+#: model:external.product,referencia:0
+msgid "VR79158"
+msgstr "VR79158"
+
+#. module: cs_model
+#: model:ir.model,name:cs_model.model_website
+msgid "Website"
+msgstr "Sitio web"
+
+#. module: cs_model
+#: field:product.brand,website_description:0
+msgid "Website description"
+msgstr "Website description"
+
+#. module: cs_model
+#: field:product.brand,website_meta_description:0
+#: field:product.public.category,website_meta_description:0
+#: field:product.public.category.brand,website_meta_description:0
+msgid "Website meta description"
+msgstr "Website meta description"
+
+#. module: cs_model
+#: field:product.brand,website_meta_keywords:0
+#: field:product.public.category,website_meta_keywords:0
+#: field:product.public.category.brand,website_meta_keywords:0
+msgid "Website meta keywords"
+msgstr "Website meta keywords"
+
+#. module: cs_model
+#: field:product.brand,website_meta_title:0
+#: field:product.public.category,website_meta_title:0
+#: field:product.public.category.brand,website_meta_title:0
+msgid "Website meta title"
+msgstr "Website meta title"
+
+#. module: cs_model
+#: model:product.attribute,name:cs_model.product_attribute_color
+msgid "color"
+msgstr "Color"
+
+#. module: cs_model
+#: model:product.attribute,name:cs_model.product_attribute_measures
+msgid "medidas"
+msgstr "Medidas"
+
+#. module: cs_model
+#: model:product.attribute,name:cs_model.product_attribute_skin
+msgid "piel"
+msgstr "Piel"
+
+#. module: cs_model
+#: view:product.template:cs_model.product_template_form_default_code
+msgid "{'invisible': [('is_product_variant','=',False)]}"
+msgstr "{'invisible': [('is_product_variant','=',False)]}"

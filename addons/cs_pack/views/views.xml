@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <!-- Packs -->
+    <record id="product_pack_form_view" model="ir.ui.view">
+      <field name="name">product.pack.form</field>
+      <field name="model">product.pack</field>
+      <field name="arch" type="xml">
+        <form string="Pack's de productos">
+          <sheet>
+            <div class="oe_left">
+              <field name="image" widget='image' class="oe_avatar oe_left"/>
+              <div class="oe_title" style="width: 390px;">
+                <h1>
+                  <field name="name" class="oe_inline"/>
+                </h1>
+              </div>
+              <group>
+                <group id="active">
+                  <field name="active"/>
+                  <field name="datetime_start"/>
+                  <field name="datetime_end"/>
+                </group>
+              </group>
+
+            </div>
+
+            <notebook>
+              <page string="General">
+                <group colspan="2">
+                  <group>
+                    <field name="subtitle"/>
+                  </group>
+                </group>
+                <group colspan="4">
+                  <group>
+                    <field name="website_description"/>
+                  </group>
+                </group>
+              </page>
+              <page string="Productos">
+                <group colspan="4">
+                  <field name="line_ids" nolabel="1">
+                    <tree string="Productos" editable="bottom">
+                      <field name="sequence" widget="handle"/>
+                      <field name="product_tmpl_id"/>
+                      <field name="qty"/>
+                    </tree>
+                  </field>
+                </group>
+              </page>
+              <page string="Tiendas bed's">
+                <group colspan="4">
+                  <group>
+                    <label for="only_physical_store"/>
+                    <div>
+                      <field name="only_physical_store" class="oe_inline" style="vertical-align:baseline"/>
+                    </div>
+                  </group>
+                </group>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <record id="view_product_pack_tree" model="ir.ui.view">
+      <field name="name">product.pack.tree</field>
+      <field name="model">product.pack</field>
+      <field name="arch" type="xml">
+        <tree string="Pack's de productos" colors="grey:not active_now;green:active_now">
+          <field name="sequence" widget="handle" />
+          <field name="name"/>
+          <field name="datetime_start"/>
+          <field name="datetime_end"/>
+          <field name="active_now"/>
+        </tree>
+      </field>
+    </record>
+    <record id="view_inactive_product_pack_filter" model="ir.ui.view" >
+      <field name="name">inactive.product.pack</field>
+      <field name="model">product.pack</field>
+      <field name="arch" type="xml">
+        <search string="Búsqueda de packs">
+          <field name="name" />
+          <filter string="Arhivados" domain="[('active', '=', False)]" />
+        </search>
+      </field>
+    </record>
+
+    <record id="product_pack_action" model="ir.actions.act_window">
+      <field name="name">Pack's</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">product.pack</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" eval="False"/>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Definir un nuevo pack
+        </p>
+      </field>
+    </record>
+    <menuitem action="product_pack_action" id="menu_product_pack" parent="cs_model.menu_marketing_product" sequence="2" />
+
+
+    <!-- Configuración de packs -->
+    <record id="view_product_pack_config_form" model="ir.ui.view">
+      <field name="name">product.pack.config.form</field>
+      <field name="model">product.pack.config</field>
+      <field name="arch" type="xml">
+        <form string="Configuración de packs">
+          <sheet>
+            <div class="oe_left">
+              <div class="oe_title" style="width: 390px;">
+                <h1>
+                  <field name="name"/>
+                </h1>
+              </div>
+
+              <div class="oe_left">
+                <group>
+                  <field name="active"/>
+                  <field name="datetime_start"/>
+                  <field name="datetime_end"/>
+                </group>
+              </div>
+            </div>
+            <notebook>
+              <page string="Textos e imágenes" groups="base.group_user">
+                <group colspan="4">
+                  <group>
+                    <field name="color_text"/>
+                    <field name="color_background"/>
+                  </group>
+                </group>
+                <group colspan="4">
+                  <group>
+                    <field name="image_header_id" widget='image' class="oe_left oe_image_medium"/>
+                    <field name="en_image_header_id" widget='image' class="oe_left oe_image_medium"/>
+                  </group>
+                </group>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_inactive_product_pack_config_filter">
+      <field name="name">inactive.product.pack.config</field>
+      <field name="model">product.pack.config</field>
+      <field name="arch" type="xml">
+        <search string="Configuración del sistema de packs">
+          <field name="name" />
+          <filter string="Archivadas" domain="[('active', '=', False)]" />
+        </search>
+      </field>
+    </record>
+
+
+    <record id="view_product_pack_config_tree" model="ir.ui.view">
+      <field name="name">product.pack.config.tree</field>
+      <field name="model">product.pack.config</field>
+      <field name="arch" type="xml">
+        <tree string="Configuración de packs" colors="grey:not active_now;green:active_now">
+          <field name="sequence" widget="handle"/>
+          <field name="name"/>
+          <field name="datetime_start"/>
+          <field name="datetime_end"/>
+          <field name="active_now"/>
+        </tree>
+      </field>
+    </record>
+    <record id="product_pack_config_action" model="ir.actions.act_window">
+      <field name="name">Configuración de packs</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">product.pack.config</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">['|',('active','=',True),('active','=',False)]</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Pulsar para hacer una nueva configuración de packs
+        </p>
+
+      </field>
+    </record>
+    <menuitem action="product_pack_config_action" id="menu_product_pack_config"
+      parent="cs_model.menu_marketing_product" sequence="2"
+      />
+
+
+
+    </data>
+
+  </openerp>

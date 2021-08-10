@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <template id="home_banner">
+            <div class="carousel slide cs-banner mt0 cs-border-bottom-blue" id="myCarousel_1474612738435">
+                <ol class="carousel-indicators">
+                    <li class="" data-slide-to="0" data-target="#myCarousel_1474612738435"></li>
+                    <li data-slide-to="1" data-target="#myCarousel_1474612738435" class="active"></li>
+                    <li data-slide-to="2" data-target="#myCarousel_1474612738435" class=""></li>
+                    <li data-slide-to="3" data-target="#myCarousel_1474612738435" class=""></li>
+                    <li data-slide-to="4" data-target="#myCarousel_1474612738435" class=""></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="item oe_dark oe_img_bg" style="background-image: url(&quot;https://www.beds.es/website/image/ir.attachment/4390_1e936a5/datas&quot;);">
+                        <div class="container">
+                            <div class="row content">
+                                <div class="carousel-content col-md-6 col-sm-12 text-center">
+                                    <h2></h2>
+                                    <h3></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item oe_img_bg active" style="background-image: url(&quot;https://www.beds.es/website/image/ir.attachment/4391_cadb93b/datas&quot;);">
+                        <div class="container">
+                            <div class="row content">
+                                <div class="carousel-content col-md-6 col-sm-12 text-center">
+                                    <h2>&nbsp;</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item oe_img_bg" style="background-image: url(&quot;https://www.beds.es/website/image/ir.attachment/4392_3e71b07/datas&quot;);">
+                        <div class="container">
+                            <div class="row content">
+                                <div class="carousel-content col-md-6 col-sm-12 text-center">
+                                    <h2>&nbsp;</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item oe_img_bg" style="background-image: url(&quot;https://www.beds.es/website/image/ir.attachment/4393_31e80d1/datas&quot;);">
+                        <div class="container">
+                            <div class="row content">
+                                <div class="carousel-content col-md-6 col-sm-12 text-center">
+                                    <h2>&nbsp;</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item oe_img_bg" style="background-image: url(&quot;https://www.beds.es/website/image/ir.attachment/4394_9fa4f9e/datas&quot;);">
+                        <div class="container">
+                            <div class="row content">
+                                <div class="carousel-content col-md-6 col-sm-12 text-center">
+                                    <h2>&nbsp;</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-control left" data-slide="prev" data-target="#myCarousel_1474612738435" href="#myCarousel_1474612738435" style="width: 10%">
+                    <i class="fa fa-chevron-left" style=""></i>
+                </div>
+                <div class="carousel-control right" data-slide="next" data-target="#myCarousel_1474612738435" href="#myCarousel_1474612738435" style="width: 10%">
+                    <i class="fa fa-chevron-right" style=""></i>
+                </div>
+                <img class="hidden" data-pagespeed-url-hash="2978021855" onload="pagespeed.CriticalImages.checkImageForCriticality(this);" src="">
+            </div>
+        </template>
+
+    </data>
+</openerp>

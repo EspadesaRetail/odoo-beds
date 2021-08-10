@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<VTW>
+  <Language.ES>
+    <Imagenes>
+      <BackgroundImage>fondo.jpg</BackgroundImage>
+      <Cvv2ButtonImage>img_cod_seguridad.gif</Cvv2ButtonImage>
+      <HlpSymbolImage>img_help_icon.jpg</HlpSymbolImage>
+      <HeaderImage>beds_conexflow_cabecero.png</HeaderImage>
+      <FooterImage>pie.png</FooterImage>
+      <ButtonSendImage>beds_conexflow_ACEPTAR.png</ButtonSendImage>
+      <ButtonCancelImage>beds_conexflow_VOLVER.png</ButtonCancelImage>
+      <!-- v3.1.26 -->
+      <LoaderImage>loader.gif</LoaderImage>
+      <!-- v3.1.29 -->
+      <RetryButtonImage>beds_conexflow_ACEPTAR.png</RetryButtonImage>
+			<RejectButtonImage>beds_conexflow_VOLVER.png</RejectButtonImage>
+			<ResponseHeaderImg>beds_conexflow_cabecero.png</ResponseHeaderImg>
+      <ResponseFooterImg>pie.png</ResponseFooterImg>
+    </Imagenes>
+    <Literales>
+      <AmountText>Importe</AmountText>
+      <TicketText>Ticket</TicketText>
+      <SaleText>Por favor, rellena los datos para confirmar tu compra:</SaleText>
+      <RefundText>Por favor, rellena los datos para proceder a la devolución:</RefundText>
+      <VoidText>Anulación</VoidText>
+      <CancelText>Cancelar</CancelText>
+      <PreauthText>Preautorización</PreauthText>
+      <ConfirmText>Confirmación</ConfirmText>
+      <OKText>Aceptar</OKText>
+      <ManualEntryText>Teclear datos</ManualEntryText>
+      <OperTypePrefix>Tipo Operación</OperTypePrefix>
+      <PANText>Tarjeta</PANText>
+      <CADText>Caducidad</CADText>
+      <CVVText>CVV2</CVVText>
+      <DateText>Fecha</DateText>
+      <TimeText>Hora</TimeText>
+      <CurrencyText>Moneda</CurrencyText>
+      <UserText>Comercio</UserText>
+      <SendButtonText>ENVIAR</SendButtonText>
+      <CancelButtonText>CANCELAR</CancelButtonText>
+      <OperDataTable>Datos de la Operación</OperDataTable>
+      <CardDataTable>Datos de la Tarjeta</CardDataTable>
+      <AdmDevText>Devolución administrativa</AdmDevText>
+      <OriginalOpTable>Datos de la Operación Original</OriginalOpTable>
+      <CenterText>Centro Original</CenterText>
+      <TPVText>TPV Original</TPVText>
+      <OriDateText>Fecha Original (DDMMAAAA)</OriDateText>
+      <IDOperationText>ID Operacion Original</IDOperationText>
+      <AuthoritationText>Autorización Original</AuthoritationText>
+      <CreateTokenText>ALTA DE TOKEN</CreateTokenText>
+      <!-- v3.1.19 (DCC) -->
+      <DCCTableText>YOU HAVE A CHOICE OF PAYING IN EITHER</DCCTableText>
+      <AmountDCCText>Amount in</AmountDCCText>
+      <ConvertionRateText>Exchange rate applied</ConvertionRateText>
+      <CommissionText><![CDATA[Include {0}% MARK-UP over wholesale rate<br>Service and Exchange rate provided by {1} on {2:d}<br>Commision {3}%<br>Please, select which currency you wish to be billed in for this transaction:]]></CommissionText>
+    </Literales>
+    <Mensajes>
+      <Msg001>'Error: Vuelva a teclear nº de tarjeta.'</Msg001>
+      <Msg002>'Tarjeta caducada'</Msg002>
+      <Msg003>'Falta dato obligatorio. No se introdujo nº de tarjeta'</Msg003>
+      <Msg004>'Falta dato obligatorio. No se introdujo código de seguridad'</Msg004>
+      <Msg005>'Error: La longitud del nº de tarjeta es incorrecta'</Msg005>
+      <Msg006>'Error: La longitud del código de seguridad es incorrecta'</Msg006>
+      <Msg026>'¿Desea Continuar con la Transacción?'</Msg026>
+      <Msg027>'¿Desea Cancelar la Transacción?'</Msg027>
+      <Msg028>'Continuar'</Msg028>
+      <Msg029>'Cancelar'</Msg029>
+      <Msg030>'Salir'</Msg030>
+      <Msg031>'Anular'</Msg031>
+      <Msg032>'Falta dato obligatorio. No se introdujo Cod. Centro Original o dato Incorrecto'</Msg032>
+      <Msg033>'Falta dato obligatorio. No se introdujo Cod. TPV Original o dato Incorrecto'</Msg033>
+      <Msg034>'Falta dato obligatorio. No se introdujo Fecha Oper. Original o dato Incorrecto'</Msg034>
+      <Msg035>'Falta dato obligatorio. No se introdujo Num. Oper. Original o dato Incorrecto'</Msg035>
+			<!-- Texto espera respuesta final (operaciones autorizadas) -->
+			<Msg036>'REDIRIGIENDO LA PETICION A LA PAGINA DEL CLIENTE...'</Msg036>
+			<!-- Texto espera PUCE -->
+			<Msg037>'REDIRIGIENDO LA PETICION A LA PAGINA DEL CENTRO PROCESADOR...'</Msg037>
+      <!-- v3.1.26 -->
+      <Msg038>'Respuesta VPW'</Msg038>
+			<!-- Subtexto espera respuesta final (operaciones autorizadas) -->
+			<Msg039>'Espere por favor...'</Msg039>
+			<!-- v3.1.29 -->
+			<!-- Texto alerta PUCE -->
+			<Msg040>'NO ES POSIBLE REDIRIGIR LA PETICION A LA PAGINA DEL CENTRO PROCESADOR...'</Msg040>
+			<!-- Texto espera respuesta final (operaciones denegadas) -->
+			<Msg041>'TRANSACCION DENEGADA. VOLVIENDO A LA PAGINA DEL CLIENTE...'</Msg041>
+			<!-- Subtexto espera respuesta final (operaciones denegadas) -->
+			<Msg042>'Espere por favor...'</Msg042>
+			<!-- Texto alerta respuesta final (autorizada) -->
+			<Msg043>'NO ES POSIBLE REDIRIGIR LA PETICION A LA PAGINA DEL CLIENTE...'</Msg043>
+			<!-- Subtexto alerta respuesta final (autorizada) -->
+			<Msg044>'Espere por favor...'</Msg044>
+			<!-- Texto alerta respuesta final (denegada) -->
+			<Msg045>'TRANSACCION DENEGADA. NO ES POSIBLE VOLVER A LA PAGINA DEL CLIENTE...'</Msg045>
+			<!-- Subtexto alerta respuesta final (denegada) -->
+			<Msg046>'Espere por favor...'</Msg046>
+    </Mensajes>
+  </Language.ES>
+  <Language.EN>
+    <Imagenes>
+      <BackgroundImage>fondo.jpg</BackgroundImage>
+      <Cvv2ButtonImage>img_cod_seguridad.gif</Cvv2ButtonImage>
+      <HlpSymbolImage>img_help_icon.jpg</HlpSymbolImage>
+      <HeaderImage>beds_conexflow_cabecero.png</HeaderImage>
+      <FooterImage>pie.png</FooterImage>
+      <ButtonSendImage>beds_conexflow_SUBMIT.png</ButtonSendImage>
+      <ButtonCancelImage>beds_conexflow_BACK.png</ButtonCancelImage>
+      <!-- v3.1.26 -->
+      <LoaderImage>loader.gif</LoaderImage>
+      <!-- v3.1.29 -->
+      <RetryButtonImage>beds_conexflow_SUBMIT.png</RetryButtonImage>
+			<RejectButtonImage>beds_conexflow_BACK.png</RejectButtonImage>
+			<ResponseHeaderImg>beds_conexflow_cabecero.png</ResponseHeaderImg>
+      <ResponseFooterImg>pie.png</ResponseFooterImg>
+    </Imagenes>
+    <Literales>
+      <AmountText>Amount</AmountText>
+      <TicketText>Item</TicketText>
+      <SaleText>Secure credit card payment portal</SaleText>
+      <RefundText>Secure credit card payment portal</RefundText>
+      <VoidText>Void</VoidText>
+      <CancelText>Cancel</CancelText>
+      <PreauthText>Preauthorization</PreauthText>
+      <ConfirmText>Confirmation</ConfirmText>
+      <OKText>Accept</OKText>
+      <ManualEntryText>Entry data</ManualEntryText>
+      <OperTypePrefix>Op.Type</OperTypePrefix>
+      <PANText>Card Number*</PANText>
+      <CADText>Expiry Date*</CADText>
+      <CVVText>Security Code*</CVVText>
+      <DateText>Date</DateText>
+      <TimeText>Time</TimeText>
+      <CurrencyText>Currency</CurrencyText>
+      <UserText>User</UserText>
+      <SendButtonText>SEND</SendButtonText>
+      <CancelButtonText>CANCEL</CancelButtonText>
+      <OperDataTable>Transaction details</OperDataTable>
+      <CardDataTable>Please enter your credit card details below</CardDataTable>
+      <AdmDevText>ADMINISTRATIVE REFUND</AdmDevText>
+      <OriginalOpTable>Original Operation Data</OriginalOpTable>
+      <CenterText>Original Center</CenterText>
+      <TPVText>Original TPV</TPVText>
+      <OriDateText>Original Date (DDMMYYYY)</OriDateText>
+      <IDOperationText>Original Operation ID</IDOperationText>
+      <AuthoritationText>Original Authorization</AuthoritationText>
+      <CreateTokenText>TOKEN REGISTER</CreateTokenText>
+      <!-- v3.1.19 (DCC) -->
+      <DCCTableText>YOU HAVE A CHOICE OF PAYING IN EITHER</DCCTableText>
+      <AmountDCCText>Amount in</AmountDCCText>
+      <ConvertionRateText>Exchange rate applied</ConvertionRateText>
+      <CommissionText><![CDATA[Include {0}% MARK-UP over wholesale rate<br>Service and Exchange rate provided by {1} on {2:d}<br>Commision {3}%<br>Please, select which currency you wish to be billed in for this transaction:]]></CommissionText>
+    </Literales>
+    <Mensajes>
+      <Msg001>'The card number is incorrect. Please click Continue and re-enter your card number'</Msg001>
+      <Msg002>'Expiry date cannot be in the past. Please click Continue and correct the expiry date'</Msg002>
+      <Msg003>'The card number field cannot be left blank. Please click Continue and enter your card number.'</Msg003>
+      <Msg004>'The Security code field cannot be left blank. Please click Continue and enter your Security code in the box provided'</Msg004>
+      <Msg005>'Error: The length of the PAN is incorrect'</Msg005>
+      <Msg006>'Error: The length of the Security Code is incorrect'</Msg006>
+      <Msg026>'Please click Continue to process your payment or Cancel to amend your card details'</Msg026>
+      <Msg027>'Please click Exit to abandon this payment (your credit card will not be charged) or click Amend to amend your card details'</Msg027>
+      <Msg028>'Continue'</Msg028>
+      <Msg029>'Cancel'</Msg029>
+      <Msg030>'Exit'</Msg030>
+      <Msg031>'Amend'</Msg031>
+      <Msg032>'Original Center Code cannot be left blank or the data is incorrect. Please click Continue and enter your center code.'</Msg032>
+      <Msg033>'Terminal Code cannot be left blank or the data is incorrect. Please click Continue and enter your terminal code.'</Msg033>
+      <Msg034>'Original Date cannot be left blank or the data is incorrect. Please click Continue and enter your original date.'</Msg034>
+      <Msg035>'Original Operation Number cannot be left blank or the data is incorrect. Please click Continue and enter your operation number.'</Msg035>
+			<!-- Texto espera respuesta final (operaciones autorizadas) -->
+			<Msg036>'REDIRECTING REQUEST TO CUSTOMER PAGE...'</Msg036>
+			<!-- Texto espera PUCE -->
+			<Msg037>'REDIRECTING REQUEST TO HOST PROCESSOR PAGE...'</Msg037>
+      <!-- v3.1.26 -->
+      <Msg038>'VPW Response'</Msg038>
+			<!-- Subtexto espera respuesta final (operaciones autorizadas) -->
+			<Msg039>'Please Wait...'</Msg039>
+      <!-- v3.1.29 (falta traducir al inglés) -->
+			<!-- Texto alerta PUCE -->
+			<Msg040>'IT IS NOT POSSIBLE REDIRECTING REQUEST TO HOST PROCESSOR PAGE...'</Msg040>
+			<!-- Texto espera (operaciones denegadas) -->
+			<Msg041>'TRANSACTION DENIED. REDIRECTING TO CUSTOMER PAGE...'</Msg041>
+			<!-- Subtexto espera (operaciones denegadas) -->
+			<Msg042>'Please Wait...'</Msg042>
+			<!-- Texto alerta respuesta final (autorizada) -->
+			<Msg043>'IT IS NOT POSSIBLE REDIRECTING REQUEST TO CUSTOMER PAGE...'</Msg043>
+			<!-- Subtexto alerta respuesta final (autorizada) -->
+			<Msg044>'Please Wait...'</Msg044>
+			<!-- Texto alerta respuesta final (denegada) -->
+			<Msg045>'TRANSACTION DENIED. REDIRECTING TO CUSTOMER PAGE...'</Msg045>
+			<!-- Subtexto alerta respuesta final (denegada) -->
+			<Msg046>'Please Wait...'</Msg046>
+		</Mensajes>
+  </Language.EN>
+  <ConfirmarAccion>true</ConfirmarAccion>
+  <BotonesImagen>true</BotonesImagen>
+  <MostrarImagenPie>true</MostrarImagenPie>
+</VTW>

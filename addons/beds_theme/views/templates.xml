@@ -1,0 +1,886 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+
+    <record model="ir.actions.client" id="action_get_location">
+      <field name="name">Get Location</field>
+      <field name="tag">get_location</field>
+      <field name="params">{}</field>
+    </record>
+
+
+    <!-- Logo y tienda bed's más cercana -->
+    <template id="your_nearest_store" inherit_id="website.layout" name="Tu tienda más cercana (home)">
+
+      <xpath expr="//header//a[@class='navbar-brand logo']" position="replace">
+        <span/>
+      </xpath>
+
+
+      <xpath expr="//button[@class='navbar-toggle']" position="before">
+
+        <div class="row">
+          <div class="col-xs-4 col-sm-4 col-md-4 col-lg-6">
+            <a href="/" class="navbar-brand logo">
+              <img class="hidden-xs visible-sm visible-md visible-lg" t-att-src="'/beds_theme/static/src/img/website_logo_%s.png'%lang" alt="Tiendas bed's" title="Tiendas bed's"/>
+              <img class="visible-xs hidden-sm hidden-md hidden-lg cs-nopadding" t-att-src="'/beds_theme/static/src/img/website_logo_mob_%s.png'%lang" alt="Tiendas bed's" title="Tiendas bed's"/>
+            </a>
+
+          </div>
+        </div>
+      </xpath>
+    </template>
+
+    <!-- 7 cosas que beds puede hacer por ti -->
+    <template id="content_siete_cosas_shapes" name="Siete cosas que beds hace por ti">
+      <div class="row">
+        <div class="col-md-12">
+          <center>
+            <div class="siete-cosas meses12" data-action="cs_bubble" data-value="mes12">
+              <span class="siete-cosas-text">12 MESES SIN INTERESES</span>
+              <div id="mes12" class="hidden">Si quieres una forma de pago descansada, no hay problema, financiamos tu compra. <p class="beds-bubble-cofidis">Tipo Deudor Anual 0% TAE 2,89%. Comisión de apertura 2% mínimo 10€, cuota mínima 15€. Carencia de 2 meses (Ej. 1200€, primera cuota 124€ y 11 cuotas de 100€. Sujeta a la aprobación de Cofidis S.A. Sucursal España)</p></div>
+            </div>
+            <div class="siete-cosas experiencia" data-action="cs_bubble" data-value="experiencia">
+              <span class="siete-cosas-text">EXPERIENCIA</span>
+              <div id="experiencia" class="hidden">Más de 30 años de experiencia ofreciéndote el mejor descanso, asesorándote para que aciertes en tu elección. Estamos a tu lado para lo que necesites.</div>
+            </div>
+            <div class="siete-cosas entrega" data-action="cs_bubble" data-value="entrega">
+              <span class="siete-cosas-text">ENTREGA</span>
+              <div id="entrega" class="hidden">Servimos a domicilio en todo el territorio nacional, sin ningún coste por compras superiores a 80€. De la tienda a tu dormitorio. Y tú, a descansar.</div>
+            </div>
+            <div class="siete-cosas montaje" data-action="cs_bubble" data-value="montaje">
+              <span class="siete-cosas-text">MONTAJE</span>
+              <div id="montaje" class="hidden">Nuestros profesionales se encargan de montar cualquier producto que lo requiera. Y nosotros de que no te cueste nada.</div>
+            </div>
+            <div class="siete-cosas primeras-marcas" data-action="cs_bubble" data-value="primeras-marcas">
+              <span class="siete-cosas-text">PRIMERAS MARCAS</span>
+              <div id="primeras-marcas" class="hidden">Sólo las mejores marcas garantizan el mejor descanso. Y además te ofrecemos productos que fabrican en exclusiva para Tiendas bed’s.</div>
+            </div>
+            <div class="siete-cosas reciclaje" data-action="cs_bubble" data-value="reciclaje">
+              <span class="siete-cosas-text">RECICLAJE</span>
+              <div id="reciclaje" class="hidden">Retiramos tu viejo colchón o base al entregar tu nuevo producto de descanso. Estamos comprometidos contigo y con el medio ambiente.</div>
+            </div>
+            <div class="siete-cosas noches-prueba" data-action="cs_bubble" data-value="noches-prueba">
+              <span class="siete-cosas-text">30 NOCHES DE PRUEBA</span>
+              <div id="noches-prueba" class="hidden">Si a las 30 noches no estás satisfecho con la compra de tu colchón, te lo cambiamos.</div>
+            </div>
+          </center>
+        </div>
+      </div>
+
+    </template>
+
+    <template id="content_siete_cosas" name="Contenedor Siete cosas">
+      <section contentEditable="false">
+        <div class="container">
+
+          <div id="bb" class="beds-bubble">
+            <div id="bb-text" class="beds-bubble-text">
+              <br/>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 text-center mt16 mb32">
+              <h2>7 cosas que <b>bed's</b> hace por ti</h2>
+            </div>
+            <div class="col-md-12 mb16 mt16 text-center">
+              <p style="text-align: center;">
+                <span style="color:#005eb8;">Te damos todas las facilidades para que tú te ocupes de lo que más importa: tu descanso. De todo lo demás, nos ocupamos nosotros.</span>
+              </p>
+              <p style="text-align: center;">
+                <span style="color:#005eb8;"></span>
+              </p>
+            </div>
+          </div>
+          <t t-call="beds_theme.content_siete_cosas_shapes"/>
+        </div>
+      </section>
+
+    </template>
+
+    <!-- Contenido externo -->
+    <template id="content_externo" name="Contenido externo">
+      <div class="container">
+        <center>
+          <t t-if="lang=='es_ES'">
+          <a href="/blog/" target="_blank">
+            <img class="externo" src="/beds_theme/static/src/img/blog_beds.png"></img>
+          </a>
+          <a href="/blog/category/todas/" target="_blank">
+            <img class="externo" src="/beds_theme/static/src/img/nosgustantusvalores.gif"></img>
+          </a>
+          </t>
+
+          <!-- ekomi -->
+          <img class="externo" src="/beds_theme/static/src/img/blanco.png"></img>
+
+          <a href="https://www.confianzaonline.es/empresas/beds.htm" target="_blank">
+            <img id="confianza_online" class="externo" src="/beds_theme/static/src/img/confianza_online.png"></img>
+          </a>
+
+          <img id="primera_cadena" class="externo" src="/beds_theme/static/src/img/primeracadena.png"></img>
+        </center>
+
+      </div>
+    </template>
+
+    <template id="valued_products" name="Productos más valorados">
+      <t t-set="offers" t-value="website.get_top_valued_products(limit=6, items_group=3)"/>
+      <t t-set="carousel_name" t-value="'valued_products'"/>
+      <section class="cs-color1">
+        <div class="row text-center">
+          <h2>
+            LOS <strong>MÁS</strong> VALORADOS
+          </h2>
+        </div>
+
+        <t t-call="cs_theme.carousel_rating_plus"/>
+        <br/>
+      </section>
+
+    </template>
+
+    <!-- Home page -->
+    <template id="homepage" inherit_id="website.homepage" name="Custom homepage">
+      <xpath expr="t" position="replace">
+        <t t-call="website.layout">
+          <div id="wrap js_sale">
+            <div class="oe_website_sale">
+
+              <t t-set="carousel" t-value="website.get_carousel('H1')"/>
+              <t t-if="carousel" t-call="cs_theme.carousel"/>
+
+              <t t-call="beds_model.content_home1"/>
+
+              <t t-call="beds_model.super_offer"/>
+
+              <t t-call="beds_model.content_home2"/>
+
+              <t t-call="beds_theme.valued_products"/>
+
+              <t t-call="beds_model.content_home4"/>
+
+            </div>
+          </div>
+        </t>
+      </xpath>
+    </template>
+
+    <!-- Custom footer v2 -->
+    <template id="custom_footer" inherit_id="website.footer_default" name="Custom footer">
+      <xpath expr="//div[@class='container hidden-print']" position="after">
+        <div class="custom-footer" contentEditable="false">
+          <section>
+            <div t-if="lang=='es_ES'" class="container-fluid footer-gif">
+              <div class="container">
+                <a href="/blog/" target="_blank">
+                  <img class="img-responsive " src="/beds_theme/static/src/img/footer/footer.gif" alt="Más información sobre Tiendas bed's"/>
+                </a>
+              </div>
+            </div>
+
+            <div class="container hidden-print mt16" contentEditable="false">
+              <div class="row">
+                <div class="col-xs-12 col-sm-4 col-md-2">
+                  <h4 class="">CONÓCENOS</h4>
+                  <p>
+                    <a href="/page/beds">bed's contigo</a>
+                    <br/>
+                    <a href="/tiendas-beds">Localízanos</a>
+                    <br/>
+                    <a t-if="lang=='es_ES'" href="/blog">Blog bed's</a>
+                  </p>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-2">
+                  <h4 class="">SOBRE TU COMPRA</h4>
+                  <p>
+                    <a href="/page/condiciones-de-compra">Términos y condiciones</a>
+                    <br/>
+                    <a href="/page/envios">Información de envío</a>
+                    <br/>
+                    <a href="/page/postventa">Política de devoluciones</a>
+                    <br/>
+                    <a href="/page/garantias">Garantía de satisfacción</a>
+                    <br/>
+                    <a href="/page/faq">Preguntas frecuentes</a>
+                  </p>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-2">
+                  <h4 class="">CONTÁCTANOS</h4>
+                  <p>
+                    <a href="/form/contactar">Consulta una duda</a>
+                    <br/>
+                    <a href="/form/franquicias">Franquíciate</a>
+                    <br/>
+                    <a href="/form/trabaja-con-nosotros">Trabaja con nosotros</a>
+                  </p>
+                </div>
+                <div class="col-xs-12 col-sm-8 col-md-2 text-center">
+                  <a href="https://www.facebook.com/Tiendas-beds-1727265657527175/?ref=bookmarks" target="_blank">
+                    <img class="social-img" src="/beds_theme/static/src/img/social_fb.png" alt="beds.es Siguenos en Facebook y danos tu opinión"></img>
+                  </a>
+                  <a href="https://www.instagram.com/tiendasbedsoficial" target="_blank">
+                    <img class="social-img" src="/beds_theme/static/src/img/social_ig.png" alt="Siguenos en Instagram  y danos tu opinión"></img>
+                  </a>
+                  <a href="https://twitter.com/tiendasbeds" target="_blank">
+                    <img class="social-img" src="/beds_theme/static/src/img/social_tw.png" alt="Siguenos en Twitter y danos tu opinión"></img>
+                  </a>
+                  <a href="https://www.confianzaonline.es/empresas/beds.htm" target="_blank">
+                    <img class="" src="/beds_theme/static/src/img/confianza_online2.png" alt="beds.es Tu tienda de confianza"></img>
+                  </a>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-2">
+                  <img class="" t-att-src="'/beds_theme/static/src/img/primera_cadena_descanso_%s.png'%lang" alt="bed's La primera cadena del descanso"></img>
+                </div>
+              </div>
+            </div>
+            <div class="container-fluid legal mt16">
+              <div class="container">
+                <div class="text-center">
+                  <a href="/page/aviso-legal">Aviso legal</a><span>   |   </span>
+                  <a href="/page/privacidad">Política de Privacidad</a><span>   |   </span>
+                  <a href="/page/cookies">Cookies</a>
+                </div>
+              </div>
+            </div>
+
+          </section>
+        </div>
+
+
+      </xpath>
+      <xpath expr="//div[@class='container hidden-print']" position="attributes">
+        <attribute name="class">hidden</attribute>
+      </xpath>
+    </template>
+
+
+
+
+
+    <!-- PRODUCT Templates -->
+    <!-- Add tabs to product template -->
+    <template id="website_product_tabs" inherit_id="website_sale.product" name="Website Product Tabs" customize_show="False">
+
+      <!-- Delete standard location -->
+      <xpath expr="//div[@t-field='product.website_description']" position="replace">
+      </xpath>
+
+      <xpath expr="//section[@id='product_detail']" position="inside">
+
+        <div class="container mt8">
+
+          <ul class="nav nav-tabs product-tabs" contenteditable="false">
+            <li class="active" contenteditable="false">
+              <a data-toggle="tab" href="#benefits" contenteditable="false">Beneficios clave</a>
+            </li>
+            <li class="" contenteditable="false">
+              <a data-toggle="tab" href="#datasheet">Características técnicas</a>
+            </li>
+            <!--
+            <li contenteditable="false">
+            <a data-toggle="tab" href="#compare">Comparativa</a>
+          </li>
+        -->
+      </ul>
+
+      <div class="tab-content product-tab-content" contenteditable="false">
+        <div id="benefits" class="tab-pane fade in active" contenteditable="false">
+          <div id="benefits" t-field="product.website_benefits" class="oe_structure oe_empty" />
+        </div>
+        <div id="datasheet" class="tab-pane fade" contenteditable="false">
+          <div itemprop="description" t-field="product.website_description"
+            class="oe_structure oe_empty" id="product_description"/>
+          </div>
+          <div id="compare" class="tab-pane fade" contenteditable="false">
+
+          </div>
+        </div>
+
+      </div>
+
+    </xpath>
+
+
+    <!-- quitar lo de no disponible -->
+    <xpath expr="//p[@class='css_not_available_msg bg-danger']" position="attributes">
+      <attribute name="t-if">false</attribute>
+    </xpath>
+
+
+  </template>
+
+
+  <!-- Search product -->
+  <template id="hide_search" inherit_id="website_sale.search">
+    <xpath expr="//form" position="replace">
+    </xpath>
+  </template>
+
+  <template id="navbar_header" inherit_id="website.layout">
+    <xpath expr="//div[@class='navbar-header']" position="inside">
+      <div></div>
+    </xpath>
+  </template>
+
+
+  <!-- Brand products -->
+  <template id="shop_brand_header" inherit_id="cs_theme.brands" name="Las marcas de Beds">
+    <xpath expr="//h1[@id='brand_product_h1']" position="replace">
+      <h1>Marcas en Tiendas bed's</h1>
+    </xpath>
+
+  </template>
+
+
+  <!-- Para la categoría de almohadas, mostrar la guía de compras -->
+  <template id="beds_guia_compras_almohadas" inherit_id="cs_theme.categories" name="Guía de compras de almohadas">
+    <xpath expr="//div[@id='custom_category_footer']" position="replace">
+
+      <div class="row mt32" t-if="category.name=='ALMOHADAS'">
+        <div class="col-md-12">
+          <center>
+            <a href="/page/guia-para-comprar-tu-almohada">
+              <img class="img-responsive" src="/beds_theme/static/src/img/category/guia-compras-almohadas.jpg" alt="Guía para comprar tu almohada"/>
+            </a>
+          </center>
+        </div>
+        <br/>
+      </div>
+    </xpath>
+
+  </template>
+
+
+  <!-- Solicitud de información para franquicias -->
+  <template id="franquicias" name="Franquicias" page="True">
+    <t t-call="website.layout">
+
+      <t t-set="title">Tiendas beds. La franquicia líder del descanso</t>
+
+      <div id="wrap">
+        <t t-call="beds_model.franquicias"/>
+
+        <section>
+          <div class="container text-center mt16 mb16">
+            <h2>Déjate asesorar por nuestro equipo de profesionales,<br/>te ayudamos en todos los aspectos clave del negocio</h2>
+          </div>
+
+          <div class="container-fluid fondo-gris mt32">
+            <div class="container text-center">
+              <h2>Inversión</h2>
+              <img class="mb16" src="/beds_theme/static/src/img/datos-inversion.png"/>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="container text-center mt16 mb16">
+            <h2>Y muchas más ventajas que nos gustaría contarte</h2>
+
+            <ul class="franquicias">
+              <li>
+                <a href="/page/adn-franquicias">
+                  <div class="adn"/>
+                  <h3>El ADN de la marca bed's</h3>
+
+                </a>
+              </li>
+              <li>
+                <a href="/page/razones-franquiciarte">
+                  <div class="razones"/>
+                  <h3>10 Razones para franquiciarte</h3>
+                </a>
+              </li>
+              <li>
+                <a href="/page/preguntas-frecuentes-franquiciados">
+                  <div class="preguntas"/>
+                  <h3>Preguntas frecuentes</h3>
+                </a>
+              </li>
+              <li>
+                <a href="/page/franquicias-equipo">
+                  <div class="equipo"/>
+                  <h3>Somos un Equipo</h3>
+                </a>
+              </li>
+            </ul>
+
+
+          </div>
+          <div class="container-fluid fondo-azul">
+            <div class="container text-center">
+
+              <h2 class="cs-color-white">Contacta online con nosotros o llámanos al 976 300 850</h2>
+              <br/>
+
+              <form action="/form/contact" method="post" class="form-horizontal" enctype="multipart/form-data">
+
+                <input type="text" class="hidden" name="view_from" t-attf-value="beds_theme.franquicias"/>
+                <input type="text" class="hidden" name="name" t-attf-value="Franquicia"/>
+
+                <div class="row">
+                  <div class="col-md-3 col-md-offset-3">
+                    <div t-attf-class="form-group #{error and 'contact_name' in error and 'has-error' or ''}    ">
+                      <label class="hidden control-label" for="contact_name">Nombre</label>
+                      <input type="text" class="form-control w90p" name="contact_name" required="True" t-attf-value="#{contact_name or ''}" placeholder="Nombre*"/>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div t-attf-class="form-group #{error and 'contact_name2' in error and 'has-error' or ''}">
+                      <label class="hidden control-label" for="contact_name2">Apellidos</label>
+                      <input type="text" class="form-control w90p-right" name="contact_name2" required="True" t-attf-value="#{contact_name2 or ''}" placeholder="Apellidos*"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3 col-md-offset-3">
+                    <div name="email_from_container" t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
+                      <label class="hidden control-label" for="email_from">Correo electrónico</label>
+                      <input type="email" class="form-control w90p" name="email_from" required="True" t-attf-value="#{email_from or ''}" placeholder="Correo electrónico*"/>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div t-attf-class="form-group #{error and 'phone' in error and 'has-error' or ''}">
+                      <label class="hidden control-label" for="phone">Teléfono</label>
+                      <input type="text" class="form-control w90p-right" name="phone" required="True" t-attf-value="#{phone or ''}" placeholder="Teléfono*"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3 col-md-offset-3">
+                    <div name="city_from_container" t-attf-class="form-group #{error and 'city' in error and 'has-error' or ''}">
+                      <label class="hidden control-label" for="city">Ciudad</label>
+                      <input type="text" class="form-control w90p" name="city" required="True" t-attf-value="#{city or ''}" placeholder="Localidad*"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 col-md-offset-3">
+                    <div t-attf-class="form-group #{error and 'description' in error and 'has-error' or ''}">
+                      <label class="hidden control-label" for="description">Escribe tu mensaje</label>
+                      <textarea name="description" class="form-control w100p" rows="5" cols="50" placeholder="Escribe tu mensaje">
+                      </textarea>
+                    </div>
+                  </div>
+                </div>
+
+
+                <t t-foreach="kwargs" t-as="kwarg">
+                  <input type="hidden" t-att-name="kwarg[0]" t-att-value="kwarg[1]"/>
+                </t>
+
+
+                <div class="row">
+                  <div class="form-group">
+                    <div class="text-center">
+                      <button class="btn btn-default btn-md">Enviar</button>
+                      <span class="accept_policy">&amp;nbsp;</span>
+                        <div class="row">
+                          <div class="col-md-3 col-sm-3 col-xs-3"/>
+                          <div class="col-md-6 col-sm-6 col-xs-6">
+                            <h6 style="text-align: justify;"><input name="accept_policy" required="True" type="checkbox"/>&amp;nbsp;Al marcar esta casilla consiento al tratamiento de mis datos personales por parte de Tiendas bed's con la finalidad de gestionar o resolver la solicitud o petición realizada a través del presente formulario de contacto y las consiguientes comunicaciones hasta su resolución. | Legitimación: Consentimiento del interesado | Destinatarios: Los datos no se cederán a terceros salvo en los casos en que exista una obligación legal, siendo utilizados únicamente por los trabajadores de Espadesa Retail S.L. y de sus entidades franquiciadas exclusivamente para la finalidad anteriormente expresada. Los datos están ubicados en servidores cuya sede se encuentra dentro del territorio de la UE. | Derechos: Tiene derecho a acceder, rectificar y suprimir los datos, poniéndose en contacto con el responsable del tratamiento de datos a través del e-mail <a href="mailto:bedsonline@tiendasbeds.es"><span style="color:#66ccff;">bedsonline@tiendasbeds.es</span></a> así como otros derechos, como se explica en la <a href="/page/privacidad"><span style="color:#66ccff;">Política de privacidad</span></a>. Información Adicional: puede ampliar la información en el enlace <a href="/page/aviso-legal"><span style="color:#66ccff;">Avisos Legales​</span></a></h6>
+                          </div>
+                          <div class="col-md-3 col-sm-3 col-xs-3"/>
+                        </div>
+                      <span class="accept_policy"> </span>
+                    </div>
+                  </div>
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+      </div>
+    </t>
+  </template>
+
+
+
+  <!-- Trabaja con Nosotros -->
+  <template id="trabaja_con_nosotros" name="Trabaja con nosotros" page="True">
+    <t t-call="website.layout">
+
+      <t t-set="title">Tiendas beds. Trabaja con nosotros</t>
+
+      <div id="wrap">
+        <t t-call="beds_model.trabaja_con_nosotros"/>
+
+        <section>
+          <div class="container text-center">
+
+            <h2>¿Quieres formar parte de bed's?<br/>Por favor, completa y envíanos los siguientes datos</h2>
+            <br/>
+
+            <form action="/form/contact" method="post" class="form-horizontal" enctype="multipart/form-data">
+
+              <input type="text" class="hidden" name="view_from" t-attf-value="beds_theme.trabaja_con_nosotros"/>
+              <input type="text" class="hidden" name="name" t-attf-value="Trabaja con Nosotros"/>
+
+              <div class="row">
+                <div class="col-md-4">
+                  <div t-attf-class="form-group #{error and 'contact_name' in error and 'has-error' or ''}    ">
+                    <label class="hidden control-label" for="contact_name">Nombre</label>
+                    <input type="text" class="form-control w90p-left" name="contact_name" required="True" t-attf-value="#{contact_name or ''}" placeholder="Nombre*"/>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div t-attf-class="form-group #{error and 'contact_name2' in error and 'has-error' or ''} text-center">
+                    <label class="hidden control-label" for="contact_name2">Apellidos</label>
+                    <input type="text" class="form-control w100p" name="contact_name2" required="True" t-attf-value="#{contact_name2 or ''}" placeholder="Apellidos*"/>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div t-attf-class="form-group #{error and 'city' in error and 'has-error' or ''}">
+                    <label class="hidden control-label" for="city">Ciudad</label>
+                    <input type="text" class="form-control w90p-right" name="city" t-attf-value="#{city or ''}" placeholder="Ciudad"/>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Provincia, teléfono y código postal -->
+              <div class="row">
+                <div class="col-md-4">
+                  <div t-attf-class="form-group #{error and 'state' in error and 'has-error' or ''}">
+                    <label class="hidden control-label" for="state">Provincia</label>
+                    <input type="contact_state" class="form-control w90p-left" name="state" t-attf-value="#{state or ''}" placeholder="Provincia"/>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div t-attf-class="form-group #{error and 'phone' in error and 'has-error' or ''}">
+                    <label class="hidden control-label" for="phone">Teléfono de contacto</label>
+                    <input type="text" class="form-control w100p" name="phone" t-attf-value="#{phone or ''}" placeholder="Teléfono"/>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div t-attf-class="form-group #{error and 'zip' in error and 'has-error' or ''}">
+                    <label class="hidden control-label" for="zip">Código postal</label>
+                    <input type="text" class="form-control w90p-right" name="zip" t-attf-value="#{zip() or ''}" placeholder="Código postal"/>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Email, área de interés y CV -->
+              <div class="row">
+                <div class="col-md-4">
+                  <div t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
+                    <label class="hidden control-label" for="email_from">Correo electrónico</label>
+                    <input type="email" class="form-control w90p-left" name="email_from" required="True" t-attf-value="#{email_from or ''}" placeholder="Correo electrónico*"/>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div t-attf-class="form-group #{error and 'area' in error and 'has-error' or ''}">
+                    <label class="hidden control-label" for="area">Área de interés</label>
+                    <input type="text" class="form-control w100p" name="area" t-attf-value="#{area or ''}" placeholder="Área de interés"/>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div t-attf-class="form-group #{error and 'phone' in error and 'has-error' or ''}">
+                    <label class="hidden control-label" for="cv">C.V.</label>
+                    <input type="file" class="form-control w90p-right" name="cv" t-attf-value="#{cv or ''}"  placeholder="Adjunta tu C.V."/>
+                    <div class ="text-right beds-color-azul">
+                      <small>
+                        <b>Adjunta tu curriculum vitae</b>
+                      </small>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div t-attf-class="form-group #{error and 'description' in error and 'has-error' or ''}">
+                    <label class="hidden control-label" for="description">Escribe tu mensaje</label>
+                    <textarea name="description" t-attf-value="#{''}" class="form-control w100p" rows="5" placeholder="Por favor, escribe una líneas para presentarte"/>
+                  </div>
+                </div>
+              </div>
+
+
+              <t t-foreach="kwargs" t-as="kwarg">
+                <input type="hidden" t-att-name="kwarg[0]" t-att-value="kwarg[1]"/>
+              </t>
+
+              <div class="row">
+                <div class="form-group">
+                  <div class="text-center">
+                    <button class="btn btn-primary btn-md">Enviar</button>
+                    <span class="accept_policy">&amp;nbsp;</span>
+                    <div class="row">
+                      <div class="col-md-3 col-sm-3 col-xs-3"/>
+                      <div class="col-md-6 col-sm-6 col-xs-6">
+                        <h6 style="text-align: justify;"><input name="accept_policy" required="True" type="checkbox"/> Al marcar esta casilla consiento al tratamiento de mis datos personales por parte de Tiendas bed's con la finalidad de gestionar o resolver la solicitud o petición realizada a través del presente formulario de contacto y a conservar mi currículum en sus archivos para su consideración en futuros procesos de selección. | Legitimación: Consentimiento del interesado | Destinatarios: Los datos no se cederán a terceros salvo en los casos en que exista una obligación legal, siendo utilizados únicamente por los trabajadores de Espadesa Retail S.L. y de sus entidades franquiciadas exclusivamente para la finalidad anteriormente expresada. Los datos están ubicados en servidores cuya sede se encuentra dentro del territorio de la UE. | Derechos: Tiene derecho a acceder, rectificar y suprimir los datos, poniéndose en contacto con el responsable del tratamiento de datos a través del e-mail <a href="mailto:bedsonline@tiendasbeds.es">bedsonline@tiendasbeds.es</a> así como otros derechos, como se explica en la <a href="/page/privacidad">Política de privacidad</a>. Información Adicional: puede ampliar la información en el enlace <a href="/page/aviso-legal">Avisos Legales​</a></h6>
+                      </div>
+                      <div class="col-md-3 col-sm-3 col-xs-3"/>
+                    </div>
+                    <span class="accept_policy"> </span>
+                  </div>
+
+
+                </div>
+
+              </div>
+              <br/>
+            </form>
+          </div>
+        </section>
+      </div>
+    </t>
+  </template>
+
+  <!-- Contactar con Nosotros -->
+  <template id="contactar_con_nosotros" name="Contactar con nosotros" page="True">
+    <t t-call="website.layout">
+
+      <t t-set="title">Tiendas beds. Formulario de contacto.</t>
+
+      <div id="wrap">
+        <t t-call="beds_model.contactar_con_nosotros"/>
+
+        <section>
+          <div class="container text-center">
+
+            <form action="/form/contact" method="post" class="form-horizontal" enctype="multipart/form-data">
+
+              <input type="text" class="hidden" name="view_from" t-attf-value="beds_theme.contactar_con_nosotros"/>
+
+              <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                  <div t-attf-class="form-group #{error and 'contact_name' in error and 'has-error' or ''}    ">
+                    <label class="hidden control-label" for="contact_name">Nombre</label>
+                    <input type="text" class="form-control w100p-left" name="contact_name" required="True" t-attf-value="#{contact_name or ''}" placeholder="Nombre*"/>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Correo y teléfono -->
+              <div class="row">
+                <div class="col-md-3  col-md-offset-3">
+                  <div t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
+                    <label class="hidden control-label" for="email_from">Correo electrónico</label>
+                    <input type="email" class="form-control w90p-left" name="email_from" required="True" t-attf-value="#{email_from or ''}" placeholder="Correo electrónico*"/>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div t-attf-class="form-group #{error and 'phone' in error and 'has-error' or ''}">
+                    <label class="hidden control-label" for="phone">Teléfono de contacto</label>
+                    <input type="text" class="form-control w90p-right" name="phone" t-attf-value="#{phone or ''}" placeholder="Teléfono"/>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Asunto  -->
+              <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                  <div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''}">
+                    <label class="hidden control-label" for="name">Asunto</label>
+                    <input type="text" class="form-control w100p" name="name" required="True" t-attf-value="#{name or ''}" placeholder="Asunto*"/>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                  <div t-attf-class="form-group #{error and 'description' in error and 'has-error' or ''}">
+                    <label class="hidden control-label" for="description">Escribe tu mensaje</label>
+                    <textarea name="description" class="form-control w100p" rows="5" placeholder="Escribe tu mensaje">
+                    </textarea>
+                  </div>
+                </div>
+              </div>
+
+
+              <t t-foreach="kwargs" t-as="kwarg">
+                <input type="hidden" t-att-name="kwarg[0]" t-att-value="kwarg[1]"/>
+              </t>
+
+              <div class="row">
+                <div class="form-group">
+                  <div class="text-center">
+                    <button class="btn btn-primary btn-md">Enviar</button>
+                    <span class="accept_policy">&amp;nbsp;</span>
+                    <div class="row">
+                      <div class="col-md-3 col-sm-3 col-xs-3"/>
+                      <div class="col-md-6 col-sm-6 col-xs-6">
+                        <h6 style="text-align: justify;"><input name="accept_policy" required="True" type="checkbox"/>&amp;nbsp;Al marcar esta casilla consiento al tratamiento de mis datos personales por parte de Tiendas bed's con la finalidad de gestionar o resolver la solicitud o petición realizada a través del presente formulario de contacto y las consiguientes comunicaciones hasta su resolución. | Legitimación: Consentimiento del interesado | Destinatarios: Los datos no se cederán a terceros salvo en los casos en que exista una obligación legal, siendo utilizados únicamente por los trabajadores de Espadesa Retail S.L. y de sus entidades franquiciadas exclusivamente para la finalidad anteriormente expresada. Los datos están ubicados en servidores cuya sede se encuentra dentro del territorio de la UE. | Derechos: Tiene derecho a acceder, rectificar y suprimir los datos, poniéndose en contacto con el responsable del tratamiento de datos a través del e-mail <a href="mailto:bedsonline@tiendasbeds.es">bedsonline@tiendasbeds.es</a> así como otros derechos, como se explica en la <a href="/page/privacidad">Política de privacidad</a>. Información Adicional: puede ampliar la información en el enlace <a href="/page/aviso-legal">Avisos Legales​</a></h6>
+                      </div>
+                      <div class="col-md-3 col-sm-3 col-xs-3"/>
+                    </div>
+                    <span class="accept_policy"> </span>
+                  </div>
+                </div>
+
+              </div>
+              <br/>
+            </form>
+          </div>
+        </section>
+      </div>
+    </t>
+  </template>
+
+
+  <!-- Personalización de la página de gracias.-->
+  <template id="contactus_thanks" name="Contact us">
+    <t t-call="website.layout">
+      <div id="wrap">
+        <div class="container">
+          <h1>Gracias!</h1>
+          <div class="row">
+            <div class="col-md-8">
+              <div class="alert alert-success">
+                Tu mensaje ha sido enviado correctamente.
+                <button type="button" class="close" data-dismiss="alert">&amp;times;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </t>
+  </template>
+
+  <!-- Menu -->
+  <template id="custom_top_menu" inherit_id="website.layout">
+    <xpath expr="//ul[@id='top_menu']" position="replace">
+      <ul id="top_menu" class="nav navbar-nav" >
+        <t t-foreach="website.menu_id.child_id" t-as="submenu">
+          <t t-call="website.submenu"/>
+        </t>
+        <li id="top_menu_ofertas" t-att-style="'background-color: %s;' % (offer and offer.color_background) or 'white'">
+            <a href="/ofertas" t-att-style="'color: %s;' % (offer and offer.color_background and 'white') or '#005eb8'">
+                <span>OFERTAS</span>
+            </a>
+        </li>
+      </ul>
+    </xpath>
+  </template>
+
+  <!-- Añadir el usuario en la ubicación personalizada -->
+  <template id="custom_show_sign_in" inherit_id="beds_theme.custom_header_template" name="Custom Sign In">
+    <xpath expr="//li[@id='login']" position="replace">
+      <li id="login" groups="base.group_public">
+        <img src="/beds_theme/static/src/img/icon/user.png" alt="Pulsa para acceder al portal de clientes." class="icon_info"/>
+        <a t-attf-href="/web/login">
+          <b class="hidden-xs">Mi cuenta</b>
+        </a>
+      </li>
+
+      <li t-ignore="true" t-if="website.user_id != user_id">
+        <a t-attf-href="/web/session/logout?redirect=/" role="menuitem">
+          <img src="/beds_theme/static/src/img/icon/user.png" alt="Pulsa para acceder al portal de clientes." class="icon_info"/>
+          <b>
+            <span t-esc="user_id.name"/>
+            <span style="display:none;">
+              <t t-esc="website.user_id.id"/>
+              <t t-esc="user_id.id"/>
+            </span>
+          </b>
+        </a>
+      </li>
+    </xpath>
+
+
+  </template>
+
+  <!-- Franquicias -->
+  <template id="franquicias_info" name="Franquicias info">
+    <div class="container mt32">
+      <div class="row">
+        <div class="col-md-3">
+          <a class="cs-inline-block">
+            <img width="50px" height="50px" class="cs-img-text-vertical-middle" src="/beds_theme/static/src/img/franquicias_adn_on.png"/>
+            <div class="cs-img-text-vertical-middle cs-color-blue">
+              El ADN de la marca bed's
+            </div>
+          </a>
+        </div>
+        <div class="col-md-3">
+          <div class="cs-inline-block">
+            <img class="cs-img-text-vertical-middle" src="/beds_theme/static/src/img/franquicias_razones_off.png"/>
+            <div class="cs-img-text-vertical-middle cs-color-blue">
+              10 Razones para franquiciarte
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </template>
+
+  <!-- Disponible sólo en tiendas físicas-->
+  <template id="only_physical_store" inherit_id="cs_theme.only_physical_store" name="Custom Only physical store">
+    <xpath expr="//div[@id='only_physical_store']" position= "replace">
+      <div class="beds-only-physical-store mt32">
+        <center>
+          <img src="/beds_theme/static/src/img/only_physical_store_2x.png" width="190" height="111" alt="Disponible sólo en tiendas bed's"/>
+        </center>
+        <br/>
+        <h2>A LA VENTA SOLO EN TIENDA FÍSICA</h2>
+
+        <t t-if="not product.only_physical_store_text">
+          <p>
+            <strong>¿Sabes por qué no está disponible en nuestra tienda web?</strong>
+          </p>
+          <p>Por las prestaciones especiales de este modelo, creemos que lo más apropiado para ti es que te tumbes en él para apreciar sus matices y confirmes que se adapta perfectamente a ti.</p>
+          <p>Pruebalo en alguna de nuestras más de 200 Tiendas bed's a tu disposición.</p>
+        </t>
+        <p t-if="product.only_physical_store_text" t-field="product.only_physical_store_text"/>
+        <p>
+          <strong><a t-attf-href="/tiendas-beds/" class="beds-tel-rojo">Encuentra aquí</a> tu Tienda bed's más cercana.</strong>
+        </p>
+      </div>
+    </xpath>
+  </template>
+
+  <!-- Modificación de la plantilla de resultados ok, de forma que genere el codigo de conversión de adwords. -->
+  <template id="confirmation" inherit_id="website_sale.confirmation" name="Custom Confirmation page">
+    <xpath expr="//div[@id='wrap']" position= "inside">
+      <!-- Google Adwords -->
+      <t t-call="google_adwords.conversion_label"/>
+
+      <!-- GTM -->
+      <t t-call="google_tag_manager.purchase"/>
+    </xpath>
+  </template>
+
+
+
+  <template id="conexflow_result_ok" inherit_id="payment_conexflow.conexflow_result_ok" name="Google conversion code.">
+
+    <xpath expr="//section[@id='conexflow_ok']" position= "inside">
+      <t t-call="google_adwords.conversion_label"/>
+      <t t-call="google_tag_manager.purchase"/>
+    </xpath>
+  </template>
+
+
+
+  <!-- Pruebas -->
+  <!-- Pruebas -->
+  <!-- Solicitud de información para franquicias -->
+  <!--
+  <template id="accordion" name="Accordion" page="True">
+  <t t-call="website.layout">
+  <div id="wrap">
+
+
+
+</div>
+</t>
+</template>
+-->
+
+
+
+
+
+
+</data>
+</openerp>

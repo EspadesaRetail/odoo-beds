@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <template id="cross_selling_assets_frontend" inherit_id="website.assets_frontend" name="Cross selling">
+      <xpath expr="." position="inside">
+        <link rel='stylesheet' href='/cs_cross_selling/static/src/css/cs_cross_selling.css'/>
+      </xpath>
+    </template>
+
+    <!-- Desactivar el estandar -->
+    t-if="product.alternative_product_ids"
+    <template id="recommended_products_off" inherit_id="website_sale.recommended_products" name="Recommended products off">
+      <xpath expr="//div[@t-if='product.alternative_product_ids']" position="replace">
+        <span/>
+      </xpath>
+    </template>
+
+    <!-- Definir el espacio para los productos relacionados.-->
+    <template id="product_cross_selling" inherit_id="cs_theme.product" name="Añadir productos de venta relacionada">
+      <xpath expr="//section[@id='product_cross_selling']" position="replace">
+        <section id="product_cross_selling" t-if="product.cross_selling_product_ids" class="container mt16 mb16 css_editable_mode_hidden">
+          <h4 class="h4">Puede que te interese alguno de estos productos</h4>
+          <hr/>
+          <div class="row js_cross_selling cross-selling">
+            <t t-foreach="product.cross_selling_product_ids" t-as="cross_selling_id">
+              <div class="col-sm-4 col-md-4">
+                <a t-att-href="keep('/shop/product/%s' % slug(cross_selling_id),page=None)">
+                  <img class="img img-responsive" t-att-src="website.image_url(cross_selling_id, 'image', '847x600')" t-att-alt="cross_selling_id.name"/>
+                  <div class="cross-selling link-product"/>
+                  <h5>
+                    <span t-field='cross_selling_id.name' style="display: block"/>
+                  </h5>
+                </a>
+              </div>
+            </t>
+          </div>
+
+        </section>
+      </xpath>
+    </template>
+
+  </data>
+</openerp>

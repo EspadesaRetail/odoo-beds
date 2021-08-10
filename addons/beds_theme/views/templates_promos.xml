@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="website.promocion" name="Promoción" page="True">
+            <t t-call="website.layout">
+                <div id="wrap">
+
+                    <div class="oe_structure oe_empty"/>
+                    <!--<t t-call="beds_theme.promo_200_platino"/>-->
+                </div>
+            </t>
+        </template>
+
+        <!--
+        <template id="promo_200_platino" name="Promocion 200 Platino Abril 2018">
+            <section id="promo" class="mt16 mb0 cs-border-bottom-blue">
+
+                <div class="container promo">
+                    <div id="promo_header" class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12 mb0">
+                            <a href="/page/promocion#promo_body">
+                            <img class="img img-responsive" alt="Promoción" src="/beds_theme/static/src/img/promos/promo.png"/>
+                            <img class="img img-responsive" alt="Promoción" src="/beds_theme/static/src/img/promos/promo_texto.png"/>
+
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="hr"/>
+                        <div class="col-sm-12 col-md-12 col-lg-6 mt0 left">
+                            <a href="https://www.beds.es/shop/product/colchon-edicion-limitada-platino-6241">
+                                <img alt="Colchón Platino edición limitada" class="img img-responsive mb0" src="/beds_theme/static/src/img/promos/a1.png" style="animation-play-state: paused; transition: none"/>
+                            </a>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-6 mt0 right">
+                            <a href="https://www.beds.es/shop/product/r-nordico-jacquard-beds-7117">
+                                <img alt="Nórdico de regalo" class="img img-responsive mb0" src="/beds_theme/static/src/img/promos/a2.png" style="animation-play-state: paused; transition: none"/>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div id="promo_body" class="row">
+                        <div class="hr"/>
+                        <div class="col-sm-12 col-md-12 col-lg-6 mt0 left">
+                            <a href="/shop/cart/add?product_id=62743">
+                                <img alt="Odoo text and image block" class="img img-responsive mb0" src="/beds_theme/static/src/img/promos/promo_product1.png"/>
+                            </a>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-6 mt0 right">
+                            <a href="/shop/cart/add?product_id=62744">
+                                <img alt="Odoo image and text block" class="img img-responsive mb0" src="/beds_theme/static/src/img/promos/promo_product2.png"/>
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12 mt0">
+                            <img alt="Odoo CMS - a big picture" class="img img-responsive" src="/beds_theme/static/src/img/promos/promo_footer.png"/>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </template>
+      -->
+
+
+    </data>
+</openerp>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <!-- Promociones regalo -->
+    <record id="product_offer_present_form_view" model="ir.ui.view">
+      <field name="name">product.offer.form</field>
+      <field name="model">product.offer</field>
+      <field name="inherit_id" ref="cs_offer.view_product_offer_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//notebook" position="inside">
+          <page string="Regalo" attrs="{'invisible': [('offer_type','!=','present')]}">
+            <group>
+              <field name="present_id"/>
+            </group>
+            <group>
+              <field name="present_ids" nolabel="1" options="{'reload_on_button': true}">
+                <tree string="Regalos" editable="bottom">
+                  <field name="product_id"/>
+                  <field name="present_id"/>
+                </tree>
+              </field>
+            </group>
+
+          </page>
+        </xpath>
+      </field>
+    </record>
+
+  </data>
+
+</openerp>

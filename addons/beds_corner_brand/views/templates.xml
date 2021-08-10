@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+      <!-- Setting Style theme -->
+      <template id="beds_corner_brand_asset" name="website asset for beds_corner_brand" inherit_id="website.assets_frontend">
+          <xpath expr="." position="inside">
+              <link rel="stylesheet" href="/beds_corner_brand/static/src/css/beds_corner_brand.css"/>
+          </xpath>
+      </template>
+
+      <!-- /<model("corner.brand"):name> página de marca -->
+      <template id="brand">
+        <t t-call="website.layout">
+
+          <!-- Página del microsite de MARCA -->
+          <div class="container-fluid mt32 mb16">
+            <div t-if="name" class="text-center mt32">
+              <!-- Imagen de cabecera página de MARCA -->
+              <img t-if="image" class="header img img-responsive height: auto" t-att-src="website.image_url(brand, 'image', None)" t-att-alt="title"/>
+              <!-- Sección común página de MARCA -->
+              <div class="col-xs-2 col-sm-2 col-md-2"/>
+              <div class="col-xs-8 col-sm-8 col-md-8">
+
+                <div class="row">
+                  <p class="p-name textos espaciado-texto-title" ><t t-esc="title"/></p>
+                </div>
+                <!-- Enlaces a los diversas fichas de productos por MARCA -->
+                <div class="row">
+                  <t t-foreach="product_cards" t-as="enlaces">
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                      <a t-att-href="keep('#%s' % (enlaces.name) ,page=None)" >
+                        <img t-if="enlaces.image" class="img img-thumbnails img-responsive height: auto" t-att-src="website.image_url(enlaces, 'image', None)" t-att-alt="enlaces.title"/>
+                      </a>
+                    </div>
+                  </t>
+                </div>
+
+                <!-- Fichas de productos por MARCA -->
+                <t t-foreach="product_cards" t-as="fichas">
+                  <!-- div para toda la ficha de producto -->
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                    <![CDATA[
+                      <div id="]]><t t-esc="fichas.name"/><![CDATA[" >
+                    ]]>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                      <!-- espacio para nombre, título y primer vídeo -->
+                      <div class="row">
+                        <div class="video-small">
+                          <p class="p-name textos" t-field="fichas.name"/>
+                          <p class="p-title textos" t-field="fichas.title"/>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 video-large embed-container">
+                          <![CDATA[
+                            <iframe width="560" height="315" src="]]><t t-esc="fichas.youtube_link_large"/><![CDATA[" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                          ]]>
+                        </div>
+                      </div>
+                      <!-- espacio para contenedores textos y vídeo pequeño -->
+                      <div class="row">
+                        <div class="video-small">
+                          <div class="container-fluid div-gris">
+                            <div class="col-xs-6 col-sm-6 col-md-6 espaciado-texto-small">
+                              <p class="p-card-title textos" align="left" t-field="fichas.free_text_small_title"/>
+                              <p class="p-card-text textos" align="left" t-field="fichas.free_text_small"/>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 embed-container-small">
+                              <![CDATA[
+                                <iframe width="280" height="157" src="]]><t t-esc="fichas.youtube_link_small"/><![CDATA[" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                              ]]>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="video-small">
+                          <div class="container-fluid div-gris">
+                            <div class="col-xs-2 col-sm-2 col-md-2"/>
+                            <div class="col-xs-8 col-sm-8 col-md-8 espaciado-texto-large">
+                              <p class="p-card-title textos" t-field="fichas.free_text_large_title"/>
+                              <p class="p-card-text textos" t-field="fichas.free_text_large"/>
+                              <a t-att-href="keep('shop/product/%s' % (fichas.product_id.id),page=None)" >
+                                <button type="button" class="btn btn-outline-danger boton-enlace-producto"><span>Ver más</span></button>
+                              </a>
+                            </div>
+                            <div class="col-xs-2 col-sm-2 col-md-2"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <![CDATA[
+                  </div>
+                  ]]>
+                </t>
+              </div>
+              <div class="col-xs-2 col-sm-2 col-md-2"/>
+            </div>
+          </div>
+
+        </t>
+      </template>
+
+    </data>
+</openerp>

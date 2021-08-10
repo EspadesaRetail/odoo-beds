@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <record id="saluta" model="webservices.config.settings">
+            <field name="service">saluta</field>
+            <field name="source_host">http://localhost:8069</field>
+            <field name="wsdl">/beds_model/static/wsdl/beds_dev.xml</field>
+        </record>
+
+        <record id="wspedv" model="webservices.config.settings">
+            <field name="service">wspedv</field>
+            <field name="source_host">http://localhost:8069</field>
+            <field name="wsdl">/beds_model/static/wsdl/beds_dev.xml</field>
+        </record>
+
+        <record id="wssitu" model="webservices.config.settings">
+            <field name="service">wssitu</field>
+            <field name="source_host">http://localhost:8069</field>
+            <field name="wsdl">/beds_model/static/wsdl/beds_dev.xml</field>
+        </record>
+        <record id="wscodb" model="webservices.config.settings">
+            <field name="service">wscodb</field>
+            <field name="source_host">http://localhost:8069</field>
+            <field name="wsdl">/beds_model/static/wsdl/beds_dev.xml</field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+      <template id="remove_old_products" inherit_id="website_sale.cart" name="Retirar productos de descanso">
+        <xpath expr="//table[@id='cart_products']" position="after">
+            <div t-if="remove_old_products" class='mt32 cs-ml16'>
+                  <form action="/shop/cart/update" method="post">
+                         <t t-set="remove_old_products_value" t-value="website_sale_order and website_sale_order.remove_old_products"/>
+
+                        <input id="remove_old_products" type="checkbox" name="remove_old_products" t-att-checked="remove_old_products_value and 'checked' or ''"> ¿Contratar la <b>retirada de productos de descanso</b>?</input><br/>
+                        <p style="line-height: 100%;">
+                            <span class="cs-ml16 small">Como máximo se retirarán el mísmo número de artículos que los entregados.</span><br/>
+                            <span class="cs-ml16 small"><a href="/page/condiciones-de-compra">Ver condiciones de compra.</a></span>
+                        </p>
+
+                  </form>
+            </div>
+        </xpath>
+      </template>
+
+    </data>
+</openerp>

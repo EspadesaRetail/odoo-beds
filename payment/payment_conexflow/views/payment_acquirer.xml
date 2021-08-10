@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <!-- Modificar la ubicación del mensaje de error. -->
+        <record id="transaction_form" model="ir.ui.view">
+            <field name="name">payment.transaction.form</field>
+            <field name="model">payment.transaction</field>
+            <field name="inherit_id" ref="payment.transaction_form"/>            
+            <field name="arch" type="xml">
+                <xpath expr='//field[@name="state_message"]' position='attributes'>
+                    <attribute name="attrs">{'invisible': True}</attribute>
+                </xpath>                
+            </field>
+        </record>
+        
+        <record id="acquirer_form_conexflow" model="ir.ui.view">
+            <field name="name">acquirer.form.conexflow</field>
+            <field name="model">payment.acquirer</field>
+            <field name="inherit_id" ref="payment.acquirer_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr='//group[@name="acquirer_display"]' position='after'>
+                    <group attrs="{'invisible': [('provider', '!=', 'conexflow')]}">
+                        <field name="conexflow_merchant_url" attrs="{'required': [('provider', '=', 'conexflow')]}"/>
+                        <field name="conexflow_merchant_titular" attrs="{'required': [('provider', '=', 'conexflow')]}"/>
+                        <field name="conexflow_merchant_name" attrs="{'required': [('provider', '=', 'conexflow')]}"/>
+                        <field name="conexflow_merchant_code" attrs="{'required': [('provider', '=', 'conexflow')]}"/>
+                        <field name="conexflow_secret_key" attrs="{'required': [('provider', '=', 'conexflow')]}"/>
+                        <field name="conexflow_terminal" attrs="{'required': [('provider', '=', 'conexflow')]}"/>
+                        <field name="conexflow_currency" attrs="{'required': [('provider', '=', 'conexflow')]}"/>
+                        <field name="conexflow_transaction_type" attrs="{'required': [('provider', '=', 'conexflow')]}"/>
+                        <field name="conexflow_merchant_lang" attrs="{'required': [('provider', '=', 'conexflow')]}"/>
+                        <field name="conexflow_merchant_data" attrs="{'required': [('provider', '=', 'conexflow')]}"/>
+                        <field name="conexflow_merchant_description" attrs="{'required': [('provider', '=', 'conexflow')]}"/>
+                        <field name="conexflow_url_reply" attrs="{'required': [('provider', '=', 'conexflow')]}"/>
+                        <field name="conexflow_template" attrs="{'required': [('provider', '=', 'conexflow')]}"/>
+                                                
+                    </group>
+                    <group attrs="{'invisible': [('provider', '!=', 'conexflow')]}">
+                        <field name="send_quotation"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+        
+        
+        <record id="transaction_form_conexflow" model="ir.ui.view">
+            <field name="name">acquirer.transaction.form.conexflow</field>
+            <field name="model">payment.transaction</field>
+            <field name="inherit_id" ref="payment.transaction_form"/>
+            <field name="arch" type="xml">
+                <xpath expr='//notebook' position='inside'>
+                    <page string="Conexflow TX Details">
+                        <group>
+                            <field name="conexflow_txnid"/>
+                            <field name="state_message"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="acquirer_sequence" model="ir.ui.view">
+            <field name="name">payment.acquirer.list</field>
+            <field name="model">payment.acquirer</field>
+            <field name="inherit_id" ref="payment.acquirer_list"/>
+            <field name="arch" type="xml">
+                <xpath expr='//tree' position='inside'>
+                    <field name="sequence"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="acquirer_form" model="ir.ui.view">
+            <field name="name">payment.acquirer.form</field>
+            <field name="model">payment.acquirer</field>
+            <field name="inherit_id" ref="payment.acquirer_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='website_published']" position="before">
+                    <field name="sequence"/>
+                </xpath>
+            </field>
+        </record>   
+        
+        
+
+    </data>
+</openerp>
+

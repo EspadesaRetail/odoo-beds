@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+
+      <menuitem id="menu_marketing_product" parent="base.marketing_menu"
+        name="Productos"
+        groups="marketing.group_marketing_user"
+        sequence="10" />
+
+
+
+        <record id="product_tempalte_attachment_tree" model="ir.ui.view">
+            <field name="name">product.template.attachment.tree</field>
+            <field name="model">ir.attachment</field>
+            <field name="arch" type="xml">
+                <tree string="Imágenes de los productos">
+                    <field name="sequence" widget="handle" />
+                    <field name="name"/>
+                    <field name="res_name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_attachment_search_inherit" model="ir.ui.view">
+           <field name="name">view.attachment.search.inherit</field>
+           <field name="model">ir.attachment</field>
+           <field name="inherit_id" ref="base.view_attachment_search"/>
+           <field name="arch" type="xml">
+               <xpath expr="field[@name='name']" position="before">
+                   <field name="name" filter_domain="['|', ('name','ilike',self), ('res_name','ilike',self)]" string="Producto"/>
+               </xpath>
+           </field>
+        </record>
+
+      <record model="ir.actions.act_window" id="product_template_attachment">
+          <field name="name">Imágenes de productos</field>
+          <field name="res_model">ir.attachment</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">kanban,tree</field>
+          <field name="view_id" ref="product_tempalte_attachment_tree"/>
+          <field name="domain">[('res_model','=','product.template')]</field>
+          <field name="context" eval="{'default_res_model': 'product.template'}"/>
+          <field name="help" type="html">
+          <p>
+           Muestra los ficheros de imágen adjuntos a los productos.
+           La imagen principal se cambia directamente en la ficha del producto.
+          </p>
+          </field>
+      </record>
+
+
+
+      <menuitem
+          id="menu_marketing_product_images_tree" action="product_template_attachment"
+          parent="menu_marketing_product"
+          name="Imágenes de productos" sequence="3"/>
+
+
+
+
+    </data>
+
+</openerp>

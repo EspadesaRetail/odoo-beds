@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+
+    <!-- Actualizacion de precios -->
+    <record id="Update pricelist" model="ir.ui.view">
+      <field name="name">Actualización de precios</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="cs_model.product_template_add_header"/>
+      <field name="arch" type="xml">
+        <xpath expr="//header" position="inside">
+          <!-- attrs="{'invisible': [('product_variant_ids', 'is', True)]}" -->
+          <button name="beds_model.action_update_pricelist"
+            class="beds-ws" type="action"
+            string="Actualizar tarifa" groups="base.group_user"/>
+          </xpath>
+        </field>
+      </record>
+
+      <record model="ir.ui.view" id="crm_case_claims_form_view">
+        <field name="name">CRM - Claims Form</field>
+        <field name="model">crm.claim</field>
+        <field name="inherit_id" ref="crm_claim.crm_case_claims_form_view"/>
+        <field name="arch" type="xml">
+
+          <xpath expr="//field[@name='partner_phone']" position="before">
+            <field name="city"/>
+            <field name="zip"/>
+            <field name="shop"/>
+            <field name="external_ref"/>
+          </xpath>
+          <xpath expr="//field[@name='description']" position="after">
+            <separator colspan="4" string="Solución esperada" groups="base.group_user"/>
+            <field name="solucion" colspan="4" nolabel="1"/>
+          </xpath>
+
+
+        </field>
+      </record>
+
+
+    </data>
+
+  </openerp>

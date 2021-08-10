@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Setting Style theme -->
+        <template id="beds_tiendas_asset" name="website asset for beds_tiendas" inherit_id="website.assets_frontend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/beds_tiendas/static/src/css/beds_tiendas.css"/>
+            </xpath>
+        </template>
+
+
+        <!-- Mostrar las tiendas físicas ubicadas en un mapa de Google Maps -->
+        <template id="localizador">
+            <script type="text/javascript">
+                var partner_data = <t t-raw="partner_data"/>;
+            </script>
+
+            <t t-call="beds_model.content_tiendas_beds"/>
+
+            <div id="custom_map" class="custom_map">
+                <div class="maps_search mt16 mb16">
+                    <span>Tu tienda bed's más cercana</span>
+                    <input id="pac-input" class="autocomplete_controls" type="text" placeholder="dirección, localidad o código postal"></input>
+
+                    <a id="map_search" class="btn btn-default a-submit" title="Busca la tienda bed's más cercana">
+                        <i class="fa fa-search"></i>
+                    </a>
+
+                    <a id="map_locate" class="btn btn-default a-submit" title="Localiza la tienda más cercana de donde te encuentras.">
+                        <i class="fa fa-compass"></i>
+                    </a>
+
+                </div>
+
+                <div id="container_map" class="container container_map">
+                    <div id="map" class="fill map"></div>
+                </div>
+            </div>
+            <![CDATA[
+            <script type="text/javascript" src="/web/static/lib/jquery/jquery.js"></script>
+            <script type="text/javascript" src="/beds_tiendas/static/src/js/google_maps_beds.js"></script>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUDzkIn11dsIIFHhCmzWBH_BbWswjPFD0&libraries=places,geometry&callback=initTiendasBeds"></script>
+            ]]>
+        </template>
+
+        <!-- /tiendas-beds page specific layout -->
+        <template id="tiendas">
+            <t t-call="website.layout">
+
+                <!-- Cabecera de página -->
+                <t t-call="cs_model.content_store_locator"/>
+
+                <!-- Localizador de tiendas. -->
+                <t t-call="beds_tiendas.localizador"/>
+
+                <div class="container-fluid mt32 mb16">
+
+                    <!-- Mostrar las provincias-->
+                    <div t-if="not state" id="provincias" class="container" >
+                        <t t-set="i" t-value="0"/>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <!-- Recorremos los paises -->
+                                <t t-foreach="countries" t-as="country">
+                                    <!-- <t t-set="i" t-value="i+2"></t> -->
+                                    <div>
+                                        <h2 t-field="country.name"/>
+                                        <hr/>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-md-3 col-sm-4 col-xs-6">
+                                      <!-- Recorremos también las provincias -->
+                                      <t t-foreach="states" t-as="item">
+                                          <!-- Comprobamos que el país es el de la provincia -->
+                                          <t t-if="country.id==item.country_id.id">
+                                            <t t-set="i" t-value="i+1"></t>
+                                            <div>
+                                                <a t-att-href="keep('/tiendas-beds/%s#tiendas' % slug(item),page=None)" t-field="item.name"/>
+                                            </div>
+                                            <t t-if="i==13">
+                                                <t t-set="i" t-value="0"></t>
+                                                <![CDATA[
+                                            </div>
+                                            <div class="col-md-3 col-sm-4 col-xs-6">
+                                                ]]>
+                                            </t>
+                                          </t>
+                                      </t>
+
+                                      <t t-if="i==13">
+                                          <t t-set="i" t-value="0"></t>
+                                          <![CDATA[
+                                      </div>
+                                      <div class="col-md-3 col-sm-4 col-xs-6">
+                                          ]]>
+                                      </t>
+                                    </div>
+                                  </div>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mostrar contenido editable por provincia-->
+                    <div t-if="state" id="tiendas"  class="container">
+                        <div t-field="state.website_description" class="oe_structure oe_empty"/>
+                    </div>
+
+                    <!-- Mostrar tiendas-->
+                    <div t-if="shops" class="container mt32 mb16">
+                        <t t-set="i" t-value="1"/>
+                        <div class="row">
+                            <t t-foreach="shops" t-as="shop">
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="shop">
+
+                                        <a t-att-href="keep('/tiendas-beds/%s/%s' % (shop.state_id.slug_name(), slug(shop)) ,page=None)" >
+                                            <img t-if="shop.image" class="img img-thumbnail img-responsive height: auto" t-att-src="website.image_url(shop, 'image', None)" t-att-alt="shop.name"/>
+                                            <img t-if="not shop.image" class="img img-thumbnail img-responsive height: auto" src="/beds_tiendas/static/src/img/logo1.png" t-att-alt="shop.name"/>
+                                            <h4 t-field="shop.name"/>
+                                        </a>
+                                        <p class="shop-address">
+                                            <span t-field="shop.street"/><br/>
+                                            <span t-field="shop.zip"/> <span t-field="shop.city"/><br/>
+                                        </p>
+                                        <p class="shop-phone">
+                                            <span t-field="shop.phone"/>
+                                        </p>
+
+                                    </div>
+
+                                </div>
+                                <t t-if="i%2==0">
+                                    <![CDATA[
+                                </div>
+                                <div class="row">
+                                    ]]>
+                                </t>
+                                <t t-set="i" t-value="i+1"></t>
+                            </t>
+                        </div>
+                        <div t-if="state" class="text-center mt32">
+                            <a class="link-other-page" href="/tiendas-beds#provincias"><span>Ver todas las tiendas de colchones bed's</span></a>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+
+        <!-- /huesca/beds-huesca-999 -->
+        <template id="tienda">
+            <t t-call="website.layout">
+                <section>
+                    <div class="container-fluid">
+                        <div class="container mt32 mb16">
+                            <div class="row shop-detail">
+                                <div class="col-md-4 col-xs-12">
+                                    <img t-if="partner.image" class="img img-responsive" t-att-src="website.image_url(partner, 'image', None)" t-att-alt="partner.name"/>
+                                    <img t-if="not partner.image" class="img img-responsive" src="/beds_tiendas/static/src/img/logo1.png" t-att-alt="partner.name"/>
+
+                                </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <h1><span>¡Bienvenido a tu tienda </span><span t-esc="partner.name"/>!</h1>
+                                    <p class="shop-detail-address">
+                                        <span t-field="partner.street"/><br/>
+                                        <span t-field="partner.zip"/> <span t-field="partner.city"/><br/>
+                                        <span class="text-left" t-field="partner.phone"/><br/>
+                                        <span class="text-left" t-field="partner.email"/>
+                                    </p>
+
+                                    <p t-if="schedule1 or schedule2 or schedule3 or schedule4" class="shop-detail-schedule">
+                                        <span>Horario:</span>
+                                        <br/><span t-esc="schedule1"/>
+                                        <br/><span t-esc="schedule2"/>
+                                        <br/><span t-esc="schedule3"/>
+                                        <br/><span t-esc="schedule4"/>
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <!-- Mostrar contenido editable por tienda-->
+                            <div t-field="partner.website_description" class="oe_structure oe_empty"/>
+
+                            <div class="container-fluid">
+                              <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12" t-if="partner.partner_brochure_id.brochure_url">
+                                  <!-- Se incluye un <div> por encima del <iframe> para que se pueda hacer responsive -->
+                                  <!-- ese elemento y no descuadre en las diversas visualizaciones -->
+                                  <div class="embed-responsive embed-responsive-4by3">
+                                    <![CDATA[<iframe class="embed-responsive-item" src="]]><t t-raw="partner.partner_brochure_id.brochure_url"/><![CDATA[" frameborder="0" style="border:0" allowfullscreen></iframe>]]>
+                                  </div>
+                                  <br/>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Mapa personalizado por tienda y formulario de contacto -->
+                            <div class="container-fluid">
+                              <div class="row">
+                                <div class="col-md-6 col-sm-12 col-xs-12" t-if="partner.partner_google_localization">
+                                  <!-- Se incluye un <div> por encima del <iframe> para que se pueda hacer responsive -->
+                                  <!-- ese elemento y no descuadre en las diversas visualizaciones -->
+                                  <div class="embed-responsive embed-responsive-4by3">
+                                    <![CDATA[<iframe class="embed-responsive-item" src="]]><t t-raw="partner.partner_google_localization"/><![CDATA[" frameborder="0" style="border:0" allowfullscreen></iframe>]]>
+                                  </div>
+                                  <!-- Ejemplo de como se crea el mapa de google con un iframe -->
+                                  <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5917.576143314258!2d-0.40401!3d42.13342!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb384eaa9eca79f24!2sbed&#39;s!5e0!3m2!1ses!2ses!4v1544617180659" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> -->
+
+                                </div>
+                                <div class="col-md-3" t-if="not partner.partner_google_localization"/>
+                                <div class="col-md-6 col-sm-12 col-xs-12">
+
+                                  <div class="container text-center">
+
+                                  <form t-attf-action="/form/contacto_tiendas" method="post" class="form-horizontal" enctype="multipart/form-data">
+                                    <input type="text" class="hidden" name="partner_id" t-attf-value="#{partner.id}"/>
+                                    <input type="text" class="hidden" name="partner_email" t-attf-value="#{partner.email}"/>
+                                    <input type="text" class="hidden" name="view_from" t-attf-value="beds_tiendas.tienda"/>
+
+                                    <div class="row">
+                                      <div class="col-md-12 col-md-offset-0">
+                                        <h2><span>Solicita información a tu tienda </span><span t-esc="partner.name"/></h2>
+                                      </div>
+                                    </div>
+
+                                    <div class="row">
+                                      <div class="col-md-6 col-md-offset-0">
+                                        <div t-attf-class="form-group #{error and 'contact_name' in error and 'has-error' or ''}    ">
+                                          <label class="hidden control-label" for="contact_name">Nombre</label>
+                                          <input type="text" class="form-control w90p-left" name="contact_name" required="True" t-attf-value="#{contact_name or ''}" placeholder="Nombre*"/>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div t-attf-class="form-group #{error and 'contact_name2' in error and 'has-error' or ''}    ">
+                                          <label class="hidden control-label" for="contact_name2">Nombre</label>
+                                          <input type="text" class="form-control w90p-right" name="contact_name2" required="True" t-attf-value="#{contact_name2 or ''}" placeholder="Apellidos*"/>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- Correo y teléfono -->
+                                    <div class="row">
+                                      <div class="col-md-6  col-md-offset-0">
+                                        <div t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
+                                          <label class="hidden control-label" for="email_from">Correo electrónico</label>
+                                          <input type="email" class="form-control w90p-left" name="email_from" required="True" t-attf-value="#{email_from or ''}" placeholder="Correo electrónico*"/>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div t-attf-class="form-group #{error and 'phone' in error and 'has-error' or ''}">
+                                          <label class="hidden control-label" for="phone">Teléfono de contacto</label>
+                                          <input type="text" class="form-control w90p-right" name="phone" t-attf-value="#{phone or ''}" placeholder="Teléfono"/>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- Asunto  -->
+                                    <div class="row">
+                                      <div class="col-md-12 col-md-offset-0">
+                                        <div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''}">
+                                          <label class="hidden control-label" for="name">Asunto</label>
+                                          <input type="text" class="form-control w100p" name="name" required="True" t-attf-value="#{name or ''}" placeholder="Asunto*"/>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- Mensaje de correo -->
+                                    <div class="row">
+                                      <div class="col-md-12 col-md-offset-0">
+                                        <div t-attf-class="form-group #{error and 'description' in error and 'has-error' or ''}">
+                                          <label class="hidden control-label" for="description">Escribe tu mensaje</label>
+                                          <textarea name="description" class="form-control w100p" rows="5" placeholder="Escribe tu mensaje">
+                                          </textarea>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- Política de privacidad -->
+                                    <div class="row">
+                                      <div class="form-group">
+                                        <div class="text-center">
+                                          <button class="btn btn-primary btn-md">Enviar</button>
+                                          <span class="accept_policy">&amp;nbsp;</span>
+                                          <div class="row">
+                                          <div class="col-md-1 col-sm-1 col-xs-1"/>
+                                          <div class="col-md-10 col-sm-10 col-xs-10">
+                                            <h6 style="text-align: justify;"><input name="accept_policy" required="True" type="checkbox"/>&amp;nbsp;Al marcar esta casilla consiento al tratamiento de mis datos personales por parte de Tiendas bed's con la finalidad de gestionar o resolver la solicitud o petición realizada a través del presente formulario de contacto y las consiguientes comunicaciones hasta su resolución. | Legitimación: Consentimiento del interesado | Destinatarios: Los datos no se cederán a terceros salvo en los casos en que exista una obligación legal, siendo utilizados únicamente por los trabajadores de Espadesa Retail S.L. y de sus entidades franquiciadas exclusivamente para la finalidad anteriormente expresada. Los datos están ubicados en servidores cuya sede se encuentra dentro del territorio de la UE. | Derechos: Tiene derecho a acceder, rectificar y suprimir los datos, poniéndose en contacto con el responsable del tratamiento de datos a través del e-mail <a href="mailto:bedsonline@tiendasbeds.es">bedsonline@tiendasbeds.es</a> así como otros derechos, como se explica en la <a href="/page/privacidad">Política de privacidad</a>. Información Adicional: puede ampliar la información en el enlace <a href="/page/aviso-legal">Avisos Legales​</a></h6>
+                                          </div>
+                                          <div class="col-md-1 col-sm-1 col-xs-1"/>
+                                          </div>
+                                          <span class="accept_policy"> </span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <br/>
+
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                            <div class="text-center mt32">
+                                <a class="link-other-page" t-att-href="keep('/tiendas-beds/%s#tiendas' % slug(partner.state_id),page=None)">
+                                    <span>Ver todas las tiendas de colchones bed's en </span><span t-esc="partner.state_id.name"/>
+                                </a>
+                            </div>
+
+                            <section contentEditable="false">
+                              <div class="container mt16 mb32">
+                                <div id="bb" class="beds-bubble">
+                                  <div id="bb-text" class="beds-bubble-text">
+                                    <br/>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-12 text-center">
+                                    <h2>7 cosas que <b>bed's</b> hace por ti</h2>
+                                  </div>
+                                  <div class="col-md-12 text-center">
+                                    <p style="text-align: center;">
+                                      <span style="color:#005eb8;">Te damos todas las facilidades para que tú te ocupes de lo que más importa: tu descanso. De todo lo demás, nos ocupamos nosotros.</span>
+                                    </p>
+                                    <p style="text-align: center;">
+                                      <span style="color:#005eb8;"></span>
+                                    </p>
+                                  </div>
+                                </div>
+                                <t t-call="beds_theme.content_siete_cosas_shapes"/>
+                              </div>
+                            </section>
+
+
+
+                        </div>
+                    </div>
+                </section>
+            </t>
+        </template>
+
+
+
+    </data>
+</openerp>

@@ -1,0 +1,747 @@
+
+@media all {
+
+
+
+
+  .oe_structure.oe_empty:empty:before, [data-oe-type=html]:empty:before, .oe_structure.oe_empty > .oe_drop_zone.oe_insert:only-child:before, [data-oe-type=html] > .oe_drop_zone.oe_insert:only-child:before {
+  display: none;
+  }
+
+
+  .css_attribute_color {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #005eb8 !important;
+  }
+  .css_attribute_color.active {
+    width: 45px;
+    height: 45px;
+
+    border: 5px solid #005eb8 !important;
+    border-bottom: 5px solid #005eb8 !important;
+  }
+
+
+  .restricted-no-display {
+    display: none;
+  }
+
+  .cs-color-red {
+    color: red;
+  }
+
+  .cs-color-blue {
+    color: #005eb8;
+  }
+
+  .cs-color-gray {
+    color: #656668;
+  }
+
+
+  /* Backgrounds color */
+  .cs-bg-white {
+    background: white;
+  }
+  .cs-bg-blue {
+    background: #005eb8;
+  }
+
+  .cs-bg-red {
+    background: #d5002e;
+  }
+
+  .cs-bg-gray {
+    background: #ececec;
+  }
+
+
+
+  .slider-input {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+
+  .slider-input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #428bca;
+    cursor: pointer;
+  }
+
+  .slider-input::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #428bca;
+    cursor: pointer;
+  }
+
+}
+
+
+/* Custom shopping css style */
+@media (max-width: 2000px) {
+
+  .cs-ml8 {
+    margin-left: 8px;
+  }
+
+  .cs-mr8 {
+    margin-right: 8px;
+  }
+  .cs-ml16 {
+    margin-left: 16px;
+  }
+
+  .cs-mr16 {
+    margin-right: 16px;
+  }
+
+
+  .cs-nopadding {
+    padding: 0 !important;
+  }
+
+  .cs-inline {
+    display: inline;
+  }
+
+  .cs-attributes {
+    margin-top: 32px;
+    padding-left: 8px;
+    padding-right: 16px;
+  }
+
+  .cs-grid {
+  }
+
+
+
+  .cs-float-right {
+    float: right;
+  }
+
+  .cs-float-left {
+    float: left;
+  }
+
+
+  .cs-img-subcategory {
+    max-width: 307 px;
+  }
+
+
+  .cs-hline {
+    color: #005eb8;
+    border-bottom: 5px;
+  }
+
+
+
+  div.social-media {
+    height: 27px;
+    background-image: url(/cs_theme/static/src/img/icon/social_media.png);
+    background-repeat: no-repeat;
+    background-size: 201px 27px;
+  }
+
+
+
+
+  .cs-summary {
+    text-align: justify;
+    color:black;
+  }
+
+
+  .cs-attribute {
+    margin-top: 3px;
+    color:black;
+    font-weight: bold;
+  }
+
+  .cs-icon {
+    color: white;
+    background-color: #005eb8;
+    padding: 5px;
+
+  }
+
+  /* Búsqueda de productos */
+  .full-page {
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,94,184, 0.8);
+    overflow-y: hidden;
+    transition: 0.5s;
+  }
+
+  /* Búsqueda de productos */
+  .custom-search {
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,94,184, 0.8);
+    overflow-y: hidden;
+    transition: 0.5s;
+  }
+
+  .custom-search-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .custom-search a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+
+    display: block;
+    transition: 0.3s;
+  }
+
+  .custom-search a:hover, .custom-search a:focus {
+    color: #f1f1f1;
+  }
+
+  .custom-search-close {
+    color: #ffffff;
+    font-size: 60px !important;
+  }
+
+  .custom-search-form {
+    z-index: 9999;
+  }
+
+
+
+  /* product images */
+  .hide-bullets {
+    list-style:none;
+    margin-left: -40px;
+    margin-top:20px;
+  }
+
+
+  .cs-zip-code {
+    width: auto;
+  }
+
+
+
+
+  /* Productos */
+
+  .cs-product {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .cs-product-cart {
+    padding-left: 5px;
+    padding-right: 5px;
+    vertical-align: top;
+    width: auto;
+    height: auto;
+  }
+
+
+
+
+
+  .of-product {
+    display: block;
+    position: relative;
+    border: none;
+    text-align: left;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .of-product h5 {
+    text-align: center;
+    min-height: 30px;
+  }
+
+  .of-product-image {
+    /*height: 225px;*/
+  }
+  .of-product-image img{
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+  }
+
+
+
+  .of-product-offer {
+    /* todo quitar el fondo */
+    /*background-color: rgba(255,0,0,0.3);*/
+
+    min-height: 65px;
+    display: inline-block;
+    overflow: hidden;
+    /*max-width: 400px;*/
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+  }
+
+  .of-label {
+
+    position: absolute;
+    top: 40px;
+    margin-left: 10px;
+    float: left;
+    width: 60px;
+    height: 60px;
+    background-repeat: no-repeat;
+    background-size: 60px 60px;
+
+  }
+
+
+  #product_detail .of-label {
+    width: 150px;
+    height: 150px;
+    background-size: 150px 150px;
+  }
+
+  #product_detail {
+    margin-bottom: 16px;
+  }
+
+  #product_offer_description {
+    margin-top: 10px;
+    padding: 5px;
+  }
+
+  #product_offer_description > div.of-label-well {
+    position: relative;
+    top: 2px;
+    margin-left: 2px;
+    float: left;
+    width: 70px;
+    height: 70px;
+    background-repeat: no-repeat;
+    background-size: 70px 70px;
+  }
+  #product_offer_description > div.of-text-well {
+    position: relative;
+    clear: left;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+
+
+
+
+
+  .cs-product-image {
+
+    /*height: 230px;*/
+    min-height: 230px;
+
+  }
+  .cs-product-image img{
+    /*max-width: 400px;*/
+
+    width: 100%;
+    height: auto;
+  }
+
+
+
+
+
+  span.oe_default_price {
+    font-size: 10px;
+    font-color: grey;
+  }
+
+
+
+
+  /* Precios en el carrito de la compra. */
+  .cs-cart span.oe_currency_value {
+    font-size: 15px;
+  }
+
+  .cs-cart-total span.oe_currency_value {
+    margin-left: 8px;
+    font-size: 20px;
+    white-space: nowrap;
+  }
+
+
+  .js_product {
+    margin-top: 5px;
+  }
+
+
+  /* Precio tarifa pública */
+  .cs-product-lst-price {
+    display: inline-block;
+    float: left;
+    white-space: nowrap;
+    margin-top: 0px;
+    color: black;
+    font-size: 10px;
+
+  }
+
+  cs-lst-price-antes {
+    display: block;
+    position: relative;
+    font-size:10px;
+    top: 10px;
+    margin: 0;
+    padding: 0;
+
+  }
+
+  .cs-lst-price {
+    display: block;
+    position: relative;
+    top: -15px;
+    margin-top: 5px;
+    padding: 0;
+
+  }
+  .cs-lst-price span.oe_currency_value {
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+  }
+
+
+
+  .cs-product-price {
+    display: inline-block;
+    float: right;
+    color: #005eb8;
+    text-align: center;
+    margin-top: 14px;
+    margin-left: 0px;
+    margin-right: 0px;
+
+  }
+  .cs-product-price b span.oe_currency_value {
+    font-size: 25px;
+  }
+
+
+
+  .of-product-price {
+    display: inline-block;
+    float: right;
+    color: #005eb8;
+    text-align: center;
+    margin-top: 14px;
+    margin-left: 0px;
+    margin-right: 0px;
+
+  }
+  /* Precios en el carrito de la compra. */
+  .of-product-price b span.oe_currency_value {
+    font-size: 30px;
+  }
+
+
+
+
+
+
+
+  /* Descuento */
+  .cs-product-discount {
+    display: inline-block;
+    float: left;
+    text-align: center;
+    vertical-align: top;
+    margin-top: 12px;
+    margin-left: 20px;
+    height: 30px;
+    width: 70px;
+    background-image: url('/cs_theme/static/src/img/discount.png');
+    background-repeat: no-repeat;
+    background-size: 70px 30px;
+  }
+
+  .cs-discount {
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+
+  /* Plan renove */
+  .cs-product-plan-renove {
+    display: inline-block;
+    float: left;
+    text-align: center;
+    vertical-align: top;
+    margin-top: 12px;
+    margin-left: 20px;
+    height: 30px;
+    width: 70px;
+    background-image: url('/cs_theme/static/src/img/plan_renove.png');
+    background-repeat: no-repeat;
+    background-size: 70px 30px;
+  }
+
+  .cs-plan-renove {
+    color: #ffff00;
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+
+
+
+
+  .of-product-detail {
+    display: inline-block;
+    float: right;
+    padding-top: 10px;
+    text-align: center;
+
+  }
+
+
+
+  /******************************************
+  ***********Ficha de producto***************
+  *******************************************/
+  .pr-block-discount {
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    float: right;
+    text-align: right;
+    width: 225px;
+  }
+
+
+  /* Plan renove */
+  .pr-product-plan-renove {
+    color: #ffff00;
+    display: inline-block;
+    float: left;
+    text-align: center;
+    vertical-align: top;
+    margin-top: 1px;
+    margin-left: 5px;
+    min-height: 30px;
+    min-width: 70px;
+    background-image: url('/cs_theme/static/src/img/plan_renove.png');
+    background-repeat: no-repeat;
+    background-size: 70px 30px;
+  }
+
+  /* Descuento */
+  .pr-product-discount {
+    color: white;
+    display: inline-block;
+    float: left;
+    text-align: center;
+    vertical-align: top;
+    margin-top: 1px;
+    margin-left: 5px;
+    min-height: 30px;
+    min-width: 70px;
+    background-image: url('/cs_theme/static/src/img/discount.png');
+    background-repeat: no-repeat;
+    background-size: 70px 30px;
+  }
+  .pr-lst-price {
+
+  }
+
+  .pr-lst-price span.oe_default_price {
+    display: inline-block;
+  }
+
+  span.oe_default_price {
+    font-size: 10px;
+    font-color: grey;
+  }
+
+
+  .pr-lst-price span.oe_currency_value {
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+  }
+
+
+  .pr-product-price {
+    color: #005eb8;
+    text-align: center;
+    background-color: #ececec;
+    border-radius: 10px;
+  }
+
+
+  .pr-envio-estandar {
+    color: #005eb8;
+    font-weight: bold;
+
+  }
+
+  .pr-envio-express {
+    color: red;
+    font-weight: bold;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .of-product-summary {
+    color: black;
+  }
+
+  .of-product-stars {
+    position: absolute;
+    left: 210px;
+    top : 220px;
+
+  }
+
+  .cs-product-stars {
+    position: relative;
+    float: right;
+    margin-right: 10px;
+    margin-top: -30px;
+
+
+  }
+
+  /* Star Widget */
+  .o_rating_star_card{
+    margin-bottom: 5px;
+  }
+
+  .o_rating_star_card .stars {
+    display: inline-block;
+    color: #FACC2E;
+  }
+
+  .o_rating_star_card .stars i {
+    margin-right: -3px;
+    text-align: center;
+  }
+
+  .o_rating_star_card .stars.enabled{
+    cursor: pointer;
+  }
+
+  .o_rating_star_card .rate_text{
+    display: inline-block;
+  }
+
+
+
+  /* Centrar imagenes y texto */
+  .cs-inline-block {
+    display: inline-block;
+  }
+
+  .cs-img-text-vertical-middle {
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+
+
+
+
+
+  /* Carousel */
+
+  /* El 50% es porque en 1024x768 si es del 100% no se puede
+  seleccionar la lista de medidas.*/
+  .carousel-control.left, .carousel-control.right  {
+    height: 50%;
+    background-image: none;
+
+  }
+
+  .carousel-control.left i.fa{
+    color: #005eb8;;
+  }
+  .carousel-control.right i.fa{
+    color: #005eb8;;
+  }
+
+  div.carousel div.carousel-content {
+    background: transparent;
+    margin-top: 125px;
+  }
+
+  .carousel-video {
+    padding-top:10px; 
+  }
+
+}
+
+/* Optimization for retina display and other high resolution display */
+/* Optimización de de imagenes para apple*/
+/* No optimization */
+img.cs-img-optimize-density {
+  width: 50%;
+  height: 50%;
+}
+@media only screen and (min--moz-device-pixel-ratio: 2),
+
+only screen and (-o-min-device-pixel-ratio: 2/1),
+
+only screen and (-webkit-min-device-pixel-ratio: 2),
+
+only screen and (min-device-pixel-ratio: 2) {
+  /* Optimización de de imagenes para apple*/
+  img.cs-img-optimize-density {
+
+  }
+}

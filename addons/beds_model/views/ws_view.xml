@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        
+        <!-- Web services-->
+        <record id="webservices_config_settings_form_view" model="ir.ui.view">
+            <field name="name">webservices.config.settings.form</field>
+            <field name="model">webservices.config.settings</field>
+            <field name="arch" type="xml">
+                <form string="Web Services">
+                    <sheet>
+                        <div class="oe_title" style="width: 390px;">
+                            <h1>
+                                <field name="service" class="oe_inline"/>
+                            </h1>
+                            <field name="source_host"/>
+                            <field name="wsdl"/>
+                        </div>
+                        
+                        <footer>
+                            <button name="saluta" attrs="{'invisible': [('service', '!=', 'saluta')]}" string="Prueba" type="object" class="beds-ws"/>
+                        </footer>
+                    
+                    </sheet>
+                    
+                </form>
+            </field>
+        </record>
+
+        
+        <record id="webservices_config_settings_tree_view" model="ir.ui.view">
+            <field name="name">webservices_config_settings_tree_view</field>
+            <field name="model">webservices.config.settings</field>
+            <field name="arch" type="xml">
+
+                <tree string="Web services" editable="top">
+                    <field name="service"/>
+                    <field name="source_host"/>
+                    <field name="wsdl"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="webservices_config_settings_action" model="ir.actions.act_window">
+            <field name="name">Web Services</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">webservices.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>        
+
+        <menuitem id="menu_webservices_configuration" parent="base.menu_config"
+                  sequence="99" action="webservices_config_settings_action"/>
+        
+
+                
+        
+    </data>
+</openerp>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+
+  <data noupdate="1">
+    <!-- LAS SUPER OFERTAS DE bed's -->
+    <template id="super_offer" name="Las Super ofertas.">
+      <t t-set="offers" t-value="website.get_super_offers(items_group=3)"/>
+      <t t-set="carousel_name" t-value="'super_offers'"/>
+      <t t-if="offers and len(offers)>0">
+        <section class="cs-color-white">
+          <hr class="container"/>
+          <div class="row text-center mt16 mb16">
+            <h2>
+              LAS <strong>SUPER</strong> OFERTAS DE <strong>bed's</strong>
+            </h2>
+          </div>
+
+          <t t-call="cs_theme.carousel_offer"/>
+          <hr class="container"/>
+        </section>
+      </t>
+
+    </template>
+  </data>
+
+  <data>
+
+    <!-- Insertar vídeo en home1 antes de  <section class="mb16 cs-bg-gray mt0"> -->
+    <!--
+    <section class="mb0 cs-bg-gray mt0">
+      <div class="container row">
+        <div class="col-md-12 text-center">
+
+          <![CDATA[
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/k8Jrx1FZzIE?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          ]]>
+        </div>
+      </div>
+    </section>
+  -->
+
+
+    <!-- Home -->
+    <template id="content_home1">
+      <div id="home1" class="oe_structure oe_empty"/>
+    </template>
+
+    <template id="content_home2">
+      <div id="home2" class="oe_structure oe_empty"/>
+    </template>
+
+    <template id="content_home4">
+      <div id="home4" class="oe_structure oe_empty"/>
+    </template>
+
+    <!-- Localizador de tiendas -->
+    <template id="content_store_locator">
+      <div class="oe_structure"/>
+    </template>
+
+    <!-- Franquicias -->
+    <template id="franquicias" name="franquicias">
+      <div class="oe_structure oe_empty"/>
+    </template>
+
+    <!-- Trabaja con nosotros -->
+    <template id="trabaja_con_nosotros" name="Trabaja con nosotros">
+      <div class="oe_structure oe_empty"/>
+    </template>
+
+    <!-- Contactar con nosotros -->
+    <template id="contactar_con_nosotros" name="Contactar con nosotros.">
+      <div class="oe_structure oe_empty"/>
+    </template>
+
+    <!-- Tiendas beds-->
+    <template id="content_tiendas_beds" name="Tiendas beds">
+      <div class="oe_structure"/>
+    </template>
+
+    <template id="content_footer_tiendas_beds" name="Footer Tiendas beds">
+      <div class="oe_structure oe_empty"/>
+    </template>
+
+    <!-- Reclamaciones -->
+    <template id="reclamacion" name="Página de reclamaciones">
+      <div class="oe_structure oe_empty"/>
+    </template>
+
+    <!-- Darse de baja en marketing -->
+    <template id="unsubscribe" name="Baja en lista de marketing">
+      <div class="oe_structure oe_empty"/>
+    </template>
+
+
+
+
+
+
+
+
+  </data>
+</openerp>

@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+
+    <!-- Add header to product.template-->
+    <record id="product_template_add_header" model="ir.ui.view">
+      <field name="name">Añadir botonera</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="product.product_template_form_view"/>
+      <field name="arch" type="xml">
+        <xpath expr="//form/sheet" position="before">
+          <header>
+          </header>
+        </xpath>
+      </field>
+    </record>
+
+    <!-- Add link to website product -->
+    <record id="product_template_form_view_website_link" model="ir.ui.view">
+      <field name="name">product.template.form.view.website.link</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="product.product_template_form_view"/>
+      <field name="arch" type="xml">
+        <xpath expr="//div[@name='options']" position="after">
+          <div class="oe_left" name="links" groups="base.group_user">
+            <div>
+              <field name="view_product_online" widget="url" text="Ver en la web" readonly="1"/>
+            </div>
+          </div>
+        </xpath>
+      </field>
+    </record>
+
+
+    <!-- view specific to product.template -->
+    <record id="product_template_form_view_add_default_code2" model="ir.ui.view">
+      <field name="name">product.template.product.form</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="product.product_template_only_form_view"/>
+      <field name="arch" type="xml">
+        <field name="default_code" position="after">
+          <field name="default_code2"/>
+        </field>
+      </field>
+    </record>
+
+    <!-- Add link the website product -->
+    <record model="ir.ui.view" id="product_template_kanban_view">
+      <field name="name">Product.template.product.kanban</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="product.product_template_kanban_view"/>
+      <field name="arch" type="xml">
+        <xpath expr="//div[@class='oe_kanban_details']" position="inside">
+          <a t-att-href="'/shop/product/-'+record.id.raw_value" target="_blank"><i class="fas fa-link"></i> Ver en la web.</a>
+        </xpath>
+      </field>
+    </record>
+
+    <!-- Product Brand -->
+    <record id="product_brand_form_view" model="ir.ui.view">
+      <field name="name">product.brand.form</field>
+      <field name="model">product.brand</field>
+      <field name="arch" type="xml">
+        <form string="Brands of products">
+          <sheet>
+            <div class="oe_left" style="width: 500px;">
+              <field name="image" widget='image' class="oe_avatar oe_left"/>
+              <div class="oe_title" style="width: 390px;">
+                <h1>
+                  <field name="name" class="oe_inline"/>
+                </h1>
+              </div>
+
+            </div>
+
+            <notebook>
+              <page string="General">
+                <group colspan="4">
+                  <group>
+                    <field name="sequence"/>
+                    <field name="delivery_message"/>
+                  </group>
+                  <group>
+                    <field name="transparent_image" widget='image' class="oe_avatar oe_left"/>
+                  </group>
+                </group>
+
+              </page>
+
+              <page string="Sitio web">
+                <group string="Descripción">
+                  <field name="website_description" nolabel="1"/>
+                </group>
+                <group string="Descripción corta">
+                  <field name="website_short_description" nolabel="1"/>
+                </group>
+              </page>
+
+            </notebook>
+          </sheet>
+
+
+        </form>
+      </field>
+    </record>
+    <record id="product_brand_tree_view" model="ir.ui.view">
+      <field name="name">product.brand.tree</field>
+      <field name="model">product.brand</field>
+      <field name="field_parent" eval="False"/>
+      <field name="arch" type="xml">
+        <tree string="Marcas">
+          <field name="name"/>
+          <field name="sequence"/>
+        </tree>
+      </field>
+    </record>
+    <record id="product_brand_action" model="ir.actions.act_window">
+      <field name="name">Brands of products</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">product.brand</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" eval="False"/>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Click to define a new brand.
+        </p>
+        <p>
+          Brands are used to browse your products through the
+          touchscreen interface.
+        </p>
+      </field>
+    </record>
+    <menuitem action="product_brand_action" id="menu_product_brand" parent="product.prod_config_main" sequence="2" />
+
+    <!-- Public Category by Brand -->
+    <record id="product_public_category_brand_form_view" model="ir.ui.view">
+      <field name="name">product.public.category.brand.form</field>
+      <field name="model">product.public.category.brand</field>
+      <field name="arch" type="xml">
+        <form string="Public category by brand">
+          <sheet>
+            <div class="oe_left" style="width: 500px;">
+              <field name="image_medium" widget='image' class="oe_avatar oe_left"/>
+              <div class="oe_title">
+                <h1>
+                  <field name="name" class=""/>
+                </h1>
+              </div>
+
+              <field name="public_category"/>
+              <field name="brand"/>
+            </div>
+
+            <notebook>
+              <page string="General">
+                <group colspan="4">
+                  <group>
+                    <field name="sequence"/>
+                  </group>
+                </group>
+              </page>
+            </notebook>
+          </sheet>
+
+
+        </form>
+      </field>
+    </record>
+    <record id="product_public_category_brand_tree_view" model="ir.ui.view">
+      <field name="name">product.public.category.brand.tree</field>
+      <field name="model">product.public.category.brand</field>
+      <field name="arch" type="xml">
+        <tree string="Categorías por marca">
+          <field name="sequence"/>
+          <field name="name"/>
+          <field name="brand"/>
+        </tree>
+      </field>
+    </record>
+    <record id="product_public_category_brand_action" model="ir.actions.act_window">
+      <field name="name">Public category by brands</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">product.public.category.brand</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" eval="False"/>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Click to define a new public categry by brand relation.
+        </p>
+      </field>
+    </record>
+    <menuitem action="product_public_category_brand_action" id="menu_product_public_category_brand" parent="product.prod_config_main" sequence="3" />
+
+
+
+
+    <!-- product.template -->
+    <!-- set default_code visible to form view. -->
+    <!-- set public_price  NO visible. -->
+    <record model="ir.ui.view" id="product_template_form_default_code">
+      <field name="name">product.template.product.form</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="product.product_template_only_form_view"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='type']" position="before">
+          <field name="brand_id"/>
+          <field name="active_product_offer_ids" widget="many2many_tags"/>
+        </xpath>
+        <xpath expr="//field[@name='list_price']" position="attributes">
+          <attribute name="attrs">{'invisible': [('is_product_variant','=',False)]}</attribute>
+        </xpath>
+        <xpath expr="//field[@name='default_code']" position="replace">
+          <field name="default_code"/>
+        </xpath>
+
+        <xpath expr="//page[@name='variants']" position="after">
+          <page name="product_group" string="Producto agrupado">
+            <div class="oe_left">
+              <button name="product_group_recalculate" attrs="{'invisible': [('product_group_type','!=',1),('product_group_id','=',False)]}" string="Actualizar producto agrupado" type="object"/>
+            </div>
+            <group>
+              <group>
+                <field name="product_group_type" attrs="{'invisible': [('product_group_id', '!=', False)]}"/>
+                <field name="product_group_images" attrs="{'invisible': [('product_group_id', '!=', False)]}"/>
+                <field name="product_group_id" context="{'default_product_group_type': 1}" attrs="{'invisible': [('product_group_type', '!=', False)]}"/>
+              </group>
+              <group>
+                <field name="product_group_attribute_id" attrs="{'required': [('product_group_type', '!=', False)], 'invisible': [('product_group_type', '=', False)]}"/>
+                <field name="product_group_attribute_value_id" attrs="{ 'required': [('product_group_id', '!=', False)], 'invisible': [('product_group_type', '!=', False)]}"/>
+              </group>
+              <group>
+              </group>
+            </group>
+          </page>
+          <page string="Pack's">
+            <group colspan="4">
+              <group>
+                <field name="pack_ids" widget="many2many_tags" nolabel="1" readonly="1"/>
+              </group>
+            </group>
+          </page>
+
+        </xpath>
+
+      </field>
+    </record>
+
+    <!-- product.template -->
+    <!-- Añadir el producto sustituto. -->
+    <!-- Añadir Rating Plus. -->
+    <record model="ir.ui.view" id="product_template_form_view">
+      <field name="name">product.template.product.website.form</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="website_sale.product_template_form_view"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='public_categ_ids']" position="after">
+          <field name="replace_by"/>
+        </xpath>
+        <xpath expr="//field[@name='website_sequence']" position="after">
+          <field name="ratingplus"/>
+        </xpath>
+      </field>
+    </record>
+
+    <!-- Añadir la descripción corta de producto. -->
+    <record model="ir.ui.view" id="product_template_form_view_website_short_description">
+      <field name="name">product.template.product.website.form</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="product.product_template_form_view"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='description_sale']" position="after">
+          <separator string="Descripción corta"/>
+          <field name="website_short_description"/>
+        </xpath>
+      </field>
+    </record>
+
+
+
+
+
+    <!-- product.product -->
+    <record id="product_search_form_view_ean13" model="ir.ui.view">
+      <field name="name">product.search.ean13.form</field>
+      <field name="model">product.product</field>
+      <field name="inherit_id" ref="product.product_search_form_view"/>
+      <field name="arch" type="xml">
+        <field name="name" position="after">
+          <field name="ean13" string="Código de barras"/>
+        </field>
+      </field>
+    </record>
+
+    <record id="product_form_view_list_price" model="ir.ui.view">
+      <field name="name">product.product.form</field>
+      <field name="model">product.product</field>
+      <field name="mode">primary</field>
+      <field eval="7" name="priority"/>
+      <field name="inherit_id" ref="product.product_template_form_view"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='list_price']" position="attributes">
+          <attribute name="invisible">0</attribute>
+        </xpath>
+
+      </field>
+    </record>
+
+    <record id="product_public_category_form_view" model="ir.ui.view">
+      <field name="name">product.public.category.form</field>
+      <field name="model">product.public.category</field>
+      <field name="inherit_id" ref="website_sale.product_public_category_form_view"/>
+      <field name="arch" type="xml">
+        <xpath expr="//sheet" position="replace">
+
+          <div class="oe_left" style="width: 500px;">
+            <field name="image_medium" widget='image' class="oe_avatar oe_left"/>
+            <div class="oe_title" style="width: 390px;">
+              <h1>
+                <field name="name" class="oe_inline"/>
+              </h1>
+            </div>
+
+          </div>
+
+
+          <notebook>
+            <page string="General">
+              <group colspan="4">
+                <group>
+                  <field name="parent_id"/>
+                  <field name="sequence"/>
+                  <field name="google_product_category"/>
+                  <field name="niveles"/>
+                  <field name="attribute_ids" colspan="2" widget="many2many_tags"/>
+                  <field name="attribute_default_value" colspan="2"/>
+
+                  <field name="website_description" colspan="4"/>
+                  <field name="website_short_description" colspan="4"/>
+
+                  <!--
+                  <field name="active"/>
+                -->
+              </group>
+            </group>
+          </page>
+        </notebook>
+
+
+
+      </xpath>
+
+    </field>
+  </record>
+
+
+
+  <record id="product_search_form_view" model="ir.ui.view">
+    <field name="name">custom.product.search</field>
+    <field name="model">product.template</field>
+    <field name="mode">primary</field>
+    <field name="inherit_id" ref="product.product_template_search_view"/>
+    <field name="arch" type="xml">
+      <xpath expr="//group[@string='Group by...']" position="inside">
+        <filter string='Product brand' name="brand_id" domain="[]" context="{'group_by' : 'brand_id'}"/>
+      </xpath>
+    </field>
+  </record>
+
+  <record id="product_template_search_view" model="ir.ui.view">
+    <field name="name">product.template.search</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="product.product_template_search_view"/>
+    <field name="arch" type="xml">
+      <xpath expr="//search[@string='Product']" position="inside">
+        <field name="public_categ_ids" filter_domain="[('public_categ_ids', 'child_of', self)]"/>
+        <field name="brand_id"/>
+      </xpath>
+    </field>
+  </record>
+
+
+  <!-- Disponible sólo para venta en tiendas físicas -->
+  <record id="product_template_form_view_physical_store" model="ir.ui.view">
+    <field name="name">product_template_form_view_physical_store</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="product.product_template_form_view"/>
+    <field name="arch" type="xml">
+      <xpath expr="//group[@name='sale_condition']" position="after">
+        <group>
+          <field name="only_physical_store"/>
+          <field name="only_physical_store_text"/>
+          <field name="website_sale_ok"/>
+        </group>
+      </xpath>
+
+    </field>
+  </record>
+
+  <!-- Imágenes por producto y atributo -->
+  <record id="product_attribute_image_form_view" model="ir.ui.view">
+    <field name="name">product.attribute.image.form</field>
+    <field name="model">product.attribute.image</field>
+    <field name="arch" type="xml">
+      <form string="Imágenes por producto y atributo">
+        <sheet>
+          <group>
+            <group>
+              <field name="product_tmpl_id"/>
+              <field name="value_id"/>
+            </group>
+          </group>
+          <div class="oe_left" style="width: 500px;">
+            <field name="image" widget='image' class="oe_image_medium oe_left"/>
+          </div>
+
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="product_attribute_image_tree_view" model="ir.ui.view">
+    <field name="name">product.attribute.image.tree</field>
+    <field name="model">product.attribute.image</field>
+    <field name="field_parent" eval="False"/>
+    <field name="arch" type="xml">
+      <tree string="Imágenes por producto y atributo">
+        <field name="product_tmpl_id"/>
+        <field name="value_id"/>
+      </tree>
+    </field>
+  </record>
+  <record id="product_attribute_image_search_view" model="ir.ui.view">
+    <field name="name">product.attribute.image.search</field>
+    <field name="model">product.attribute.image</field>
+    <field name="arch" type="xml">
+      <search string="Imágenes">
+        <field name="product_tmpl_id" string="Product" filter_domain="[('product_tmpl_id','ilike',self)]"/>
+      </search>
+    </field>
+  </record>
+
+
+  <record id="product_attribute_image_action" model="ir.actions.act_window">
+    <field name="name">Imagen por atributo</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">product.attribute.image</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+      <p class="oe_view_nocontent_create">
+        Pulsa crear para añadir una imagen personalizada para un producto y un atributo concreto.
+      </p>
+    </field>
+  </record>
+  <menuitem action="product_attribute_image_action" id="menu_product_attribute_image_menu" parent="menu_marketing_product" sequence="5" />
+
+
+
+  <!-- Añadir la sequencia a los atributos. -->
+  <record id="attribute_tree_view" model="ir.ui.view">
+    <field name="name">product.attribute.tree</field>
+    <field name="model">product.attribute</field>
+    <field name="inherit_id" ref="product.attribute_tree_view"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='name']" position="before">
+        <field name="sequence" widget="handle" />
+      </xpath>
+    </field>
+  </record>
+
+</data>
+</openerp>

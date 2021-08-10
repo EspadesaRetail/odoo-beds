@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Definición del feed para merchant center. -->
+        <template id="google_merchant_center_feed">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+        <![CDATA[<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">]]>
+            <channel>
+                <title>Productos</title>
+                <link t-esc="website_url"/>
+                <description>Productos a la venta</description>
+                <item t-foreach="items" t-as="item">
+                        <t t-raw="item"/>
+                </item>
+            
+            </channel>
+            <![CDATA[</rss>]]>
+        </template> 
+        
+                                                                                                                                                                                                                      
+                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+        <template id="google_merchant_center_feed_viejo">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+        <![CDATA[<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">]]>
+                
+            <channel>
+                <title>Productos</title>
+                <link t-esc="website_url"/>
+                <description>Productos a la venta</description>
+                <t t-foreach="products" t-as="product">
+                    <t t-set="pt" t-value="product.product_tmpl_id"/>
+                    <t  t-if="product.lst_price > 0 and (not pt.only_physical_store)">
+                        <item>
+                            <id t-esc="product.id"/>
+                    
+                            <title t-esc="pt.name"/>
+                            <link t-esc="'{0}/shop/product/{1}'.format(website_url, slug(pt))"/>
+                            <description t-raw="pt.name #website_benefits"/>
+                            <image_link  t-esc="'{0}/{1}'.format(website_url, website.image_url(pt, 'image'))"/>
+                    
+                            <t t-foreach="pt.image_url" t-as="url">
+                                <additional_image_link t-esc="'{0}/{1}'.format(website_url, url)"/>
+                            </t>
+                    
+                            <condition t-esc="'new'"/>  
+                            <availability t-esc="'in stock'"/>  
+                            <google_product_category t-esc="pt.google_product_category"/>
+                            <brand t-esc="pt.brand_id.name"/>  
+                    
+                    
+                            <item_group_id t-esc="pt.default_code"/>
+                            <price t-esc="'{0} EUR'.format(product.lst_price)"/>
+                            <sale_price t-esc="'{0} EUR'.format(product.discounted_price)"/>
+                            
+                            
+                            
+                            <size t-esc="product.attribute_value_ids.name"/>
+                            <gtin t-esc="product.ean13"/>
+                            <mpn t-esc="pt.default_code"/>
+                            
+                    
+                            <!--<t t-raw="datas[product.id]"/>-->
+                        </item>
+                    </t>
+                </t>
+            
+            </channel>
+            <![CDATA[</rss>]]>
+        </template>                                                                                                                                                                                                               
+                                                                    
+    </data>
+</openerp>
+
+
+   
+   
+   

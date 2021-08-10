@@ -1,0 +1,121 @@
+@media all {
+
+  .link-other-page {
+    border-radius: 25px;
+    background: #005eb8;
+    color: white;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .link-other-page:hover {
+    background-color: #e4edf4;
+    color: #005eb8;
+    text-decoration: none
+}
+
+  .textos {
+    line-height: normal;
+  }
+
+  .p-name {
+    font-size: 26px;
+    color: #050505;
+  }
+
+  .p-title {
+    font-size: 16px;
+    color: #050505;
+  }
+
+  .p-card-title {
+    font-size: 20px;
+    color: #050505;
+  }
+
+  .p-card-text {
+    font-size: 15px;
+    color: #828282;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .div-gris {
+    background-color: #efefef;
+  }
+
+  .espaciado-texto-title {
+    padding: 2%;
+  }
+
+  .espaciado-texto-large {
+    padding: 5%;
+  }
+
+  .espaciado-texto-small {
+    padding-top: 6%;
+    padding-bottom: 4%;
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+
+  .brand img.img-thumbnails {
+    float: left;
+    width: 150px;
+    height: 150px;
+    margin-right: 10px;
+  }
+
+  .brand-detail .img   {
+    float: left;
+    width: 350px;
+    height: 350px;
+  }
+
+  .video-large {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .video-small {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .embed-container{
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .embed-container iframe{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .embed-container-small{
+    position: relative;
+    padding-bottom: 28.125%;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .embed-container-small iframe{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .boton-enlace-producto {
+    border: 1px solid;
+    color: #ff0200;
+  }
+
+}

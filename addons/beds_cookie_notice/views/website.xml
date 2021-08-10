@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <template id="cookie_notice_assets_frontend" inherit_id="website.assets_frontend" name="Cookie Notice Assets Frontend">
+      <xpath expr="." position="inside">
+        <link rel='stylesheet' href='/beds_cookie_notice/static/src/css/beds_cookie_notice.css'/>
+      </xpath>
+    </template>
+
+
+    <template id="loader" name="Cookies script loader">
+      <script t-if="request and
+        not request.httpsession.get('accepted_cookies')"
+        type="text/javascript"
+        src="/beds_cookie_notice/static/src/js/accept_cookies.js">
+      </script>
+    </template>
+
+    <template id="message" name="Cookies notice">
+      <div t-if="request and not request.httpsession.get('accepted_cookies')" id="beds_cookie_panel" class="container-fluid cc-cookies">
+        <div class="container cc-cookies-notice">
+          <div class="row">
+            <div class="col-xs-12">
+              <h6>
+                En tiendas bed's utilizamos cookies propias y de terceros para realizar análisis de uso y de medición de nuestra web. Puedes obtener más información, o bien conocer cómo cambiar la configuración de las cookies en tu navegador consultando nuestra <a href="/page/cookies">Política de Cookies</a>. Pulsa el botón ACEPTAR para confirmar que has leído y aceptado la información presentada.
+                <a id="beds_cookie_accept" class="btn btn-default btn-xs"
+                  href="/beds_cookie_notice/ok">Aceptar</a>
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+      <template id="assets_frontend" inherit_id="website.assets_frontend">
+        <xpath expr=".">
+          <t t-call="beds_cookie_notice.loader"/>
+        </xpath>
+      </template>
+
+      <template id="cookiebanner" inherit_id="website.layout">
+        <xpath expr="//header" position="before">
+          <t t-call="beds_cookie_notice.message"/>
+        </xpath>
+      </template>
+
+    </data>
+  </openerp>

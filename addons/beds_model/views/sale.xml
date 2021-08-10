@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <template id="assets_backend" name="beds assets" inherit_id="web.assets_backend">
+            <xpath expr="//link[last()]" position="inside">
+                <link rel="stylesheet" href="/beds_model/static/src/css/beds_back.css"/>
+            </xpath>
+        </template>
+
+
+
+        <!-- Añadir los datos del ws de beds al pedido-->
+        <record id="view_sale_order_tree" model="ir.ui.view">
+            <field name="name">beds.sale.order.view.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="before">
+                    <field name="beds_pedido"/>
+                    <field name="beds_situacion"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_order_form" model="ir.ui.view">
+            <field name="name">beds view_order_form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='currency_id']" position="after">
+                    <field name="beds_pedido"/>
+                    <field name="beds_estado"/>
+                    <field name="beds_situacion"/>
+                    <field name="remove_old_products" readonly="1"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Add button for check status order on bed's-->
+        <record id="check_status_order" model="ir.ui.view">
+            <field name="name">check_status_order</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header/button[@name='invoice_cancel']" position="after">
+                    <button name="beds_model.action_beds_sale_order_update_status" class="beds-ws" type="action" states="manual,progress" string="Actualizar estado" groups="base.group_user"/>
+                    <button name="beds_model.action_beds_create_sale_order" class="beds-ws" type="action" states="manual,progress" string="Enviar pedido" groups="base.group_user"/>
+
+                </xpath>
+            </field>
+        </record>
+
+
+        <!-- Pantalla para confirmar la actualización del estado de un pedido. -->
+        <record id="sale_order_update_status" model="ir.ui.view">
+            <field name="name">Actualizar el estado de un pedido</field>
+            <field name="model">beds.ws.sale.order.update.status</field>
+            <field name="arch" type="xml">
+                <form string="Actualizar el estado de un pedido">
+                    <p class="oe_grey">
+                        Actualizar el estado de un pedido.
+                    </p>
+
+                    <footer>
+                        <button name="sale_order_update_status" string="Actualizar el estado de un pedido" type="object" class="beds-ws"/>
+                        or
+                        <button string="Close" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_beds_sale_order_update_status" model="ir.actions.act_window">
+            <field name="name">Actualizar el estado de un pedido</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">beds.ws.sale.order.update.status</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+
+
+        <!-- Pantalla para confirmar el envío de pedidos a Beds -->
+        <record id="check_status_order_form" model="ir.ui.view">
+            <field name="name">Crear pedidos en bed's</field>
+            <field name="model">beds.ws.send.sale.order</field>
+            <field name="arch" type="xml">
+                <form string="Crear pedido pedido">
+                    <p class="oe_grey">
+                        Esta opción permite crear los pedido en beds.
+                    </p>
+
+                    <footer>
+                        <button name="send_sale_order" string="Enviar pedidos a bed's" type="object" class="beds-ws"/>
+                        or
+                        <button string="Close" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_beds_create_sale_order" model="ir.actions.act_window">
+            <field name="name">Crear el pedido de venta en bed's</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">beds.ws.send.sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+
+
+    </data>
+</openerp>

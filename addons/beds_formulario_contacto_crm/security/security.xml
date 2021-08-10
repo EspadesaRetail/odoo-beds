@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="0">
+
+  <record model="ir.rule" id="beds_formulario_contacto_crm_public_rule">
+      <field name="name">Acceso publico a Corner Brand</field>
+      <field name="model_id" ref="beds_formulario_contacto_crm.model_beds_formulario_contacto_crm"/>
+      <field name="domain_force">[(1, '=', 1)]</field>
+      <field name="groups" eval="[(4, ref('base.group_public'))]"/>
+  </record>
+
+  <record id="beds_formulario_contacto_crm_marketing_user" model="ir.rule">
+      <field name="name">Acceso a usuarios de Marketing</field>
+      <field name="model_id" ref="beds_formulario_contacto_crm.model_beds_formulario_contacto_crm"/>
+      <field name="domain_force">[(1, '=', 1)]</field>
+      <field name="groups" eval="[(4, ref('marketing.group_marketing_user'))]"/>
+  </record>
+
+</data>
+
+</openerp>

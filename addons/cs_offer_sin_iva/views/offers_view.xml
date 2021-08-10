@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <!-- Descuento en la campaña SIN IVA -->
+    <record id="product_offer_siniva_form_view" model="ir.ui.view">
+      <field name="name">product.offer.form</field>
+      <field name="model">product.offer</field>
+      <field name="inherit_id" ref="cs_offer.view_product_offer_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//notebook" position="inside">
+          <page string="Campaña %dto 'Sin IVA'" attrs="{'invisible': [('offer_type','!=','siniva')]}">
+            <group>
+              <field name="siniva_dto"/>
+            </group>
+          </page>
+        </xpath>
+      </field>
+    </record>
+
+  </data>
+
+</openerp>
