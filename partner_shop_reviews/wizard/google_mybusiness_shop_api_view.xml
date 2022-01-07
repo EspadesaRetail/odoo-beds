@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <act_window id="google_mybusiness_shop_api_action"
+    name="API Google My Business - Shop"
+    res_model="google.mybusiness.shop.api"
+    src_model="res.partner"
+    view_mode="form"
+    target="new"/>
+
+  <record id="google_mybusiness_api_shop_view" model="ir.ui.view">
+    <field name="name">Google My Business API - Shop</field>
+    <field name="model">google.mybusiness.shop.api</field>
+    <field name="arch" type="xml">
+      <form>
+        <group>
+          <field name="access_token_api"/>
+          <field name="partner_ids" widget="many2many_list"/>
+        </group>
+        <footer>
+          <button name="get_reviews_data" string="Get Reviews" class="oe_right oe_highlight" type="object"/>
+          <button name="cancel" string="Cancel" class="oe_right" special="cancel"/>
+        </footer>
+      </form>
+    </field>
+  </record>
+</odoo>

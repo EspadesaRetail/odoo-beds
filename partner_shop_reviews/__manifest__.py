@@ -21,6 +21,7 @@ Addon to add reviews into partner like shop.
         'security/ir.model.access.csv',
         'views/inherited_res_partner_views.xml',
         'wizard/google_mybusiness_api_view.xml',
+        'wizard/google_mybusiness_shop_api_view.xml',
     ],
     'installable': True,
     'auto_install': False,

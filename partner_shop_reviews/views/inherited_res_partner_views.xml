@@ -115,6 +115,25 @@
     </field>
   </record>
 
+  <record id="res_partner_review_content_tree_view" model="ir.ui.view">
+    <field name="name">Tree view for Espadesa Shop Review Content</field>
+    <field name="model">res.partner.review_content</field>
+    <field name="arch" type="xml">
+      <tree string="Espadesa Shop Review Content">
+        <field name="partner_id"/>
+        <field name="review_identificator"/>
+        <field name="reviewer_profile_photo"/>
+        <field name="reviewer_displayname"/>
+        <field name="review_rating"/>
+        <field name="review_comment"/>
+        <field name="review_create_time"/>
+        <field name="review_update_time"/>
+        <field name="reply_comment"/>
+        <field name="reply_update_time"/>
+      </tree>
+    </field>
+  </record>
+
   <!-- Actions and Menus -->
   <record model="ir.actions.act_window" id="action_res_partner_format">
       <field name="name">Espadesa Shop Format</field>
@@ -130,7 +149,15 @@
       <field name="view_id" ref="res_partner_review_tree_view"/>
   </record>
 
+  <record model="ir.actions.act_window" id="action_res_partner_review_content">
+      <field name="name">Espadesa Shop Review Content</field>
+      <field name="res_model">res.partner.review_content</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="res_partner_review_content_tree_view"/>
+  </record>
+
   <menuitem name="Espadesa Format" id="menu_res_partner_format" action="action_res_partner_format" parent="contacts.menu_contacts" sequence="10"/>
   <menuitem name="Espadesa Shop Review" id="menu_res_partner_review" action="action_res_partner_review" parent="contacts.menu_contacts" sequence="20"/>
+  <menuitem name="Espadesa Shop Review Content" id="menu_res_partner_review_content" action="action_res_partner_review_content" parent="contacts.menu_contacts" sequence="30"/>
 
 </odoo>

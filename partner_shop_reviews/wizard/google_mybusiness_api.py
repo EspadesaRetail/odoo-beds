@@ -92,12 +92,19 @@ class GoogleMybusinessApi(models.TransientModel):
 
         response = requests.request("GET", url, headers=headers, data=payload)
 
-        valor = {
-            'partner_id': accessInfo.id,
-            'review_number': response.json().get('totalReviewCount'),
-            'review_value': response.json().get('averageRating')
-        }
-        if response.json().get('totalReviewCount') and response.json().get('averageRating'):
-            review = self.env['res.partner.review'].sudo().create(valor)
+        if response.json().get('reviews'):
+            valor = {
+                'partner_id': accessInfo.id,
+                'review_number': response.json().get('totalReviewCount'),
+                'review_value': response.json().get('averageRating')
+            }
+        else:
+            valor = {
+                'partner_id': accessInfo.id,
+                'review_number': 0,
+                'review_value': 0
+            }
+
+        review = self.env['res.partner.review'].sudo().create(valor)
 
         return response

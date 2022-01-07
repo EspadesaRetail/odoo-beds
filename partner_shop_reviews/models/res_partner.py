@@ -2,6 +2,32 @@
 from odoo import models, fields, api, _
 
 
+class ResPartnerReviewContent(models.Model):
+    _name = 'res.partner.review_content'
+
+    partner_id = fields.Many2one(
+        comodel_name='res.partner',
+        string='Shop')
+    review_identificator = fields.Char(
+        string=_('reviewId'))
+    reviewer_profile_photo = fields.Char(
+        string=_('profilePhotoUrl'))
+    reviewer_displayname = fields.Char(
+        string=_('displayName'))
+    review_rating = fields.Integer(
+        string=_('starRating'))
+    review_comment = fields.Text(
+        string=_('comment'))
+    review_create_time = fields.Datetime(
+        string=_('createTime'))
+    review_update_time = fields.Datetime(
+        string=_('updateTime'))
+    reply_comment = fields.Text(
+        string=_('reply'))
+    reply_update_time = fields.Datetime(
+        string=_('reply updateTime'))
+
+
 class ResPartnerFormat(models.Model):
     _name = 'res.partner.format'
 
@@ -53,7 +79,8 @@ class ResPartnerReview(models.Model):
         required=True)
     review_increase = fields.Integer(
         string=_('New reviews'),
-        required=True)
+        required=True,
+        default=0)
     espadesa_shop = fields.Integer(
         string=_('Shop Number'),
         related="partner_id.espadesa_shop",
@@ -69,7 +96,7 @@ class ResPartnerReview(models.Model):
                 old_review_number = self.search(
                     [('partner_id.id', '=', record.partner_id.id)],
                     limit=1,
-                    order='date_review')
+                    order='date_review desc')
                 if old_review_number.id:
                     record.review_increase = record.review_number - old_review_number.review_number
 
@@ -79,7 +106,7 @@ class ResPartnerReview(models.Model):
             old_review_number = self.search(
                 [('partner_id', '=', vals['partner_id'])],
                 limit=1,
-                order='date_review')
+                order='date_review desc')
             if old_review_number.id:
                 vals['review_increase'] = vals['review_number'] - old_review_number.review_number
             else:

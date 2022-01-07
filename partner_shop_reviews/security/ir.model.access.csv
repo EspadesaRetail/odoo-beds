@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_res_partner_format_espadesa_admin,res.partner.format,model_res_partner_format,group_espadesa_shop_admin,1,1,1,1
 access_res_partner_review_espadesa_admin,res.partner.review,model_res_partner_review,group_espadesa_shop_admin,1,1,1,1
+access_res_partner_review_content_espadesa_admin,res.partner.review_content,model_res_partner_review_content,group_espadesa_shop_admin,1,1,1,1
