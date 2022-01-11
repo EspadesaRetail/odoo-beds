@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <data>
+    <menuitem name="Mail Validator" id="mv_menu_root" sequence="5" groups="base.group_user"/>
+
+    # views from Mailist
+    <record id="partner_mail_list_form_view" model="ir.ui.view">
+      <field name="name">Mail Validator Form</field>
+      <field name="model">partner.mail.list</field>
+      <field name="arch" type="xml">
+        <form string="Partner Mail Validator">
+          <sheet>
+            <group name="main_info">
+              <field name="enterprise"/>
+              <field name="shop"/>
+              <field name="name"/>
+              <field name="shop_format"/>
+              <field name="shop_zone"/>
+            </group>
+            <group name="partner_info">
+              <field name="partner_number"/>
+              <field name="email"/>
+              <field name="type_mail"/>
+              <field name="reason_mail"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="partner_mail_list_tree_view" model="ir.ui.view">
+      <field name="name">Mail Validator Tree</field>
+      <field name="model">partner.mail.list</field>
+      <field name="arch" type="xml">
+        <tree string="Partner Mail Validator">
+          <field name="enterprise"/>
+          <field name="shop"/>
+          <field name="name"/>
+          <field name="shop_format"/>
+          <field name="shop_zone"/>
+          <field name="partner_number"/>
+          <field name="email"/>
+          <field name="type_mail"/>
+          <field name="reason_mail"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="partner_mail_list_search_view" model="ir.ui.view">
+      <field name="name">Mail Validator Search</field>
+      <field name="model">partner.mail.list</field>
+      <field name="arch" type="xml">
+        <search string="Mail Validator">
+          <field name="shop"/>
+          <field name="name"/>
+          <field name="shop_format"/>
+          <field name="shop_zone"/>
+          <field name="partner_number"/>
+          <field name="email"/>
+          <field name="type_mail"/>
+          <field name="reason_mail"/>
+        </search>
+      </field>
+    </record>
+
+    <record id="partner_mail_list_action" model="ir.actions.act_window">
+      <field name="name">Mail Validator</field>
+      <field name="res_model">partner.mail.list</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Click to create record.
+        </p>
+      </field>
+    </record>
+
+    <menuitem id="menu_mail_validator_list" name="Mail Validator" parent="mv_menu_root" action="partner_mail_list_action" sequence="10" groups="base.group_user"/>
+
+    # views from Mailpatterns
+    <record id="partner_mail_pattern_form_view" model="ir.ui.view">
+      <field name="name">Mail Validator Pattern Form</field>
+      <field name="model">partner.mail.pattern</field>
+      <field name="arch" type="xml">
+        <form string="Partner Mail Validator">
+          <field name="name"/>
+          <field name="type"/>
+        </form>
+      </field>
+    </record>
+
+    <record id="partner_mail_pattern_tree_view" model="ir.ui.view">
+      <field name="name">Mail Validator Pattern Tree</field>
+      <field name="model">partner.mail.pattern</field>
+      <field name="arch" type="xml">
+        <tree string="Partner Mail Validator">
+          <field name="name"/>
+          <field name="type"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="partner_mail_pattern_search_view" model="ir.ui.view">
+      <field name="name">Mail Validator Pattern Search</field>
+      <field name="model">partner.mail.pattern</field>
+      <field name="arch" type="xml">
+        <search string="Mail Validator">
+          <field name="type"/>
+        </search>
+      </field>
+    </record>
+
+    <record id="partner_mail_pattern_action" model="ir.actions.act_window">
+      <field name="name">Mail Validator Patterns</field>
+      <field name="res_model">partner.mail.pattern</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Click to create record.
+        </p>
+      </field>
+    </record>
+
+    <menuitem id="menu_mail_validator_pattern" name="Patterns" parent="mv_menu_root" action="partner_mail_pattern_action" sequence="15" groups="base.group_user"/>
+
+  </data>
+</odoo>
